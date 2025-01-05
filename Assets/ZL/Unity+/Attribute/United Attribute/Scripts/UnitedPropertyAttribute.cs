@@ -1,9 +1,3 @@
-#if UNITY_EDITOR
-
-using UnityEditor;
-
-#endif
-
 using System;
 
 using System.Collections.Generic;
@@ -11,6 +5,12 @@ using System.Collections.Generic;
 using System.Reflection;
 
 using UnityEngine;
+
+#if UNITY_EDITOR
+
+using UnityEditor;
+
+#endif
 
 namespace ZL
 {
@@ -68,8 +68,6 @@ namespace ZL
             public Rect PropertyPosition;
 
             public float PropertyHeight { get; private set; } = 0f;
-
-            
 
             private GUIContent PropertyLabel;
 
@@ -138,20 +136,22 @@ namespace ZL
                 {
                     case SerializedPropertyFieldType.Default:
 
-                        PropertyStyle = Current.NewStyle(EditorStyles.label);
-
                         EditorGUI.PropertyField(PropertyPosition, Property, new(" "), true);
-
-                        //EditorGUI.LabelField(PropertyPosition, PropertyLabel, PropertyStyle);
 
                         PropertyPosition.x += Current.IndentLevel * singleIndentWidth;
 
                         PropertyPosition.width -= Current.IndentLevel * singleIndentWidth;
 
+                        var labelPosition = PropertyPosition;
+
+                        labelPosition.height = singleLineHeight;
+
                         int controlID = GUIUtility.GetControlID(FocusType.Passive);
 
-                        EditorGUI.HandlePrefixLabel(PropertyPosition, PropertyPosition, PropertyLabel, controlID, PropertyStyle);
+                        PropertyStyle = Current.NewStyle(EditorStyles.label);
 
+                        EditorGUI.HandlePrefixLabel(PropertyPosition, labelPosition, PropertyLabel, controlID, PropertyStyle);
+                        
                         break;
 
                     case SerializedPropertyFieldType.Tag:

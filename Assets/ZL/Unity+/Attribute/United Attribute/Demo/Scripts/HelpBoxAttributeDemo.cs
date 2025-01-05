@@ -18,19 +18,25 @@ namespace ZL.Demo
 
         [Label("Help Box")]
 
+        [Empty(2f)]
+
         [Text("Default")]
 
         [HelpBox("This is message.")]
 
-        public int helpBox;
+        public EmptyClass helpBox;
 
         [Space]
 
         [Style(FontStyle.Bold)]
 
+        [Empty(2f)]
+
         [Text("Default")]
 
         [InfoBox("This is message.")]
+
+        [Empty(2f)]
 
         [Text("Icon Size = Large")]
 
@@ -42,9 +48,13 @@ namespace ZL.Demo
 
         [Style(FontStyle.Bold)]
 
+        [Empty(2f)]
+
         [Text("Default")]
 
         [WarningBox("This is message.")]
+
+        [Empty(2f)]
 
         [Text("Icon Size = Large")]
 
@@ -56,9 +66,13 @@ namespace ZL.Demo
 
         [Style(FontStyle.Bold)]
 
+        [Empty(2f)]
+
         [Text("Default")]
 
         [ErrorBox("This is message.")]
+
+        [Empty(2f)]
 
         [Text("Icon Size = Large")]
 

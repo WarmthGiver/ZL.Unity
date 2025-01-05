@@ -16,31 +16,31 @@ namespace ZL.Demo
         
         [Empty]
 
-        [Text(FontStyle.Italic, "Default")]
+        [Text("Default")]
 
         [Button("PrintText")]
 
         [Empty]
 
-        [Text(FontStyle.Italic, "Text = \"PRINT TEXT\"")]
+        [Text("Text = \"PRINT TEXT\"")]
 
         [Button("PrintText", "PRINT TEXT")]
 
         [Empty]
 
-        [Text(FontStyle.Italic, "Height = 36f")]
+        [Text("Height = 36f")]
 
         [Button(36f, "PrintText")]
 
         [Empty]
 
-        [Text(FontStyle.Italic, "Full Option")]
+        [Text("Full Option")]
 
         [Button(36f, "PrintText", "PRINT TEXT")]
 
         [Empty]
 
-        [Text(FontStyle.Italic, "Wrong Method Name*")]
+        [Text("Wrong Method Name*")]
 
         [Button("printText")]
 

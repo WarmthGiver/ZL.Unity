@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6012042082807238601}
   - component: {fileID: 2967732596495186965}
   m_Layer: 0
-  m_Name: Bonk
+  m_Name: Click (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1998851119778196753, guid: 0952a5ffeaec72d40b8f88f93353cdf6, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c725702da79451b4da78e1075a91b050, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f76ab7085a839a445a23902d181f54e2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -102,7 +102,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.37
       inSlope: 0
       outSlope: 0
       tangentMode: 0
