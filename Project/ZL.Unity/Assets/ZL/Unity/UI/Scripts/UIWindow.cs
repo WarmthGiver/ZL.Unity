@@ -24,7 +24,7 @@ namespace ZL.Unity.UI
 
         private CanvasGroupTweener canvasGroupTweener;
 
-        public void OnPointerDown(PointerEventData pointEventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
             SetAsLastSibling();
         }

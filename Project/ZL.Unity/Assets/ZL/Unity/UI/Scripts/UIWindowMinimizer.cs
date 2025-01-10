@@ -35,7 +35,7 @@ namespace ZL.Unity.UI
 
         private void OnValidate()
         {
-            if (Application.isPlaying)
+            if (Application.isPlaying == true)
             {
                 Minimize();
             }
@@ -43,7 +43,7 @@ namespace ZL.Unity.UI
 
         private void Minimize()
         {
-            if (isMinimized)
+            if (isMinimized == true)
             {
                 originalSize = rectTransform.sizeDelta;
 

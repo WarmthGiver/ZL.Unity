@@ -124,21 +124,21 @@ namespace ZL.Unity
 
         private IEnumerator<Color> MoveHSVRoutile(Color color)
         {
-            Color.RGBToHSV(color, out float h, out float s, out float v);
+            Color.RGBToHSV(color, out float H, out float S, out float v);
 
-            Linear linearH = new(h, 1f, IntervalMode.Repeat);
+            Linear linearH = new(H, 1f, IntervalMode.Repeat);
 
-            Linear linearS = new(s, 1f, IntervalMode.PingPong);
+            Linear linearS = new(S, 1f, IntervalMode.PingPong);
 
             Linear linearV = new(v, 1f, IntervalMode.PingPong);
 
             while (true)
             {
-                yield return Color.HSVToRGB(h, s, v);
+                yield return Color.HSVToRGB(H, S, v);
 
-                h = linearH.Interval(deltaH, IntervalMode.Repeat);
+                H = linearH.Interval(deltaH, IntervalMode.Repeat);
 
-                s = linearS.Interval(deltaS, IntervalMode.PingPong);
+                S = linearS.Interval(deltaS, IntervalMode.PingPong);
 
                 v = linearV.Interval(deltaV, IntervalMode.Repeat);
             }

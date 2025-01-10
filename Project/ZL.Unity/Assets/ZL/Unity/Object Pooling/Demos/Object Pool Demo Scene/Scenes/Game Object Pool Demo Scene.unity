@@ -139,7 +139,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &78374246
 BoxCollider:
@@ -241,7 +241,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &483771391
 Transform:
@@ -402,8 +402,8 @@ MonoBehaviour:
   gameObjectPool:
     original: {fileID: 2609571636705452688, guid: 37b85216342afa74a8aa42a017a09add, type: 3}
     parent: {fileID: 483771391}
-  preGenerateCount: 20
-  generateSpeed: 0.5
+  preGenerateCount: 10
+  generateSpeed: 0.1
   spawnPoint: {fileID: 2053891637}
 --- !u!1 &1211487967
 GameObject:
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 2}
   speed: 0.5
-  theta: 0
+  theta: 1
   delay: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -18,11 +18,11 @@ namespace ZL.Unity.UI
 
         private Canvas canvas;
 
-        public override void OnDrag(PointerEventData pointEventData)
+        public override void OnDrag(PointerEventData eventData)
         {
-            rectTransform.anchoredPosition += pointEventData.delta / canvas.scaleFactor;
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
 
-            base.OnDrag(pointEventData);
+            base.OnDrag(eventData);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ZL.Unity
 
         public override bool Draw(Drawer drawer)
         {
-            if (!drawer.TryFindProperty(fieldName, SerializedPropertyType.Boolean, out var property))
+            if (drawer.TryFindProperty(fieldName, SerializedPropertyType.Boolean, out var property) == false)
             {
                 drawer.DrawHelpBox(MessageType.Error, $"{NameTag} Property type is mismatch.");
 

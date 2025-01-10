@@ -148,7 +148,7 @@ namespace ZL.Unity.UI
 
         private void LateUpdate()
         {
-            if (rectTransform.hasChanged)
+            if (rectTransform.hasChanged == true)
             {
                 rectTransform.hasChanged = false;
 

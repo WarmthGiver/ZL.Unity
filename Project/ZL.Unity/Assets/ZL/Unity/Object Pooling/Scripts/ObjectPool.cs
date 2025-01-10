@@ -6,13 +6,13 @@ namespace ZL.Unity.ObjectPooling
 
         where T : class
     {
-        private readonly Stack<T> stock = new();
+        private readonly LinkedList<T> stock = new();
 
         public void PreGenerate(int count)
         {
             while (count-- > 0)
             {
-                stock.Push(Clone());
+                stock.AddLast(Clone());
             }
         }
 
@@ -23,14 +23,40 @@ namespace ZL.Unity.ObjectPooling
                 return Clone();
             }
 
-            return stock.Pop();
+            return stock.PopLast();
         }
 
         public abstract T Clone();
 
-        public virtual void Collect(T clone)
+        public virtual void Collect(T value)
         {
-            stock.Push(clone);
+            stock.AddLast(value);
+        }
+
+        public void Remove(T value)
+        {
+            stock.Remove(value);
+        }
+    }
+
+    public static class LinkedListExtentions
+    {
+        public static T PopFirst<T>(this LinkedList<T> instance)
+        {
+            T value = instance.First.Value;
+
+            instance.RemoveFirst();
+
+            return value;
+        }
+
+        public static T PopLast<T>(this LinkedList<T> instance)
+        {
+            T value = instance.Last.Value;
+
+            instance.RemoveLast();
+
+            return value;
         }
     }
 }

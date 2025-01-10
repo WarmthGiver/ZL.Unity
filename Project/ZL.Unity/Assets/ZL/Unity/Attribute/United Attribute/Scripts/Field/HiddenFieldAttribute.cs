@@ -6,7 +6,7 @@ namespace ZL.Unity
 
         public override bool Draw(Drawer drawer)
         {
-            if (drawer.IsPropertyTypeIn(SerializedPropertyType.Generic) && drawer.Property.hasVisibleChildren)
+            if (drawer.IsPropertyTypeIn(SerializedPropertyType.Generic) == true && drawer.Property.hasVisibleChildren == true)
             {
                 drawer.DrawHelpBox(MessageType.Error, $"{NameTag} Property type is mismatch.");
 

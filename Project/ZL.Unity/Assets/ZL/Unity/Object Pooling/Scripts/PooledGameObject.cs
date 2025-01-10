@@ -12,11 +12,15 @@ namespace ZL.Unity.ObjectPooling
 
         where T : PooledGameObject<T>
     {
+        private T @this;
+
         public GameObjectPool<T> Pool { get; private set; }
 
         public static T Clone(GameObjectPool<T> pool)
         {
-            var clone = Instantiate(pool.Original, pool.Parent);
+            T clone = Instantiate(pool.Original, pool.Parent);
+
+            clone.@this = clone;
 
             clone.Pool = pool;
 
@@ -25,12 +29,12 @@ namespace ZL.Unity.ObjectPooling
 
         protected virtual void OnDisable()
         {
-            Pool.Collect((T)this);
+            Pool.Collect(@this);
         }
-
-        public void ReturnToPool()
+        
+        protected virtual void OnDestroy()
         {
-            gameObject.SetActive(false);
+            Pool.Remove(@this);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ZL.Unity.UI
 
         private void OnValidate()
         {
-            if (Application.isPlaying)
+            if (Application.isPlaying == true)
             {
                 image.alphaHitTestMinimumThreshold = alphaThreshold;
             }

@@ -164,7 +164,9 @@ namespace ZL.Unity
         {
             var component = Create<TComponent>(name, parent);
 
-            return component.AddComponents(components);
+            component.AddComponents(components);
+
+            return component;
         }
 
         public static TComponent Create<TComponent>(string name, Transform parent)

@@ -8,7 +8,7 @@ namespace ZL.Unity
 
         public override bool Draw(Drawer drawer)
         {
-            if (!drawer.IsFieldTypeIn(typeof(Component)))
+            if (drawer.IsFieldTypeIn(typeof(Component)) == false)
             {
                 drawer.DrawHelpBox(MessageType.Error, $"{NameTag} Field type is invalid.");
 

@@ -110,7 +110,7 @@ namespace ZL.Unity.EulerianTrail
         {
             lastVisitedNode = null;
 
-            drawingEdge.ReturnToPool();
+            drawingEdge.gameObject.SetActive(false);
 
             drawingEdge = null;
 
@@ -143,7 +143,7 @@ namespace ZL.Unity.EulerianTrail
             {
                 Segment<int> edgeSegment = new(lastVisitedNode.Number, node.Number);
 
-                if (edgeVisiteds.ContainsKey(edgeSegment) && !edgeVisiteds[edgeSegment])
+                if (edgeVisiteds.ContainsKey(edgeSegment) == true && edgeVisiteds[edgeSegment] == false)
                 {
                     edgeVisiteds[edgeSegment] = true;
 

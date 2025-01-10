@@ -1,5 +1,6 @@
 sceneSetups:
-- path: Assets/ZL/Unity/Audio/Demos/Scenes/Audio Demo Scene 1.unity
+- path: Assets/ZL/Unity/Object Pooling/Demos/Object Pool Demo Scene/Scenes/Game Object
+    Pool Demo Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

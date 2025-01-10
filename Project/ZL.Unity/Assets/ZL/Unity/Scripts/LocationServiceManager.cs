@@ -29,7 +29,7 @@ namespace ZL.Unity
 
         private IEnumerator InitializeLocationServiceRoutine()
         {
-            if (Input.location.isEnabledByUser)
+            if (Input.location.isEnabledByUser == true)
             {
                 if (Input.location.status == LocationServiceStatus.Stopped || Input.location.status == LocationServiceStatus.Failed)
                 {
@@ -58,7 +58,7 @@ namespace ZL.Unity
 
         public bool GetLocationInfo(out LocationInfo locationInfo)
         {
-            if (Input.location.isEnabledByUser)
+            if (Input.location.isEnabledByUser == true)
             {
                 if (Input.location.status == LocationServiceStatus.Running)
                 {

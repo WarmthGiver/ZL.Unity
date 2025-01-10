@@ -21,7 +21,7 @@ namespace ZL.Unity
         {
             foreach (var type in types)
             {
-                if (instance.IsSubclassOf(type))
+                if (instance.IsSubclassOf(type) == true)
                 {
                     return true;
                 }

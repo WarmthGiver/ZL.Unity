@@ -33,17 +33,17 @@ namespace ZL.Unity
 
             transform.LookAt(transform.position + targetTransform.transform.rotation * Vector3.back, targetTransform.transform.rotation * Vector3.up);
 
-            if (!freezeX)
+            if (freezeX == false)
             {
                 v.x = transform.eulerAngles.x;
             }
 
-            if (!freezeY)
+            if (freezeY == false)
             {
                 v.y = transform.eulerAngles.y;
             }
 
-            if (!freezeZ)
+            if (freezeZ == false)
             {
                 v.z = transform.eulerAngles.z;
             }

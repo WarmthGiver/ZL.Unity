@@ -32,7 +32,7 @@ namespace ZL.Unity
 
         public bool TryLoadValue()
         {
-            if (HasKey(key))
+            if (HasKey(key) == true)
             {
                 LoadValue();
 

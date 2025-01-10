@@ -56,9 +56,9 @@ namespace ZL.Unity.UI
             FixedAnimationUtility.SetKeyLeftTangentMode(clickCoolTimeCurve, 1, FixedTangentMode.Auto);
         }
 
-        public override void OnPointerDown(PointerEventData pointEventData)
+        public override void OnPointerDown(PointerEventData eventData)
         {
-            base.OnPointerDown(pointEventData);
+            base.OnPointerDown(eventData);
 
             if (IsInteractable() == true)
             {
@@ -66,14 +66,14 @@ namespace ZL.Unity.UI
             }
         }
 
-        public override void OnPointerUp(PointerEventData pointEventData)
+        public override void OnPointerUp(PointerEventData eventData)
         {
-            base.OnPointerUp(pointEventData);
+            base.OnPointerUp(eventData);
 
             StopAutoClick();
         }
 
-        public override void OnPointerClick(PointerEventData pointEventData)
+        public override void OnPointerClick(PointerEventData eventData)
         {
             if (pressedTime > 0f || clickDelay == 0f)
             {
@@ -82,7 +82,7 @@ namespace ZL.Unity.UI
 
             else
             {
-                base.OnPointerClick(pointEventData);
+                base.OnPointerClick(eventData);
             }
         }
 

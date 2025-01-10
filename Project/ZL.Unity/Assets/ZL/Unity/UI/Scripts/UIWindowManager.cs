@@ -18,7 +18,7 @@ namespace ZL.Unity.UI
 
         private void FixedUpdate()
         {
-            if (Input.GetKeyUp(KeyCode.Escape))
+            if (Input.GetKeyUp(KeyCode.Escape) == true)
             {
                 CloseLast();
             }
@@ -30,7 +30,7 @@ namespace ZL.Unity.UI
             {
                 var uiWindow = transform.GetLastChild();
 
-                uiWindow.SetActive(false);
+                uiWindow.gameObject.SetActive(false);
             }
         }
     }

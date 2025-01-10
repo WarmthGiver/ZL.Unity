@@ -4,9 +4,9 @@ namespace ZL.Unity
 {
     public static partial class Random
     {
-        public static void Range(in int min, in int max, out int @out)
+        public static void Range(in int min, in int max, out int result)
         {
-            @out = UnityEngine.Random.Range(min, max);
+            result = UnityEngine.Random.Range(min, max);
         }
 
         public static Vector3 Range(in Vector3 min, in Vector3 max)

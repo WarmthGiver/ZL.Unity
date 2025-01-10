@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace ZL.Unity.ObjectPooling
 {
+    public class GameObjectPool : GameObjectPool<PooledGameObject> { }
+
     [Serializable]
 
     public class GameObjectPool<T> : ObjectPool<T>
@@ -24,11 +26,20 @@ namespace ZL.Unity.ObjectPooling
 
         public Transform Parent => parent;
 
+        public T Generate(Transform transform)
+        {
+            var clone = Generate();
+
+            clone.transform.SetPositionAndRotation(transform);
+
+            return clone;
+        }
+
         public override T Generate()
         {
             var clone = base.Generate();
 
-            clone.SetActive(true);
+            clone.gameObject.SetActive(true);
 
             return clone;
         }
@@ -60,8 +71,10 @@ namespace ZL.Unity.ObjectPooling
         {
             foreach (var clone in clones)
             {
-                clone.ReturnToPool();
+                clone.gameObject.SetActive(false);
             }
+
+            clones.Clear();
         }
     }
 }

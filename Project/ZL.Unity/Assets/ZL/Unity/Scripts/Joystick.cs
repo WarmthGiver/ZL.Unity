@@ -40,9 +40,9 @@ namespace ZL.Unity.UI
             }
         }
 
-        public void OnDrag(PointerEventData pointerEventData)
+        public void OnDrag(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, pointerEventData.position, pointerEventData.pressEventCamera, out Vector2 pointerPosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, eventData.position, eventData.pressEventCamera, out var pointerPosition);
 
             if (handle != null)
             {
@@ -54,12 +54,12 @@ namespace ZL.Unity.UI
             eventOnDrag.Invoke(dragDirection);
         }
 
-        public void OnPointerDown(PointerEventData pointerEventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            OnDrag(pointerEventData);
+            OnDrag(eventData);
         }
 
-        public void OnPointerUp(PointerEventData pointerEventData)
+        public void OnPointerUp(PointerEventData eventData)
         {
             dragDirection = Vector2.zero;
 

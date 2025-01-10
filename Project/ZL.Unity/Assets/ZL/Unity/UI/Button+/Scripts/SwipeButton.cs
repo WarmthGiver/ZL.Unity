@@ -50,17 +50,17 @@ namespace ZL.Unity.UI
 
         private Vector3 pointerDownPosition;
 
-        public override void OnPointerClick(PointerEventData pointEventData)
+        public override void OnPointerClick(PointerEventData eventData)
         {
             if (swipeMagnitude < swipeMagnitude_Required)
             {
-                base.OnPointerClick(pointEventData);
+                base.OnPointerClick(eventData);
             }
         }
 
-        public override void OnPointerDown(PointerEventData pointEventData)
+        public override void OnPointerDown(PointerEventData eventData)
         {
-            base.OnPointerDown(pointEventData);
+            base.OnPointerDown(eventData);
 
             if (IsInteractable() && swipeRoutine == null)
             {
@@ -70,9 +70,9 @@ namespace ZL.Unity.UI
             }
         }
 
-        public override void OnPointerUp(PointerEventData pointEventData)
+        public override void OnPointerUp(PointerEventData eventData)
         {
-            base.OnPointerUp(pointEventData);
+            base.OnPointerUp(eventData);
 
             if (swipeRoutine != null)
             {

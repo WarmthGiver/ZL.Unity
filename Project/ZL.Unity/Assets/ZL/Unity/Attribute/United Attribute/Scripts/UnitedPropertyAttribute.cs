@@ -75,7 +75,7 @@ namespace ZL.Unity
 
             ~Drawer()
             {
-                if (DrawerCaches.ContainsKey(fieldHashCode))
+                if (DrawerCaches.ContainsKey(fieldHashCode) == true)
                 {
                     DrawerCaches.Remove(fieldHashCode);
                 }
@@ -89,7 +89,7 @@ namespace ZL.Unity
 
                     fieldHashCode = fieldInfo.GetHashCode();
 
-                    if (!DrawerCaches.ContainsKey(fieldHashCode))
+                    if (DrawerCaches.ContainsKey(fieldHashCode) == false)
                     {
                         DrawerCaches.Add(fieldHashCode, new(GUI.enabled, EditorGUI.indentLevel));
                     }
@@ -121,7 +121,7 @@ namespace ZL.Unity
 
                 attribute.Draw(this);
 
-                if (Current.IsToggled)
+                if (Current.IsToggled == true)
                 {
                     return;
                 }
@@ -186,7 +186,7 @@ namespace ZL.Unity
 
             public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
             {
-                if (Current != null && Current.IsToggled)
+                if (Current != null && Current.IsToggled == true)
                 {
                     return 0f;
                 }
@@ -196,12 +196,12 @@ namespace ZL.Unity
 
             public bool IsFieldTypeIn(params Type[] types)
             {
-                if (fieldInfo.FieldType.IsIncludedIn(types))
+                if (fieldInfo.FieldType.IsIncludedIn(types) == true)
                 {
                     return true;
                 }
 
-                if (fieldInfo.FieldType.IsSubclassIn(types))
+                if (fieldInfo.FieldType.IsSubclassIn(types) == true)
                 {
                     return true;
                 }
@@ -227,11 +227,11 @@ namespace ZL.Unity
                 return Property.objectReferenceValue == null;
             }
 
-            public bool TryFindProperty(string name, SerializedPropertyType type, out SerializedProperty property)
+            public bool TryFindProperty(string name, SerializedPropertyType type, out SerializedProperty result)
             {
-                if (TryFindProperty(name, out property))
+                if (TryFindProperty(name, out result) == true)
                 {
-                    if (property.propertyType == (UnityEditor.SerializedPropertyType)type)
+                    if (result.propertyType == (UnityEditor.SerializedPropertyType)type)
                     {
                         return true;
                     }
@@ -240,9 +240,9 @@ namespace ZL.Unity
                 return false;
             }
 
-            public bool TryFindProperty(string name, out SerializedProperty property)
+            public bool TryFindProperty(string name, out SerializedProperty result)
             {
-                property = Property.serializedObject.FindProperty(name);
+                result = Property.serializedObject.FindProperty(name);
 
                 /*if (property == null)
                 {
@@ -264,7 +264,7 @@ namespace ZL.Unity
 
                 return true;*/
 
-                return property != null;
+                return result != null;
             }
 
             public void DrawButton(float height, string methodName, string text)
@@ -288,7 +288,7 @@ namespace ZL.Unity
 
                 position.width -= EditorGUIUtility.labelWidth + 2f;
 
-                if (GUI.Button(position, label, style))
+                if (GUI.Button(position, label, style) == true)
                 {
                     method.Invoke(TargetObject, null);
                 }

@@ -14,7 +14,7 @@ namespace ZL.Unity
 
             where TComponent : Component
         {
-            if (instance.TryGetComponent(out component))
+            if (instance.TryGetComponent(out component) == true)
             {
                 return true;
             }
@@ -24,7 +24,7 @@ namespace ZL.Unity
 
         public static bool TryGetComponentInChildren(this Transform instance, Type type, out Component component)
         {
-            if (instance.TryGetComponent(type, out component))
+            if (instance.TryGetComponent(type, out component) == true)
             {
                 return true;
             }
@@ -54,7 +54,7 @@ namespace ZL.Unity
         {
             foreach (Transform child in instance)
             {
-                if (child.TryGetComponent(out TComponent component))
+                if (child.TryGetComponent(out TComponent component) == true)
                 {
                     return component;
                 }
@@ -74,7 +74,7 @@ namespace ZL.Unity
         {
             foreach (Transform child in instance)
             {
-                if (child.TryGetComponent(type, out var component))
+                if (child.TryGetComponent(type, out var component) == true)
                 {
                     return component;
                 }
@@ -96,7 +96,7 @@ namespace ZL.Unity
         {
             components = new();
 
-            if (instance.TryGetComponent(out TComponent component))
+            if (instance.TryGetComponent(out TComponent component) == true)
             {
                 components.Add(component);
             }
@@ -123,7 +123,7 @@ namespace ZL.Unity
         {
             foreach (Transform child in instance)
             {
-                if (child.TryGetComponent(out TComponent component))
+                if (child.TryGetComponent(out TComponent component) == true)
                 {
                     components.Add(component);
                 }
@@ -176,7 +176,7 @@ namespace ZL.Unity
 
             while (parent != null)
             {
-                if (instance.TryGetComponent(out TComponent component))
+                if (instance.TryGetComponent(out TComponent component) == true)
                 {
                     return component;
                 }
@@ -193,7 +193,7 @@ namespace ZL.Unity
 
             while (parent != null)
             {
-                if (instance.TryGetComponent(type, out var component))
+                if (instance.TryGetComponent(type, out var component) == true)
                 {
                     return component;
                 }
@@ -210,7 +210,7 @@ namespace ZL.Unity
         {
             components = new();
 
-            if (instance.TryGetComponent<TComponent>(out var component))
+            if (instance.TryGetComponent<TComponent>(out var component) == true)
             {
                 components.Add(component);
             }
@@ -239,7 +239,7 @@ namespace ZL.Unity
 
             while (parent != null)
             {
-                if (parent.TryGetComponent<TComponent>(out var component))
+                if (parent.TryGetComponent<TComponent>(out var component) == true)
                 {
                     components.Add(component);
                 }

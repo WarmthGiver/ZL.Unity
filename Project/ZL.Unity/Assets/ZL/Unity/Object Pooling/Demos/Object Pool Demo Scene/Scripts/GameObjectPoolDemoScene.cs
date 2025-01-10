@@ -18,11 +18,11 @@ namespace ZL.Unity.ObjectPooling.Demo
 
         [SerializeField]
 
-        private int preGenerateCount = 10;
+        private int preGenerateCount = 0;
 
         [SerializeField]
 
-        private float generateSpeed = 0.5f;
+        private float generateSpeed = 0f;
 
         [Space]
 
@@ -38,7 +38,10 @@ namespace ZL.Unity.ObjectPooling.Demo
             {
                 var pooledGameObject = gameObjectPool.Generate();
 
-                pooledGameObject.transform.localPosition = spawnPoint.transform.localPosition;
+                if (spawnPoint != null)
+                {
+                    pooledGameObject.transform.localPosition = spawnPoint.transform.localPosition;
+                }
 
                 yield return WaitFor.Seconds(generateSpeed);
             }

@@ -38,23 +38,23 @@ namespace ZL.Unity.UI
 
         public UnityEvent<Vector2> EventOnDrag => eventOnDrag;
 
-        public void OnDrag(PointerEventData pointerEventData)
+        public void OnDrag(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, pointerEventData.position, pointerEventData.pressEventCamera, out Vector2 pointerDragPosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, eventData.position, eventData.pressEventCamera, out var pointerDragPosition);
 
             dragDirection = Vector2.ClampMagnitude((pointerDragPosition - pointerDownPosition) * dragSensitivity, maxMagnitude);
 
             eventOnDrag.Invoke(dragDirection);
         }
 
-        public void OnPointerDown(PointerEventData pointerEventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, pointerEventData.position, pointerEventData.pressEventCamera, out pointerDownPosition);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, eventData.position, eventData.pressEventCamera, out pointerDownPosition);
 
-            OnDrag(pointerEventData);
+            OnDrag(eventData);
         }
 
-        public void OnPointerUp(PointerEventData pointerEventData)
+        public void OnPointerUp(PointerEventData eventData)
         {
             dragDirection = Vector2.zero;
 

@@ -61,7 +61,7 @@ namespace ZL.Unity.Tweeners
 
         private void OnValidate()
         {
-            if (Application.isPlaying)
+            if (Application.isPlaying == true)
             {
                 IsFaded = isFaded;
             }
@@ -71,9 +71,9 @@ namespace ZL.Unity.Tweeners
         {
             isFaded = value;
 
-            if (disableOnFaded)
+            if (disableOnFaded == true)
             {
-                if (isFaded)
+                if (isFaded == true)
                 {
                     gameObject.SetActive(true);
                 }

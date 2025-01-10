@@ -6,11 +6,11 @@
     {
         public abstract bool IsPlaying { get; }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            if (!IsPlaying)
+            if (IsPlaying == false)
             {
-                ReturnToPool();
+                gameObject.SetActive(false);
             }
         }
     }

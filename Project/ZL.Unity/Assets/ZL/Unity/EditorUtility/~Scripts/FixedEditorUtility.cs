@@ -16,7 +16,7 @@ namespace ZL.Unity
             {
                 asset = ScriptableObject.CreateInstance<T>();
 
-                if (!Directory.Exists(directoryPath))
+                if (Directory.Exists(directoryPath) == false)
                 {
                     Directory.CreateDirectory(directoryPath);
                 }

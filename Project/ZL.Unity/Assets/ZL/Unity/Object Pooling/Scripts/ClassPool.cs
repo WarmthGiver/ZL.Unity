@@ -11,9 +11,9 @@ namespace ZL.Unity.ObjectPooling
             return pool.Clone();
         }
 
-        public static void Collect(T @class)
+        public static void Collect(T value)
         {
-            pool.Collect(@class);
+            pool.Collect(value);
         }
 
         private sealed class Pool : ObjectPool<T>

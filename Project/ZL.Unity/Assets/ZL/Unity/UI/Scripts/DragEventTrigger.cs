@@ -28,19 +28,19 @@ namespace ZL.Unity.UI
 
         public UnityEvent<PointerEventData> OnEndDragEvent => onEndDragEvent;
 
-        public virtual void OnBeginDrag(PointerEventData pointEventData)
+        public virtual void OnBeginDrag(PointerEventData eventData)
         {
-            onBeginDragEvent.Invoke(pointEventData);
+            onBeginDragEvent.Invoke(eventData);
         }
 
-        public virtual void OnDrag(PointerEventData pointEventData)
+        public virtual void OnDrag(PointerEventData eventData)
         {
-            onDragEvent.Invoke(pointEventData);
+            onDragEvent.Invoke(eventData);
         }
 
-        public virtual void OnEndDrag(PointerEventData pointEventData)
+        public virtual void OnEndDrag(PointerEventData eventData)
         {
-            onEndDragEvent.Invoke(pointEventData);
+            onEndDragEvent.Invoke(eventData);
         }
     }
 }

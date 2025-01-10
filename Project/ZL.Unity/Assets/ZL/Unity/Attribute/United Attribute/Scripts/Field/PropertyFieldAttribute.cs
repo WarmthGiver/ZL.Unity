@@ -17,7 +17,7 @@
 
         public override bool Draw(Drawer drawer)
         {
-            if (!drawer.IsPropertyTypeIn(propertyTypes))
+            if (drawer.IsPropertyTypeIn(propertyTypes) == false)
             {
                 drawer.DrawHelpBox(MessageType.Error, $"{nameTag} Property type is mismatch.");
 

@@ -26,7 +26,7 @@ namespace ZL.Unity
 
         public static WaitForSeconds Seconds(float seconds)
         {
-            if (!secondsDictionary.TryGetValue(seconds, out var waitForSeconds))
+            if (secondsDictionary.TryGetValue(seconds, out var waitForSeconds) == false)
             {
                 secondsDictionary.Add(seconds, waitForSeconds = new(seconds));
             }
@@ -36,7 +36,7 @@ namespace ZL.Unity
 
         public static WaitForSecondsRealtime SecondsRealtime(float seconds)
         {
-            if (!secondsRealtimeDictionary.TryGetValue(seconds, out var waitForSecondsRealtime))
+            if (secondsRealtimeDictionary.TryGetValue(seconds, out var waitForSecondsRealtime) == false)
             {
                 secondsRealtimeDictionary.Add(seconds, waitForSecondsRealtime = new(seconds));
             }
