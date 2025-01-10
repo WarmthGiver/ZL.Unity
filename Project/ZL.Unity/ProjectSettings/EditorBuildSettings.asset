@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/ZL/Projects/Bonk Cheems/Scenes/Bonk Cheems Scene.unity
+    guid: ad265412ef12f6a44a4de0273fac90d2
+  - enabled: 0
+    path: Assets/ZL/Projects/Eulerian Trail/Demos/Scene/Eulerian Trail Demo Scene.unity
+    guid: 25b59b4d852b91b449199692669f1d31
+  - enabled: 1
+    path: Assets/ZL/Unity/Audio/Demos/Scenes/Audio Demo Scene 1.unity
+    guid: b86face01814c9c4c86229c5b6a3dc6b
+  - enabled: 1
+    path: Assets/ZL/Unity/Audio/Demos/Scenes/Audio Demo Scene 2.unity
+    guid: f6f34acf31253de49be7e8414272a7ed
+  m_configObjects: {}
