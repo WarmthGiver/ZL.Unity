@@ -2,6 +2,12 @@ using UnityEngine;
 
 using UnityEngine.Audio;
 
+#if UNITY_EDITOR
+
+using UnityEditor;
+
+#endif
+
 using ZL.Unity.Collections;
 
 namespace ZL.Unity.Audio
@@ -24,13 +30,13 @@ namespace ZL.Unity.Audio
 
         [Button(nameof(SaveVolumes))]
 
-        private SerializableDictionary<string, float, FloatPref> paremeters;
+        private SerializableDictionary<string, float, FloatPref> parameters;
 
 #if UNITY_EDITOR
 
         public void LoadAudioMixerParameters()
         {
-            paremeters.Clear();
+            parameters.Clear();
 
             if (audioMixer != null)
             {
@@ -44,16 +50,24 @@ namespace ZL.Unity.Audio
 
                     volumePref.TryLoadValue();
 
-                    paremeters.Add(volumePref);
+                    parameters.Add(volumePref);
                 }
             }
 
-            UnityEditor.EditorUtility.SetDirty(this);
+            EditorUtility.SetDirty(this);
         }
 
         private void OnValidate()
         {
+            foreach (var parameter in parameters)
+            {
+                parameter.Value = Mathf.Clamp01(parameter.Value);
 
+                if (FixedEditorApplication.isPlaying == true)
+                {
+                    SetVolume(parameter.Key, parameter.Value);
+                }
+            }
         }
 
 #endif
@@ -65,7 +79,7 @@ namespace ZL.Unity.Audio
 
         public void SaveVolumes()
         {
-            foreach (var volumePref in paremeters)
+            foreach (var volumePref in parameters)
             {
                 volumePref.SaveValue();
             }
@@ -73,7 +87,7 @@ namespace ZL.Unity.Audio
 
         public void LoadVolumes()
         {
-            foreach (var volumePref in paremeters)
+            foreach (var volumePref in parameters)
             {
                 volumePref.TryLoadValue();
             }
@@ -81,12 +95,12 @@ namespace ZL.Unity.Audio
 
         public float GetVolume(string key)
         {
-            return paremeters[key];
+            return parameters[key];
         }
 
         public void SetVolume(string key, float value)
         {
-            paremeters[key] = value;
+            parameters[key] = value;
 
             audioMixer.SetVolume(key, value);
         }

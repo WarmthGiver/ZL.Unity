@@ -12,45 +12,32 @@ namespace ZL.Unity.Routines
 
         private float theta = 0f;
 
-        public float Theta
-        {
-            get => theta + delay;
-
-            set
-            {
-                theta = Mathf.Clamp(value, -1f, 1f);
-
-                time = theta * 0.25f / speed;
-            }
-        }
-
         [SerializeField, Range(0f, 1f)]
 
         private float delay = 0f;
 
-        private float time;
+        private float time = 0f;
+
+        [SerializeField]
+
+        private float delta = 0f;
 
         private Vector3 moveDirection = Vector3.zero;
 
         private void Awake()
         {
-            Theta = theta;
+            time = theta * 0.25f / speed;
         }
 
-        private void OnValidate()
-        {
-            Theta = theta;
-        }
-
-        protected override void FixedUpdate()
+        protected override void Update()
         {
             transform.position -= moveDirection;
 
-            time += Time.fixedDeltaTime;
+            time += Time.deltaTime;
 
-            theta = Mathf.Sin(MathEx.PI2 * time * speed);
+            theta = Mathf.Sin(MathEx.PI2 * (time + delta) * speed) + delay;
 
-            moveDirection = direction * Theta;
+            moveDirection = direction * theta;
 
             transform.position += moveDirection;
         }

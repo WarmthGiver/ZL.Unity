@@ -6,6 +6,11 @@ namespace ZL.Unity.ObjectPooling
     {
         private static readonly Pool pool = new();
 
+        public static T Generate()
+        {
+            return pool.Generate();
+        }
+
         public static T Clone()
         {
             return pool.Clone();

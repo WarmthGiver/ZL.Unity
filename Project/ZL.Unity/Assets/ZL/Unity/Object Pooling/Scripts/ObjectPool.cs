@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+using ZL.Unity.Collections;
+
 namespace ZL.Unity.ObjectPooling
 {
     public abstract class ObjectPool<T>
@@ -36,27 +38,6 @@ namespace ZL.Unity.ObjectPooling
         public void Remove(T value)
         {
             stock.Remove(value);
-        }
-    }
-
-    public static class LinkedListExtentions
-    {
-        public static T PopFirst<T>(this LinkedList<T> instance)
-        {
-            T value = instance.First.Value;
-
-            instance.RemoveFirst();
-
-            return value;
-        }
-
-        public static T PopLast<T>(this LinkedList<T> instance)
-        {
-            T value = instance.Last.Value;
-
-            instance.RemoveLast();
-
-            return value;
         }
     }
 }

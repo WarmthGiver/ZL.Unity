@@ -4,13 +4,11 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-using ZL.Unity.ObjectPooling;
-
 namespace ZL.Unity.EulerianTrail
 {
     [RequireComponent(typeof(Image))]
 
-    public sealed class EulerianTrailNode : PooledGameObject<EulerianTrailNode>, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public sealed class EulerianTrailNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
 
@@ -22,7 +20,7 @@ namespace ZL.Unity.EulerianTrail
 
         private Image image;
 
-        private EulerianTrail eulerianTrail;
+        private EulerianTrailDrawer eulerianTrail;
 
         [Space]
 
@@ -49,12 +47,7 @@ namespace ZL.Unity.EulerianTrail
             set => image.color = value;
         }
 
-        protected override void OnDisable()
-        {
-            Pool.Collect(this);
-        }
-
-        public void Initialize(EulerianTrail eulerianTrail, int nodeNumber)
+        public void Initialize(EulerianTrailDrawer eulerianTrail, int nodeNumber)
         {
             this.eulerianTrail = eulerianTrail;
 

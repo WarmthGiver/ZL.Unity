@@ -4,7 +4,7 @@ using UnityEngine;
 
 using ZL.Unity.Tools;
 
-namespace ZL.Unity.UI.Editor
+namespace ZL.Unity.UI
 {
     public static class NewImageMenuItem
     {

@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 namespace ZL.Unity.UI
 {
-    [DisallowMultipleComponent]
-
     public abstract class DragEventTrigger : UIBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField]

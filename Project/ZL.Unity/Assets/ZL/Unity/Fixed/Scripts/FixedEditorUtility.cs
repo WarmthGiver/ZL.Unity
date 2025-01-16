@@ -22,5 +22,23 @@ namespace ZL.Unity
 
 #endif
         }
+
+        public static bool DisplayDialog(string title, string message, string ok)
+        {
+            return DisplayDialog(title, message, ok, string.Empty);
+        }
+
+        public static bool DisplayDialog(string title, string message, string ok, string cancel)
+        {
+#if UNITY_EDITOR
+
+            return EditorUtility.DisplayDialog(title, message, ok, cancel);
+
+#else
+
+            return false;
+
+#endif
+        }
     }
 }

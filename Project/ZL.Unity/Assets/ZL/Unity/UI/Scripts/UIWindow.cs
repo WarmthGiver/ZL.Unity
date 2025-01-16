@@ -6,15 +6,13 @@ using ZL.Unity.Tweeners;
 
 namespace ZL.Unity.UI
 {
-    [DisallowMultipleComponent]
-
     [RequireComponent(typeof(CanvasGroupTweener))]
 
     public abstract class UIWindow : MonoBehaviour, IPointerDownHandler
     {
         [Space]
 
-        [SerializeField, GetComponentInParentOnly, ReadOnly]
+        [SerializeField, GetComponentInParent, ReadOnly]
 
         private UIWindowManager playerCanvas;
 

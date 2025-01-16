@@ -1,3 +1,5 @@
+#pragma warning disable
+
 using UnityEngine;
 
 using ZL.Unity.Collections;
@@ -10,9 +12,9 @@ namespace ZL.Unity.EulerianTrail.Demo
     {
         [Space]
 
-        [SerializeField, GetComponentInChildrenOnly, ReadOnly]
+        [SerializeField, GetComponentInChildren, ReadOnly]
 
-        private EulerianTrail eulerianTrail;
+        private EulerianTrailDrawer eulerianTrailDrawer;
 
         [Space]
 
@@ -243,20 +245,20 @@ namespace ZL.Unity.EulerianTrail.Demo
 
         private void Start()
         {
-            eulerianTrail.Initialize(eulerianTrailInfos[level], LevelUp);
+            eulerianTrailDrawer.Initialize(eulerianTrailInfos[level], LevelUp);
         }
 
         private void LevelUp()
         {
             if (++level < maxLevel)
             {
-                eulerianTrail.Initialize(eulerianTrailInfos[level], LevelUp);
+                eulerianTrailDrawer.Initialize(eulerianTrailInfos[level], LevelUp);
             }
         }
 
         public void StartLevel(int level)
         {
-            eulerianTrail.Initialize(eulerianTrailInfos[level]);
+            eulerianTrailDrawer.Initialize(eulerianTrailInfos[level]);
         }
     }
 }

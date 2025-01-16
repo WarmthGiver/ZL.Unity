@@ -2,7 +2,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity.UI.Editor
+namespace ZL.Unity.UI
 {
     [CustomEditor(typeof(AutoButton))]
 

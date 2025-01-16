@@ -623,7 +623,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1629837386}
-        m_TargetAssemblyTypeName: ZL.PooledAudioSourcePlayer, Assembly-CSharp
+        m_TargetAssemblyTypeName: ZL.Unity.Audio.SFXPlayer, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -718,12 +718,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1629837378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96cde49863f84ba44b3b080a627d75da, type: 3}
+  m_Script: {fileID: 11500000, guid: fdb7a8e5c1ce4c245a447a207f332d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pool:
-    original: {fileID: 3559627670767373947, guid: dc32d94e4f2c6dd41bd7fcd0db29a5d5, type: 3}
-    parent: {fileID: 0}
+    original: {fileID: 1792170489128825873, guid: dc32d94e4f2c6dd41bd7fcd0db29a5d5, type: 3}
+    parent: {fileID: 1629837379}
 --- !u!1 &1701442600
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +857,34 @@ PrefabInstance:
     - target: {fileID: 5697574255452992680, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
       propertyPath: m_Name
       value: Audio Mixer Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941261684043295979, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
+      propertyPath: paremeters.elements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941261684043295979, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
+      propertyPath: paremeters.elements.Array.data[0].key
+      value: Master
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941261684043295979, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
+      propertyPath: paremeters.elements.Array.data[1].key
+      value: BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941261684043295979, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
+      propertyPath: paremeters.elements.Array.data[2].key
+      value: SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941261684043295979, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
+      propertyPath: paremeters.elements.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941261684043295979, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
+      propertyPath: paremeters.elements.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941261684043295979, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
+      propertyPath: paremeters.elements.Array.data[2].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8162132747832288029, guid: 503bb97e71b2fe24d854fa654e7c8fea, type: 3}
       propertyPath: m_LocalPosition.x

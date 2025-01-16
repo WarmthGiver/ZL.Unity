@@ -1,8 +1,8 @@
+#pragma warning disable
+
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
-
-using ZL.Unity.ObjectPooling;
 
 namespace ZL.Unity.Audio.Demo
 {
@@ -14,7 +14,7 @@ namespace ZL.Unity.Audio.Demo
 
         [SerializeField]
 
-        private PooledAudioSourcePlayer sfxPlayer;
+        private SFXPlayer sfxPlayer;
 
         private void Update()
         {

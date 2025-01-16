@@ -2,21 +2,15 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-using ZL.Unity.ObjectPooling;
-
 namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Line 2D (Pooled)")]
-
-    public sealed class Line2D : Line2D<Line2D> { }
 
     [ExecuteInEditMode]
 
     [RequireComponent(typeof(Image))]
 
-    public abstract class Line2D<T> : PooledGameObject<T>
-
-        where T : PooledGameObject<T>
+    public sealed class Line2D : MonoBehaviour
     {
         [Space]
 
@@ -121,11 +115,9 @@ namespace ZL.Unity.UI
             drivenTracker.Add(this, rectTransform, drivenProperties);
         }
 
-        protected override void OnDisable()
+        private void OnDisable()
         {
             drivenTracker.Clear();
-
-            base.OnDisable();
         }
 
         private void Reset()

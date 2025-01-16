@@ -10,40 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5201511101964253332, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
       propertyPath: m_Name
-      value: Audio Mixer Manager Variant
+      value: Audio Mixer Manager
       objectReference: {fileID: 0}
     - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
       propertyPath: audioMixer
       value: 
       objectReference: {fileID: 24100000, guid: 561644659febf9247ad5d3d26fe43693, type: 2}
-    - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
-      propertyPath: volumePrefs.elements.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
-      propertyPath: volumePrefs.elements.Array.data[0].key
-      value: Master
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
-      propertyPath: volumePrefs.elements.Array.data[1].key
-      value: BGM
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
-      propertyPath: volumePrefs.elements.Array.data[2].key
-      value: SFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
-      propertyPath: volumePrefs.elements.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
-      propertyPath: volumePrefs.elements.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
-      propertyPath: volumePrefs.elements.Array.data[2].value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8537447401824956193, guid: 92c47a1ce3faeae4bb2e8073441fbe85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

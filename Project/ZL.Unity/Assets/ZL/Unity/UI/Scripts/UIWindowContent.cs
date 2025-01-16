@@ -1,10 +1,8 @@
-using ZL.Unity.ObjectPooling;
+using UnityEngine;
 
 namespace ZL.Unity.UI
 {
-    public abstract class UIWindowContent<TPoolGameObject> : PooledGameObject<TPoolGameObject>
-
-        where TPoolGameObject : PooledGameObject<TPoolGameObject>
+    public abstract class UIWindowContent<TPoolGameObject> : MonoBehaviour
     {
         public abstract void Refresh();
     }

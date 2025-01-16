@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0dde4a209b3274885ae38fb76a1b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eulerianTrail: {fileID: 1418143315}
+  eulerianTrailDrawer: {fileID: 1418143315}
   level: 0
 --- !u!1001 &1418143314
 PrefabInstance:
@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1435120264671857785, guid: fa5cfcfb228aaf846afb9d134225b199, type: 3}
       propertyPath: m_Name
-      value: Eulerian Trail
+      value: Eulerian Trail Drawer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f25a73a7dd2ad4f9488439fc1f5fb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 40d74d659a5b89544a33557130bb9147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1418143316 stripped

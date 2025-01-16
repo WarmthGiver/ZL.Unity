@@ -2,11 +2,19 @@ using System;
 
 using TMPro;
 
+#if UNITY_EDITOR
+
+using UnityEditor;
+
+#endif
+
 using UnityEngine;
 
 using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
+
+using Object = UnityEngine.Object;
 
 namespace ZL.Unity
 {
@@ -58,7 +66,6 @@ namespace ZL.Unity
             return textMeshPro;
         }
 
-
         public static TGraphic CreateGraphic<TGraphic>(params Type[] component)
 
             where TGraphic : Graphic
@@ -97,9 +104,9 @@ namespace ZL.Unity
         {
 #if UNITY_EDITOR
 
-            if (UnityEditor.Selection.activeGameObject != null)
+            if (Selection.activeGameObject != null)
             {
-                parent = UnityEditor.Selection.activeGameObject.transform;
+                parent = Selection.activeGameObject.transform;
 
                 if (parent.GetComponentInParent<Canvas>() == null)
                 {
@@ -111,7 +118,7 @@ namespace ZL.Unity
 
             if (parent == null)
             {
-                var canvas = UnityEngine.Object.FindObjectOfType<Canvas>();
+                var canvas = Object.FindObjectOfType<Canvas>();
 
                 if (canvas == null)
                 {
@@ -143,7 +150,7 @@ namespace ZL.Unity
 
         public static void TryCreateEventSystem()
         {
-            if (UnityEngine.Object.FindObjectOfType<EventSystem>() == null)
+            if (Object.FindObjectOfType<EventSystem>() == null)
             {
                 Create<EventSystem>(null, typeof(StandaloneInputModule));
             }

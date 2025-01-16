@@ -40,11 +40,6 @@ namespace ZL.Unity.UI
 
         public string ValueTextFormat { get; set; }
 
-        protected override void OnDisable()
-        {
-            Pool.Collect(this);
-        }
-
         public override void Refresh()
         {
             valueText.text = string.Format(ValueTextFormat, value);

@@ -12,9 +12,9 @@ namespace ZL.Unity.Routines
 
         private Space space = Space.Self;
 
-        protected override void FixedUpdate()
+        protected override void Update()
         {
-            transform.Rotate(speed * Time.fixedDeltaTime * direction, space);
+            transform.Rotate(speed * Time.deltaTime * direction, space);
         }
     }
 }

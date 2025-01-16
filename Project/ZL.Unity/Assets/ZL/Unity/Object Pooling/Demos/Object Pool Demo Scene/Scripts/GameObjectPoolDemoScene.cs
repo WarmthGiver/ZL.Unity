@@ -1,3 +1,5 @@
+#pragma warning disable
+
 using System.Collections;
 
 using UnityEngine;
@@ -12,7 +14,7 @@ namespace ZL.Unity.ObjectPooling.Demo
 
         [SerializeField]
 
-        private GameObjectPool<PooledGameObject> gameObjectPool;
+        private GameObjectPool<Rigidbody> pool;
 
         [Space]
 
@@ -32,18 +34,20 @@ namespace ZL.Unity.ObjectPooling.Demo
 
         private IEnumerator Start()
         {
-            gameObjectPool.PreGenerate(preGenerateCount);
+            pool.PreGenerate(preGenerateCount);
 
             while (true)
             {
-                var pooledGameObject = gameObjectPool.Generate();
+                yield return WaitFor.Seconds(generateSpeed);
+
+                var clone = pool.Generate();
 
                 if (spawnPoint != null)
                 {
-                    pooledGameObject.transform.localPosition = spawnPoint.transform.localPosition;
+                    clone.transform.localPosition = spawnPoint.transform.localPosition;
                 }
 
-                yield return WaitFor.Seconds(generateSpeed);
+                clone.velocity = Vector3.zero;
             }
         }
     }

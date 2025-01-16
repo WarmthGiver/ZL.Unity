@@ -6,7 +6,7 @@ using UnityEngine;
 
 using ZL.Unity.Tools;
 
-namespace ZL.Unity.UI.Editor
+namespace ZL.Unity.UI
 {
     [CustomEditor(typeof(NewButton))]
 

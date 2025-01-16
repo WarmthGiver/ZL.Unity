@@ -6,10 +6,14 @@ namespace ZL.Unity.Routines
     {
         [Space]
 
-        public Vector3 direction = new(0f, 0f, 0f);
+        [SerializeField]
 
-        public float speed = 0f;
+        protected Vector3 direction = new(0f, 0f, 0f);
 
-        protected abstract void FixedUpdate();
+        [SerializeField]
+
+        protected float speed = 0f;
+
+        protected abstract void Update();
     }
 }

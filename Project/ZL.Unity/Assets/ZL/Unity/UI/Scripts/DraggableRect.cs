@@ -14,7 +14,7 @@ namespace ZL.Unity.UI
 
         private RectTransform rectTransform;
 
-        [SerializeField, GetComponentInParentOnly, ReadOnly]
+        [SerializeField, GetComponentInParent, ReadOnly]
 
         private Canvas canvas;
 
