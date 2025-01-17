@@ -5,34 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/ZL/Unity/Audio/Demos/Audio Mixer Manager Demo/Scenes/Audio Mixer
       Manager Demo Scene.unity
     guid: f6f34acf31253de49be7e8414272a7ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/ZL/Unity/Tweeners/Demos/Audio Listener Tweener Demo Scene/Scenes/Audio
       Listener Tweener Demo Scene.unity
     guid: a80cd83ff7acec64fb19894d287d74be
   - enabled: 1
-    path: Assets/ZL/Unity/Object Pooling/Demos/Object Pool Demo Scene/Scenes/Game
+    path: Assets/ZL/Unity/Object Pooling/Demos/Game Object Pool Demo Scene/Scenes/Game
       Object Pool Demo Scene.unity
     guid: 11776a2edd5d2f040b0a16a5611572b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/ZL/Unity/UI/Button+/Demos/Scenes/Button Plus Demo Scene.unity
     guid: b4a44508226c7e440a4c8eb38dce0cf4
-  - enabled: 1
+  - enabled: 0
     path: Assets/ZL/Unity/Core/Demos/String Extention Demo/Scenes/String Extentions
       Demo Scene.unity
     guid: 652af6dbf82ce594fb17d534e878fee9
-  - enabled: 1
+  - enabled: 0
     path: Assets/ZL/Unity/Core/Collactions/Demos/Serializable Dictionary Demo/Scenes/Serializable
       Dictionary Demo Scene.unity
     guid: e1f4c4729cfa1ea41be9862ae79dd880
-  - enabled: 1
+  - enabled: 0
     path: Assets/ZL/Unity/Core/Attribute/Property/Demos/United Property Attribute
       Demo/Scenes/United Property Attribute Demo Scene.unity
     guid: a219a3ee0feb90245b2e84f0ba2a7354
-  - enabled: 1
+  - enabled: 0
     path: Assets/ZL/Unity/Core/Collactions/Demos/Wrapper Demo/Scenes/Wrapper Demo
       Scene.unity
     guid: e08107fb580af4b408bcccb84e614c32

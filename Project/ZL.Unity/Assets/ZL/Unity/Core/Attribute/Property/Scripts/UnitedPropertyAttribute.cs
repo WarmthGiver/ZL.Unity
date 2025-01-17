@@ -30,10 +30,7 @@ namespace ZL.Unity
         {
             get
             {
-                if (nameTag == null)
-                {
-                    nameTag = $"[{GetType().Name.RemoveFromBehind("Attribute")}]";
-                }
+                nameTag ??= $"[{GetType().Name.RemoveFromBehind("Attribute")}]";
 
                 return nameTag;
             }
@@ -82,11 +79,11 @@ namespace ZL.Unity
                     if (DrawerCaches[instanceID].ContainsKey(fieldHashCode) == true)
                     {
                         DrawerCaches[instanceID].Remove(fieldHashCode);
-                    }
 
-                    if (DrawerCaches[instanceID].Count == 0)
-                    {
-                        DrawerCaches.Remove(instanceID);
+                        if (DrawerCaches[instanceID].Count == 0)
+                        {
+                            DrawerCaches.Remove(instanceID);
+                        }
                     }
                 }
             }
@@ -105,16 +102,12 @@ namespace ZL.Unity
 
                     instanceID = TargetComponent.GetInstanceID();
 
-                    //Debug.Log($"-----------------\n{TargetComponent.name}: {instanceID}");
-
                     if (DrawerCaches.ContainsKey(instanceID) == false)
                     {
                         DrawerCaches.Add(instanceID, new());
                     }
 
                     fieldHashCode = fieldInfo.GetHashCode();
-                    
-                    //Debug.Log($"{fieldInfo.Name}: {fieldHashCode}");
                     
                     if (DrawerCaches[instanceID].ContainsKey(fieldHashCode) == false)
                     {
@@ -127,12 +120,6 @@ namespace ZL.Unity
 
                     attribute = (UnitedPropertyAttribute)base.attribute;
                 }
-
-                //Debug.Log($"Attribute: {attribute.NameTag}");
-
-                //Debug.Log($"Current.hashCode: {Current.lastAttributeIndex}");
-
-                //Debug.Log($"drawer: {attributeIndex}");
 
                 PropertyFieldType = SerializedPropertyFieldType.Default;
 
@@ -148,7 +135,7 @@ namespace ZL.Unity
 
                 if (Current.IsToggled == true)
                 {
-                    return;
+                    PropertyFieldType = SerializedPropertyFieldType.Empty;
                 }
 
                 GUI.enabled = Current.IsEnabled;
@@ -211,11 +198,6 @@ namespace ZL.Unity
 
             public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
             {
-                if (Current != null && Current.IsToggled == true)
-                {
-                    return 0f;
-                }
-
                 return EditorGUI.GetPropertyHeight(property, label, true) + PropertyHeight;
             }
 
@@ -254,45 +236,31 @@ namespace ZL.Unity
 
             public bool TryFindProperty(string name, SerializedPropertyType type, out SerializedProperty result)
             {
-                if (TryFindProperty(name, out result) == true)
+                if (TryFindProperty(name, out result) == false)
                 {
-                    if (result.propertyType == (UnityEditor.SerializedPropertyType)type)
-                    {
-                        return true;
-                    }
+                    DrawHelpBox(MessageType.Error, $"{attribute.NameTag} No property found matching \"{name}\".");
+
+                    return false;
                 }
 
-                return false;
+                if (result.propertyType != (UnityEditor.SerializedPropertyType)type)
+                {
+                    DrawHelpBox(MessageType.Error, $"{attribute.NameTag} Property type is mismatch.");
+
+                    return false;
+                }
+
+                return true;
             }
 
             public bool TryFindProperty(string name, out SerializedProperty result)
             {
                 result = Property.serializedObject.FindProperty(name);
 
-                /*if (property == null)
-                {
-                    var propertyPath = Property.propertyPath;
-
-                    int index = propertyPath.LastIndexOf('.');
-
-                    if (index == -1)
-                    {
-                        return false;
-                    }
-
-                    propertyPath = propertyPath[..index];
-
-                    property = Property.serializedObject.FindProperty(propertyPath);
-
-                    property = property.FindPropertyRelative(propertyName);
-                }
-
-                return true;*/
-
                 return result != null;
             }
 
-            public void DrawButton(float height, string methodName, string text)
+            public void DrawButton(string methodName, string text, float height)
             {
                 var type = TargetObject.GetType();
 

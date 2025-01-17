@@ -19,8 +19,6 @@ namespace ZL.Unity
         {
             if (drawer.TryFindProperty(fieldName, SerializedPropertyType.Boolean, out var property) == false)
             {
-                drawer.DrawHelpBox(MessageType.Error, $"{NameTag} Property type is mismatch.");
-
                 return false;
             }
 

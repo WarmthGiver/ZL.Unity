@@ -1939,7 +1939,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1328793442605150167, guid: d2569170118396d4a9b1f13cc28b5b5b, type: 3}
       propertyPath: m_Name
-      value: BGM Player
+      value: Audio Looper (Singleton)
       objectReference: {fileID: 0}
     - target: {fileID: 3822965969863229014, guid: d2569170118396d4a9b1f13cc28b5b5b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2426,7 +2426,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 12788048429996009, guid: b36a1dc68835a8f44851c974093d87e6, type: 3}
       propertyPath: m_Name
-      value: Audio Mixer Manager
+      value: Audio Mixer Manager (Singleton)
       objectReference: {fileID: 0}
     - target: {fileID: 4501646129704042588, guid: b36a1dc68835a8f44851c974093d87e6, type: 3}
       propertyPath: m_LocalPosition.x

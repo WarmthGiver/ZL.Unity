@@ -20,9 +20,9 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        [Button("FitParentSizeMin")]
+        [Button(nameof(FitParentSizeMin))]
 
-        [Button("FitParentSizeMax")]
+        [Button(nameof(FitParentSizeMax))]
 
         private RectTransform fitTarget = null;
 

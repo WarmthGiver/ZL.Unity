@@ -18,25 +18,25 @@ namespace ZL.Unity.Demo
 
         [Text("Default")]
 
-        [Button("PrintText")]
+        [Button(nameof(PrintText))]
 
         [Empty]
 
         [Text("Text = \"PRINT TEXT\"")]
 
-        [Button("PrintText", "PRINT TEXT")]
+        [Button(nameof(PrintText), "PRINT TEXT")]
 
         [Empty]
 
         [Text("Height = 36f")]
 
-        [Button(36f, "PrintText")]
+        [Button(nameof(PrintText), 36f)]
 
         [Empty]
 
         [Text("Full Option")]
 
-        [Button(36f, "PrintText", "PRINT TEXT")]
+        [Button(nameof(PrintText), "PRINT TEXT", 36f)]
 
         [Empty]
 

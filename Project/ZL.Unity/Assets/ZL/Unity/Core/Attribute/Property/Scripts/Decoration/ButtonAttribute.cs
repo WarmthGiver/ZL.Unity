@@ -8,30 +8,30 @@ namespace ZL.Unity
 
     public sealed class ButtonAttribute : UnitedPropertyAttribute
     {
-        private readonly float height;
-
         private readonly string methodName;
 
         private readonly string text;
 
-        public ButtonAttribute(string methodName, string text = null) : this(singleLineHeight, methodName, text) { }
+        private readonly float height;
 
-        public ButtonAttribute(float height, string methodName, string text = null) : base()
+        public ButtonAttribute(string methodName, float height) : this(methodName, null, height) { }
+
+        public ButtonAttribute(string methodName, string text = null, float height = singleLineHeight) : base()
         {
-            this.height = height;
-
             this.methodName = methodName;
 
             text ??= methodName.SplitWords(' ');
 
             this.text = text;
+
+            this.height = height;
         }
 
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.DrawButton(height, methodName, text);
+            drawer.DrawButton(methodName, text, height);
 
             return true;
         }
