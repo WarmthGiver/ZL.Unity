@@ -1,6 +1,6 @@
 using UnityEngine.Audio;
 
-namespace ZL.Unity.Audio
+namespace ZL.Unity
 {
     public static partial class AudioMixerExtensions
     {

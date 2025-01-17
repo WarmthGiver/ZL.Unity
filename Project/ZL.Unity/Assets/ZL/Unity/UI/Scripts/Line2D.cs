@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Line 2D (Pooled)")]
+    [AddComponentMenu("ZL/UI/Line 2D")]
+
+    [DisallowMultipleComponent]
 
     [ExecuteInEditMode]
 

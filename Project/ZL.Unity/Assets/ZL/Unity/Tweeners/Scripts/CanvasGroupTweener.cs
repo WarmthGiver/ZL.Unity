@@ -1,9 +1,13 @@
-﻿using System;
+﻿using DG.Tweening;
+
+using System;
 
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
+    [AddComponentMenu("ZL/Tweeners/Canvas Group Tweener")]
+
     [DisallowMultipleComponent]
 
     [RequireComponent(typeof(CanvasGroup))]
@@ -67,31 +71,31 @@ namespace ZL.Unity.Tweeners
             }
         }
 
-        public FloatTweener TweenFaded(bool value)
+        public void TweenFaded(bool value)
         {
+            gameObject.SetActive(true);
+
             isFaded = value;
 
-            if (disableOnFaded == true)
+            if (isFaded == true)
             {
-                if (isFaded == true)
-                {
-                    gameObject.SetActive(true);
-                }
-
-                else
-                {
-                    alphaTweener.OnComplete(SetActiveFalse);
-                }
+                alphaTweener.Tween(minAlpha, fadeDuration);
             }
 
-            alphaTweener.Tween(isFaded ? minAlpha : maxAlpha, fadeDuration);
-
-            return alphaTweener;
+            else
+            {
+                alphaTweener.Tween(maxAlpha, fadeDuration).
+                    
+                    OnComplete(TrySetActiveFalse);
+            }
         }
 
-        private void SetActiveFalse()
+        private void TrySetActiveFalse()
         {
-            gameObject.SetActive(false);
+            if (disableOnFaded == true)
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private float swipeMagnitude_Required = 10f;
+        private float swipeMagnitude_Required = 0f;
 
         [SerializeField]
 

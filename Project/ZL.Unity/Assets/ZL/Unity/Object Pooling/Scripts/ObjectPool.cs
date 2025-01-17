@@ -10,14 +10,6 @@ namespace ZL.Unity.ObjectPooling
     {
         private readonly LinkedList<T> stock = new();
 
-        public void PreGenerate(int count)
-        {
-            while (count-- > 0)
-            {
-                stock.AddLast(Clone());
-            }
-        }
-
         public virtual T Generate()
         {
             if (stock.Count == 0)

@@ -4,6 +4,8 @@ using ZL.Unity.Collections;
 
 namespace ZL.Unity.Audio
 {
+    [AddComponentMenu("ZL/Audio/BGM Player (Singleton)")]
+
     [DisallowMultipleComponent]
 
     [RequireComponent(typeof(AudioSource))]
@@ -60,48 +62,45 @@ namespace ZL.Unity.Audio
 
         private void Update()
         {
-            if (isLooping == true)
+            if (isLooping == true && audioSource.isPlaying == false)
             {
-                if (audioSource.isPlaying == false)
+                switch (playMode)
                 {
-                    switch (playMode)
-                    {
-                        case BGMPlayMode.RepeatOne:
+                    case BGMPlayMode.RepeatOne:
 
-                            Play();
+                        Play();
 
-                            break;
+                        break;
 
-                        case BGMPlayMode.RepeatAll:
+                    case BGMPlayMode.RepeatAll:
 
-                            Next();
+                        Next();
 
-                            break;
+                        break;
 
-                        case BGMPlayMode.Reverse:
+                    case BGMPlayMode.Reverse:
 
-                            Prev();
+                        Prev();
 
-                            break;
+                        break;
 
-                        case BGMPlayMode.Shuffle:
+                    case BGMPlayMode.Shuffle:
 
-                            while (true)
+                        while (true)
+                        {
+                            int index = Random.Range(0, playlist.value.Length);
+
+                            if (playlistIndex != index)
                             {
-                                Random.Range(0, playlist.value.Length, out int index);
+                                playlistIndex = index;
 
-                                if (playlistIndex != index)
-                                {
-                                    playlistIndex = index;
-
-                                    break;
-                                }
+                                break;
                             }
+                        }
 
-                            Play();
+                        Play();
 
-                            break;
-                    }
+                        break;
                 }
             }
         }

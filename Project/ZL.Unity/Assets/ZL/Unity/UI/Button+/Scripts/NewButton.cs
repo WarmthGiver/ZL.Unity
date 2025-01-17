@@ -18,11 +18,11 @@ namespace ZL.Unity.UI
             {
                 normalColor = Color.white,
 
-                highlightedColor = new(0.875f, 0.875f, 0.875f, 1f),
+                highlightedColor = Color.white,
 
                 pressedColor = new(0.75f, 0.75f, 0.75f, 1f),
 
-                selectedColor = new(0.875f, 0.875f, 0.875f, 1f),
+                selectedColor = Color.white,
 
                 disabledColor = new(0.75f, 0.75f, 0.75f, 1f),
 

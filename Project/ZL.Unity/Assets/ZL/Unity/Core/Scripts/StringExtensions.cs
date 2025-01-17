@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Unity.VisualScripting;
-using UnityEngine;
 
 namespace ZL.Unity
 {
@@ -107,8 +106,6 @@ namespace ZL.Unity
 
                     instance = instance.SplitToWords().Join(separator);
 
-                    //instance = instance.SplitWords(separator);
-
                     instance = instance.ToUpper();
 
                     break;
@@ -138,8 +135,6 @@ namespace ZL.Unity
                 case LetterCaseStyle.Lower:
 
                     instance = instance.SplitToWords().Join(separator);
-
-                    //instance = instance.SplitWords(separator);
 
                     instance = instance.ToLower();
 

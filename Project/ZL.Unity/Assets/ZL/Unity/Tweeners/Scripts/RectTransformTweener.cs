@@ -1,9 +1,11 @@
-using DG.Tweening;
-
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
+    [AddComponentMenu("ZL/Tweeners/Rect Transform Tweener")]
+
+    [DisallowMultipleComponent]
+
     [RequireComponent(typeof(RectTransform))]
 
     public sealed class RectTransformTweener : MonoBehaviour
@@ -14,13 +16,11 @@ namespace ZL.Unity.Tweeners
 
         private RectTransform rectTransform;
 
-        private Tweener tweenAnchorPos;
+        public Vector2Tweener AnchorPositionTweener { get; private set; }
 
-        public Tweener TweenAnchorPos(in Vector2 position, float duration)
+        private void Awake()
         {
-            tweenAnchorPos.Kill();
-
-            return tweenAnchorPos = rectTransform.DOAnchorPos(position, duration);
+            AnchorPositionTweener = new(() => rectTransform.anchoredPosition, value => rectTransform.anchoredPosition = value);
         }
     }
 }

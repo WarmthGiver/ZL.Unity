@@ -1,6 +1,6 @@
 sceneSetups:
-- path: Assets/ZL/Unity/Core/Attribute/Property/Demos/United Property Attribute Demo/Scenes/United
-    Property Attribute Demo Scene.unity
+- path: Assets/ZL/Unity/Audio/Demos/Audio Mixer Manager Demo/Scenes/Audio Mixer Manager
+    Demo Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -114,6 +114,15 @@ namespace ZL.Unity
             return instance.gameObject.AddComponents(components);
         }
 
+        public static T SetActive<T>(this T instance, bool value)
+
+            where T : Component
+        {
+            instance.gameObject.SetActive(value);
+
+            return instance;
+        }
+
         public static void DisallowMultiple<T>(this T instance)
 
             where T : Component
@@ -162,7 +171,7 @@ namespace ZL.Unity
         {
 #if UNITY_EDITOR
 
-            if (EditorApplication.isPlaying == false)
+            if (Application.isPlaying == false)
             {
                 void Callback()
                 {

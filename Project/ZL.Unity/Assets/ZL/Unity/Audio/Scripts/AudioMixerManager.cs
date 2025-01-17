@@ -10,8 +10,12 @@ using UnityEditor;
 
 using ZL.Unity.Collections;
 
+using ZL.Unity.IO;
+
 namespace ZL.Unity.Audio
 {
+    [AddComponentMenu("ZL/Audio/Audio Mixer Manager (Singleton)")]
+
     [DisallowMultipleComponent]
 
     public sealed class AudioMixerManager : Singleton<AudioMixerManager>
@@ -63,7 +67,7 @@ namespace ZL.Unity.Audio
             {
                 parameter.Value = Mathf.Clamp01(parameter.Value);
 
-                if (FixedEditorApplication.isPlaying == true)
+                if (Application.isPlaying == true)
                 {
                     SetVolume(parameter.Key, parameter.Value);
                 }

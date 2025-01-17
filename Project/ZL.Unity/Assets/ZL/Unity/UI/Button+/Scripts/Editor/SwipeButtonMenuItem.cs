@@ -2,8 +2,6 @@ using UnityEditor;
 
 using UnityEngine;
 
-using ZL.Unity.Tools;
-
 namespace ZL.Unity.UI
 {
     public static class SwipeButtonMenuItem

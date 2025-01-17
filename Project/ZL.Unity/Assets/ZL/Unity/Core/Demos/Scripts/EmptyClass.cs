@@ -2,9 +2,9 @@
 
 using System;
 
-namespace ZL.Unity
+namespace ZL.Unity.Demo
 {
     [Serializable]
 
-    public class EmptyClass { }
+    public sealed class EmptyClass { }
 }

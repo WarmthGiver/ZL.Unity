@@ -4,8 +4,6 @@ using UnityEditor.UI;
 
 using UnityEngine;
 
-using ZL.Unity.Tools;
-
 namespace ZL.Unity.UI
 {
     [CustomEditor(typeof(NewButton))]

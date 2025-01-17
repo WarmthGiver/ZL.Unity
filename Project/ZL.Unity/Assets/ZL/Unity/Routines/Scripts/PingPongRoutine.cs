@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZL.Unity.Routines
 {
-    [AddComponentMenu("ZL/Routines/Ping Pong(Routine)")]
+    [AddComponentMenu("ZL/Routines/Ping Pong (Routine)")]
 
     public sealed class PingPongRoutine : TransformRoutine
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZL.Unity.Routines
 {
-    [AddComponentMenu("ZL/Routines/Spin(Routine)")]
+    [AddComponentMenu("ZL/Routines/Spin (Routine)")]
 
     public sealed class SpinRoutine : TransformRoutine
     {

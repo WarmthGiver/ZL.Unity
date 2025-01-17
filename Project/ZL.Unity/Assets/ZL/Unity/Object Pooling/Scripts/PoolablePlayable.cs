@@ -16,7 +16,7 @@ namespace ZL.Unity.ObjectPooling
 
         public abstract bool IsPlaying { get; }
 
-        protected virtual void LateUpdate()
+        private void LateUpdate()
         {
             if (IsPlaying == false)
             {

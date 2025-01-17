@@ -8,6 +8,8 @@ using UnityEngine;
 
 namespace ZL.Unity.Demo
 {
+    [AddComponentMenu("")]
+
     public sealed class HelpBoxAttributeDemo : MonoBehaviour
     {
         [Space]

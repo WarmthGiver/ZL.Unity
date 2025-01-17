@@ -1,79 +1,140 @@
+using DG.Tweening;
+
+using DG.Tweening.Core;
+
+using DG.Tweening.Plugins.Options;
+
+using System;
+
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
-    [RequireComponent(typeof(TransformTweener))]
+    [Serializable]
 
-    public abstract class KeyFrameTweener : MonoBehaviour
+    public sealed class KeyFrames<T>
+    {
+        [Space]
+
+        [SerializeField]
+
+        private int index = 0;
+
+        public int Index
+        {
+            get => index;
+
+            set => index = value.Repeat(keyFrames.Count);
+        }
+
+        [Space]
+
+        [SerializeField]
+
+        private List<T> keyFrames;
+
+        public KeyFrames()
+        {
+            keyFrames = new();
+        }
+
+        public KeyFrames(int capacity)
+        {
+            keyFrames = new(capacity);
+        }
+
+        public KeyFrames(params T[] values)
+        {
+            keyFrames = new(values);
+        }
+
+        public T Current()
+        {
+            return keyFrames[index];
+        }
+
+        public T Current(int index)
+        {
+            Index = index;
+
+            return keyFrames[Index];
+        }
+
+        public T Next()
+        {
+            return keyFrames[++Index];
+        }
+
+        public T Prev()
+        {
+            return keyFrames[--Index];
+        }
+    }
+
+    public abstract class KeyFrameTweener<TComponentTweener, TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
+
+        where TComponentTweener : ComponentTweener<TValueTweener, T1, T2, TPlugOptions>
+
+        where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
+
+        where TPlugOptions : struct, IPlugOptions
     {
         [Space]
 
         [SerializeField, GetComponent, ReadOnly]
 
-        protected TransformTweener transformTweener;
+        protected TComponentTweener componentTweener;
 
         [Space]
 
         [SerializeField]
 
-        protected float duration = 0.5f;
+        protected float duration = 0f;
 
         [Space]
 
         [SerializeField]
 
-        protected int keyFrameIndex = 0;
-
-        public virtual int KeyFrameIndex
-        {
-            get => keyFrameIndex;
-
-            set => keyFrameIndex = value.Repeat(keyFrameIndex_Max);
-        }
-
-        private int keyFrameIndex_Max;
+        protected KeyFrames<T2> keyFrames;
 
         [Space]
 
         [SerializeField]
 
-        protected Vector3[] keyFrames;
-
-        private void Awake()
-        {
-            keyFrameIndex_Max = keyFrames.Length;
-
-            KeyFrameIndex = keyFrameIndex;
-        }
+        private Ease ease;
 
         private void OnValidate()
         {
-            Awake();
+            SetKeyFrame(keyFrames.Index);
         }
 
-        public virtual void TweenSetKeyFrameIndex(int value)
+        public abstract void SetKeyFrame(int index);
+
+        public void TweenKeyFrameNext()
         {
-            keyFrameIndex = value.Repeat(keyFrameIndex_Max);
+            ++keyFrames.Index;
+
+            TweenKeyFrame();
         }
 
-        public void TweenAddKeyFrameIndex(int value)
+        public void TweenKeyFramePrev()
         {
-            TweenSetKeyFrameIndex(keyFrameIndex + value);
+            --keyFrames.Index;
+
+            TweenKeyFrame();
         }
 
-        public void TweenAddKeyFrameIndex()
+        public void TweenKeyFrame(int index)
         {
-            TweenSetKeyFrameIndex(++keyFrameIndex);
+            keyFrames.Index = index;
+
+            TweenKeyFrame();
         }
 
-        public void TweenSubKeyFrameIndex(int value)
+        protected virtual TweenerCore<T1, T2, TPlugOptions> TweenKeyFrame()
         {
-            TweenSetKeyFrameIndex(keyFrameIndex - value);
-        }
-
-        public void TweenSubKeyFrameIndex()
-        {
-            TweenSetKeyFrameIndex(--keyFrameIndex);
+            return componentTweener.ValueTweener.Tween(keyFrames.Current(), duration).SetEase(ease);
         }
     }
 }

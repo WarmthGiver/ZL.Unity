@@ -274,32 +274,32 @@ namespace ZL.Unity
 
         public static void SetPositionRandom(this Transform instance, in Vector3 min, in Vector3 max)
         {
-            instance.position = Random.Range(min, max);
+            instance.position = RandomEx.Range(min, max);
         }
 
         public static void SetLocalPositionRandom(this Transform instance, in Vector3 min, in Vector3 max)
         {
-            instance.localPosition = Random.Range(min, max);
+            instance.localPosition = RandomEx.Range(min, max);
         }
 
         public static void SetRotationRandom(this Transform instance, in Vector3 min, in Vector3 max)
         {
-            instance.rotation = Quaternion.Euler(Random.Range(min, max));
+            instance.rotation = Quaternion.Euler(RandomEx.Range(min, max));
         }
 
         public static void SetRotationRandom(this Transform instance)
         {
-            instance.rotation = Quaternion.Euler(Random.Euler());
+            instance.rotation = Quaternion.Euler(RandomEx.Angles());
         }
 
         public static void SetLocalRotationRandom(this Transform instance, in Vector3 min, in Vector3 max)
         {
-            instance.localRotation = Quaternion.Euler(Random.Range(min, max));
+            instance.localRotation = Quaternion.Euler(RandomEx.Range(min, max));
         }
 
         public static void SetLocalRotationRandom(this Transform instance)
         {
-            instance.localRotation = Quaternion.Euler(Random.Euler());
+            instance.localRotation = Quaternion.Euler(RandomEx.Angles());
         }
 
         public static TComponent GetLastChild<TComponent>(this Transform instance)

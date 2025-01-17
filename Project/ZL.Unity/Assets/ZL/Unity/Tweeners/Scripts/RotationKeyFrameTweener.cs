@@ -1,34 +1,33 @@
 using DG.Tweening;
 
+using DG.Tweening.Core;
+
+using DG.Tweening.Plugins.Options;
+
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
-    public sealed class RotationKeyFrameTweener : KeyFrameTweener
+    [AddComponentMenu("ZL/Tweeners/Rotation Key Frame Tweener")]
+
+    [RequireComponent(typeof(TransformRotationTweener))]
+
+    public sealed class RotationKeyFrameTweener : KeyFrameTweener<TransformRotationTweener, QuaternionTweener, Quaternion, Vector3, QuaternionOptions>
     {
-        public override int KeyFrameIndex
-        {
-            set
-            {
-                base.KeyFrameIndex = value;
+        [Space]
 
-                transform.localEulerAngles = keyFrames[keyFrameIndex];
-            }
+        [SerializeField]
+
+        private RotateMode rotateMode;
+
+        public override void SetKeyFrame(int index)
+        {
+            transform.rotation = Quaternion.Euler(keyFrames.Current(index));
         }
 
-        private void Reset()
+        protected override TweenerCore<Quaternion, Vector3, QuaternionOptions> TweenKeyFrame()
         {
-            keyFrames = new Vector3[]
-            {
-                transform.localEulerAngles,
-            };
-        }
-
-        public override void TweenSetKeyFrameIndex(int value)
-        {
-            base.TweenSetKeyFrameIndex(value);
-
-            transformTweener.TweenLocalRotation(keyFrames[value], duration, RotateMode.FastBeyond360);
+            return base.TweenKeyFrame().SetRotateMode(rotateMode);
         }
     }
 }

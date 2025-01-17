@@ -22,13 +22,17 @@ namespace ZL.Unity.ObjectPooling
 
         public Transform Parent => parent;
 
+        public void PreGenerate(int count)
+        {
+            while (count-- > 0)
+            {
+                Clone().SetActive(false);
+            }
+        }
+
         public override T Generate()
         {
-            var clone = base.Generate();
-
-            clone.gameObject.SetActive(true);
-
-            return clone;
+            return base.Generate().SetActive(true);
         }
 
         public override T Clone()

@@ -6,6 +6,8 @@ using ZL.Unity.Collections;
 
 namespace ZL.Unity.EulerianTrail.Demo
 {
+    [AddComponentMenu("")]
+
     [DisallowMultipleComponent]
 
     public sealed class EulerianTrailDemoScene : MonoBehaviour

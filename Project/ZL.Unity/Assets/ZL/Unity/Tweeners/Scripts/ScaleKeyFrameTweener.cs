@@ -1,32 +1,18 @@
+using DG.Tweening.Plugins.Options;
+
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
-    public sealed class ScaleKeyFrameTweener : KeyFrameTweener
+    [AddComponentMenu("ZL/Tweeners/Scale Key Frame Tweener")]
+
+    [RequireComponent(typeof(TransformScaleTweener))]
+
+    public sealed class ScaleKeyFrameTweener : KeyFrameTweener<TransformScaleTweener, Vector3Tweener, Vector3, Vector3, VectorOptions>
     {
-        public override int KeyFrameIndex
+        public override void SetKeyFrame(int index)
         {
-            set
-            {
-                base.KeyFrameIndex = value;
-
-                transform.localScale = keyFrames[keyFrameIndex];
-            }
-        }
-
-        private void Reset()
-        {
-            keyFrames = new Vector3[]
-            {
-                transform.localScale,
-            };
-        }
-
-        public override void TweenSetKeyFrameIndex(int value)
-        {
-            base.TweenSetKeyFrameIndex(value);
-
-            transformTweener.TweenScale(keyFrames[value], duration);
+            transform.localScale = keyFrames.Current(index);
         }
     }
 }

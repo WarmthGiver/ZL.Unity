@@ -24,9 +24,9 @@ namespace ZL.Unity
             Destroy(gameObject);
         }
 
-        protected abstract void OnAwake();
+        protected virtual void OnAwake() { }
 
-        protected virtual void OnDestroy()
+        private void OnDestroy()
         {
             if (Instance == this)
             {

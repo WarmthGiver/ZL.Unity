@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace ZL.Unity.ObjectPooling.Demo
 {
+    [AddComponentMenu("")]
+
     [DisallowMultipleComponent]
 
     public sealed class GameObjectPoolDemoScene : MonoBehaviour

@@ -4,6 +4,8 @@ namespace ZL.Unity.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Audio Source Tweener")]
 
+    [DisallowMultipleComponent]
+
     [RequireComponent(typeof(AudioSource))]
 
     public sealed class AudioSourceTweener : MonoBehaviour
@@ -12,27 +14,13 @@ namespace ZL.Unity.Tweeners
 
         [SerializeField, GetComponent, ReadOnly]
 
-        private AudioSource @base;
+        private AudioSource audioSource;
 
-        public float Volume
+        public FloatTweener VolumeTweener { get; private set; }
+
+        private void Awake()
         {
-            get => @base.volume;
-
-            set => @base.volume = value;
-        }
-
-        private FloatTweener volumeTweener;
-
-        private void Start()
-        {
-            volumeTweener = new(() => Volume, value => Volume = value);
-        }
-
-        public FloatTweener TweenVolume(float value, float duration)
-        {
-            volumeTweener.Tween(value, duration);
-
-            return volumeTweener;
+            VolumeTweener = new(() => audioSource.volume, value => audioSource.volume = value);
         }
     }
 }

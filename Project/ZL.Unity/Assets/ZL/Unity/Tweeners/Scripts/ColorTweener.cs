@@ -8,16 +8,13 @@ using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
-    public sealed class ColorTweener : Tweener<Color, Color, ColorOptions>
+    public sealed class ColorTweener : ValueTweener<Color, Color, ColorOptions>
     {
-        public ColorTweener(DOGetter<Color> getter, DOSetter<Color> setter) : base(getter, setter)
-        {
+        public ColorTweener(DOGetter<Color> getter, DOSetter<Color> setter) : base(getter, setter) { }
 
-        }
-
-        protected override TweenerCore<Color, Color, ColorOptions> Instantiate(DOGetter<Color> getter, DOSetter<Color> setter)
+        protected override TweenerCore<Color, Color, ColorOptions> Instantiate(DOGetter<Color> getter, DOSetter<Color> setter, Color endValue, float duration)
         {
-            return DOTween.To(getter, setter, default, default);
+            return DOTween.To(getter, setter, endValue, duration);
         }
     }
 }

@@ -12,37 +12,11 @@ namespace ZL.Unity.Audio
 
     public sealed class AudioListenerController : MonoBehaviour
     {
-        public static AudioListenerController Instance { get; private set; } = null;
-
         [Space]
 
         [SerializeField, Range(0f, 1f)]
 
         private float volume = 1f;
-
-        public static float Volume
-        {
-            get => Instance.volume;
-
-            set
-            {
-                Instance.volume = value;
-
-                AudioListener.volume = value;
-            }
-        }
-
-        private void OnEnable()
-        {
-            if (Instance != null)
-            {
-                Instance.enabled = false;
-            }
-
-            Instance = this;
-
-            AudioListener.volume = volume;
-        }
 
         private void OnValidate()
         {
@@ -50,6 +24,20 @@ namespace ZL.Unity.Audio
             {
                 AudioListener.volume = volume;
             }
+        }
+
+#if UNITY_EDITOR
+
+        private void Update()
+        {
+            volume = AudioListener.volume;
+        }
+
+#endif
+
+        private void Awake()
+        {
+            AudioListener.volume = volume;
         }
     }
 }
