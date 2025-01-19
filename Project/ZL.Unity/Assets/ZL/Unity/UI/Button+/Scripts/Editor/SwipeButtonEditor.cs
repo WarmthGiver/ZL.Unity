@@ -12,7 +12,7 @@ namespace ZL.Unity.UI
 
         private SerializedProperty swipeMagnitude;
 
-        private SerializedProperty swipeMagnitude_Required;
+        private SerializedProperty requiredSwipeMagnitude;
 
         private SerializedProperty onSwipeUp;
 
@@ -30,7 +30,7 @@ namespace ZL.Unity.UI
 
             swipeMagnitude = serializedObject.FindProperty("swipeMagnitude");
 
-            swipeMagnitude_Required = serializedObject.FindProperty("swipeMagnitude_Required");
+            requiredSwipeMagnitude = serializedObject.FindProperty("requiredSwipeMagnitude");
 
             onSwipeUp = serializedObject.FindProperty("onSwipeUp");
 
@@ -55,7 +55,7 @@ namespace ZL.Unity.UI
 
             EditorGUILayout.PropertyField(swipeMagnitude, new GUIContent("Magnitude"));
 
-            EditorGUILayout.PropertyField(swipeMagnitude_Required, new GUIContent("Required"));
+            EditorGUILayout.PropertyField(requiredSwipeMagnitude, new GUIContent("Required"));
 
             --EditorGUI.indentLevel;
 

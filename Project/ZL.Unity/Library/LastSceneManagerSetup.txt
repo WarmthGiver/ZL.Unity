@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/ZL/Projects/Bonk Cheems/Scenes/Bonk Cheems Scene.unity
+- path: Assets/ZL/Unity/UI/Button+/Demos/Scenes/Button Plus Demo Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

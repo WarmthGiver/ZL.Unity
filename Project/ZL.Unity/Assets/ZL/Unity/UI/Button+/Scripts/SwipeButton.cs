@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Button(Swipe)")]
+    [AddComponentMenu("ZL/UI/Button (Swipe)")]
 
     public sealed class SwipeButton : AutoButton
     {
@@ -18,7 +18,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private float swipeMagnitude_Required = 0f;
+        private float requiredSwipeMagnitude = 0f;
 
         [SerializeField]
 
@@ -52,7 +52,7 @@ namespace ZL.Unity.UI
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            if (swipeMagnitude < swipeMagnitude_Required)
+            if (swipeMagnitude < requiredSwipeMagnitude)
             {
                 base.OnPointerClick(eventData);
             }
@@ -96,7 +96,7 @@ namespace ZL.Unity.UI
 
                 swipeMagnitude = swipeDirection.magnitude;
 
-                if (swipeMagnitude >= swipeMagnitude_Required)
+                if (swipeMagnitude >= requiredSwipeMagnitude)
                 {
                     StopAutoClick();
 

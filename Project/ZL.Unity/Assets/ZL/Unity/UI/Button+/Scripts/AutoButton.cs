@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Button(Auto)")]
+    [AddComponentMenu("ZL/UI/Button (Auto)")]
 
     public class AutoButton : NewButton
     {

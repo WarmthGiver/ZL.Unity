@@ -25,15 +25,14 @@ EditorBuildSettings:
       Demo Scene.unity
     guid: 652af6dbf82ce594fb17d534e878fee9
   - enabled: 0
-    path: Assets/ZL/Unity/Core/Collactions/Demos/Serializable Dictionary Demo/Scenes/Serializable
+    path: Assets/ZL/Unity/Core/Demos/Serializable Dictionary Demo/Scenes/Serializable
       Dictionary Demo Scene.unity
     guid: e1f4c4729cfa1ea41be9862ae79dd880
   - enabled: 0
-    path: Assets/ZL/Unity/Core/Attribute/Property/Demos/United Property Attribute
-      Demo/Scenes/United Property Attribute Demo Scene.unity
+    path: Assets/ZL/Unity/Core/Demos/United Property Attribute Demo/Scenes/United
+      Property Attribute Demo Scene.unity
     guid: a219a3ee0feb90245b2e84f0ba2a7354
   - enabled: 0
-    path: Assets/ZL/Unity/Core/Collactions/Demos/Wrapper Demo/Scenes/Wrapper Demo
-      Scene.unity
+    path: Assets/ZL/Unity/Core/Demos/Wrapper Demo/Scenes/Wrapper Demo Scene.unity
     guid: e08107fb580af4b408bcccb84e614c32
   m_configObjects: {}

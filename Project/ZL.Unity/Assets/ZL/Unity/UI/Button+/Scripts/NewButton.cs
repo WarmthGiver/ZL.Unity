@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Button(New)")]
+    [AddComponentMenu("ZL/UI/Button (New)")]
     
     [RequireComponent(typeof(RectTransform))]
 
