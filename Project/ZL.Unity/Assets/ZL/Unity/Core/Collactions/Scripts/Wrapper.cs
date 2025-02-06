@@ -7,12 +7,5 @@ namespace ZL.Unity.Collections
     public sealed class Wrapper<T>
     {
         public T value;
-
-        public Wrapper() { }
-
-        public Wrapper(T value)
-        {
-            this.value = value;
-        }
     }
 }

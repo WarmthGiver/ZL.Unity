@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo
+namespace ZL.Unity.Demo.UnitedPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -14,15 +14,15 @@ namespace ZL.Unity.Demo
     {
         [Space]
 
-        [Indent(-1), Label("Indent -1")]
+        [Indent(-1), Label(Text = "Indent -1")]
 
         public string indentMinus1;
 
-        [Indent(0), Label("Indent  0")]
+        [Indent(0), Label(Text = "Indent  0")]
 
         public string indent0;
 
-        [Indent(1), Label("Indent  +1")]
+        [Indent(1), Label(Text = "Indent  +1")]
 
         public string indentPlus1;
 
@@ -34,15 +34,15 @@ namespace ZL.Unity.Demo
 
         public sealed class Class
         {
-            [Indent(-1), Label("Indent -1")]
+            [Indent(-1), Label(Text = "Indent -1")]
 
             public string indentMinus1;
 
-            [Indent(0), Label("Indent  0")]
+            [Indent(0), Label(Text = "Indent  0")]
 
             public string indent0;
 
-            [Indent(1), Label("Indent  +1")]
+            [Indent(1), Label(Text = "Indent  +1")]
 
             public string indentPlus1;
         }

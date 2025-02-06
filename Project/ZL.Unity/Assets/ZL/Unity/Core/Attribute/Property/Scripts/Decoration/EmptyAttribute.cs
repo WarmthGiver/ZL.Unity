@@ -1,9 +1,33 @@
-using UnityEngine;
+using System;
+
+using System.Diagnostics;
 
 namespace ZL.Unity
 {
-    public sealed class EmptyAttribute : LineAttribute
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
+
+    [Conditional("UNITY_EDITOR")]
+
+    public sealed class EmptyAttribute : UnitedPropertyAttribute
     {
-        public EmptyAttribute(float height = 8f) : base(height, Color.clear) { }
+        private readonly float height;
+
+        public EmptyAttribute() : this(defaultSpaceHeight) { }
+
+        public EmptyAttribute(float height = 8f)
+        {
+            this.height = height;
+        }
+
+#if UNITY_EDITOR
+
+        public override bool Draw(Drawer drawer)
+        {
+            drawer.DrawEmpty(height);
+
+            return true;
+        }
+
+#endif
     }
 }

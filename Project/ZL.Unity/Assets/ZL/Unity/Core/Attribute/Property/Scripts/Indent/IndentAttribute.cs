@@ -1,10 +1,14 @@
+using System.Diagnostics;
+
 namespace ZL.Unity
 {
+    [Conditional("UNITY_EDITOR")]
+
     public class IndentAttribute : UnitedPropertyAttribute
     {
         protected readonly int level;
 
-        public IndentAttribute(int level = 1)
+        public IndentAttribute(int level)
         {
             this.level = level;
         }

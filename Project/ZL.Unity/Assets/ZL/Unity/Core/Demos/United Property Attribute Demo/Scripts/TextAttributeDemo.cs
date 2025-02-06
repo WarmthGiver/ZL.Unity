@@ -6,72 +6,110 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo
+namespace ZL.Unity.Demo.UnitedPropertyAttribute
 {
     [AddComponentMenu("")]
 
     public sealed class TextAttributeDemo : MonoBehaviour
     {
-        [Text("Default")]
+        [Space]
 
-        [Text("Hello World!")]
+        [SerializeField]
 
-        [Empty]
+        [Comment("Hello World!")]
 
-        [Text("Font Style = Bold")]
+        [Comment("[Comment(\"Hello World!\")]")]
 
-        [Text(FontStyle.Bold, "Hello World!")]
+        private EmptyClass @default;
 
-        [Empty]
+        [Space]
 
-        [Text("Font Style = Italic")]
+        [SerializeField]
 
-        [Text("Hello World!")]
+        [Comment("Hello World!", R = 1f, G = 0f, B = 0f)]
 
-        [Empty]
+        [Comment("[Comment(\"Hello World!\", R = 1f, G = 0f, B = 0f)]")]
 
-        [Text("Font Style = Bold And Italic")]
+        private EmptyClass colorRed;
 
-        [Text(FontStyle.BoldAndItalic, "Hello World!")]
+        [Space]
 
-        [Empty]
+        [SerializeField]
 
-        [Text("Color = RGBA(255, 0, 0, 255)")]
+        [Comment("Hello World!", R = 0f, G = 1f, B = 0f)]
 
-        [Text(255, 0, 0, 255, "Hello World!")]
+        [Comment("[Comment(\"Hello World!\", R = 0f, G = 1f, B = 0f)]")]
 
-        [Empty]
+        private EmptyClass colorGreen;
 
-        [Text("Color = RGBA(0, 255, 0, 255)")]
+        [Space]
 
-        [Text(0, 255, 0, 255, "Hello World!")]
+        [SerializeField]
 
-        [Empty]
+        [Comment("Hello World!", R = 0f, G = 0f, B = 1f)]
 
-        [Text("Color = RGBA(0, 0, 255, 255)")]
+        [Comment("[Comment(\"Hello World!\", R = 0f, G = 0f, B = 1f)]")]
 
-        [Text(0, 0, 255, 255, "Hello World!")]
+        private EmptyClass colorBlue;
 
-        [Empty]
+        [Space]
 
-        [Text("Font Size = 24")]
+        [SerializeField]
 
-        [Text(24, "Hello World!")]
+        [Comment("Hello World!", FontStyle = FontStyle.Normal)]
 
-        [Empty]
+        [Comment("[Comment(\"Hello World!\", FontStyle = FontStyle.Normal)]")]
 
-        [Text("Font Size = 36")]
+        private EmptyClass fontStyleNormal;
 
-        [Text(36, "Hello World!")]
+        [Space]
 
-        [Empty]
+        [SerializeField]
 
-        [Text("Full Option")]
+        [Comment("Hello World!", FontStyle = FontStyle.Bold)]
 
-        [Text(36, FontStyle.BoldAndItalic, 255, 0, 255, 255, "Hello World!")]
+        [Comment("[Comment(\"Hello World!\", FontStyle = FontStyle.Bold)]")]
 
-        [HiddenField]
+        private EmptyClass fontStyleBold;
 
-        public EmptyClass hidden;
+        [Space]
+
+        [SerializeField]
+
+        [Comment("Hello World!", FontStyle = FontStyle.BoldAndItalic)]
+
+        [Comment("[Comment(\"Hello World!\", FontStyle = FontStyle.BoldAndItalic)]")]
+
+        private EmptyClass fontStyleBoldAndItalic;
+
+        [Space]
+
+        [SerializeField]
+
+        [Comment("Hello World!", FontSize = 24)]
+
+        [Comment("[Comment(\"Hello World!\", FontSize = 24)]")]
+
+        private EmptyClass fontSize24;
+
+        [Space]
+
+        [SerializeField]
+
+        [Comment("Hello World!", FontSize = 36)]
+
+        [Comment("[Comment(\"Hello World!\", FontSize = 36)]")]
+
+        private EmptyClass fontSize36;
+
+        [Space]
+
+        [SerializeField]
+
+        [Comment("Hello World!", FontSize = 36, FontStyle = FontStyle.BoldAndItalic, R = 1f, G = 0f, B = 1f)]
+
+        [Comment("[Comment(\"Hello World!\", FontSize = 36, FontStyle = FontStyle.BoldAndItalic, R = 1f, G = 0f, B = 1f)]")]
+
+        private EmptyClass fullOptions;
     }
 }

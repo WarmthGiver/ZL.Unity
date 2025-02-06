@@ -1,7 +1,11 @@
+using System.Diagnostics;
+
 using UnityEngine;
 
 namespace ZL.Unity
 {
+    [Conditional("UNITY_EDITOR")]
+
     public class GetComponentAttribute : UnitedPropertyAttribute
     {
 #if UNITY_EDITOR
@@ -10,7 +14,7 @@ namespace ZL.Unity
         {
             if (drawer.IsFieldTypeIn(typeof(Component)) == false)
             {
-                drawer.DrawHelpBox(MessageType.Error, $"{NameTag} Field type is invalid.");
+                drawer.DrawHelpBox($"{NameTag} Field type is invalid.", MessageType.Error);
 
                 return false;
             }

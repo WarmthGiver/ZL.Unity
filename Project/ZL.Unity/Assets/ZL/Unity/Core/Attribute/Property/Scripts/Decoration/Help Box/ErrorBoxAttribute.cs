@@ -1,9 +1,13 @@
+using System.Diagnostics;
+
 namespace ZL.Unity
 {
+    [Conditional("UNITY_EDITOR")]
+
     public sealed class ErrorBoxAttribute : HelpBoxAttribute
     {
-        public ErrorBoxAttribute(string message) : base(MessageType.Error, message) { }
+        public ErrorBoxAttribute(string message) : base(message, MessageType.Error) { }
 
-        public ErrorBoxAttribute(IconSize iconSize, string message) : base(MessageType.Error, iconSize, message) { }
+        public ErrorBoxAttribute(string message, IconSize iconSize) : base(message, MessageType.Error, iconSize) { }
     }
 }

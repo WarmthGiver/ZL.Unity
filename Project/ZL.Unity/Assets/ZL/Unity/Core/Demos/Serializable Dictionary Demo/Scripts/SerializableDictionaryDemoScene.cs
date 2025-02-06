@@ -53,6 +53,7 @@ namespace ZL.Unity.Collections.Demo
             text.text =
                 
                 "▼Serializable Dictionary\n" +
+
                 "▼Elements\n";
 
             foreach (var element in serializableDictionary)
@@ -63,8 +64,11 @@ namespace ZL.Unity.Collections.Demo
             text.text +=
 
                 "\n" +
+
                 "\n" +
+
                 "▼Int Prefs Dictionary\n" +
+
                 "▼Elements\n";
 
             foreach (var element in intPrefsDictionary)

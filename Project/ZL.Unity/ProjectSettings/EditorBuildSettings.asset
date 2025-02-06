@@ -6,8 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/ZL/Unity/Audio/Demos/Audio Mixer Manager Demo/Scenes/Audio Mixer
-      Manager Demo Scene.unity
+    path: Assets/ZL/Unity/Audio/Demo/Scenes/Audio Demo Scene.unity
     guid: f6f34acf31253de49be7e8414272a7ed
   - enabled: 0
     path: Assets/ZL/Unity/Tweeners/Demos/Audio Listener Tweener Demo Scene/Scenes/Audio

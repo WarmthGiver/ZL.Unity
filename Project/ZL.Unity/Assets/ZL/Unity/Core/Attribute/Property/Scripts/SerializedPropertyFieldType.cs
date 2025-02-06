@@ -4,12 +4,10 @@ namespace ZL.Unity
     {
         Default,
 
-        Tag,
+        Empty,
 
         Layer,
 
-        Array,
-
-        Empty,
+        Tag,
     }
 }

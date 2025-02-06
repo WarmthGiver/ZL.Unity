@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo
+namespace ZL.Unity.Demo.UnitedPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -18,25 +18,25 @@ namespace ZL.Unity.Demo
 
         public Transform getComponent;
         
-        [Label(" \" In Parent")]
+        [Label(Text = " \" In Parent")]
 
         [GetComponentInParent]
 
         public Transform getComponentInParent;
 
-        [Label(" \" In Parent Only")]
+        [Label(Text = " \" In Parent Only")]
 
         [GetComponentInParentOnly]
 
         public Transform getComponentInParentOnly;
 
-        [Label(" \" In Chilren")]
+        [Label(Text = " \" In Chilren")]
 
         [GetComponentInChildren]
 
         public Transform getComponentInChildren;
 
-        [Label(" \" In Chilren Only")]
+        [Label(Text = " \" In Chilren Only")]
 
         [GetComponentInChildrenOnly]
 
@@ -44,10 +44,8 @@ namespace ZL.Unity.Demo
 
         [Space]
 
-        [Label("Invalid Type*")]
-
         [GetComponent]
 
-        public string getComponentString;
+        public string invalidTypeTest;
     }
 }

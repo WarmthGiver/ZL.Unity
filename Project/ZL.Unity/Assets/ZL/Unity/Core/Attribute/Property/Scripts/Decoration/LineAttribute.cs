@@ -1,35 +1,34 @@
 using System;
 
+using System.Diagnostics;
+
 using UnityEngine;
 
 namespace ZL.Unity
 {
-    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
 
-    public class LineAttribute : UnitedPropertyAttribute
+    [Conditional("UNITY_EDITOR")]
+
+    public sealed class LineAttribute : UnitedPropertyAttribute
     {
-        private readonly float height;
+        public float Height { get; set; } = defaultLineHeight;
 
-        public readonly Color? color;
+        private Color color = defaultTextColor;
 
-        public LineAttribute(int r, int g, int b, int a) : this(1f, new Color(r, g, b, a)) { }
+        public float R { get => color.r; set => color.r = value; }
 
-        public LineAttribute(float height = 1f) : this(height, null) { }
+        public float G { get => color.g; set => color.g = value; }
 
-        public LineAttribute(float height, int r, int g, int b, int a) : this(height, new Color(r, g, b, a)) { }
+        public float B { get => color.b; set => color.b = value; }
 
-        protected LineAttribute(float height, Color? color)
-        {
-            this.height = height;
-
-            this.color = color;
-        }
+        public float A { get => color.a ; set => color.a = value; }
 
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.DrawLine(height, color);
+            drawer.DrawLine(Height, color);
 
             return true;
         }

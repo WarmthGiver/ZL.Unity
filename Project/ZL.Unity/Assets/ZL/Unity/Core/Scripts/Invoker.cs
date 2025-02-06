@@ -39,7 +39,7 @@ namespace ZL.Unity
             CancelInvoke(nameOfOnTime);
         }
 
-        private static readonly string nameOfOnTime = nameof(OnTime);
+        private const string nameOfOnTime = nameof(OnTime);
 
         private void OnTime()
         {

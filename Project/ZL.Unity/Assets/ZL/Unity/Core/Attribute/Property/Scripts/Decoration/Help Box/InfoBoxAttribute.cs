@@ -1,9 +1,11 @@
+using System.Diagnostics;
+
 namespace ZL.Unity
 {
+    [Conditional("UNITY_EDITOR")]
+
     public sealed class InfoBoxAttribute : HelpBoxAttribute
     {
-        public InfoBoxAttribute(string message) : base(MessageType.Info, message) { }
-
-        public InfoBoxAttribute(IconSize iconSize, string message) : base(MessageType.Info, iconSize, message) { }
+        public InfoBoxAttribute(string message, IconSize iconSize = IconSize.Small) : base(message, MessageType.Info, iconSize) { }
     }
 }

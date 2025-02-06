@@ -7,6 +7,7 @@ using DG.Tweening.Plugins.Options;
 using System;
 
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
@@ -74,7 +75,7 @@ namespace ZL.Unity.Tweeners
 
     public abstract class KeyFrameTweener<TComponentTweener, TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
 
-        where TComponentTweener : ComponentTweener<TValueTweener, T1, T2, TPlugOptions>
+        where TComponentTweener : ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions>
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
 
@@ -134,7 +135,7 @@ namespace ZL.Unity.Tweeners
 
         protected virtual TweenerCore<T1, T2, TPlugOptions> TweenKeyFrame()
         {
-            return componentTweener.ValueTweener.Tween(keyFrames.Current(), duration).SetEase(ease);
+            return componentTweener.Tween(keyFrames.Current(), duration).SetEase(ease);
         }
     }
 }

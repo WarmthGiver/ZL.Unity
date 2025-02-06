@@ -6,7 +6,7 @@ namespace ZL.Unity
 {
     [CreateAfterSceneLoad]
 
-    public sealed class ApplicationManager : MonoBehaviour
+    public class ApplicationManager : MonoBehaviour
     {
         public static ApplicationManager Instance { get; private set; }
 

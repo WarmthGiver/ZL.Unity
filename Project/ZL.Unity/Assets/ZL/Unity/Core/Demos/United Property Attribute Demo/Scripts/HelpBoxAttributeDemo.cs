@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo
+namespace ZL.Unity.Demo.UnitedPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -14,13 +14,11 @@ namespace ZL.Unity.Demo
     {
         [Space]
 
-        [Style(FontStyle.Bold)]
-
-        [Label("Help Box")]
+        [Label(Text = "Help Box")]
 
         [Empty(2f)]
 
-        [Text("Default")]
+        [Comment("Default")]
 
         [HelpBox("This is message.")]
 
@@ -28,55 +26,49 @@ namespace ZL.Unity.Demo
 
         [Space]
 
-        [Style(FontStyle.Bold)]
+        [Empty(2f)]
+
+        [Comment("Default")]
+
+        [InfoBox("This is info message.")]
 
         [Empty(2f)]
 
-        [Text("Default")]
+        [Comment("Icon Size = Large")]
 
-        [InfoBox("This is message.")]
-
-        [Empty(2f)]
-
-        [Text("Icon Size = Large")]
-
-        [InfoBox(IconSize.Large, "This is message.")]
+        [InfoBox("This is info message.", IconSize.Large)]
 
         public EmptyClass infoBox;
 
         [Space]
 
-        [Style(FontStyle.Bold)]
+        [Empty(2f)]
+
+        [Comment("Default")]
+
+        [WarningBox("This is warning message.")]
 
         [Empty(2f)]
 
-        [Text("Default")]
+        [Comment("Icon Size = Large")]
 
-        [WarningBox("This is message.")]
-
-        [Empty(2f)]
-
-        [Text("Icon Size = Large")]
-
-        [WarningBox(IconSize.Large, "This is message.")]
+        [WarningBox("This is warning message.", IconSize.Large)]
 
         public EmptyClass warningBox;
 
         [Space]
 
-        [Style(FontStyle.Bold)]
+        [Empty(2f)]
+
+        [Comment("Default")]
+
+        [ErrorBox("This is error message.")]
 
         [Empty(2f)]
 
-        [Text("Default")]
+        [Comment("Icon Size = Large")]
 
-        [ErrorBox("This is message.")]
-
-        [Empty(2f)]
-
-        [Text("Icon Size = Large")]
-
-        [ErrorBox(IconSize.Large, "This is message.")]
+        [ErrorBox("This is error message.", IconSize.Large)]
 
         public EmptyClass errorBox;
     }

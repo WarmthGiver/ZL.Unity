@@ -142,14 +142,14 @@ namespace ZL.Unity
         {
             component = GetComponentInParent<TComponent>(instance);
 
-            return component;
+            return component != null;
         }
 
         public static bool TryGetComponentInParent(this Transform instance, Type type, out Component component)
         {
             component = GetComponentInParent(instance, type);
 
-            return component;
+            return component != null;
         }
 
         public static bool TryGetComponentInParentOnly<TComponent>(this Transform instance, out TComponent component)
@@ -158,30 +158,28 @@ namespace ZL.Unity
         {
             component = GetComponentInParent<TComponent>(instance.parent);
 
-            return component;
+            return component != null;
         }
 
         public static bool TryGetComponentInParentOnly(this Transform instance, Type type, out Component component)
         {
             component = GetComponentInParent(instance.parent, type);
 
-            return component;
+            return component != null;
         }
 
         private static TComponent GetComponentInParent<TComponent>(this Transform instance)
 
             where TComponent : Component
         {
-            var parent = instance;
-
-            while (parent != null)
+            while (instance != null)
             {
                 if (instance.TryGetComponent(out TComponent component) == true)
                 {
                     return component;
                 }
 
-                parent = parent.parent;
+                instance = instance.parent;
             }
 
             return null;
@@ -189,16 +187,14 @@ namespace ZL.Unity
 
         private static Component GetComponentInParent(this Transform instance, Type type)
         {
-            var parent = instance;
-
-            while (parent != null)
+            while (instance != null)
             {
                 if (instance.TryGetComponent(type, out var component) == true)
                 {
                     return component;
                 }
 
-                parent = parent.parent;
+                instance = instance.parent;
             }
 
             return null;

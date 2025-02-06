@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo
+namespace ZL.Unity.Demo.UnitedPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -16,31 +16,31 @@ namespace ZL.Unity.Demo
         
         [Empty]
 
-        [Text("Default")]
+        [Comment("Default")]
 
         [Button(nameof(PrintText))]
 
         [Empty]
 
-        [Text("Text = \"PRINT TEXT\"")]
+        [Comment("Text = \"PRINT TEXT\"")]
 
-        [Button(nameof(PrintText), "PRINT TEXT")]
-
-        [Empty]
-
-        [Text("Height = 36f")]
-
-        [Button(nameof(PrintText), 36f)]
+        [Button(nameof(PrintText), Text = "PRINT TEXT")]
 
         [Empty]
 
-        [Text("Full Option")]
+        [Comment("Height = 36f")]
 
-        [Button(nameof(PrintText), "PRINT TEXT", 36f)]
+        [Button(nameof(PrintText), Height = 36f)]
 
         [Empty]
 
-        [Text("Wrong Method Name*")]
+        [Comment("Full Option")]
+
+        [Button(nameof(PrintText), Text = "PRINT TEXT", Height = 36f)]
+
+        [Empty]
+
+        [Comment("Wrong Method Name*")]
 
         [Button("printText")]
 

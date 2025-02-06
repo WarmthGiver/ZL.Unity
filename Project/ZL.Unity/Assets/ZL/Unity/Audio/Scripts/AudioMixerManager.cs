@@ -18,13 +18,13 @@ namespace ZL.Unity.Audio
 
     [DisallowMultipleComponent]
 
-    public sealed class AudioMixerManager : Singleton<AudioMixerManager>
+    public sealed class AudioMixerManager : Immortal<AudioMixerManager>
     {
         [Space]
 
         [SerializeField, Essential]
 
-        [Button(nameof(LoadAudioMixerParameters), "Load Parameters")]
+        [Button(nameof(LoadAudioMixerParameters), Text = "Load Parameters")]
 
         private AudioMixer audioMixer = null;
 
@@ -81,8 +81,13 @@ namespace ZL.Unity.Audio
 
 #endif
 
-        protected override void OnAwake()
+        protected override void Awake()
         {
+            if (TrySetInstance() == false)
+            {
+                return;
+            }
+
             LoadVolumes();
         }
 

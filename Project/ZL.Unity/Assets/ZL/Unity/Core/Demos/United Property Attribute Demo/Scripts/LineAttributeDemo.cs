@@ -6,53 +6,55 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo
+namespace ZL.Unity.Demo.UnitedPropertyAttribute
 {
     [AddComponentMenu("")]
 
     public sealed class LineAttributeDemo : MonoBehaviour
     {
-        [Text("Default")]
+        [Space]
+
+        [Comment("Default")]
 
         [Line]
 
         [Empty]
 
-        [Text("Color = RGBA(255, 0, 0, 255)")]
+        [Comment("R = 1f, G = 0f, B = 0f")]
 
-        [Line(255, 0, 0, 255)]
-
-        [Empty]
-
-        [Text("Color = RGBA(0, 255, 0, 255)")]
-
-        [Line(0, 255, 0, 255)]
+        [Line(R = 1f, G = 0f, B = 0f)]
 
         [Empty]
 
-        [Text("Color = RGBA(0, 0, 255, 255)")]
+        [Comment("R = 0f, G = 1f, B = 0f")]
 
-        [Line(0, 0, 255, 255)]
-
-        [Empty]
-
-        [Text("Height = 2")]
-
-        [Line(2f)]
+        [Line(R = 0f, G = 1f, B = 0f)]
 
         [Empty]
 
-        [Text("Height = 3")]
+        [Comment("R = 0f, G = 0f, B = 1f")]
 
-        [Line(3f)]
+        [Line(R = 0f, G = 0f, B = 1f)]
 
         [Empty]
 
-        [Text("Full Option")]
+        [Comment("Height = 2")]
 
-        [Line(3f, 255, 0, 255, 255)]
+        [Line(Height = 2f)]
 
-        [HiddenField]
+        [Empty]
+
+        [Comment("Height = 3")]
+
+        [Line(Height = 3f)]
+
+        [Empty]
+
+        [Comment("Height = 3f, R = 1f, G = 0f, B = 1f")]
+
+        [Line(Height = 3f, R = 1f, G = 0f, B = 1f) ]
+
+        [Hidden]
 
         public EmptyClass empty; 
     }

@@ -18,11 +18,19 @@ namespace ZL.Unity
 {
     public abstract class UnitedPropertyAttribute : PropertyAttribute
     {
-        protected const float singleLineHeight = 18f;
+        protected static readonly float defaultLabelHeight;
 
-        protected const float singleSpaceHeight = 8f;
+        protected static readonly float defaultSpaceHeight;
 
-        protected const float singleIndentWidth = 15f;
+        protected static readonly float defaultIndentWidth;
+
+        protected static readonly float defaultLineHeight;
+
+        protected static readonly IconSize defaultIconSize;
+
+        protected static readonly int defaultFontSize;
+
+        protected static readonly Color defaultTextColor;
 
         private string nameTag = null;
 
@@ -36,7 +44,26 @@ namespace ZL.Unity
             }
         }
 
+        static UnitedPropertyAttribute()
+        {
+            defaultLabelHeight = 18f;
+
+            defaultSpaceHeight = 8f;
+
+            defaultIndentWidth = 15f;
+
+            defaultLineHeight = 1f;
+
+            defaultIconSize = IconSize.Small;
+
+            defaultFontSize = EditorStyles.label.fontSize;
+
+            defaultTextColor = EditorStyles.label.normal.textColor;
+        }
+
 #if UNITY_EDITOR
+
+        public virtual void Initialize() { }
 
         public abstract bool Draw(Drawer drawer);
 
@@ -44,11 +71,9 @@ namespace ZL.Unity
 
         public sealed class Drawer : PropertyDrawer
         {
-            private static readonly Dictionary<int, Dictionary<int, Info>> DrawerCaches = new();
+            private static readonly Dictionary<int, Dictionary<int, Info>> DrawerInfos = new();
 
             public SerializedProperty Property { get; private set; }
-
-            public SerializedPropertyType PropertyType { get; private set; }
 
             public Object TargetObject { get; private set; }
 
@@ -56,33 +81,25 @@ namespace ZL.Unity
 
             private int instanceID;
 
-            private int fieldHashCode;
+            private int hashCode;
 
             public Info Current { get; private set; }
 
-            private new UnitedPropertyAttribute attribute = null;
+            private UnitedPropertyAttribute unitedPropertyAttribute;
 
-            public SerializedPropertyFieldType PropertyFieldType { get; set; }
-
-            public float PropertyHeight { get; private set; } = 0f;
-
-            private Rect PropertyPosition;
-
-            private GUIContent PropertyLabel;
-
-            private GUIStyle PropertyStyle;
+            private float propertyHeight = 0f;
 
             ~Drawer()
             {
-                if (DrawerCaches.ContainsKey(instanceID) == true)
+                if (DrawerInfos.ContainsKey(instanceID) == true)
                 {
-                    if (DrawerCaches[instanceID].ContainsKey(fieldHashCode) == true)
+                    if (DrawerInfos[instanceID].ContainsKey(hashCode) == true)
                     {
-                        DrawerCaches[instanceID].Remove(fieldHashCode);
+                        DrawerInfos[instanceID].Remove(hashCode);
 
-                        if (DrawerCaches[instanceID].Count == 0)
+                        if (DrawerInfos[instanceID].Count == 0)
                         {
-                            DrawerCaches.Remove(instanceID);
+                            DrawerInfos.Remove(instanceID);
                         }
                     }
                 }
@@ -90,103 +107,84 @@ namespace ZL.Unity
 
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
+                Property = property;
+
                 if (Current == null)
                 {
-                    Property = property;
-
-                    PropertyType = (SerializedPropertyType)Property.propertyType;
-
                     TargetObject = Property.serializedObject.targetObject;
 
                     TargetComponent = TargetObject as Component;
 
                     instanceID = TargetComponent.GetInstanceID();
 
-                    if (DrawerCaches.ContainsKey(instanceID) == false)
+                    hashCode = fieldInfo.GetHashCode();
+
+                    if (DrawerInfos.ContainsKey(instanceID) == false)
                     {
-                        DrawerCaches.Add(instanceID, new());
+                        DrawerInfos.Add(instanceID, new());
+
+                        DrawerInfos[instanceID].Add(hashCode, new(label));
                     }
 
-                    fieldHashCode = fieldInfo.GetHashCode();
-                    
-                    if (DrawerCaches[instanceID].ContainsKey(fieldHashCode) == false)
+                    else if (DrawerInfos[instanceID].ContainsKey(hashCode) == false)
                     {
-                        var attributes = GetCustomAttributes(fieldInfo, typeof(UnitedPropertyAttribute));
-
-                        DrawerCaches[instanceID].Add(fieldHashCode, new(attributes.Length, GUI.enabled, EditorGUI.indentLevel));
+                        DrawerInfos[instanceID].Add(hashCode, new(label));
                     }
 
-                    Current = DrawerCaches[instanceID][fieldHashCode];
+                    Current = DrawerInfos[instanceID][hashCode];
 
-                    attribute = (UnitedPropertyAttribute)base.attribute;
+                    unitedPropertyAttribute = (UnitedPropertyAttribute)attribute;
+
+                    unitedPropertyAttribute.Initialize();
                 }
 
-                PropertyFieldType = SerializedPropertyFieldType.Default;
-
-                PropertyHeight = 0f;
-
-                PropertyPosition = position;
+                propertyHeight = 0f;
 
                 var enabled = GUI.enabled;
 
                 var indentLevel = EditorGUI.indentLevel;
 
-                attribute.Draw(this);
+                unitedPropertyAttribute.Draw(this);
 
                 if (Current.IsToggled == true)
                 {
-                    PropertyFieldType = SerializedPropertyFieldType.Empty;
+                    Current.PropertyFieldType = SerializedPropertyFieldType.Empty;
                 }
 
                 GUI.enabled = Current.IsEnabled;
 
                 EditorGUI.indentLevel = Current.IndentLevel + Current.SubIndentLevel;
 
-                PropertyLabel = Current.NewLabel(this, label);
-
-                switch (PropertyFieldType)
+                switch (Current.PropertyFieldType)
                 {
                     case SerializedPropertyFieldType.Default:
 
-                        EditorGUI.PropertyField(PropertyPosition, Property, new(" "), true);
-
-                        PropertyPosition.x += Current.IndentLevel * singleIndentWidth;
-
-                        PropertyPosition.width -= Current.IndentLevel * singleIndentWidth;
-
-                        var labelPosition = PropertyPosition;
-
-                        labelPosition.height = singleLineHeight;
-
-                        int controlID = GUIUtility.GetControlID(FocusType.Passive);
-
-                        PropertyStyle = Current.NewStyle(EditorStyles.label);
-
-                        EditorGUI.HandlePrefixLabel(PropertyPosition, labelPosition, PropertyLabel, controlID, PropertyStyle);
-                        
-                        break;
-
-                    case SerializedPropertyFieldType.Tag:
-
-                        PropertyStyle = Current.NewStyle(EditorStyles.popup);
-
-                        Property.stringValue = EditorGUI.TagField(PropertyPosition, PropertyLabel, Property.stringValue, PropertyStyle);
-
-                        break;
-
-                    case SerializedPropertyFieldType.Layer:
-
-                        PropertyStyle = Current.NewStyle(EditorStyles.popup);
-
-                        Property.intValue = EditorGUI.LayerField(PropertyPosition, PropertyLabel, Property.intValue, PropertyStyle);
+                        EditorGUI.PropertyField(position, Property, Current.Label, true);
 
                         break;
 
                     case SerializedPropertyFieldType.Empty:
 
-                        EditorGUI.PropertyField(PropertyPosition, Property, GUIContent.none, false);
+                        EditorGUI.PropertyField(position, Property, GUIContent.none, false);
 
-                        PropertyHeight -= EditorGUI.GetPropertyHeight(Property, PropertyLabel, true);
+                        propertyHeight -= EditorGUI.GetPropertyHeight(Property, Current.Label, true);
+
+                        break;
+
+                    case SerializedPropertyFieldType.Layer:
+
+                        Property.intValue = EditorGUI.LayerField(position, Current.Label, Property.intValue);
+
+                        break;
+
+                    case SerializedPropertyFieldType.Tag:
+
+                        Property.stringValue = EditorGUI.TagField(position, Current.Label, Property.stringValue);
+
+                        if (Property.stringValue == string.Empty)
+                        {
+                            Property.stringValue = "Untagged";
+                        }
 
                         break;
                 }
@@ -198,7 +196,7 @@ namespace ZL.Unity
 
             public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
             {
-                return EditorGUI.GetPropertyHeight(property, label, true) + PropertyHeight;
+                return EditorGUI.GetPropertyHeight(property, label, true) + propertyHeight;
             }
 
             public bool IsFieldTypeIn(params Type[] types)
@@ -216,11 +214,11 @@ namespace ZL.Unity
                 return false;
             }
 
-            public bool IsPropertyTypeIn(params SerializedPropertyType[] types)
+            public bool IsPropertyTypeIn(params SerializedPropertyType[] propertyTypes)
             {
-                foreach (var type in types)
+                foreach (var propertyType in propertyTypes)
                 {
-                    if (PropertyType == type)
+                    if (Property.propertyType == propertyType)
                     {
                         return true;
                     }
@@ -234,18 +232,18 @@ namespace ZL.Unity
                 return Property.objectReferenceValue == null;
             }
 
-            public bool TryFindProperty(string name, SerializedPropertyType type, out SerializedProperty result)
+            public bool TryFindProperty(string name, SerializedPropertyType propertyType, out SerializedProperty result)
             {
                 if (TryFindProperty(name, out result) == false)
                 {
-                    DrawHelpBox(MessageType.Error, $"{attribute.NameTag} No property found matching \"{name}\".");
+                    DrawHelpBox($"{unitedPropertyAttribute.NameTag} No property found matching \"{name}\".", MessageType.Error);
 
                     return false;
                 }
 
-                if (result.propertyType != (UnityEditor.SerializedPropertyType)type)
+                if (result.propertyType != propertyType)
                 {
-                    DrawHelpBox(MessageType.Error, $"{attribute.NameTag} Property type is mismatch.");
+                    DrawHelpBox($"{unitedPropertyAttribute.NameTag} Property type is mismatch.", MessageType.Error);
 
                     return false;
                 }
@@ -288,7 +286,7 @@ namespace ZL.Unity
 
                 if (method == null)
                 {
-                    DrawHelpBox(MessageType.Error, $"{attribute.NameTag} No method found matching \"{methodName}\".");
+                    DrawHelpBox($"{unitedPropertyAttribute.NameTag} No method found matching \"{methodName}\".", MessageType.Error);
                 }
             }
 
@@ -316,70 +314,37 @@ namespace ZL.Unity
                 EditorGUI.LabelField(position, label);
             }
 
-            public void DrawEmpty(float height = 8f)
+            public void DrawEmpty(float height)
             {
                 DrawLine(height - 1f, Color.clear);
             }
 
-            public void DrawLine(Color? color = null)
-            {
-                DrawLine(1f, color);
-            }
-
-            public void DrawLine(float height, Color? color = null)
+            public void DrawLine(float height, Color color)
             {
                 Rect position = EditorGUILayout.GetControlRect(false, height);
 
-                if (color == null)
-                {
-                    color = Utility.NormalTextColor;
-                }
-
-                EditorGUI.DrawRect(position, (Color)color);
+                EditorGUI.DrawRect(position, color);
             }
 
-            public void DrawText(int? fontSize, FontStyle? fontStyle, Color? color, string text)
+            public void DrawText(GUIContent label, GUIStyle style)
             {
-                GUIStyle style = new(EditorStyles.label);
-
-                if (fontSize != null)
-                {
-                    style.fontSize = (int)fontSize;
-                }
-
-                if (fontStyle != null)
-                {
-                    style.fontStyle = (FontStyle)fontStyle;
-                }
-
-                if (color != null)
-                {
-                    style.normal.textColor = (Color)color;
-                }
-
-                GUIContent label = new(text);
-
                 Rect position = GUILayoutUtility.GetRect(label, style);
 
                 EditorGUI.LabelField(position, label, style);
             }
 
-            public void DrawHelpBox(string message)
+            public void DrawHelpBox(string message, MessageType type)
             {
-                DrawHelpBox(MessageType.None, IconSize.None, message);
+                DrawHelpBox(message, type, defaultIconSize);
             }
 
-            public void DrawHelpBox(MessageType type, string message)
+            public void DrawHelpBox(string message, MessageType type, IconSize iconSize)
             {
-                DrawHelpBox(type, IconSize.Small, message);
+                DrawHelpBox(new GUIContent(message, Utility.GetHelpIcon(type, iconSize)));
             }
 
-            public void DrawHelpBox(MessageType type, IconSize iconSize, string message)
+            public void DrawHelpBox(GUIContent label)
             {
-                //EditorGUILayout.LabelField(GUIContent.none, new(message, Utility.GetHelpIcon(type, iconSize)), EditorStyles.helpBox);
-
-                var label = new GUIContent(message, Utility.GetHelpIcon(type, iconSize));
-
                 var style = EditorStyles.helpBox;
 
                 EditorGUILayout.BeginHorizontal();
@@ -393,7 +358,7 @@ namespace ZL.Unity
 
             public sealed class Info
             {
-                public readonly int attributeLength;
+                public GUIContent Label { get; private set; }
 
                 public bool IsToggled { get; set; } = false;
 
@@ -401,116 +366,23 @@ namespace ZL.Unity
 
                 public int IndentLevel { get; set; }
 
-                public int SubIndentLevel { get; set; }
+                public int SubIndentLevel { get; set; } = 0;
 
-                private string originalPropertyText = null;
+                public SerializedPropertyFieldType PropertyFieldType { get; set; } = SerializedPropertyFieldType.Default;
 
-                public string PropertyText { get; set; } = null;
-
-                public string PropertyTooltip { get; set; } = null;
-
-                public int? PropertyFontSize { get; set; } = null;
-
-                public FontStyle? PropertyFontStyle { get; set; } = null;
-
-                public Color? PropertyTextColor { get; set; } = null;
-
-                private int drawCount = 0;
-
-                public Info(int attributeCount, bool enabled, int indentLevel)
+                public Info(GUIContent label)
                 {
-                    attributeLength = attributeCount;
+                    Label = new(label);
 
-                    IsEnabled = enabled;
+                    IsEnabled = GUI.enabled;
 
-                    IndentLevel = indentLevel;
-                }
-
-                public GUIContent NewLabel(Drawer drawer, GUIContent label)
-                {
-                    GUIContent newLabel = new(label);
-
-                    if (originalPropertyText == null)
-                    {
-                        originalPropertyText = label.text;
-                    }
-
-                    if (++drawCount != attributeLength)
-                    {
-                        newLabel.text = " ";
-                    }
-
-                    else
-                    {
-                        drawCount = 0;
-
-                        if (PropertyText != null)
-                        {
-                            newLabel.text = PropertyText;
-                        }
-
-                        else
-                        {
-                            newLabel.text = originalPropertyText;
-                        }
-                    }
-
-                    if (PropertyTooltip != null)
-                    {
-                        newLabel.tooltip = PropertyTooltip;
-                    }
-
-                    return newLabel;
-                }
-
-                public GUIStyle NewStyle(GUIStyle style)
-                {
-                    GUIStyle newStyle = new(style);
-
-                    if (PropertyFontSize != null)
-                    {
-                        newStyle.fontSize = (int)PropertyFontSize;
-                    }
-
-                    if (PropertyFontStyle != null)
-                    {
-                        newStyle.fontStyle = (FontStyle)PropertyFontStyle;
-                    }
-
-                    var textColor = newStyle.normal.textColor;
-
-                    if (PropertyTextColor != null)
-                    {
-                        textColor = (Color)PropertyTextColor;
-                    }
-
-                    newStyle.normal.textColor = textColor;
-
-                    newStyle.hover.textColor = textColor;
-
-
-                    return newStyle;
+                    IndentLevel = EditorGUI.indentLevel;
                 }
             }
         }
 
         protected static class Utility
         {
-            private static Color? normalTextColor = null;
-
-            public static Color? NormalTextColor
-            {
-                get
-                {
-                    if (normalTextColor == null)
-                    {
-                        normalTextColor = EditorStyles.label.normal.textColor;
-                    }
-
-                    return normalTextColor;
-                }
-            }
-
             private static Texture2D smallInfoIcon = null;
 
             public static Texture2D SmallInfoIcon

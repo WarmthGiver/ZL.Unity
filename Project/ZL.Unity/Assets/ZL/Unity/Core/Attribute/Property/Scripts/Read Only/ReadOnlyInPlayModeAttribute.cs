@@ -1,7 +1,11 @@
+using System.Diagnostics;
+
 using UnityEngine;
 
 namespace ZL.Unity
 {
+    [Conditional("UNITY_EDITOR")]
+
     public sealed class ReadOnlyInPlayModeAttribute : UnitedPropertyAttribute
     {
 #if UNITY_EDITOR

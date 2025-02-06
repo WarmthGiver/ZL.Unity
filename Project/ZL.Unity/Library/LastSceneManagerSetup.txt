@@ -1,5 +1,6 @@
 sceneSetups:
-- path: Assets/ZL/Unity/UI/Button+/Demos/Scenes/Button Plus Demo Scene.unity
+- path: Assets/ZL/Unity/Core/Demos/United Property Attribute Demo/Scenes/United Property
+    Attribute Demo Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

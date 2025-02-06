@@ -1,37 +1,37 @@
 using System;
 
+using System.Diagnostics;
+
+using UnityEngine;
+
 namespace ZL.Unity
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
 
+    [Conditional("UNITY_EDITOR")]
+
     public class HelpBoxAttribute : UnitedPropertyAttribute
     {
-        private readonly MessageType type;
+        private readonly GUIContent label;
 
-        private readonly IconSize iconSize;
+        private static readonly MessageType type = MessageType.None;
 
-        private readonly string message;
+        public HelpBoxAttribute(string message) : this(message, type, defaultIconSize) { }
 
-        public HelpBoxAttribute(string message) : this(MessageType.None, IconSize.None, message) { }
+        public HelpBoxAttribute(string message, IconSize iconSize) : this(message, type, iconSize) { }
+        
+        public HelpBoxAttribute(string message, MessageType type) : this(message, type, defaultIconSize) { }
 
-        public HelpBoxAttribute(IconSize iconSize, string message) : this(MessageType.None, iconSize, message) { }
-
-        public HelpBoxAttribute(MessageType type, string message) : this(type, IconSize.Small, message) { }
-
-        public HelpBoxAttribute(MessageType type, IconSize iconSize, string message) : base()
+        public HelpBoxAttribute(string message, MessageType type, IconSize iconSize)
         {
-            this.type = type;
-
-            this.iconSize = iconSize;
-
-            this.message = message;
+            label = new(message, Utility.GetHelpIcon(type, iconSize));
         }
 
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.DrawHelpBox(type, iconSize, message);
+            drawer.DrawHelpBox(label);
 
             return true;
         }

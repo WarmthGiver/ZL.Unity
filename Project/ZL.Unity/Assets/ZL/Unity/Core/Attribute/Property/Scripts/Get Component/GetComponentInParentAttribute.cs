@@ -1,5 +1,9 @@
+using System.Diagnostics;
+
 namespace ZL.Unity
 {
+    [Conditional("UNITY_EDITOR")]
+
     public sealed class GetComponentInParentAttribute : GetComponentAttribute
     {
 #if UNITY_EDITOR
