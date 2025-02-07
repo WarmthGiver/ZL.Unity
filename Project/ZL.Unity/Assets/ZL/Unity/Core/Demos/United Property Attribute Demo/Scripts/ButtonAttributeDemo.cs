@@ -6,43 +6,51 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo.UnitedPropertyAttribute
+namespace ZL.Unity.Demo.CustomPropertyAttribute
 {
     [AddComponentMenu("")]
 
     public sealed class ButtonAttributeDemo : MonoBehaviour
 	{
         [Space]
-        
-        [Empty]
 
-        [Comment("Default")]
+        [DrawField]
 
-        [Button(nameof(PrintText))]
+        [Interval]
 
-        [Empty]
+        [Comment("[Button(\"PrintText\")]")]
 
-        [Comment("Text = \"PRINT TEXT\"")]
+        [Button("PrintText")]
 
-        [Button(nameof(PrintText), Text = "PRINT TEXT")]
+        [Interval]
 
-        [Empty]
+        [Comment("[Button(\"PrintText\", \"PRINT TEXT\")]")]
 
-        [Comment("Height = 36f")]
+        [Button("PrintText", "PRINT TEXT")]
 
-        [Button(nameof(PrintText), Height = 36f)]
+        [Interval]
 
-        [Empty]
+        [Comment("[Button(\"PrintText\", 36f)]")]
 
-        [Comment("Full Option")]
+        [Button("PrintText", 36f)]
 
-        [Button(nameof(PrintText), Text = "PRINT TEXT", Height = 36f)]
+        [Interval]
 
-        [Empty]
+        [Comment("[Button(\"PrintText\", \"PRINT TEXT\", 36f)]")]
 
-        [Comment("Wrong Method Name*")]
+        [Button("PrintText", "PRINT TEXT", 36f)]
 
-        [Button("printText")]
+        [Interval]
+
+        [Comment("[Button(null)]")]
+
+        [Button(null)]
+
+        [Interval]
+
+        [Comment("[Button(\"print text\")]")]
+
+        [Button("print text")]
 
         public string text = "Hello, World!";
 

@@ -16,46 +16,53 @@ namespace ZL.Unity
 
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class CommentAttribute : UnitedPropertyAttribute
+    public sealed class CommentAttribute : CustomPropertyAttribute
     {
         private readonly GUIContent label;
 
-        private GUIStyle style;
+        private readonly GUIStyle style;
 
-        public int FontSize { get; set; } = defaultFontSize;
+        private static readonly int fontSize = defaultFontSize;
 
-        public FontStyle FontStyle { get; set; } = FontStyle.Italic;
+        private static readonly FontStyle fontStyle = FontStyle.Italic;
 
-        public float R { get; set; } = 0.5f;
+        private static readonly string hexColor = "#808080ff";
 
-        public float G { get; set; } = 0.5f;
+        public CommentAttribute(string text) : this(text, fontSize, fontStyle, hexColor) { }
 
-        public float B { get; set; } = 0.5f;
+        public CommentAttribute(string text, string hexColor) : this(text, fontSize, fontStyle, hexColor) { }
 
-        public float A { get; set; } = 1f;
+        public CommentAttribute(string text, FontStyle fontStyle) : this(text, fontSize, fontStyle, hexColor) { }
 
-        public CommentAttribute(string text)
+        public CommentAttribute(string text, FontStyle fontStyle, string hexColor) : this(text, fontSize, fontStyle, hexColor) { }
+
+        public CommentAttribute(string text, int fontSize) : this(text, fontSize, fontStyle, hexColor) { }
+
+        public CommentAttribute(string text, int fontSize, string hexColor) : this(text, fontSize, fontStyle, hexColor) { }
+
+        public CommentAttribute(string text, int fontSize, FontStyle fontStyle) : this(text, fontSize, fontStyle, hexColor) { }
+
+        public CommentAttribute(string text, int fontSize, FontStyle fontStyle, string hexColor)
         {
             label = new(text);
+
+            style = new(EditorStyles.label)
+            {
+                fontSize = fontSize,
+
+                fontStyle = fontStyle
+            };
+
+            if (ColorUtility.TryParseHtmlString(hexColor, out Color textColor) == true)
+            {
+                style.normal.textColor = textColor;
+            }
         }
 
 #if UNITY_EDITOR
 
-        public override void Initialize()
-        {
-            style = new(EditorStyles.label);
-
-            style.fontSize = FontSize;
-
-            style.fontStyle = FontStyle;
-
-            style.normal.textColor = new(R, G, B, A);
-        }
-
         public override bool Draw(Drawer drawer)
         {
-            
-
             drawer.DrawText(label, style);
 
             return true;

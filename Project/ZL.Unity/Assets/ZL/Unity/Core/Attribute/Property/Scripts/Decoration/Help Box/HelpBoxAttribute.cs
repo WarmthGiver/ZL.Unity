@@ -1,7 +1,7 @@
 using System;
 
 using System.Diagnostics;
-
+using UnityEditor;
 using UnityEngine;
 
 namespace ZL.Unity
@@ -10,9 +10,9 @@ namespace ZL.Unity
 
     [Conditional("UNITY_EDITOR")]
 
-    public class HelpBoxAttribute : UnitedPropertyAttribute
+    public class HelpBoxAttribute : CustomPropertyAttribute
     {
-        private readonly GUIContent label;
+        private readonly string message;
 
         private static readonly MessageType type = MessageType.None;
 
@@ -24,14 +24,14 @@ namespace ZL.Unity
 
         public HelpBoxAttribute(string message, MessageType type, IconSize iconSize)
         {
-            label = new(message, Utility.GetHelpIcon(type, iconSize));
+            this.message = message;
         }
 
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.DrawHelpBox(label);
+            drawer.DrawHelpBox(message, MessageType.None);
 
             return true;
         }

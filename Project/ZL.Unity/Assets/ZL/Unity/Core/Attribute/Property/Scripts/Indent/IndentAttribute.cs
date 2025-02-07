@@ -1,23 +1,29 @@
+using System;
+
 using System.Diagnostics;
 
 namespace ZL.Unity
 {
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
+
     [Conditional("UNITY_EDITOR")]
 
-    public class IndentAttribute : UnitedPropertyAttribute
+    public sealed class IndentAttribute : CustomPropertyAttribute
     {
-        protected readonly int level;
+        private readonly float width;
 
-        public IndentAttribute(int level)
+        public IndentAttribute(int level) : this(level * defaultIndentWidth) { }
+
+        public IndentAttribute(float width)
         {
-            this.level = level;
+            this.width = width;
         }
 
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.Current.IndentLevel = level;
+            drawer.Indent(width);
 
             return true;
         }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo.UnitedPropertyAttribute
+namespace ZL.Unity.Demo.CustomPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -14,9 +14,9 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
     {
         [Space]
 
-        [Label(Text = "Help Box")]
+        [Label("Help Box")]
 
-        [Empty(2f)]
+        [Interval(2f)]
 
         [Comment("Default")]
 
@@ -26,13 +26,13 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
 
         [Space]
 
-        [Empty(2f)]
+        [Interval(2f)]
 
         [Comment("Default")]
 
         [InfoBox("This is info message.")]
 
-        [Empty(2f)]
+        [Interval(2f)]
 
         [Comment("Icon Size = Large")]
 
@@ -42,13 +42,13 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
 
         [Space]
 
-        [Empty(2f)]
+        [Interval(2f)]
 
         [Comment("Default")]
 
         [WarningBox("This is warning message.")]
 
-        [Empty(2f)]
+        [Interval(2f)]
 
         [Comment("Icon Size = Large")]
 
@@ -58,13 +58,13 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
 
         [Space]
 
-        [Empty(2f)]
+        [Interval(2f)]
 
         [Comment("Default")]
 
         [ErrorBox("This is error message.")]
 
-        [Empty(2f)]
+        [Interval(2f)]
 
         [Comment("Icon Size = Large")]
 

@@ -8,7 +8,7 @@ using UnityEngine;
 
 using ZL.Unity.Collections;
 
-namespace ZL.Unity.Demo.UnitedPropertyAttribute
+namespace ZL.Unity.Demo.CustomPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -16,11 +16,9 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
     {
         [Space]
 
-        [Line]
+        [Line(3f)]
 
-        [Line]
-
-        [Line]
+        [DrawFieldAttribute]
 
         public Wrapper<List<TestClass>> textList;
 
@@ -30,21 +28,17 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
         {
             [LayerField]
 
-            [Line]
+            [Line(1f, "#00FF00")]
 
-            [Line]
-
-            [Line]
+            [DrawFieldAttribute]
 
             public int layer;
 
             [TagField]
 
-            [Line]
+            [Line(1f, "#0000FF")]
 
-            [Line]
-
-            [Line]
+            [DrawFieldAttribute]
 
             public string tag = "test";
         }

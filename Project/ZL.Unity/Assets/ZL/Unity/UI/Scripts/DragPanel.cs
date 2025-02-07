@@ -22,11 +22,15 @@ namespace ZL.Unity.UI
 
         private float maxMagnitude = 10f;
 
-        [SerializeField, ReadOnly]
+        [SerializeField]
+        
+        [ReadOnly, DrawField]
 
         private Vector2 pointerDownPosition;
 
-        [SerializeField, ReadOnly]
+        [SerializeField]
+        
+        [ReadOnly, DrawField]
 
         private Vector2 dragDirection;
 

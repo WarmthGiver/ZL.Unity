@@ -24,7 +24,7 @@ namespace ZL.Unity.Audio
 
         [SerializeField, Essential]
 
-        [Button(nameof(LoadAudioMixerParameters), Text = "Load Parameters")]
+        [Button(nameof(LoadAudioMixerParameters), "Load Parameters")]
 
         private AudioMixer audioMixer = null;
 

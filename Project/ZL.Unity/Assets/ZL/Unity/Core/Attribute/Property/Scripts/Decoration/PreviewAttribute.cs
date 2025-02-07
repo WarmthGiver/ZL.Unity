@@ -6,7 +6,7 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class PreviewAttribute : UnitedPropertyAttribute
+    public sealed class PreviewAttribute : CustomPropertyAttribute
     {
 #if UNITY_EDITOR
 

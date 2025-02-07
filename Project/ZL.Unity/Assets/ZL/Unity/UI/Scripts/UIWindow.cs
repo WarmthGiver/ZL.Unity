@@ -12,13 +12,17 @@ namespace ZL.Unity.UI
     {
         [Space]
 
-        [SerializeField, GetComponentInParent, ReadOnly]
+        [SerializeField]
+        
+        [GetComponentInParent, ReadOnly, DrawField]
 
         private UIWindowManager playerCanvas;
 
         [Space]
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+        
+        [GetComponent, ReadOnly, DrawField]
 
         private CanvasGroupTweener canvasGroupTweener;
 

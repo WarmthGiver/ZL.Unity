@@ -10,26 +10,36 @@ namespace ZL.Unity
 
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class ButtonAttribute : UnitedPropertyAttribute
+    public sealed class ButtonAttribute : CustomPropertyAttribute
     {
         private readonly string methodName;
 
-        public string Text { get; set; } = null;
+        private readonly string text;
 
-        public float Height { get; set; } = defaultLabelHeight;
+        private readonly float height;
 
-        public ButtonAttribute(string methodName)
+        public ButtonAttribute(string methodName) : this(methodName, null, defaultLabelHeight) { }
+
+        public ButtonAttribute(string methodName, float height) : this(methodName, null, height) { }
+
+        public ButtonAttribute(string methodName, string text) : this(methodName, text, defaultLabelHeight) { }
+
+        public ButtonAttribute(string methodName, string text, float height)
         {
             this.methodName = methodName;
 
-            Text ??= methodName.SplitWords(' ');
+            text ??= methodName?.SplitWords(' ');
+
+            this.text = text;
+
+            this.height = height;
         }
 
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.DrawButton(methodName, Text, Height);
+            drawer.DrawButton(methodName, text, height);
 
             return true;
         }

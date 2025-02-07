@@ -6,13 +6,13 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class ReadOnlyInPlayModeAttribute : UnitedPropertyAttribute
+    public sealed class ReadOnlyInPlayModeAttribute : CustomPropertyAttribute
     {
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.Current.IsEnabled = !Application.isPlaying;
+            drawer.IsEnabled = !Application.isPlaying;
 
             return true;
         }

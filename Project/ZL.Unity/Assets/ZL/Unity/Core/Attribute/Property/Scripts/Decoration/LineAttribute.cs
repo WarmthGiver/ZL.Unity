@@ -10,25 +10,27 @@ namespace ZL.Unity
 
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class LineAttribute : UnitedPropertyAttribute
+    public sealed class LineAttribute : CustomPropertyAttribute
     {
-        public float Height { get; set; } = defaultLineHeight;
+        private readonly float height;
 
-        private Color color = defaultTextColor;
+        private readonly Color color = defaultTextColor;
 
-        public float R { get => color.r; set => color.r = value; }
+        public LineAttribute(float height, string hexColor = null)
+        {
+            this.height = height;
 
-        public float G { get => color.g; set => color.g = value; }
-
-        public float B { get => color.b; set => color.b = value; }
-
-        public float A { get => color.a ; set => color.a = value; }
+            if (ColorUtility.TryParseHtmlString(hexColor, out Color color) == true)
+            {
+                this.color = color;
+            }
+        }
 
 #if UNITY_EDITOR
 
         public override bool Draw(Drawer drawer)
         {
-            drawer.DrawLine(Height, color);
+            drawer.DrawLine(height, color);
 
             return true;
         }

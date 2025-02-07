@@ -10,7 +10,7 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class LayerFieldAttribute : UnitedPropertyAttribute
+    public sealed class LayerFieldAttribute : CustomPropertyAttribute
     {
 #if UNITY_EDITOR
 
@@ -23,7 +23,7 @@ namespace ZL.Unity
                 return false;
             }
 
-            drawer.Current.PropertyFieldType = SerializedPropertyFieldType.Layer;
+            drawer.style = SerializedPropertyFieldStyle.Layer;
 
             return true;
         }

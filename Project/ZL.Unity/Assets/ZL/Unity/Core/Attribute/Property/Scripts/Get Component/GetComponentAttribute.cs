@@ -6,7 +6,7 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public class GetComponentAttribute : UnitedPropertyAttribute
+    public class GetComponentAttribute : CustomPropertyAttribute
     {
 #if UNITY_EDITOR
 

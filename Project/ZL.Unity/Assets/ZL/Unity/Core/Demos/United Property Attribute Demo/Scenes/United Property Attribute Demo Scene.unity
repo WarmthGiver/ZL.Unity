@@ -218,6 +218,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textList:
     value:
+    - layer: 5
+      tag: Untagged
+    - layer: 2
+      tag: Untagged
     - layer: 0
       tag: Untagged
 --- !u!4 &197053212
@@ -249,6 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textList:
     value:
+    - layer: 0
+      tag: Untagged
+    - layer: 0
+      tag: Untagged
     - layer: 0
       tag: Untagged
 --- !u!1 &314571756
@@ -338,6 +346,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3dbaa2cd944d54abd99377513ed143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test0: 
+  test1: 
+  test2: 
+  test3: 
+  test4: 
+  test5: 
+  test6: 
+  test7: 
+  test8: 
+  test9: 
+  test10: 
+  test11: 
 --- !u!4 &433544922
 Transform:
   m_ObjectHideFlags: 0
@@ -365,6 +385,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3dbaa2cd944d54abd99377513ed143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test0: 
+  test1: 
+  test2: 
+  test3: 
+  test4: 
+  test5: 
+  test6: 
+  test7: 
+  test8: 
+  test9: 
+  test10: 
+  test11: 
 --- !u!1 &445285943
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,69 +456,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: Hello, World!
---- !u!1 &556395402
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 556395404}
-  - component: {fileID: 556395403}
-  - component: {fileID: 556395405}
-  m_Layer: 0
-  m_Name: Label Attribute Demo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &556395403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556395402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a14904233f83224ba9bda8b06e0a368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: 
-  tooltip: 
-  textTooltip: 
---- !u!4 &556395404
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556395402}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &556395405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556395402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a14904233f83224ba9bda8b06e0a368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: 
-  tooltip: 
-  textTooltip: 
 --- !u!1 &860003687
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +620,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387e4d6c30ff60f4c909dc03fb7702bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test0: 
+  test1: 
+  test2: 
+  test3: 
+  test4: 
+  test5: 
+  test6: 
+  test7: 
+  test8: 
+  test9: 
+  test10: 
 --- !u!4 &1978196252
 Transform:
   m_ObjectHideFlags: 0
@@ -678,6 +658,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387e4d6c30ff60f4c909dc03fb7702bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test0: 
+  test1: 
+  test2: 
+  test3: 
+  test4: 
+  test5: 
+  test6: 
+  test7: 
+  test8: 
+  test9: 
+  test10: 
 --- !u!1 &2024584254
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,12 +746,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4078f4f425b65a9428330e390ba28a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getComponent: {fileID: 2137938505}
-  getComponentInParent: {fileID: 2137938505}
-  getComponentInParentOnly: {fileID: 181501026}
-  getComponentInChildren: {fileID: 2137938505}
-  getComponentInChildrenOnly: {fileID: 2024584255}
-  invalidTypeTest: 
+  test1: {fileID: 2137938505}
+  test2: {fileID: 2137938505}
+  test3: {fileID: 181501026}
+  test4: {fileID: 2137938505}
+  test5: {fileID: 2024584255}
+  test6: 
 --- !u!114 &2137938507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,12 +764,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4078f4f425b65a9428330e390ba28a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getComponent: {fileID: 2137938505}
-  getComponentInParent: {fileID: 2137938505}
-  getComponentInParentOnly: {fileID: 181501026}
-  getComponentInChildren: {fileID: 2137938505}
-  getComponentInChildrenOnly: {fileID: 2024584255}
-  invalidTypeTest: 
+  test1: {fileID: 2137938505}
+  test2: {fileID: 2137938505}
+  test3: {fileID: 181501026}
+  test4: {fileID: 2137938505}
+  test5: {fileID: 2024584255}
+  test6: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -790,5 +781,4 @@ SceneRoots:
   - {fileID: 433544922}
   - {fileID: 1200856164}
   - {fileID: 1978196252}
-  - {fileID: 556395404}
   - {fileID: 197053212}

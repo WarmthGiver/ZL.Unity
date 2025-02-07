@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo.UnitedPropertyAttribute
+namespace ZL.Unity.Demo.CustomPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -14,35 +14,89 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
     {
         [Space]
 
-        [Indent(-1), Label(Text = "Indent -1")]
+        [Indent(-1)]
+
+        [Comment("[Indent(-1)]")]
+
+        [Label("Indent -1")]
+
+        [DrawFieldAttribute]
 
         public string indentMinus1;
 
-        [Indent(0), Label(Text = "Indent  0")]
 
-        public string indent0;
-
-        [Indent(1), Label(Text = "Indent  +1")]
-
-        public string indentPlus1;
 
         [Space]
 
-        public Class inClass;
+        [Indent(0)]
+
+        [Comment("[Indent(0)]")]
+
+        [Label("Indent  0")]
+
+        [DrawFieldAttribute]
+
+        public string indent0;
+
+
+
+        [Space]
+
+        [Indent(1)]
+
+        [Comment("[Indent(1)]")]
+
+        [Label("Indent  +1")]
+
+        [DrawFieldAttribute]
+
+        public string indentPlus1;
+
+
+
+        [Space]
+
+        public TextClass inClass;
 
         [Serializable]
 
-        public sealed class Class
+        public sealed class TextClass
         {
-            [Indent(-1), Label(Text = "Indent -1")]
+            [Indent(-1)]
+
+            [Comment("[Indent(-1)]")]
+
+            [Label("Indent -1")]
+
+            [DrawFieldAttribute]
 
             public string indentMinus1;
 
-            [Indent(0), Label(Text = "Indent  0")]
+
+
+            [Space]
+
+            [Indent(0)]
+
+            [Comment("[Indent(0)]")]
+
+            [Label("Indent  0")]
+
+            [DrawFieldAttribute]
 
             public string indent0;
 
-            [Indent(1), Label(Text = "Indent  +1")]
+
+
+            [Space]
+
+            [Indent(1)]
+
+            [Comment("[Indent(1)]")]
+
+            [Label("Indent  +1")]
+
+            [DrawFieldAttribute]
 
             public string indentPlus1;
         }

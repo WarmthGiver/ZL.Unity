@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Demo.UnitedPropertyAttribute
+namespace ZL.Unity.Demo.CustomPropertyAttribute
 {
     [AddComponentMenu("")]
 
@@ -14,38 +14,62 @@ namespace ZL.Unity.Demo.UnitedPropertyAttribute
     {
         [Space]
 
+        [Comment("[GetComponent]")]
+
         [GetComponent]
 
-        public Transform getComponent;
-        
-        [Label(Text = " \" In Parent")]
+        [DrawFieldAttribute]
 
-        [GetComponentInParent]
-
-        public Transform getComponentInParent;
-
-        [Label(Text = " \" In Parent Only")]
-
-        [GetComponentInParentOnly]
-
-        public Transform getComponentInParentOnly;
-
-        [Label(Text = " \" In Chilren")]
-
-        [GetComponentInChildren]
-
-        public Transform getComponentInChildren;
-
-        [Label(Text = " \" In Chilren Only")]
-
-        [GetComponentInChildrenOnly]
-
-        public Transform getComponentInChildrenOnly;
+        public Transform test1;
 
         [Space]
 
+        [Comment("[GetComponentInParent]")]
+
+        [GetComponentInParent]
+
+        [DrawFieldAttribute]
+
+        public Transform test2;
+
+        [Space]
+
+        [Comment("[GetComponentInParentOnly]")]
+
+        [GetComponentInParentOnly]
+
+        [DrawField]
+
+        public Transform test3;
+
+        [Space]
+
+        [Comment("[GetComponentInChildren]")]
+
+        [GetComponentInChildren]
+
+        [DrawFieldAttribute]
+
+        public Transform test4;
+
+        [Space]
+
+        [Comment("[GetComponentInChildrenOnly]")]
+
+        [GetComponentInChildrenOnly]
+
+        [DrawFieldAttribute]
+
+        public Transform test5;
+
+        [Space]
+
+        [Comment("[GetComponent]")]
+
         [GetComponent]
 
-        public string invalidTypeTest;
+        [DrawFieldAttribute]
+
+        public string test6;
     }
 }
