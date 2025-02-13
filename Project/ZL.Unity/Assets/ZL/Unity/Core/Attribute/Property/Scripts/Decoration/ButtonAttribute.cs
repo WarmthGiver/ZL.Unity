@@ -2,6 +2,8 @@ using System;
 
 using System.Diagnostics;
 
+using System.Reflection;
+
 using Unity.VisualScripting;
 
 namespace ZL.Unity
@@ -16,32 +18,31 @@ namespace ZL.Unity
 
         private readonly string text;
 
-        private readonly float height;
+        private MethodInfo method = null;
 
-        public ButtonAttribute(string methodName) : this(methodName, null, defaultLabelHeight) { }
+        public float Height { get; set; } = defaultLabelHeight;
 
-        public ButtonAttribute(string methodName, float height) : this(methodName, null, height) { }
-
-        public ButtonAttribute(string methodName, string text) : this(methodName, text, defaultLabelHeight) { }
-
-        public ButtonAttribute(string methodName, string text, float height)
+        public ButtonAttribute(string methodName, string text = null)
         {
             this.methodName = methodName;
 
             text ??= methodName?.SplitWords(' ');
 
             this.text = text;
-
-            this.height = height;
         }
 
 #if UNITY_EDITOR
 
-        public override bool Draw(Drawer drawer)
+        protected override void Initialize(Drawer drawer)
         {
-            drawer.DrawButton(methodName, text, height);
+            var type = drawer.TargetComponent.GetType();
 
-            return true;
+            method = type.GetMethod(methodName);
+        }
+
+        protected override void Draw(Drawer drawer)
+        {
+            drawer.DrawButton(method, text, Height);
         }
 
 #endif

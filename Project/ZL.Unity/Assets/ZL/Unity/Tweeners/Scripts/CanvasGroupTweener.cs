@@ -22,7 +22,7 @@ namespace ZL.Unity.Tweeners
 
         [Space]
 
-        [Indent(1), SerializeField]
+        [AddIndent(1), SerializeField]
 
         private bool disableOnFaded = true;
 
@@ -42,15 +42,15 @@ namespace ZL.Unity.Tweeners
             }
         }
 
-        [Indent(1), SerializeField, Range(0f, 1f), ReadOnlyInPlayMode]
+        [AddIndent(1), SerializeField, Range(0f, 1f), ReadOnlyInPlayMode]
 
         private float minAlpha = 0f;
 
-        [Indent(1), SerializeField, Range(0f, 1f), ReadOnlyInPlayMode]
+        [AddIndent(1), SerializeField, Range(0f, 1f), ReadOnlyInPlayMode]
 
         private float maxAlpha = 1f;
 
-        [Indent(1), SerializeField]
+        [AddIndent(1), SerializeField]
 
         private float fadeDuration = 0.1f;
 

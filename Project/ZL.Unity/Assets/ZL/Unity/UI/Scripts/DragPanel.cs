@@ -24,13 +24,13 @@ namespace ZL.Unity.UI
 
         [SerializeField]
         
-        [ReadOnly, DrawField]
+        [ReadOnly, DrawCustomProperty]
 
         private Vector2 pointerDownPosition;
 
         [SerializeField]
         
-        [ReadOnly, DrawField]
+        [ReadOnly, DrawCustomProperty]
 
         private Vector2 dragDirection;
 

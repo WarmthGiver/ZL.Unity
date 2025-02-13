@@ -14,7 +14,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
         
-        [GetComponentInParent, ReadOnly, DrawField]
+        [GetComponentInParent, ReadOnly, DrawCustomProperty]
 
         private UIWindowManager playerCanvas;
 
@@ -22,7 +22,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
         
-        [GetComponent, ReadOnly, DrawField]
+        [GetComponent, ReadOnly, DrawCustomProperty]
 
         private CanvasGroupTweener canvasGroupTweener;
 

@@ -24,7 +24,7 @@ namespace ZL.Unity.Audio
 
         [SerializeField]
         
-        [Label("Name")]
+        [Alias("Name")]
 
         private string trackName = string.Empty;
 

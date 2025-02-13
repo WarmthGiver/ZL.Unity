@@ -14,18 +14,16 @@ namespace ZL.Unity
     {
 #if UNITY_EDITOR
 
-        public override bool Draw(Drawer drawer)
+        protected override void Draw(Drawer drawer)
         {
-            if (drawer.IsPropertyTypeIn(SerializedPropertyType.String) == false)
+            if (drawer.Property.propertyType != SerializedPropertyType.String)
             {
-                drawer.DrawHelpBox($"{NameTag} Property type is mismatch.", MessageType.Error);
+                drawer.DrawErrorBox($"{NameTag} Property type is mismatch.");
 
-                return false;
+                return;
             }
 
-            drawer.style = SerializedPropertyFieldStyle.Tag;
-
-            return true;
+            drawer.DrawPropertyField(SerializedPropertyFieldType.Tag);
         }
 
 #endif

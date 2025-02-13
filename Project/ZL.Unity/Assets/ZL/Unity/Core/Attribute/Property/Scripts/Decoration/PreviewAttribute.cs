@@ -10,18 +10,16 @@ namespace ZL.Unity
     {
 #if UNITY_EDITOR
 
-        public override bool Draw(Drawer drawer)
+        protected override void Draw(Drawer drawer)
         {
-            if (drawer.IsFieldTypeIn(typeof(Object)) == false)
+            if (drawer.fieldInfo.FieldType.IsSubclassOf(typeof(Object)) == false)
             {
-                drawer.DrawHelpBox($"{NameTag} Field type is invalid.", MessageType.Error);
+                drawer.DrawErrorBox($"{NameTag} Field type is invalid.");
 
-                return false;
+                return;
             }
 
             drawer.DrawPreview();
-
-            return true;
         }
 
 #endif

@@ -4,10 +4,18 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class ErrorBoxAttribute : HelpBoxAttribute
+    public sealed class ErrorBoxAttribute : MessageBoxAttribute
     {
-        public ErrorBoxAttribute(string message) : base(message, MessageType.Error) { }
+        public ErrorBoxAttribute(string message) : base(message) { }
 
-        public ErrorBoxAttribute(string message, IconSize iconSize) : base(message, MessageType.Error, iconSize) { }
+
+#if UNITY_EDITOR
+
+        protected override void Draw(Drawer drawer)
+        {
+            drawer.DrawErrorBox(message);
+        }
+
+#endif
     }
 }

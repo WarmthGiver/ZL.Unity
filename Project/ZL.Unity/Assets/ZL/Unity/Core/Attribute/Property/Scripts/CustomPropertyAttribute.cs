@@ -16,13 +16,11 @@ namespace ZL.Unity
 {
     public abstract class CustomPropertyAttribute : PropertyAttribute
     {
+        protected static readonly int defaultSpaceHeight;
+
         protected static readonly float defaultLabelHeight;
 
-        protected static readonly float defaultIndentWidth;
-
-        protected static readonly float defaultIntervalHeight;
-
-        protected static readonly IconSize defaultIconSize;
+        protected static readonly GUIStyle defaultLabelStyle;
 
         protected static readonly int defaultFontSize;
 
@@ -42,30 +40,33 @@ namespace ZL.Unity
 
         static CustomPropertyAttribute()
         {
+            defaultSpaceHeight = 8;
+
             defaultLabelHeight = 18f;
 
-            defaultIndentWidth = 15f;
+            defaultLabelStyle = EditorStyles.label;
 
-            defaultIntervalHeight = 8f;
+            defaultFontSize = defaultLabelStyle.fontSize;
 
-            defaultIconSize = IconSize.Small;
-
-            defaultFontSize = EditorStyles.label.fontSize;
-
-            defaultTextColor = EditorStyles.label.normal.textColor;
+            defaultTextColor = defaultLabelStyle.normal.textColor;
         }
 
 #if UNITY_EDITOR
 
-        public virtual void Initialize(Drawer drawer) { }
+        protected virtual void Initialize(Drawer drawer) { }
 
-        public abstract bool Draw(Drawer drawer);
+        protected virtual void Preset(Drawer drawer) { }
 
-        [CustomPropertyDrawer(typeof(DrawFieldAttribute), true)]
+        protected virtual void Draw(Drawer drawer) { }
+
+        [CustomPropertyDrawer(typeof(DrawCustomPropertyAttribute), true)]
 
         public sealed class Drawer : PropertyDrawer
         {
+            public Component TargetComponent { get; private set; } = null;
+
             private IEnumerable<CustomPropertyAttribute> attributes = null;
+
 
             private Rect drawPosition;
 
@@ -73,52 +74,70 @@ namespace ZL.Unity
 
             public SerializedProperty Property { get; private set; }
 
-            public Component TargetComponent { get; private set; } = null;
-
-            public GUIContent Label { get; private set; }
+            public GUIContent PropertyLabel { get; private set; }
 
             public bool IsHided { get; set; }
 
             public bool IsEnabled { get; set; }
 
-            public SerializedPropertyFieldStyle style { get; set; }
+            public int IndentLevel { get; set; }
+
+            private bool isPropertyFieldDrawn = false;
 
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
-                if (attributes == null)
+                if (TargetComponent == null)
                 {
+                    TargetComponent = property.serializedObject.targetObject as Component;
+
                     attributes = fieldInfo.GetCustomAttributes<CustomPropertyAttribute>();
+
+                    foreach (var attribute in attributes)
+                    {
+                        attribute.Initialize(this);
+                    }
                 }
 
                 drawPosition = position;
 
-                propertyHeight = 0f;
+                propertyHeight = -2f;
 
                 Property = property;
 
-                TargetComponent = property.serializedObject.targetObject as Component;
-
-                Label = label;
+                PropertyLabel = label;
 
                 IsHided = false;
 
                 var enabled = IsEnabled = GUI.enabled;
 
-                style = SerializedPropertyFieldStyle.Default;
+                var indentLevel = IndentLevel = EditorGUI.indentLevel;
+
+                isPropertyFieldDrawn = false;
 
                 foreach (var attribute in attributes)
                 {
-                    attribute.Initialize(this);
+                    attribute.Preset(this);
 
                     GUI.enabled = IsEnabled;
 
-                    if (IsHided == false)
+                    EditorGUI.indentLevel = IndentLevel;
+
+                    if (IsHided == true)
                     {
-                        attribute.Draw(this);
+                        continue;
                     }
+
+                    attribute.Draw(this);
+                }
+
+                if (isPropertyFieldDrawn == false && IsHided == false)
+                {
+                    DrawPropertyField();
                 }
 
                 GUI.enabled = enabled;
+
+                EditorGUI.indentLevel = indentLevel;
             }
 
             public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -126,103 +145,47 @@ namespace ZL.Unity
                 return propertyHeight;
             }
 
-            public void DrawField()
+            public void DrawPropertyField(SerializedPropertyFieldType propertyFieldType = SerializedPropertyFieldType.Property)
             {
-                switch (style)
-                {
-                    case SerializedPropertyFieldStyle.Default:
+                isPropertyFieldDrawn = true;
 
-                        EditorGUI.PropertyField(drawPosition, Property, Label, true);
+                switch (propertyFieldType)
+                {
+                    case SerializedPropertyFieldType.Property:
+
+                        EditorGUI.PropertyField(drawPosition, Property, PropertyLabel, true);
 
                         break;
 
-                    case SerializedPropertyFieldStyle.Empty:
+                    case SerializedPropertyFieldType.Layer:
 
-                        EditorGUI.PropertyField(drawPosition, Property, GUIContent.none, false);
+                        Property.intValue = EditorGUI.LayerField(drawPosition, PropertyLabel, Property.intValue);
+
+                        break;
+
+                    case SerializedPropertyFieldType.Tag:
+
+                        Property.stringValue = EditorGUI.TagField(drawPosition, PropertyLabel, Property.stringValue);
+
+                        break;
+
+                    case SerializedPropertyFieldType.Empty:
 
                         return;
-
-                    case SerializedPropertyFieldStyle.Layer:
-
-                        Property.intValue = EditorGUI.LayerField(drawPosition, Label, Property.intValue);
-
-                        break;
-
-                    case SerializedPropertyFieldStyle.Tag:
-
-                        Property.stringValue = EditorGUI.TagField(drawPosition, Label, Property.stringValue);
-
-                        if (Property.stringValue == string.Empty)
-                        {
-                            Property.stringValue = "Untagged";
-                        }
-
-                        break;
                 }
 
-                float height = EditorGUI.GetPropertyHeight(Property, Label, true); ;
+                float height = EditorGUI.GetPropertyHeight(Property, PropertyLabel, true);
 
-                Interval(height);
+                Margin(height + 2f);
             }
 
-            public bool IsFieldTypeIn(params Type[] types)
+            public void DrawButton(MethodInfo method, string text, float height)
             {
-                if (fieldInfo.FieldType.IsIncludedIn(types) == true)
-                {
-                    return true;
-                }
-
-                if (fieldInfo.FieldType.IsSubclassIn(types) == true)
-                {
-                    return true;
-                }
-
-                return false;
-            }
-
-            public bool IsPropertyTypeIn(params SerializedPropertyType[] propertyTypes)
-            {
-                foreach (var propertyType in propertyTypes)
-                {
-                    if (Property.propertyType == propertyType)
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-
-            public bool IsPropertyNull()
-            {
-                return Property.objectReferenceValue == null;
-            }
-
-            public bool TryFindProperty(string propertyPath, out SerializedProperty result)
-            {
-                result = Property.serializedObject.FindProperty(propertyPath);
-
-                return result != null;
-            }
-
-            public void DrawButton(string methodName, string text, float height)
-            {
-                var type = TargetComponent.GetType();
-
-                MethodInfo method = null;
-
-                if (methodName != null)
-                {
-                    method = type.GetMethod(methodName);
-                }
-
                 var position = drawPosition;
 
-                position.x += EditorGUIUtility.labelWidth + 2f;
+                position.x += EditorGUIUtility.labelWidth;
 
-                position.y += 2f;
-
-                position.width -= EditorGUIUtility.labelWidth + 2f;
+                position.width -= EditorGUIUtility.labelWidth;
 
                 position.height = height;
 
@@ -231,12 +194,7 @@ namespace ZL.Unity
                     method.Invoke(TargetComponent, null);
                 }
 
-                if (method == null)
-                {
-                    //DrawHelpBox($"{customPropertyAttributes.NameTag} No method found matching \"{methodName}\".", MessageType.Error);
-                }
-
-                Interval(height + 2f);
+                Margin(height + 2f);
             }
 
             public void DrawPreview()
@@ -250,70 +208,91 @@ namespace ZL.Unity
 
                 var label = new GUIContent(texture);
 
-                var position = GUILayoutUtility.GetRect(label, GUI.skin.label);
+                var position = drawPosition;
 
-                position.x += EditorGUIUtility.labelWidth;
+                position.y -= 1f;
 
-                position.y += 2f;
+                position.x += EditorGUIUtility.labelWidth + 1f;
 
-                position.width = texture.width;
+                float height = Math.Max(texture.width, texture.height);
 
-                position.height = texture.height;
+                position.width = height;
+
+                position.height = height;
 
                 EditorGUI.LabelField(position, label);
 
-                Interval(texture.height + 2f);
+                Margin(height);
             }
 
-            public void DrawLine(float height, Color color)
+            public void DrawLine(int margin, int thickness, Color color)
             {
                 var rect = drawPosition;
 
-                rect.y += 2f;
+                rect.y += margin;
 
-                rect.height = height;
+                rect.height = thickness;
 
                 EditorGUI.DrawRect(rect, color);
 
-                Interval(height + 4f);
+                Margin((margin << 1) + thickness);
+            }
+
+            public void DrawText(GUIContent label)
+            {
+                DrawText(defaultLabelStyle.CalcSize(label).y, label, defaultLabelStyle);
             }
 
             public void DrawText(GUIContent label, GUIStyle style)
             {
+                DrawText(style.CalcSize(label).y, label, style);
+            }
+
+            public void DrawText(float height, GUIContent label)
+            {
+                DrawText(height, label, defaultLabelStyle);
+            }
+
+            public void DrawText(float height, GUIContent label, GUIStyle style)
+            {
                 Rect position = drawPosition;
 
-                position.y += 2f;
-
-                position.size = style.CalcSize(label);
+                position.height = height;
 
                 EditorGUI.LabelField(position, label, style);
 
-                Interval(position.height + 2f);
+                Margin(position.height + 2f);
             }
 
-            public void DrawHelpBox(string message, MessageType type)
+            public void DrawMessageBox(string message)
             {
-                DrawHelpBox(message, type, defaultIconSize);
+                DrawHelpBox(message, MessageType.None);
             }
 
-            public void DrawHelpBox(string message, MessageType type, IconSize iconSize)
+            public void DrawInfoBox(string message)
             {
-                DrawHelpBox(new GUIContent(message, Utility.GetHelpIcon(type, iconSize)));
+                DrawHelpBox(message, MessageType.Info);
             }
 
-            public void DrawHelpBox(GUIContent label)
+            public void DrawWarningBox(string message)
             {
-                /*var style = EditorStyles.helpBox;
+                DrawHelpBox(message, MessageType.Warning);
+            }
 
-                EditorGUILayout.BeginHorizontal();
+            public void DrawErrorBox(string message)
+            {
+                DrawHelpBox(message, MessageType.Error);
+            }
 
-                var position = GUILayoutUtility.GetRect(label, style, GUILayout.ExpandHeight(true));
+            private void DrawHelpBox(string message, MessageType type)
+            {
+                var position = drawPosition;
 
-                EditorGUI.LabelField(position, label, style);
+                position.height = GUI.skin.GetStyle("HelpBox").CalcHeight(new GUIContent(message), position.width);
 
-                EditorGUILayout.EndHorizontal();*/
+                EditorGUI.HelpBox(position, message, type);
 
-                EditorGUI.HelpBox(drawPosition);
+                Margin(position.height + 2f);
             }
 
             public void Indent(float width)
@@ -323,7 +302,7 @@ namespace ZL.Unity
                 drawPosition.width -= width;
             }
 
-            public void Interval(float height)
+            public void Margin(float height)
             {
                 drawPosition.y += height;
 
@@ -331,147 +310,15 @@ namespace ZL.Unity
             }
         }
 
-        protected static class Utility
+        public enum SerializedPropertyFieldType
         {
-            private static Texture2D smallInfoIcon = null;
+            Property,
 
-            public static Texture2D SmallInfoIcon
-            {
-                get
-                {
-                    if (smallInfoIcon == null)
-                    {
-                        smallInfoIcon = LargeInfoIcon.ResizeTo(16, 16);
-                    }
+            Layer,
 
-                    return smallInfoIcon;
-                }
-            }
+            Tag,
 
-            private static Texture2D largeInfoIcon = null;
-
-            public static Texture2D LargeInfoIcon
-            {
-                get
-                {
-                    if (largeInfoIcon == null)
-                    {
-                        largeInfoIcon = EditorGUIUtility.FindTexture("console.infoicon@2x");
-                    }
-
-                    return largeInfoIcon;
-                }
-            }
-
-            private static Texture2D smallWarningIcon = null;
-
-            public static Texture2D SmallWarningIcon
-            {
-                get
-                {
-                    if (smallWarningIcon == null)
-                    {
-                        smallWarningIcon = LargeWarningIcon.ResizeTo(16, 16);
-                    }
-
-                    return smallWarningIcon;
-                }
-            }
-
-            private static Texture2D largeWarningIcon = null;
-
-            public static Texture2D LargeWarningIcon
-            {
-                get
-                {
-                    if (largeWarningIcon == null)
-                    {
-                        largeWarningIcon = EditorGUIUtility.FindTexture("console.warnicon@2x");
-                    }
-
-                    return largeWarningIcon;
-                }
-            }
-
-            private static Texture2D smallErrorIcon = null;
-
-            public static Texture2D SmallErrorIcon
-            {
-                get
-                {
-                    if (smallErrorIcon == null)
-                    {
-                        smallErrorIcon = LargeErrorIcon.ResizeTo(16, 16); ;
-                    }
-
-                    return smallErrorIcon;
-                }
-            }
-
-            private static Texture2D largeErrorIcon = null;
-
-            public static Texture2D LargeErrorIcon
-            {
-                get
-                {
-                    if (largeErrorIcon == null)
-                    {
-                        largeErrorIcon = EditorGUIUtility.FindTexture("console.erroricon@2x");
-                    }
-
-                    return largeErrorIcon;
-                }
-            }
-
-            public static Texture2D GetHelpIcon(MessageType type, IconSize size)
-            {
-                return type switch
-                {
-                    MessageType.Info => GetInfoIcon(size),
-
-                    MessageType.Warning => GetWarningIcon(size),
-
-                    MessageType.Error => GetErrorIcon(size),
-
-                    _ => null
-                };
-            }
-
-            public static Texture2D GetInfoIcon(IconSize size)
-            {
-                return size switch
-                {
-                    IconSize.Small => SmallInfoIcon,
-
-                    IconSize.Large => LargeInfoIcon,
-
-                    _ => null
-                };
-            }
-
-            public static Texture2D GetWarningIcon(IconSize size)
-            {
-                return size switch
-                {
-                    IconSize.Small => SmallWarningIcon,
-
-                    IconSize.Large => LargeWarningIcon,
-
-                    _ => null
-                };
-            }
-
-            public static Texture2D GetErrorIcon(IconSize size)
-            {
-                return size switch
-                {
-                    IconSize.Small => SmallErrorIcon,
-
-                    IconSize.Large => LargeErrorIcon,
-
-                    _ => null
-                };
-            }
+            Empty,
         }
 
 #endif

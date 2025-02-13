@@ -12,14 +12,14 @@ namespace ZL.Unity
 
     public sealed class LineAttribute : CustomPropertyAttribute
     {
-        private readonly float height;
+        private readonly Color color = Color.gray;
 
-        private readonly Color color = defaultTextColor;
+        public int Margin { get; set; } = defaultSpaceHeight - 2;
 
-        public LineAttribute(float height, string hexColor = null)
+        public int Thickness { get; set; } = 1;
+
+        public LineAttribute(string hexColor = null)
         {
-            this.height = height;
-
             if (ColorUtility.TryParseHtmlString(hexColor, out Color color) == true)
             {
                 this.color = color;
@@ -28,11 +28,9 @@ namespace ZL.Unity
 
 #if UNITY_EDITOR
 
-        public override bool Draw(Drawer drawer)
+        protected override void Draw(Drawer drawer)
         {
-            drawer.DrawLine(height, color);
-
-            return true;
+            drawer.DrawLine(Margin, Thickness, color);
         }
 
 #endif

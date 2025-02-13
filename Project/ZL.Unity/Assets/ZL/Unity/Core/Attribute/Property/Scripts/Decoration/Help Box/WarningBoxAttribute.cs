@@ -4,10 +4,18 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class WarningBoxAttribute : HelpBoxAttribute
+    public sealed class WarningBoxAttribute : MessageBoxAttribute
     {
-        public WarningBoxAttribute(string message) : base(message, MessageType.Warning) { }
+        public WarningBoxAttribute(string message) : base(message) { }
 
-        public WarningBoxAttribute(string message, IconSize iconSize) : base(message, MessageType.Warning, iconSize) { }
+
+#if UNITY_EDITOR
+
+        protected override void Draw(Drawer drawer)
+        {
+            drawer.DrawWarningBox(message);
+        }
+
+#endif
     }
 }
