@@ -8,10 +8,14 @@ namespace ZL.Unity.Audio
 
     [DisallowMultipleComponent]
 
-    [RequireComponent(typeof(AudioListener))]
-
     public sealed class AudioListenerController : MonoBehaviour
     {
+        [Space]
+
+        [SerializeField]
+
+        private bool pause = false;
+
         [Space]
 
         [SerializeField, Range(0f, 1f)]
@@ -23,6 +27,8 @@ namespace ZL.Unity.Audio
             if (Application.isPlaying == true)
             {
                 AudioListener.volume = volume;
+
+                AudioListener.pause = pause;
             }
         }
 
@@ -31,6 +37,8 @@ namespace ZL.Unity.Audio
         private void Update()
         {
             volume = AudioListener.volume;
+
+            pause = AudioListener.pause;
         }
 
 #endif
@@ -38,6 +46,8 @@ namespace ZL.Unity.Audio
         private void Awake()
         {
             AudioListener.volume = volume;
+
+            AudioListener.pause = pause;
         }
     }
 }

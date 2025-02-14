@@ -12,7 +12,11 @@ namespace ZL.Unity.UI
 
     public sealed class SwipeButton : AutoButton
     {
-        [SerializeField, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
 
         private float swipeMagnitude = 0f;
 

@@ -12,7 +12,13 @@ namespace ZL.Unity.Tweeners
     {
         [Space]
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
+
+        [UsingCustomProperty]
 
         private Light _light;
 

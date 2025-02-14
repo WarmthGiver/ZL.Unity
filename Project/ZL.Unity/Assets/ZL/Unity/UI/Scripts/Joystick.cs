@@ -18,7 +18,11 @@ namespace ZL.Unity.UI
 
         private RectTransform handle = null;
 
-        [SerializeField, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
 
         private Vector2 dragDirection = Vector2.zero;
 

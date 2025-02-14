@@ -10,7 +10,7 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class LayerFieldAttribute : CustomPropertyAttribute
+    public sealed class LayerFieldAttribute : FieldAttribute
     {
 #if UNITY_EDITOR
 

@@ -4,8 +4,6 @@ using System.Diagnostics;
 
 namespace ZL.Unity
 {
-    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
-
     [Conditional("UNITY_EDITOR")]
 
     public class MessageBoxAttribute : CustomPropertyAttribute

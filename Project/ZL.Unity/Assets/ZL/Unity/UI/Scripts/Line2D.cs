@@ -16,11 +16,23 @@ namespace ZL.Unity.UI
     {
         [Space]
 
-        [SerializeField, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         private RectTransform rectTransform;
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         private Image image;
 

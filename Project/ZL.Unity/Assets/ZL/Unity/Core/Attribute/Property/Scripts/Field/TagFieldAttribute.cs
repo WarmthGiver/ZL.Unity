@@ -10,7 +10,7 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class TagFieldAttribute : CustomPropertyAttribute
+    public sealed class TagFieldAttribute : FieldAttribute
     {
 #if UNITY_EDITOR
 

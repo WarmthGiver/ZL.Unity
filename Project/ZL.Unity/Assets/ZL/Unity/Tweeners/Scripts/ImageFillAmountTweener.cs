@@ -14,7 +14,13 @@ namespace ZL.Unity.Tweeners
     {
         [Space]
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         private Image image;
 

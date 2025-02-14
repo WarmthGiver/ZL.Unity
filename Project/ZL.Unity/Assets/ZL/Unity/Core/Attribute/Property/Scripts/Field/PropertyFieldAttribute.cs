@@ -4,7 +4,7 @@ namespace ZL.Unity
 {
     [Conditional("UNITY_EDITOR")]
 
-    public sealed class PropertyFieldAttribute : CustomPropertyAttribute
+    public sealed class PropertyFieldAttribute : FieldAttribute
     {
 #if UNITY_EDITOR
 

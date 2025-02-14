@@ -22,13 +22,23 @@ namespace ZL.Unity.Audio
     {
         [Space]
 
-        [SerializeField, Essential]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [PropertyField]
+
+        [Essential]
 
         [Button(nameof(LoadAudioMixerParameters), "Load Parameters")]
 
         private AudioMixer audioMixer = null;
 
         [SerializeField]
+
+        [UsingCustomProperty]
+
+        [PropertyField]
 
         [Button(nameof(LoadVolumes))]
 

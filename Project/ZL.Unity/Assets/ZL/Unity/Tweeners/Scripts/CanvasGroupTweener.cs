@@ -16,13 +16,23 @@ namespace ZL.Unity.Tweeners
     {
         [Space]
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         private CanvasGroup canvasGroup;
 
         [Space]
 
-        [AddIndent(1), SerializeField]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [AddIndent(1)]
 
         private bool disableOnFaded = true;
 
@@ -42,11 +52,11 @@ namespace ZL.Unity.Tweeners
             }
         }
 
-        [AddIndent(1), SerializeField, Range(0f, 1f), ReadOnlyInPlayMode]
+        [AddIndent(1), SerializeField, Range(0f, 1f), ReadOnlyWhenPlayMode]
 
         private float minAlpha = 0f;
 
-        [AddIndent(1), SerializeField, Range(0f, 1f), ReadOnlyInPlayMode]
+        [AddIndent(1), SerializeField, Range(0f, 1f), ReadOnlyWhenPlayMode]
 
         private float maxAlpha = 1f;
 

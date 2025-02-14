@@ -15,16 +15,18 @@ namespace ZL.Unity.Audio
         [Space]
 
         [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
         
-        [GetComponent, ReadOnly]
+        [GetComponent]
 
         private AudioSource audioSource;
 
         [Space]
 
         [SerializeField]
-        
-        [Alias("Name")]
 
         private string trackName = string.Empty;
 
@@ -36,15 +38,9 @@ namespace ZL.Unity.Audio
 
         [SerializeField]
 
-        private AudioTrackPlayMode playMode = AudioTrackPlayMode.RepeatOne;
+        [UsingCustomProperty]
 
-        public AudioTrackPlayMode PlayMode { set => playMode = value; }
-
-        [Space]
-
-        [SerializeField]
-        
-        [Toggle("isPlayModeShuffle", true)]
+        [PropertyField]
 
         [Button(nameof(Play))]
 
@@ -52,11 +48,23 @@ namespace ZL.Unity.Audio
 
         [Button(nameof(Resume))]
 
+        private AudioTrackPlayMode playMode = AudioTrackPlayMode.RepeatOne;
+
+        public AudioTrackPlayMode PlayMode { set => playMode = value; }
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ToggleWhen("isPlayModeShuffle", true)]
+
         private int playlistIndex = 0;
 
         [SerializeField]
 
-        private Wrapper<AudioClip[]> playlist;
+        private AudioClip[] playlist;
 
         private bool isLooping = false;
 
@@ -138,7 +146,7 @@ namespace ZL.Unity.Audio
 
                     ++playlistIndex;
 
-                    if (playlistIndex > playlist.value.Length - 1)
+                    if (playlistIndex > playlist.Length - 1)
                     {
                         playlistIndex = 0;
                     }
@@ -151,19 +159,19 @@ namespace ZL.Unity.Audio
 
                     if (playlistIndex < 0)
                     {
-                        playlistIndex = playlist.value.Length - 1;
+                        playlistIndex = playlist.Length - 1;
                     }
 
                     break;
 
                 case AudioTrackPlayMode.Shuffle:
 
-                    playlistIndex = Random.Range(0, playlist.value.Length);
+                    playlistIndex = Random.Range(0, playlist.Length);
 
                     break;
             }
 
-            audioSource.clip = playlist.value[playlistIndex];
+            audioSource.clip = playlist[playlistIndex];
 
             audioSource.Play();
         }

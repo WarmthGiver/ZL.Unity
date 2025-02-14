@@ -1,14 +1,9 @@
-using System;
+using UnityEngine;
 
 namespace ZL.Unity
 {
     public static partial class FloatExtensions
     {
-        public static float Round(this float instance, int digits)
-        {
-            return (float)Math.Round(instance, digits);
-        }
-
         public static int RoundRandom(this float instance)
         {
             int integerPart = (int)instance;
@@ -17,7 +12,7 @@ namespace ZL.Unity
 
             if (decimalPart > 0f)
             {
-                integerPart += UnityEngine.Random.Range(0f, 1f) < decimalPart ? 1 : 0;
+                integerPart += Random.Range(0f, 1f) < decimalPart ? 1 : 0;
             }
 
             return integerPart;

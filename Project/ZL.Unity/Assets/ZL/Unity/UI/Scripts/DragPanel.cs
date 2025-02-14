@@ -6,13 +6,19 @@ using UnityEngine.Events;
 
 namespace ZL.Unity.UI
 {
+    [AddComponentMenu("ZL/UI/Drag Panel")]
+
     [DisallowMultipleComponent]
 
     public sealed class DragPanel : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {
+        [Space]
+
         [SerializeField]
 
         private RectTransform container = null;
+
+        [Space]
 
         [SerializeField]
 
@@ -22,17 +28,31 @@ namespace ZL.Unity.UI
 
         private float maxMagnitude = 10f;
 
+        [Space]
+
+        [SerializeField]
+
+        private bool debug;
+
+        [Space]
+
         [SerializeField]
         
-        [ReadOnly, DrawCustomProperty]
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
 
         private Vector2 pointerDownPosition;
 
         [SerializeField]
         
-        [ReadOnly, DrawCustomProperty]
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
 
         private Vector2 dragDirection;
+
+        [Space]
 
         [SerializeField]
 

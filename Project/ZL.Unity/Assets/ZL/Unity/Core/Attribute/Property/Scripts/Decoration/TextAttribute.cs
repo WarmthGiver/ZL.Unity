@@ -6,8 +6,6 @@ using UnityEngine;
 
 namespace ZL.Unity
 {
-    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
-
     [Conditional("UNITY_EDITOR")]
 
     public sealed class TextAttribute : CustomPropertyAttribute

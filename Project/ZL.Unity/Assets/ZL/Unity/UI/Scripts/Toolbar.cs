@@ -10,7 +10,13 @@ namespace ZL.Unity.UI
 
     public sealed class Toolbar : MonoBehaviour
     {
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         private RectTransformTweener canvasGroupTweener;
 

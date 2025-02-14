@@ -4,7 +4,7 @@ using System.IO;
 
 using System.Text;
 
-namespace ZL.CS.IO
+namespace ZL.CS.IO.CSV
 {
     public static class CSVManager
     {
@@ -54,14 +54,5 @@ namespace ZL.CS.IO
 
             File.WriteAllText(filePath, stringBuilder.ToString(), Encoding.UTF8);
         }
-    }
-
-    public interface ICSVConvertible
-    {
-        public abstract void FromCSV(string[] datas);
-
-        public abstract string ToCSV();
-
-        public abstract string GetCSVHeader();       
     }
 }

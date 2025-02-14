@@ -8,7 +8,13 @@ namespace ZL.Unity.ObjectPooling
     {
         [Space]
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         protected T @base;
 

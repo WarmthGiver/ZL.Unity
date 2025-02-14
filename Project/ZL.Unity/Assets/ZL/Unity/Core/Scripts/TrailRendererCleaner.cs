@@ -12,7 +12,13 @@ namespace ZL.Unity
     {
         [Space]
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         private TrailRenderer trailRenderer;
 

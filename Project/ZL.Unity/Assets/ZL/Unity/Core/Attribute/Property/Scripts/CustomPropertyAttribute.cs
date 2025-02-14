@@ -14,6 +14,8 @@ using UnityEngine;
 
 namespace ZL.Unity
 {
+    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
+
     public abstract class CustomPropertyAttribute : PropertyAttribute
     {
         protected static readonly int defaultSpaceHeight;
@@ -59,7 +61,7 @@ namespace ZL.Unity
 
         protected virtual void Draw(Drawer drawer) { }
 
-        [CustomPropertyDrawer(typeof(DrawCustomPropertyAttribute), true)]
+        [CustomPropertyDrawer(typeof(UsingCustomPropertyAttribute), true)]
 
         public sealed class Drawer : PropertyDrawer
         {
@@ -76,13 +78,13 @@ namespace ZL.Unity
 
             public GUIContent PropertyLabel { get; private set; }
 
-            public bool IsHided { get; set; }
+            public bool IsToggled { get; set; }
 
             public bool IsEnabled { get; set; }
 
             public int IndentLevel { get; set; }
 
-            private bool isPropertyFieldDrawn = false;
+            public bool IsPropertyFieldDrawn { get; set; }
 
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
@@ -106,13 +108,13 @@ namespace ZL.Unity
 
                 PropertyLabel = label;
 
-                IsHided = false;
+                IsToggled = false;
 
                 var enabled = IsEnabled = GUI.enabled;
 
                 var indentLevel = IndentLevel = EditorGUI.indentLevel;
 
-                isPropertyFieldDrawn = false;
+                IsPropertyFieldDrawn = false;
 
                 foreach (var attribute in attributes)
                 {
@@ -122,7 +124,7 @@ namespace ZL.Unity
 
                     EditorGUI.indentLevel = IndentLevel;
 
-                    if (IsHided == true)
+                    if (IsToggled == true)
                     {
                         continue;
                     }
@@ -130,7 +132,7 @@ namespace ZL.Unity
                     attribute.Draw(this);
                 }
 
-                if (isPropertyFieldDrawn == false && IsHided == false)
+                if (IsPropertyFieldDrawn == false && IsToggled == false)
                 {
                     DrawPropertyField();
                 }
@@ -147,8 +149,6 @@ namespace ZL.Unity
 
             public void DrawPropertyField(SerializedPropertyFieldType propertyFieldType = SerializedPropertyFieldType.Property)
             {
-                isPropertyFieldDrawn = true;
-
                 switch (propertyFieldType)
                 {
                     case SerializedPropertyFieldType.Property:
@@ -183,9 +183,9 @@ namespace ZL.Unity
             {
                 var position = drawPosition;
 
-                position.x += EditorGUIUtility.labelWidth;
+                position.x += EditorGUIUtility.labelWidth + 2f;
 
-                position.width -= EditorGUIUtility.labelWidth;
+                position.width -= EditorGUIUtility.labelWidth + 2f;
 
                 position.height = height;
 

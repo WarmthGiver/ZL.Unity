@@ -1,22 +1,22 @@
 using UnityEngine;
 
-using UnityEngine.UI;
+using ZL.Unity.UI;
 
 namespace ZL.Unity.Audio
 {
+    [AddComponentMenu("ZL/Audio/Audio Mixer Volume Slider")]
+
     [DisallowMultipleComponent]
 
-    public sealed class AudioMixerVolumeSlider : MonoBehaviour
+    public sealed class AudioMixerVolumeSlider : SliderValueDisplayer_TMP
     {
         [Space]
 
-        [SerializeField, GetComponentInChildren, ReadOnly]
-
-        private Slider slider;
-
-        [Space]
-
-        [SerializeField, ReadOnlyInPlayMode]
+        [SerializeField]
+        
+        [UsingCustomProperty]
+        
+        [ReadOnlyWhenPlayMode]
 
         private string key;
 
@@ -25,8 +25,10 @@ namespace ZL.Unity.Audio
             slider.value = AudioMixerManager.Instance.GetVolume(key) * 100f;
         }
 
-        public void OnValueChanged()
+        public override void OnValueChanged()
         {
+            base.OnValueChanged();
+
             AudioMixerManager.Instance.SetVolume(key, slider.value * 0.01f);
         }
     }

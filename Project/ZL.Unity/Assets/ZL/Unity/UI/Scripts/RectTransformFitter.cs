@@ -12,13 +12,21 @@ namespace ZL.Unity.UI
     {
         [Space]
 
-        [SerializeField, GetComponent, ReadOnly]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [GetComponent]
 
         private RectTransform rectTransform;
 
         [Space]
 
         [SerializeField]
+
+        [UsingCustomProperty]
 
         [Button(nameof(FitParentSizeMin))]
 
