@@ -1,6 +1,0 @@
-sceneSetups:
-- path: Assets/ZL/Unity/Object Pooling/Demo/Game Object Pool Demo/Scenes/Game Object
-    Pool Demo Scene.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0

@@ -1,6 +1,6 @@
 using System;
 
-namespace ZL.Unity
+namespace ZL.CS
 {
     public static partial class EnumExtensions
     {
