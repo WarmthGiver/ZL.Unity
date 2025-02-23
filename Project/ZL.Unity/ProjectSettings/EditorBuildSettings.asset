@@ -5,33 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/ZL/CS/Unity/Audio/Demo/Scenes/Audio Demo Scene.unity
-    guid: f6f34acf31253de49be7e8414272a7ed
-  - enabled: 0
-    path: Assets/ZL/CS/Unity/Tweeners/Demo/Audio Listener Volume Tweener Demo/Scenes/Audio
-      Listener Volume Tweener Demo Scene.unity
-    guid: a80cd83ff7acec64fb19894d287d74be
   - enabled: 1
-    path: Assets/ZL/CS/Unity/Object Pooling/Demo/Game Object Pool Demo/Scenes/Game
-      Object Pool Demo Scene.unity
-    guid: 11776a2edd5d2f040b0a16a5611572b1
-  - enabled: 0
-    path: Assets/ZL/CS/Unity/Core/Demo/Button Plus Demo/Scenes/Button Plus Demo Scene.unity
-    guid: b4a44508226c7e440a4c8eb38dce0cf4
-  - enabled: 0
-    path: Assets/ZL/CS/Unity/Core/Demo/String Extention Demo/Scenes/String Extentions
-      Demo Scene.unity
-    guid: 652af6dbf82ce594fb17d534e878fee9
-  - enabled: 0
-    path: Assets/ZL/CS/Unity/Core/Demo/Serializable Dictionary Demo/Scenes/Serializable
-      Dictionary Demo Scene.unity
-    guid: e1f4c4729cfa1ea41be9862ae79dd880
-  - enabled: 0
-    path: Assets/ZL/CS/Unity/Core/Demo/Custom Property Attribute Demo/Scenes/Custom
+    path: Assets/ZL/Unity/Core/Demo/Custom Property Attribute Demo/Scenes/Custom
       Property Attribute Demo Scene.unity
     guid: a219a3ee0feb90245b2e84f0ba2a7354
-  - enabled: 0
-    path: Assets/ZL/CS/Unity/Core/Demo/Wrapper Demo/Scenes/Wrapper Demo Scene.unity
-    guid: e08107fb580af4b408bcccb84e614c32
   m_configObjects: {}
