@@ -18,17 +18,13 @@ namespace ZL.Unity
 
         public float Height { get; set; } = 0f;
 
-        public TextAttribute(string text, FontStyle fontStyle = FontStyle.Normal) : this(text, TextAnchor.UpperLeft, fontStyle) { }
-
-        public TextAttribute(string text, TextAnchor alignment, FontStyle fontStyle = FontStyle.Normal)
+        public TextAttribute(string text, TextAnchor alignment = TextAnchor.UpperLeft)
         {
             label = new(text);
 
             style = new()
             {
                 alignment = alignment,
-
-                fontStyle = fontStyle,
 
                 richText = true,
             };

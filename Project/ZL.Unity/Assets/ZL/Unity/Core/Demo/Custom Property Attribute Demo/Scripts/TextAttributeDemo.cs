@@ -88,9 +88,9 @@ namespace ZL.Unity.CustomPropertyAttributeDemo
 
         [UsingCustomProperty]
 
-        [Text("[Text(\"Hello World!\", FontStyle.Bold)]")]
+        [Text("[Text(\"<b>Hello World!</b>\")]", RichText = false)]
 
-        [Text("Hello World!", FontStyle.Bold)]
+        [Text("<b>Hello World!</b>")]
 
         public string test8;
 
@@ -98,9 +98,9 @@ namespace ZL.Unity.CustomPropertyAttributeDemo
 
         [UsingCustomProperty]
 
-        [Text("[Text(\"Hello World!\", FontStyle.Italic)]")]
+        [Text("[Text(\"<i>Hello World!</i>\")]", RichText = false)]
 
-        [Text("Hello World!", FontStyle.Italic)]
+        [Text("<i>Hello World!</i>")]
 
         public string test9;
 
@@ -108,9 +108,9 @@ namespace ZL.Unity.CustomPropertyAttributeDemo
 
         [UsingCustomProperty]
 
-        [Text("[Text(\"Hello World!\", FontStyle.BoldAndItalic)]")]
+        [Text("[Text(\"<b><i>Hello World!</i></b>\")]", RichText = false)]
 
-        [Text("Hello World!", FontStyle.BoldAndItalic)]
+        [Text("<b><i>Hello World!</i></b>")]
 
         public string test10;
 
@@ -138,9 +138,9 @@ namespace ZL.Unity.CustomPropertyAttributeDemo
 
         [UsingCustomProperty]
 
-        [Text("[Text(\"<color=#FF00FF>Hello World!</color>\",\nTextAnchor.MiddleCenter,\nFontStyle.BoldAndItalic,\nFontSize = 36,\nHeight = 72f)]", RichText = false)]
+        [Text("[Text(\"<color=#FF00FF><b><i>Hello World!</b></i></color>\", TextAnchor.MiddleCenter, FontSize = 36, Height = 72f)]", RichText = false)]
 
-        [Text("<color=#FF00FF>Hello World!</color>", TextAnchor.MiddleCenter, FontStyle.BoldAndItalic, FontSize = 36, Height = 72f)]
+        [Text("<color=#FF00FF><b><i>Hello World!</b></i></color>", TextAnchor.MiddleCenter, FontSize = 36, Height = 72f)]
 
         public string test13;
     }

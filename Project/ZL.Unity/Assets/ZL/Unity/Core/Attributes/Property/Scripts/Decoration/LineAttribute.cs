@@ -1,5 +1,3 @@
-using System;
-
 using System.Diagnostics;
 
 using UnityEngine;
@@ -12,7 +10,7 @@ namespace ZL.Unity
     {
         private readonly Color color = Color.gray;
 
-        public int Margin { get; set; } = defaultSpaceHeight - 2;
+        public int Margin { get; set; } = defaultSpaceHeight;
 
         public int Thickness { get; set; } = 1;
 

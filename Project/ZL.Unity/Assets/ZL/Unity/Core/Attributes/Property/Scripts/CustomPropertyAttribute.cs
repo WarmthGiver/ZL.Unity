@@ -132,16 +132,16 @@ namespace ZL.Unity
                 {
                     attribute.Preset(this);
 
-                    GUI.enabled = IsEnabled;
-
-                    EditorGUI.indentLevel = IndentLevel;
-
                     if (IsToggled == true)
                     {
                         continue;
                     }
 
                     attribute.Draw(this);
+
+                    GUI.enabled = IsEnabled;
+
+                    EditorGUI.indentLevel = IndentLevel;
                 }
 
                 if (IsPropertyFieldDrawn == false && IsToggled == false)

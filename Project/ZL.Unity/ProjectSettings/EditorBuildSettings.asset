@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ZL/Unity/Core/Demo/Custom Property Attribute Demo/Scenes/Custom
-      Property Attribute Demo Scene.unity
-    guid: a219a3ee0feb90245b2e84f0ba2a7354
+    path: Assets/ZL/Unity/Phys/Rigidbody Controller Demo/Scenes/Rigidbody Controller
+      Demo Scene.unity
+    guid: 857f24ee8dbe18b4aa63257f95af5d27
   m_configObjects: {}
