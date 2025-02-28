@@ -37,7 +37,7 @@
                 {
                     "name": "3D Vector",
                     "id": "8dbf3bf3-430f-4435-b883-bef84ecb18bb",
-                    "path": "3DVector",
+                    "path": "3DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -103,7 +103,7 @@
                 {
                     "name": "3D Vector",
                     "id": "9cde20e0-8386-4fec-a8e3-ea02d1832712",
-                    "path": "3DVector",
+                    "path": "3DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

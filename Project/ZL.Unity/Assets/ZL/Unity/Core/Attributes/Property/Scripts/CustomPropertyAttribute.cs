@@ -18,11 +18,11 @@ namespace ZL.Unity
 
     public abstract class CustomPropertyAttribute : PropertyAttribute
     {
-        protected static readonly int defaultSpaceHeight;
+        protected const int defaultSpaceHeight = 8;
 
-        protected static readonly float defaultLabelHeight;
+        protected const float defaultLabelHeight = 18f;
 
-        protected static readonly int defaultFontSize;
+        protected const int defaultFontSize = 12;
 
         protected static readonly Color defaultTextColor;
 
@@ -44,12 +44,6 @@ namespace ZL.Unity
 
         static CustomPropertyAttribute()
         {
-            defaultSpaceHeight = 8;
-
-            defaultLabelHeight = 18f;
-
-            defaultFontSize = 12;
-
             if (EditorGUIUtility.isProSkin == true)
             {
                 defaultTextColor = new(0.769f, 0.769f, 0.769f, 1f);
@@ -294,7 +288,7 @@ namespace ZL.Unity
             {
                 var position = drawPosition;
 
-                position.height = GUI.skin.GetStyle("HelpBox").CalcHeight(new GUIContent(message), position.width);
+                position.height = EditorStyles.helpBox.CalcHeight(new GUIContent(message), position.width);
 
                 EditorGUI.HelpBox(position, message, type);
 

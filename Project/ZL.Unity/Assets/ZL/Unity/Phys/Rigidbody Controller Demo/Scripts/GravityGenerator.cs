@@ -19,7 +19,7 @@ namespace ZL.Unity.Phys
 
         public Vector3 GetGravityDirection(Vector3 position)
         {
-            return position - transform.position;
+            return transform.position - position;
         }
     }
 }

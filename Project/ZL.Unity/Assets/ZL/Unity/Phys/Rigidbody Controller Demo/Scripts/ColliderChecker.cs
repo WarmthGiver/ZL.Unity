@@ -2,15 +2,20 @@ using UnityEngine;
 
 namespace ZL.Unity.Phys
 {
-    [ExecuteInEditMode]
-
-    public abstract class CheckShape : MonoBehaviour
+    public abstract class ColliderChecker : MonoBehaviour
     {
         [Space]
 
         [SerializeField]
 
         protected LayerMask layerMask = 0;
+
+        public LayerMask LayerMask
+        {
+            get => layerMask;
+
+            set => layerMask = value;
+        }
 
         [SerializeField]
 
@@ -22,6 +27,14 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
+        [UsingCustomProperty]
+
+        [Line(Margin = 0)]
+
+        [Text("<b>Debugging Options</b>", FontSize = 16)]
+
+        [Margin]
+
         protected bool drawGizmo = true;
 
         [SerializeField]
@@ -29,6 +42,10 @@ namespace ZL.Unity.Phys
         [UsingCustomProperty]
 
         [ToggleIf(nameof(drawGizmo), false)]
+
+        [AddIndent(1)]
+
+        [Alias("Default Color")]
 
         private Color defaultGizmoColor = new(1f, 0f, 0f, 0.5f);
 
@@ -38,27 +55,33 @@ namespace ZL.Unity.Phys
 
         [ToggleIf(nameof(drawGizmo), false)]
 
+        [AddIndent(1)]
+
+        [Alias("Collided Color")]
+
         private Color collidedGizmoColor = new(0f, 1f, 0f, 0.5f);
 
         private void OnDrawGizmosSelected()
         {
-            if (drawGizmo == true)
+            if (drawGizmo == false)
             {
-                if (Check() == true)
-                {
-                    Gizmos.color = collidedGizmoColor;
-                }
-
-                else
-                {
-                    Gizmos.color = defaultGizmoColor;
-                }
-
-                DrawGizmo();
+                return;
             }
+
+            if (Check() == true)
+            {
+                Gizmos.color = collidedGizmoColor;
+            }
+
+            else
+            {
+                Gizmos.color = defaultGizmoColor;
+            }
+
+            DrawGizmos();
         }
 
-        protected abstract void DrawGizmo();
+        protected abstract void DrawGizmos();
 
 #endif
 

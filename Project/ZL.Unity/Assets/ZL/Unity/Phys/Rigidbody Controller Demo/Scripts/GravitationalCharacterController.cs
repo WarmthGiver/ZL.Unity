@@ -34,7 +34,7 @@ namespace ZL.Unity.Game
 
         [Text("[GetComponentInChildren]")]
 
-        private CheckSphere groundedCheckSphere;
+        private ColliderCheckSphere groundedCheckSphere;
 
         [Space]
 

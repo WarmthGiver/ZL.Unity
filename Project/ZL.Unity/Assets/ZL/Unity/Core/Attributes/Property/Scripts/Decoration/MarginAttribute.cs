@@ -8,12 +8,7 @@ namespace ZL.Unity
     {
         private readonly float height;
 
-        public MarginAttribute()
-        {
-            height = defaultSpaceHeight;
-        }
-
-        public MarginAttribute(float height)
+        public MarginAttribute(float height = defaultSpaceHeight)
         {
             this.height = height;
         }

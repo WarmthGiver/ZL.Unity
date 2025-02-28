@@ -4,9 +4,9 @@ namespace ZL.Unity
 {
     public static class LayerExtensions
     {
-        public static bool IsIncludedIn(this int instance, LayerMask layerMask)
+        public static bool IsContain(this LayerMask instance, int layer)
         {
-            return ((1 << instance) & layerMask.value) != 0;
+            return (instance.value & (1 << layer)) != 0;
         }
     }
 }

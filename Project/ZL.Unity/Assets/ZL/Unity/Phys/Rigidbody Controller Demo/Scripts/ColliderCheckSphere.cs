@@ -2,19 +2,25 @@ using UnityEngine;
 
 namespace ZL.Unity.Phys
 {
-    [AddComponentMenu("ZL/Phys/Check Sphere")]
+    [AddComponentMenu("ZL/Phys/Collider Check Sphere")]
 
-    public class CheckSphere : CheckShape
+    [DisallowMultipleComponent]
+
+    public class ColliderCheckSphere : ColliderChecker
     {
         [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Line]
 
         private float radius = 0.5f;
 
 #if UNITY_EDITOR
 
-        protected override void DrawGizmo()
+        protected override void DrawGizmos()
         {
-            Gizmos.DrawSphere(transform.position, radius);
+            Gizmos.DrawWireSphere(transform.position, radius);
         }
 
 #endif

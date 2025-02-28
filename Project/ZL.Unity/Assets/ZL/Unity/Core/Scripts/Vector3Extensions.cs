@@ -4,22 +4,15 @@ namespace ZL.Unity
 {
     public static partial class Vector3Extensions
     {
-        public static Color ToColor(this Vector3 instance, bool normalize)
+        public static Color ToColor(this Vector3 instance)
         {
             instance = Absoulute(instance);
 
-            if (normalize == true)
-            {
-                instance = instance.normalized;
-            }
-            
-            else
-            {
-                float max = Max(instance);
+            float max = GetMaxAxis(instance);
 
-                float scale = 1 / max;
-
-                instance *= scale;
+            if (max > 1f)
+            {
+                instance *= 1f / max;
             }
 
             return new(instance.x, instance.y, instance.z);
@@ -45,7 +38,7 @@ namespace ZL.Unity
             return instance;
         }
 
-        public static float Max(this Vector3 instance)
+        public static float GetMaxAxis(this Vector3 instance)
         {
             float max = instance.x;
 

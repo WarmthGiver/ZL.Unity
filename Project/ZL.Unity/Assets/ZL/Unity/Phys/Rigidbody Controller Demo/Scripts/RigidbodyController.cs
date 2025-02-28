@@ -18,8 +18,6 @@ namespace ZL.Unity.Phys
 
         [ReadOnly(true)]
 
-        [GetComponent]
-
 #pragma warning disable CS0108
 
         private Rigidbody rigidbody;
@@ -27,6 +25,40 @@ namespace ZL.Unity.Phys
         public Rigidbody Rigidbody => rigidbody;
 
 #pragma warning restore CS0108
+
+#if UNITY_EDITOR
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [WarningBox("Warning! These fields are only valid in the Unity Editor.")]
+
+        private Vector3 velocity = Vector3.zero;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        [AddIndent(1)]
+
+        [Alias("Megnitude")]
+
+        private float velocityMagnitude = 0f;
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        private Vector3 angularVelocity = Vector3.zero;
+
+        #endif
 
         [Space]
 
@@ -118,6 +150,13 @@ namespace ZL.Unity.Phys
 
         private float gravityScale = 1f;
 
+        public float GravityScale
+        {
+            get => gravityScale;
+
+            set => gravityScale = value;
+        }
+
         [Space]
 
         [SerializeField]
@@ -167,6 +206,8 @@ namespace ZL.Unity.Phys
 
         private Vector3 gravityDirection = Vector3.zero;
 
+        public Vector3 GravityDirection => gravityDirection;
+
         private Vector3 oldGravityDirection;
 
         private Vector3 gravityForce = Vector3.zero;
@@ -183,15 +224,31 @@ namespace ZL.Unity.Phys
 
         [Margin]
 
-        private Vector3 moveDirection = Vector3.zero;
+        private Vector3 moveForce = Vector3.zero;
+
+        public Vector3 MoveForce
+        {
+            get => moveForce;
+
+            set => moveForce = value;
+        }
 
         private Vector3 accelerationForce = Vector3.zero;
+
+        public Vector3 AccelerationForce => accelerationForce;
 
         [SerializeField]
 
         [UsingCustomProperty]
 
-        private Vector3 impulseDirection = Vector3.zero;
+        private Vector3 impulseForce = Vector3.zero;
+
+        public Vector3 ImpulseForce
+        {
+            get => impulseForce;
+
+            set => impulseForce = value;
+        }
 
 #if UNITY_EDITOR
 
@@ -207,34 +264,96 @@ namespace ZL.Unity.Phys
 
         [Margin]
 
-        private bool drawGravityDirection = true;
+        private bool drawVelocityGizmo = true;
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Alias("Draw Gravity Direction")]
+
+        private bool drawGravityDirectionGizmo = true;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [AddIndent(1)]
+
+        [Alias("Length")]
+
+        private float gravityDirectionGizmoLength = 1000f;
 
         private void OnDrawGizmosSelected()
         {
-            if (drawGravityDirection == true && useGravity == true)
+            if (drawVelocityGizmo == true)
             {
-                Vector3 destination;
+                Gizmos.color = velocity.ToColor();
+
+                Gizmos.DrawLine(transform.position, transform.position + velocity);
+            }
+
+            if (drawGravityDirectionGizmo == true && useGravity == true)
+            {
+                Vector3 gravityDirection;
 
                 if (useCustomGravity == true)
                 {
-                    destination = customGravityDirection.normalized * 10000f;
+                    gravityDirection = customGravityDirection;
                 }
 
                 else if (gravityGenerator != null)
                 {
-                    destination = gravityGenerator.transform.position;
+                    gravityDirection = gravityGenerator.transform.position - transform.position;
                 }
 
                 else
                 {
-                    destination = transform.position + Physics.gravity.normalized * 10000f;
+                    gravityDirection = Physics.gravity;
                 }
 
-                Vector3 direction = destination - transform.position;
+                gravityDirection = gravityDirection.normalized;
 
-                Gizmos.color = direction.ToColor(true);
+                Gizmos.color = gravityDirection.ToColor();
 
-                Gizmos.DrawLine(transform.position, destination);
+                Gizmos.DrawLine(transform.position, transform.position + gravityDirection * gravityDirectionGizmoLength);
+            }
+        }
+
+        private void Reset()
+        {
+            if (rigidbody == null)
+            {
+                rigidbody = GetComponent<Rigidbody>();
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (rigidbody.velocity != velocity)
+            {
+                rigidbody.velocity = velocity;
+            }
+
+            velocityMagnitude = velocity.magnitude;
+
+            if (rigidbody.angularVelocity != angularVelocity)
+            {
+                rigidbody.angularVelocity = angularVelocity;
+            }
+        }
+
+        private void Awake()
+        {
+            if (rigidbody == null)
+            {
+                rigidbody = GetComponent<Rigidbody>();
+
+                velocity = rigidbody.velocity;
+
+                angularVelocity = rigidbody.angularVelocity;
             }
         }
 
@@ -246,35 +365,40 @@ namespace ZL.Unity.Phys
 
             oldGravityDirection = gravityDirection;
 
-            if (useGravity == false || gravityScale == 0f)
+            if (useGravity == false)// || gravityScale == 0f)
             {
                 gravityDirection = Vector3.zero;
 
                 gravityForce = Vector3.zero;
             }
 
-            else if (useCustomGravity == true)
-            {
-                gravityDirection = customGravityDirection;
-
-                gravityForce = customGravityStrength * gravityScale * gravityDirection;
-            }
-
-            else if (gravityGenerator != null)
-            {
-                gravityDirection = -gravityGenerator.GetGravityDirection(transform.position).normalized;
-
-                gravityForce = gravityGenerator.GravityStrength * gravityScale * gravityDirection;
-            }
-
             else
             {
-                gravityDirection = Physics.gravity.normalized;
+                var gravityScale = this.gravityScale;
 
-                gravityForce = Physics.gravity * gravityScale;
+                if (useCustomGravity == true)
+                {
+                    gravityDirection = customGravityDirection.normalized;
+
+                    gravityForce = customGravityStrength * gravityScale * gravityDirection;
+                }
+
+                else if (gravityGenerator != null)
+                {
+                    gravityDirection = gravityGenerator.GetGravityDirection(transform.position).normalized;
+
+                    gravityForce = gravityGenerator.GravityStrength * gravityScale * gravityDirection;
+                }
+
+                else
+                {
+                    gravityDirection = Physics.gravity.normalized;
+
+                    gravityForce = Physics.gravity * gravityScale;
+                }
             }
 
-            if (gravityForce != Vector3.zero)
+            if (gravityDirection != Vector3.zero)
             {
                 var uprightRotation = Quaternion.FromToRotation(-transform.up, gravityDirection) * transform.rotation;
 
@@ -299,9 +423,9 @@ namespace ZL.Unity.Phys
                 accelerationForce += gravityForce;
             }
 
-            if (moveDirection != Vector3.zero)
+            if (moveForce != Vector3.zero)
             {
-                accelerationForce += transform.rotation * moveDirection;
+                accelerationForce += transform.rotation * moveForce;
             }
 
             if (accelerationForce != Vector3.zero)
@@ -309,25 +433,33 @@ namespace ZL.Unity.Phys
                 rigidbody.AddForce(accelerationForce, ForceMode.Acceleration);
             }
 
-            if (impulseDirection != Vector3.zero)
+            if (impulseForce != Vector3.zero)
             {
-                rigidbody.AddForce(transform.rotation * impulseDirection, ForceMode.VelocityChange);
+                rigidbody.AddForce(transform.rotation * impulseForce, ForceMode.VelocityChange);
 
-                impulseDirection = Vector3.zero;
+                impulseForce = Vector3.zero;
+            }
+
+#if UNITY_EDITOR
+
+            velocity = rigidbody.velocity;
+
+            velocityMagnitude = velocity.magnitude;
+
+            angularVelocity = rigidbody.angularVelocity;
+
+#endif
+        }
+
+        private void OnCollisionStay(Collision collision)
+        {
+            foreach (var contactPoint in collision.contacts)
+            {
+                
             }
         }
 
-        public void Move(Vector3 direction)
-        {
-            moveDirection = direction;
-        }
-
-        public void Impulse(Vector3 direction)
-        {
-            impulseDirection = direction;
-        }
-
-        public void SetRotationUpright()
+        public void RotateUpright()
         {
             transform.rotation = Quaternion.FromToRotation(-transform.up, gravityDirection) * transform.rotation;
         }
