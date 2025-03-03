@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZL.CS;
 
 namespace ZL.Unity.Phys
 {
@@ -65,6 +66,29 @@ namespace ZL.Unity.Phys
             set => groundLayerMask = value;
         }
 
+        [SerializeField]
+
+        private float groundedAngleThreshold = 45f;
+
+        public float GroundedAngleThreshold
+        {
+            get => groundedAngleThreshold;
+
+            set => groundedAngleThreshold = value;
+        }
+
+#if UNITY_EDITOR
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        private float groundAngle = 0f;
+
+#endif
+
         [Space]
 
         [SerializeField]
@@ -120,25 +144,21 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private int contactUphillsCount;
 
-        [ReadOnly(true)]
-
-        private bool isTouchingWall = false;
+        private Vector3 contactUphillsNormal;
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private int contactDownhillsCount;
 
-        [ReadOnly(true)]
+        private Vector3 contactDownhillsNormal;
 
-        private bool isUphill = false;
+        [SerializeField]
 
-        private Vector3 uphillNormal;
+        private int contactWallsCount;
 
-        private int uphillCount;
-
-        private Vector3 downhillNormal;
+        private Vector3 contactWallsNormal;
 
         [Space]
 
@@ -222,11 +242,6 @@ namespace ZL.Unity.Phys
 
 #endif
 
-        private void Awake()
-        {
-            
-        }
-
         private void FixedUpdate()
         {
             var uprightRotation = Quaternion.FromToRotation(-transform.up, gravityController.GravityDirection) * transform.rotation;
@@ -246,9 +261,19 @@ namespace ZL.Unity.Phys
 
             var direction = transform.rotation * movementDirection;
 
-            if (isUphill == true)
+            if (contactUphillsCount > 0)
             {
-                direction = Vector3.ProjectOnPlane(direction, uphillNormal / uphillCount);
+                direction = Vector3.ProjectOnPlane(direction, contactUphillsNormal / contactUphillsCount);
+            }
+
+            else if (contactDownhillsCount > 0)
+            {
+                direction = Vector3.ProjectOnPlane(direction, contactDownhillsNormal / contactDownhillsCount);
+            }
+
+            else if (contactWallsCount > 0)
+            {
+                direction = Vector3.ProjectOnPlane(direction, contactWallsNormal / contactWallsCount);
             }
 
             if (drawMovementForce == true)
@@ -258,21 +283,23 @@ namespace ZL.Unity.Phys
 
             rigidbody.MovePosition(transform.position + movementSpeed * Time.fixedDeltaTime * direction);
 
-            rigidbody.AddForce(uprightRotation * jumpDirection * jumpSpeed, ForceMode.VelocityChange);
+            rigidbody.AddForce(transform.rotation * jumpDirection * jumpSpeed, ForceMode.VelocityChange);
 
             jumpDirection = Vector3.zero;
 
             isGrounded = false;
 
-            isTouchingWall = false;
+            contactUphillsNormal = Vector3.zero;
 
-            isUphill = false;
+            contactUphillsCount = 0;
 
-            uphillNormal = Vector3.zero;
+            contactDownhillsNormal = Vector3.zero;
 
-            uphillCount = 0;
+            contactDownhillsCount = 0;
 
-            downhillNormal = Vector3.zero;
+            contactWallsCount = 0;
+
+            contactWallsNormal = Vector3.zero;
         }
 
         private void OnCollisionStay(Collision collision)
@@ -294,24 +321,57 @@ namespace ZL.Unity.Phys
 
 #endif
 
-                    isGrounded = true;
+                    float centerDotContact = Vector3.Dot(contact.point - transform.position, transform.up).Round(1);
 
-                    float dot = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
+                    //Debug.Log(centerDotContact);
 
-                    Debug.Log($"dot: {dot}");
-
-                    if (dot < -0.1f)
+                    if (centerDotContact > 0f)
                     {
-                        isUphill = true;
+                        float wallDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
 
-                        uphillNormal += contact.normal;
+                        //Debug.Log(wallDotDirection);
 
-                        ++uphillCount;
+                        if (wallDotDirection < 0f)
+                        {
+                            ++contactWallsCount;
+
+                            contactWallsNormal += contact.normal;
+                        }
+
+                        continue;
                     }
 
-                    else
+                    float groundAngle = Vector3.Angle(transform.up, contact.normal).Round(2);
+
+                    if (groundAngle > groundedAngleThreshold)
                     {
-                        downhillNormal = contact.normal;
+                        continue;   
+                    }
+
+#if UNITY_EDITOR
+
+                    this.groundAngle = groundAngle;
+
+#endif
+
+                    isGrounded = true;
+
+                    float groundDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal).Round(2);
+
+                    Debug.Log(groundDotDirection);
+
+                    if (groundDotDirection < -0.1f)
+                    {
+                        ++contactUphillsCount;
+
+                        contactUphillsNormal += contact.normal;
+                    }
+
+                    else if (groundDotDirection > 0.1f)
+                    {
+                        ++contactDownhillsCount;
+
+                        contactDownhillsNormal += contact.normal;
                     }
                 }
             }

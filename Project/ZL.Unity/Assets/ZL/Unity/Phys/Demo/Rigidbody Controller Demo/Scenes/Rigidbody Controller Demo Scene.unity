@@ -3731,14 +3731,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937863531}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 15, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1376608853}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &1937863535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3780,12 +3780,15 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  groundedAngleThreshold: 45
+  groundAngle: 0
   rotateTransformUpright: 1
   useSlerpForRotateTransformUpright: 1
-  speedForRotateTransformUpright: 10
+  speedForRotateTransformUpright: 1
   isGrounded: 0
-  isTouchingWall: 0
-  isUphill: 0
+  contactUphillsCount: 0
+  contactDownhillsCount: 0
+  contactWallsCount: 0
   movementDirection: {x: 0, y: 0, z: 0}
   movementSpeed: 5
   jumpDirection: {x: 0, y: 0, z: 0}

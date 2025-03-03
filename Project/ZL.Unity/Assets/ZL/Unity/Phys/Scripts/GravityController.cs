@@ -183,7 +183,7 @@ namespace ZL.Unity.Phys
 
         private void OnDrawGizmosSelected()
         {
-            if (useGravity == true && drawGravityDirectionGizmo == true)
+            if (drawGravityDirectionGizmo == true)
             {
                 Vector3 gravityDirection;
 
