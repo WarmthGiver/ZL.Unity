@@ -36,7 +36,7 @@ namespace ZL.Unity.Phys
 
         [Line(Margin = 0)]
 
-        [Text("<b>Gravity Options</b>", FontSize = 16)]
+        [Text("<b>Gravity</b>", FontSize = 16)]
 
         [Margin]
 
@@ -149,7 +149,7 @@ namespace ZL.Unity.Phys
 
         [Line(Margin = 0)]
 
-        [Text("<b>Debugging Options</b>", FontSize = 16)]
+        [Text("<b>Debugging</b>", FontSize = 16)]
 
         [Margin]
 

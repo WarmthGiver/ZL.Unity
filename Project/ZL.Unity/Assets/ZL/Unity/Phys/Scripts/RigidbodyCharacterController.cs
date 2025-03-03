@@ -1,4 +1,5 @@
 using UnityEngine;
+
 using ZL.CS;
 
 namespace ZL.Unity.Phys
@@ -25,16 +26,6 @@ namespace ZL.Unity.Phys
 
         [GetComponent]
 
-        private CapsuleCollider capsuleCollider;
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [ReadOnly(true)]
-
-        [GetComponent]
-
 #pragma warning disable CS0108
 
         private Rigidbody rigidbody;
@@ -52,42 +43,6 @@ namespace ZL.Unity.Phys
         [GetComponent]
 
         private GravityController gravityController;
-
-        [Space]
-
-        [SerializeField]
-
-        protected LayerMask groundLayerMask = 0;
-
-        public LayerMask GroundLayerMask
-        {
-            get => groundLayerMask;
-
-            set => groundLayerMask = value;
-        }
-
-        [SerializeField]
-
-        private float groundedAngleThreshold = 45f;
-
-        public float GroundedAngleThreshold
-        {
-            get => groundedAngleThreshold;
-
-            set => groundedAngleThreshold = value;
-        }
-
-#if UNITY_EDITOR
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [ReadOnly(true)]
-
-        private float groundAngle = 0f;
-
-#endif
 
         [Space]
 
@@ -128,11 +83,39 @@ namespace ZL.Unity.Phys
 
         [Alias("Speed")]
 
-        [PropertyField]
+        private float speedForRotateTransformUpright = 10f;
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Line(Margin = 0)]
+
+        [Text("<b>Grounding</b>", FontSize = 16)]
 
         [Margin]
 
-        private float speedForRotateTransformUpright = 10f;
+        protected LayerMask groundLayerMask = 0;
+
+        public LayerMask GroundLayerMask
+        {
+            get => groundLayerMask;
+
+            set => groundLayerMask = value;
+        }
+
+        [SerializeField]
+
+        private float groundSlopeThreshold = 45;
+
+        public float GroundedSlopeThreshold
+        {
+            get => groundSlopeThreshold;
+
+            set => groundSlopeThreshold = value;
+        }
 
         [SerializeField]
 
@@ -142,19 +125,13 @@ namespace ZL.Unity.Phys
 
         protected bool isGrounded = false;
 
-        [SerializeField]
-
         private int contactUphillsCount;
 
         private Vector3 contactUphillsNormal;
 
-        [SerializeField]
-
         private int contactDownhillsCount;
 
         private Vector3 contactDownhillsNormal;
-
-        [SerializeField]
 
         private int contactWallsCount;
 
@@ -228,17 +205,17 @@ namespace ZL.Unity.Phys
 
         [Line(Margin = 0)]
 
-        [Text("<b>Debugging Options</b>", FontSize = 16)]
+        [Text("<b>Debugging</b>", FontSize = 16)]
 
         [Margin]
 
-        private bool drawMovementForce = true;
+        private bool drawMovementForceGizmo = true;
 
         [SerializeField]
 
         [UsingCustomProperty]
 
-        private bool drawCollisionContacts = true;
+        private bool drawCollisionContactGizmo = true;
 
 #endif
 
@@ -276,7 +253,7 @@ namespace ZL.Unity.Phys
                 direction = Vector3.ProjectOnPlane(direction, contactWallsNormal / contactWallsCount);
             }
 
-            if (drawMovementForce == true)
+            if (drawMovementForceGizmo == true)
             {
                 Debug.DrawLine(transform.position, transform.position + movementSpeed * direction, movementDirection.ToColor());
             }
@@ -289,13 +266,13 @@ namespace ZL.Unity.Phys
 
             isGrounded = false;
 
-            contactUphillsNormal = Vector3.zero;
-
             contactUphillsCount = 0;
 
-            contactDownhillsNormal = Vector3.zero;
+            contactUphillsNormal = Vector3.zero;
 
             contactDownhillsCount = 0;
+
+            contactDownhillsNormal = Vector3.zero;
 
             contactWallsCount = 0;
 
@@ -308,28 +285,22 @@ namespace ZL.Unity.Phys
             {
                 int contactsCount = collision.contacts.Length;
 
-                for (int i = 0; i < contactsCount; ++i)
+                foreach (var contact in collision.contacts)
                 {
-                    var contact = collision.contacts[i];
-
 #if UNITY_EDITOR
 
-                    if (drawCollisionContacts == true)
+                    if (drawCollisionContactGizmo == true)
                     {
                         Debug.DrawLine(transform.position, contact.point, Color.red, Time.fixedDeltaTime);
                     }
 
 #endif
 
-                    float centerDotContact = Vector3.Dot(contact.point - transform.position, transform.up).Round(1);
+                    float bottomDotContact = Vector3.Dot(contact.point - transform.position, transform.up);
 
-                    //Debug.Log(centerDotContact);
-
-                    if (centerDotContact > 0f)
+                    if (bottomDotContact > 0f)
                     {
                         float wallDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
-
-                        //Debug.Log(wallDotDirection);
 
                         if (wallDotDirection < 0f)
                         {
@@ -343,22 +314,18 @@ namespace ZL.Unity.Phys
 
                     float groundAngle = Vector3.Angle(transform.up, contact.normal).Round(2);
 
-                    if (groundAngle > groundedAngleThreshold)
+                    if (groundAngle > groundSlopeThreshold)
                     {
-                        continue;   
+                        ++contactWallsCount;
+
+                        contactWallsNormal += contact.normal;
+
+                        continue;
                     }
-
-#if UNITY_EDITOR
-
-                    this.groundAngle = groundAngle;
-
-#endif
 
                     isGrounded = true;
 
                     float groundDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal).Round(2);
-
-                    Debug.Log(groundDotDirection);
 
                     if (groundDotDirection < -0.1f)
                     {
@@ -367,7 +334,7 @@ namespace ZL.Unity.Phys
                         contactUphillsNormal += contact.normal;
                     }
 
-                    else if (groundDotDirection > 0.1f)
+                    else
                     {
                         ++contactDownhillsCount;
 
