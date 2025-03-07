@@ -50,6 +50,11 @@ namespace ZL.Unity.Tweeners
             keyFrames = new(values);
         }
 
+        public void Add(T value)
+        {
+
+        }
+
         public T Current()
         {
             return keyFrames[index];

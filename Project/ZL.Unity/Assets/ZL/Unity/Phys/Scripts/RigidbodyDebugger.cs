@@ -66,14 +66,6 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        [UsingCustomProperty]
-
-        [Line(Margin = 0)]
-
-        [Text("<b>Debugging Options</b>", FontSize = 16)]
-
-        [Margin]
-
         private bool drawVelocityGizmo = true;
 
         private void OnDrawGizmosSelected()

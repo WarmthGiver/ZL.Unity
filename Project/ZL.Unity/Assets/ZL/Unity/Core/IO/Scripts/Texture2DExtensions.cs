@@ -6,17 +6,17 @@ namespace ZL.Unity
 {
     public static partial class Texture2DExtensions
     {
-        public static byte[] ToBytes(this Texture2D instance, ImageFileNameExtension fileExtension)
+        public static byte[] EncodeTo(this Texture2D instance, ImageFileFormat imageFileFormat)
         {
-            return fileExtension switch
+            return imageFileFormat switch
             {
-                ImageFileNameExtension.tga => instance.EncodeToTGA(),
+                ImageFileFormat.EXR => instance.EncodeToEXR(),
 
-                ImageFileNameExtension.png => instance.EncodeToPNG(),
+                ImageFileFormat.JPG => instance.EncodeToJPG(),
 
-                ImageFileNameExtension.jpg => instance.EncodeToJPG(),
+                ImageFileFormat.PNG => instance.EncodeToPNG(),
 
-                ImageFileNameExtension.exr => instance.EncodeToEXR(),
+                ImageFileFormat.TGA => instance.EncodeToTGA(),
 
                 _ => null
             };
