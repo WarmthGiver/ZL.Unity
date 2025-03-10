@@ -22,14 +22,14 @@ namespace ZL.Unity.Audio
 
         public void Refresh()
         {
-            slider.value = AudioMixerManager.Instance.GetVolume(key) * 100f;
+            slider.value = ISingleton<AudioMixerManager>.Instance.GetVolume(key) * 100f;
         }
 
         public override void OnValueChanged()
         {
             base.OnValueChanged();
 
-            AudioMixerManager.Instance.SetVolume(key, slider.value * 0.01f);
+            ISingleton<AudioMixerManager>.Instance.SetVolume(key, slider.value * 0.01f);
         }
     }
 }

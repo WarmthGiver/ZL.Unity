@@ -1,7 +1,5 @@
 using UnityEditor;
 
-using UnityEngine;
-
 namespace ZL.Unity.UI
 {
     public static class SwipeButtonMenuItem
@@ -10,11 +8,9 @@ namespace ZL.Unity.UI
 
         public static void CreateSwipeButton(MenuCommand menuCommand)
         {
-            var swipeButton = Creator.CreateUI<SwipeButton>("Button (Swipe)");
+            var button = Creator.CreateUI<SwipeButton>("Button (Swipe)");
 
-            swipeButton.gameObject.transform.localPosition = Vector3.zero;
-
-            Selection.activeGameObject = swipeButton.gameObject;
+            Selection.activeGameObject = button.gameObject;
         }
     }
 }

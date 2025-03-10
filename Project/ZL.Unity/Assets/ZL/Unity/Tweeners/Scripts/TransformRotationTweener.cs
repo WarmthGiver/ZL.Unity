@@ -8,11 +8,18 @@ namespace ZL.Unity.Tweeners
 
     [DisallowMultipleComponent]
 
-    public sealed class TransformRotationTweener : ComponentValueTweener<QuaternionTweener, Quaternion, Vector3, QuaternionOptions>
+    public sealed class TransformRotationTweener :
+        
+        ComponentValueTweener<QuaternionTweener, Quaternion, Vector3, QuaternionOptions>
     {
         private void Awake()
         {
-            tweener = new(() => transform.rotation, value => transform.rotation = value);
+            tweener = new()
+            {
+                Getter = () => transform.rotation,
+
+                Setter = value =>transform.rotation = value
+            };
         }
     }
 }

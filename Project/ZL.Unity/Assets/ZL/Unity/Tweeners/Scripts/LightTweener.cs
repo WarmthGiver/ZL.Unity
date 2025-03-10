@@ -26,7 +26,12 @@ namespace ZL.Unity.Tweeners
 
         private void Awake()
         {
-            IntensityTweener = new(() => _light.intensity, value => _light.intensity = value);
+            IntensityTweener = new()
+            {
+                Getter = () => _light.intensity,
+                
+                Setter = value => _light.intensity = value
+            };
         }
     }
 }

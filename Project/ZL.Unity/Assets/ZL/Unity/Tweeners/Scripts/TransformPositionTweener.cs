@@ -8,11 +8,18 @@ namespace ZL.Unity.Tweeners
 
     [DisallowMultipleComponent]
 
-    public sealed class TransformPositionTweener : ComponentValueTweener<Vector3Tweener, Vector3, Vector3, VectorOptions>
+    public sealed class TransformPositionTweener :
+        
+        ComponentValueTweener<Vector3Tweener, Vector3, Vector3, VectorOptions>
     {
         private void Awake()
         {
-            tweener = new(() => transform.position, value => transform.position = value);
+            tweener = new()
+            {
+                Getter = () => transform.position,
+
+                Setter = value => transform.position = value,
+            };
         }
     }
 }

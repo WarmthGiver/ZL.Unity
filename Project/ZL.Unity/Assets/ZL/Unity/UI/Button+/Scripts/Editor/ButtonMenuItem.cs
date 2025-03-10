@@ -1,14 +1,16 @@
 using UnityEditor;
 
+using UnityEngine.UI;
+
 namespace ZL.Unity.UI
 {
-    public static class AutoButtonMenuItem
+    public static class ButtonMenuItem
     {
-        [MenuItem("GameObject/ZL/UI/Button(Auto)", false)]
+        [MenuItem("GameObject/ZL/UI/Button", false)]
 
         public static void CreateAutoButton(MenuCommand menuCommand)
         {
-            var button = Creator.CreateUI<AutoButton>("Button (Auto)");
+            var button = Creator.CreateUI<Button>("Button");
 
             Selection.activeGameObject = button.gameObject;
         }

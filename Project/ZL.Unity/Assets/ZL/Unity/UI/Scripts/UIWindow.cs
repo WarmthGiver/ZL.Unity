@@ -2,11 +2,9 @@ using UnityEngine;
 
 using UnityEngine.EventSystems;
 
-using ZL.Unity.Tweeners;
-
 namespace ZL.Unity.UI
 {
-    [RequireComponent(typeof(CanvasGroupTweener))]
+    [RequireComponent(typeof(CanvasGroupFader))]
 
     public abstract class UIWindow : MonoBehaviour, IPointerDownHandler
     {
@@ -32,28 +30,23 @@ namespace ZL.Unity.UI
 
         [GetComponent]
 
-        private CanvasGroupTweener canvasGroupTweener;
+        private CanvasGroupFader canvasGroupFader;
 
         public void OnPointerDown(PointerEventData eventData)
-        {
-            SetAsLastSibling();
-        }
-
-        private void SetAsLastSibling()
         {
             transform.SetAsLastSibling();
         }
 
         public virtual void Open()
         {
-            SetAsLastSibling();
+            transform.SetAsLastSibling();
 
-            canvasGroupTweener.TweenFaded(false);
+            canvasGroupFader.TweenFaded(false);
         }
 
         public virtual void Close()
         {
-            canvasGroupTweener.TweenFaded(true);
+            canvasGroupFader.TweenFaded(true);
         }
     }
 }

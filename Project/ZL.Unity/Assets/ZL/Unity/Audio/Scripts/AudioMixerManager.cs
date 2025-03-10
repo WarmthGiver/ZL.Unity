@@ -18,7 +18,7 @@ namespace ZL.Unity.Audio
 
     [DisallowMultipleComponent]
 
-    public sealed class AudioMixerManager : Immortal<AudioMixerManager>
+    public sealed class AudioMixerManager : MonoBehaviour, IMonoSingleton<AudioMixerManager>
     {
         [Space]
 
@@ -91,14 +91,17 @@ namespace ZL.Unity.Audio
 
 #endif
 
-        protected override void Awake()
+        private void Awake()
         {
-            if (TrySetInstance() == false)
+            if (IMonoSingleton<AudioMixerManager>.TrySetInstance(this) == true)
             {
-                return;
+                LoadVolumes();
             }
+        }
 
-            LoadVolumes();
+        private void OnDestroy()
+        {
+            ISingleton<AudioMixerManager>.OnDestroy(this);
         }
 
         public void SaveVolumes()

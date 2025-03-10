@@ -1,3 +1,4 @@
+using DG.Tweening;
 using DG.Tweening.Core;
 
 using DG.Tweening.Plugins.Options;
@@ -12,11 +13,14 @@ namespace ZL.Unity.Tweeners
 
         where TPlugOptions : struct, IPlugOptions
     {
+        [Space]
+
+        [SerializeField]
+
         protected TValueTweener tweener;
 
-        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue, float duration)
-        {
-            return tweener.Tween(endValue, duration);
-        }
+        public TweenerCore<T1, T2, TPlugOptions> Current => tweener.Current;
+
+        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue) => Tween(endValue);
     }
 }

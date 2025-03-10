@@ -26,7 +26,12 @@ namespace ZL.Unity.Tweeners
 
         private void Awake()
         {
-            AnchorPositionTweener = new(() => rectTransform.anchoredPosition, value => rectTransform.anchoredPosition = value);
+            AnchorPositionTweener = new()
+            {
+                Getter = () => rectTransform.anchoredPosition,
+                
+                Setter = value => rectTransform.anchoredPosition = value
+            };
         }
     }
 }

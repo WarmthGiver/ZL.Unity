@@ -28,7 +28,12 @@ namespace ZL.Unity.Tweeners
 
         private void Awake()
         {
-            FillAmountTweener = new(() => image.fillAmount, value => image.fillAmount = value);
+            FillAmountTweener = new()
+            {
+                Getter = () => image.fillAmount,
+                
+                Setter = value => image.fillAmount = value
+            };
         }
     }
 }

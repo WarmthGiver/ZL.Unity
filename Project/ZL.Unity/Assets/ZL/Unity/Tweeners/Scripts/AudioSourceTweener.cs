@@ -26,7 +26,12 @@ namespace ZL.Unity.Tweeners
 
         private void Awake()
         {
-            VolumeTweener = new(() => audioSource.volume, value => audioSource.volume = value);
+            VolumeTweener = new()
+            {
+                Getter = () => audioSource.volume,
+
+                Setter = value => audioSource.volume = value
+            };
         }
     }
 }

@@ -1,23 +1,25 @@
-using DG.Tweening.Core;
-
 using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
-    public static class AudioListenerVolumeTweener
+    [AddComponentMenu("ZL/Tweeners/Audio Listener Volume Tweener")]
+
+    [DisallowMultipleComponent]
+
+    public sealed class AudioListenerVolumeTweener :
+        
+        ComponentValueTweener<FloatTweener, float, float, FloatOptions>, IMonoSingleton<AudioListenerVolumeTweener>
     {
-        private static readonly FloatTweener volumeTweener;
-
-        static AudioListenerVolumeTweener()
+        private void Awake()
         {
-            volumeTweener = new(() => AudioListener.volume, value => AudioListener.volume = value);
-        }
+            tweener = new()
+            {
+                Getter = () => AudioListener.volume,
 
-        public static TweenerCore<float, float, FloatOptions> Tween(float endValue, float duration)
-        {
-            return volumeTweener.Tween(endValue, duration);
+                Setter = value => AudioListener.volume = value,
+            };
         }
     }
 }

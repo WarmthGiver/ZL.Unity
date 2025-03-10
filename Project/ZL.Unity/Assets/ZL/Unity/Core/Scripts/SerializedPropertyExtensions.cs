@@ -2,24 +2,41 @@
 
 using UnityEditor;
 
-public static partial class SerializedPropertyExtensions
+namespace ZL.Unity
 {
-    public static bool TryFindProperty(this SerializedProperty instance, string propertyPath, out SerializedProperty result)
+    public static partial class SerializedPropertyExtensions
     {
-        return instance.serializedObject.TryFindProperty(propertyPath, out result);
-    }
-
-    public static bool IsPropertyTypeIn(this SerializedProperty instance, params SerializedPropertyType[] propertyTypes)
-    {
-        foreach (var propertyType in propertyTypes)
+        public static bool TryFindProperty(this SerializedProperty instance, string fieldName, out SerializedProperty result)
         {
-            if (instance.propertyType == propertyType)
-            {
-                return true;
-            }
+            var propertyPath = GetParentPath(instance) + fieldName;
+
+            return instance.serializedObject.TryFindProperty(propertyPath, out result);
         }
 
-        return false;
+        public static string GetParentPath(SerializedProperty instance)
+        {
+            int lastIndex = instance.propertyPath.LastIndexOf('.');
+
+            if (lastIndex != -1)
+            {
+                return instance.propertyPath[..(lastIndex + 1)];
+            }
+
+            return string.Empty;
+        }
+
+        public static bool IsPropertyTypeIn(this SerializedProperty instance, params SerializedPropertyType[] propertyTypes)
+        {
+            foreach (var propertyType in propertyTypes)
+            {
+                if (instance.propertyType == propertyType)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
 

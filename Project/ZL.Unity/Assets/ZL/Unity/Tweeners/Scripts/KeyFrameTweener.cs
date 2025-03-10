@@ -102,19 +102,7 @@ namespace ZL.Unity.Tweeners
 
         [SerializeField]
 
-        protected float duration = 0f;
-
-        [Space]
-
-        [SerializeField]
-
         protected KeyFrames<T2> keyFrames;
-
-        [Space]
-
-        [SerializeField]
-
-        private Ease ease;
 
         private void OnValidate()
         {
@@ -146,7 +134,7 @@ namespace ZL.Unity.Tweeners
 
         protected virtual TweenerCore<T1, T2, TPlugOptions> TweenKeyFrame()
         {
-            return componentTweener.Tween(keyFrames.Current(), duration).SetEase(ease);
+            return componentTweener.Tween(keyFrames.Current());
         }
     }
 }

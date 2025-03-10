@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Track (Singleton)")]
@@ -10,7 +8,7 @@ namespace ZL.Unity.Audio
 
     [RequireComponent(typeof(AudioSource))]
 
-    public sealed class AudioTrack : Immortal<AudioTrack>
+    public sealed class AudioTrack : MonoBehaviour, IMonoSingleton<AudioTrack>
     {
         [Space]
 
@@ -81,6 +79,11 @@ namespace ZL.Unity.Audio
 
 #endif
 
+        private void Awake()
+        {
+            IMonoSingleton<AudioTrack>.TrySetInstance(this);
+        }
+
         private void Start()
         {
             if (playOnAwake == true)
@@ -97,16 +100,21 @@ namespace ZL.Unity.Audio
             }
         }
 
-        protected override bool IsDuplicated()
+        private void OnDestroy()
         {
-            if (Instance != null)
+            ISingleton<AudioTrack>.OnDestroy(this);
+        }
+
+        bool ISingleton<AudioTrack>.IsDuplicated()
+        {
+            if (ISingleton<AudioTrack>.Instance != null)
             {
-                if (Instance.trackName == trackName)
+                if (ISingleton<AudioTrack>.Instance.trackName == trackName)
                 {
                     return true;
                 }
 
-                DestroyImmediate(Instance.gameObject);
+                DestroyImmediate(ISingleton<AudioTrack>.Instance.gameObject);
             }
 
             return false;

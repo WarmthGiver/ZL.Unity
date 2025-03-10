@@ -18,16 +18,16 @@ namespace ZL.Unity.AudioListenerVolumeTweenerDemo
     {
         private void Start()
         {
-            AudioListenerVolumeTweener.Tween(1f, 3f).SetEase(Ease.Linear);
+            ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f);
         }
 
         private void Update()
         {
             if (Input.anyKeyDown == true)
             {
-                AudioListenerVolumeTweener.Tween(0f, 3f).
+                ISingleton<AudioListenerVolumeTweener>.Instance.
                     
-                    SetEase(Ease.Linear).
+                    Tween(0f).
 
                     OnComplete(LoadScene);
             }
