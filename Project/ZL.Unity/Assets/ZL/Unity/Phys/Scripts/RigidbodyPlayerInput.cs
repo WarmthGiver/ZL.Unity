@@ -30,6 +30,12 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
+        private Transform virtualCameraFollower;
+
+        [Space]
+
+        [SerializeField]
+
         private float jumpPower = 10f;
 
         public float JumpPower
@@ -46,6 +52,11 @@ namespace ZL.Unity.Phys
         [UsingCustomProperty]
 
         protected Vector2 lookDelta;
+
+        private void FixedUpdate()
+        {
+            //virtualCameraFollower.Rotate
+        }
 
         protected virtual void OnMove(InputValue inputValue)
         {

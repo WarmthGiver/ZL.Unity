@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "290972251101",
+    "firebase_url": "https://unity-demo-e583c-default-rtdb.firebaseio.com",
     "project_id": "unity-demo-e583c",
     "storage_bucket": "unity-demo-e583c.firebasestorage.app"
   },

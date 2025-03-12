@@ -4,6 +4,8 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
+using ZL.Unity.Collections;
+
 using ZL.Unity.Tweeners;
 
 using ZL.Unity.UI;
@@ -24,7 +26,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private CanvasGroupFader fadeScreen;
+        private CanvasGroupFader screenFader;
 
         [SerializeField]
 
@@ -60,9 +62,9 @@ namespace ZL.Unity
 
             ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f);
 
-            if (fadeScreen != null)
+            if (screenFader != null)
             {
-                fadeScreen.TweenFaded(true);
+                screenFader.SetFaded(true);
             }
 
             yield return WaitFor.Seconds(fadeDuration);
@@ -76,7 +78,7 @@ namespace ZL.Unity
 
             ISingleton<AudioListenerVolumeTweener>.Instance.Tween(0f);
 
-            fadeScreen.TweenFaded(false);
+            screenFader.SetFaded(false);
         }
 
         private string sceneNameToLoad;

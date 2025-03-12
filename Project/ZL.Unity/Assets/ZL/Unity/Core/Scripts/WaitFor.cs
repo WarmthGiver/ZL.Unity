@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL.Unity.Collections
 {
 	public static class WaitFor
 	{

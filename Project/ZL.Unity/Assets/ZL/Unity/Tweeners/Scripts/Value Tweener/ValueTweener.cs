@@ -103,9 +103,7 @@ namespace ZL.Unity.Tweeners
             set => setter = value;
         }
 
-        private TweenerCore<T1, T2, TPlugOptions> current;
-
-        public TweenerCore<T1, T2, TPlugOptions> Current => current;
+        public TweenerCore<T1, T2, TPlugOptions> Current { get; private set; }
 
         protected abstract TweenerCore<T1, T2, TPlugOptions> Instantiate
             
@@ -113,29 +111,29 @@ namespace ZL.Unity.Tweeners
 
         public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)
         {
-            current.Kill();
+            Current.Kill();
 
-            current = Instantiate(getter, setter, endValue, duration);
+            Current = Instantiate(getter, setter, endValue, duration);
 
             if (useCustomEase == false)
             {
-                current.SetEase(ease);
+                Current.SetEase(ease);
             }
 
             else
             {
-                current.SetEase(animCurve);
+                Current.SetEase(animCurve);
             }
             
-            current.SetUpdate(isIndependentUpdate);
+            Current.SetUpdate(isIndependentUpdate);
 
-            current.SetAutoKill(false);
+            Current.SetAutoKill(false);
 
-            current.SetRecyclable(true);
+            Current.SetRecyclable(true);
 
-            current.Restart();
+            Current.Restart();
 
-            return current;
+            return Current;
         }
     }
 }

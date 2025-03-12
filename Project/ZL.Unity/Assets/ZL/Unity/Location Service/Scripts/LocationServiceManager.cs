@@ -4,6 +4,8 @@ using System.Collections;
 
 using UnityEngine;
 
+using ZL.Unity.Collections;
+
 namespace ZL.Unity.LS
 {
     public sealed class LocationServiceManager : MonoBehaviour

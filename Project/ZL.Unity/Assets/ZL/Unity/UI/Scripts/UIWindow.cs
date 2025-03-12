@@ -41,12 +41,12 @@ namespace ZL.Unity.UI
         {
             transform.SetAsLastSibling();
 
-            canvasGroupFader.TweenFaded(false);
+            canvasGroupFader.SetFaded(false);
         }
 
         public virtual void Close()
         {
-            canvasGroupFader.TweenFaded(true);
+            canvasGroupFader.SetFaded(true);
         }
     }
 }

@@ -3,7 +3,6 @@
 using DG.Tweening.Core;
 
 using DG.Tweening.Plugins.Options;
-
 using UnityEngine;
 
 using ZL.Unity.Tweeners;
@@ -72,21 +71,31 @@ namespace ZL.Unity.UI
             }
         }
 
+        private bool interactable;
+
+        private bool blocksRaycasts;
+
         private void Awake()
         {
             IsFaded = isFaded;
         }
 
-        public TweenerCore<float, float, FloatOptions> TweenFaded(bool value)
+        public void SetFaded(bool value)
         {
             isFaded = value;
 
             if (isFaded == true)
             {
-                canvasGroupAlphaTweener.
-                    
-                    Tween(0f).
+                interactable = canvasGroup.interactable;
 
+                blocksRaycasts = canvasGroup.blocksRaycasts;
+
+                canvasGroup.interactable = false;
+
+                canvasGroup.blocksRaycasts = false;
+
+                canvasGroupAlphaTweener.Tween(0f).
+                    
                     OnComplete(SetActiveFalse);
             }
 
@@ -94,17 +103,17 @@ namespace ZL.Unity.UI
             {
                 gameObject.SetActive(true);
 
-                canvasGroupAlphaTweener.
-
-                    Tween(1f);
+                canvasGroupAlphaTweener.Tween(1f);
             }
-
-            return canvasGroupAlphaTweener.Current;
         }
 
         private void SetActiveFalse()
         {
             gameObject.SetActive(false);
+
+            canvasGroup.interactable = interactable;
+
+            canvasGroup.blocksRaycasts = blocksRaycasts;
         }
     }
 }

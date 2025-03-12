@@ -22,16 +22,16 @@ namespace ZL.Unity.Tweeners
 
         protected abstract T1 Value { get; set; }
 
-        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)
-        {
-            return tweener.Tween(endValue);
-        }
-
         protected virtual void Awake()
         {
             tweener.Getter = () => Value;
 
             tweener.Setter = value => Value = value;
+        }
+
+        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)
+        {
+            return tweener.Tween(endValue);
         }
     }
 }
