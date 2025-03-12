@@ -102,7 +102,7 @@ namespace ZL.Unity.Audio
 
         private void OnDestroy()
         {
-            ISingleton<AudioTrack>.OnDestroy(this);
+            ISingleton<AudioTrack>.Release(this);
         }
 
         bool ISingleton<AudioTrack>.IsDuplicated()

@@ -51,7 +51,7 @@ namespace ZL.Unity
 
         private void OnDestroy()
         {
-            ISingleton<T>.OnDestroy((T)this);
+            ISingleton<T>.Release((T)this);
         }
 
         protected virtual IEnumerator Start()

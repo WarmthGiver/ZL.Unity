@@ -48,6 +48,12 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
+        private Transform model;
+
+        [Space]
+
+        [SerializeField]
+
         [UsingCustomProperty]
 
         private bool rotateTransformUpright = true;
@@ -108,7 +114,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private float groundSlopeThreshold = 45;
+        private float groundSlopeThreshold = 45f;
 
         public float GroundedSlopeThreshold
         {
@@ -117,6 +123,18 @@ namespace ZL.Unity.Phys
             set => groundSlopeThreshold = value;
         }
 
+#if UNITY_EDITOR
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        private float groundSlope = 0f;
+
+#endif
+
         [SerializeField]
 
         [UsingCustomProperty]
@@ -124,6 +142,8 @@ namespace ZL.Unity.Phys
         [ReadOnly(true)]
 
         protected bool isGrounded = false;
+
+        public bool IsGrounded => isGrounded;
 
         private int contactUphillsCount;
 
@@ -175,24 +195,13 @@ namespace ZL.Unity.Phys
 
         [UsingCustomProperty]
 
-        protected Vector3 jumpDirection = Vector3.zero;
+        protected Vector3 impulseForce = Vector3.zero;
 
-        public Vector3 JumpDirection
+        public Vector3 ImpulseForce
         {
-            get => jumpDirection;
+            get => impulseForce;
 
-            set => jumpDirection = value;
-        }
-
-        [SerializeField]
-
-        private float jumpSpeed = 10f;
-
-        public float JumpSpeed
-        {
-            get => jumpSpeed;
-
-            set => jumpSpeed = value;
+            set => impulseForce = value;
         }
 
 #if UNITY_EDITOR
@@ -219,7 +228,7 @@ namespace ZL.Unity.Phys
 
 #endif
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             var uprightRotation = Quaternion.FromToRotation(-transform.up, gravityController.GravityDirection) * transform.rotation;
 
@@ -260,9 +269,9 @@ namespace ZL.Unity.Phys
 
             rigidbody.MovePosition(transform.position + movementSpeed * Time.fixedDeltaTime * direction);
 
-            rigidbody.AddForce(transform.rotation * jumpDirection * jumpSpeed, ForceMode.VelocityChange);
+            rigidbody.AddRelativeForce(impulseForce, ForceMode.VelocityChange);
 
-            jumpDirection = Vector3.zero;
+            impulseForce = Vector3.zero;
 
             isGrounded = false;
 
@@ -312,9 +321,9 @@ namespace ZL.Unity.Phys
                         continue;
                     }
 
-                    float groundAngle = Vector3.Angle(transform.up, contact.normal).Round(2);
+                    float groundSlope = Vector3.Angle(transform.up, contact.normal).Round(2);
 
-                    if (groundAngle > groundSlopeThreshold)
+                    if (groundSlope > groundSlopeThreshold)
                     {
                         ++contactWallsCount;
 
@@ -322,6 +331,12 @@ namespace ZL.Unity.Phys
 
                         continue;
                     }
+
+#if UNITY_EDITOR
+
+                    this.groundSlope = groundSlope;
+
+#endif
 
                     isGrounded = true;
 

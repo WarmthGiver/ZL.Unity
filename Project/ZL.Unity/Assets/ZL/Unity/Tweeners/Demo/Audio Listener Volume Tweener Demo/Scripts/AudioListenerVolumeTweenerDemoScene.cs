@@ -16,6 +16,21 @@ namespace ZL.Unity.AudioListenerVolumeTweenerDemo
 
     public sealed class AudioListenerVolumeTweenerDemoScene : MonoBehaviour
     {
+#if UNITY_EDITOR
+
+        [Space]
+
+        [SerializeField]
+
+        private float timeScale = 1f;
+
+        private void OnValidate()
+        {
+            Time.timeScale = timeScale;
+        }
+
+#endif
+
         private void Start()
         {
             ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f);

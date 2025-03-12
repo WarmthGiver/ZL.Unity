@@ -22,17 +22,19 @@ namespace ZL.Unity.Audio
 
         private float volume = 0f;
 
+#if UNITY_EDITOR
+
         private void OnValidate()
         {
-            if (Application.isPlaying == true)
+            if (Application.isPlaying == false)
             {
-                AudioListener.volume = volume;
-
-                AudioListener.pause = pause;
+                return;
             }
-        }
 
-#if UNITY_EDITOR
+            AudioListener.volume = volume;
+
+            AudioListener.pause = pause;
+        }
 
         private void Update()
         {

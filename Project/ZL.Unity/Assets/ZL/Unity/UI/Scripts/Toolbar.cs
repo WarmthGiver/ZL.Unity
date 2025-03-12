@@ -6,7 +6,7 @@ namespace ZL.Unity.UI
 {
     [DisallowMultipleComponent]
     
-    [RequireComponent(typeof(RectTransformTweener))]
+    [RequireComponent(typeof(RectTransformAnchoredPositionTweener))]
 
     public sealed class Toolbar : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace ZL.Unity.UI
 
         [GetComponent]
 
-        private RectTransformTweener canvasGroupTweener;
+        private RectTransformAnchoredPositionTweener canvasGroupTweener;
 
         //[SerializeField, GetComponentInChildren, ReadOnlyAlways]
 

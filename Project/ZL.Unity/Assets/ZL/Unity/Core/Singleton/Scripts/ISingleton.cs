@@ -4,26 +4,23 @@ namespace ZL.Unity
 
         where T : class, ISingleton<T>
     {
-        public static T Instance { get; private set; } = null;
+        public static T Instance { get; protected set; } = null;
 
         protected static bool TrySetInstance(T instance)
         {
-            if (instance.IsDuplicated() == true)
+            return instance.TrySetInstance();
+        }
+
+        bool TrySetInstance()
+        {
+            if (IsDuplicated() == true)
             {
                 return false;
             }
 
-            Instance = instance;
+            Instance = (T)this;
 
             return true;
-        }
-
-        protected static void OnDestroy(T instance)
-        {
-            if (Instance == instance)
-            {
-                Instance = null;
-            }
         }
 
         bool IsDuplicated()
@@ -36,6 +33,14 @@ namespace ZL.Unity
             FixedDebug.LogWarning($"{typeof(T)} instance is duplicated.");
 
             return true;
+        }
+
+        protected static void Release(T instance)
+        {
+            if (Instance == instance)
+            {
+                Instance = null;
+            }
         }
     }
 }

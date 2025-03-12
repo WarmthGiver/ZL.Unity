@@ -31,20 +31,20 @@ namespace ZL.Unity.Tweeners
 
         [SerializeField]
 
-        private bool useCurve = false;
+        private bool useCustomEase = false;
 
-        public bool UseCurve
+        public bool UseCustomEase
         {
-            get => useCurve;
+            get => useCustomEase;
 
-            set => useCurve = value;
+            set => useCustomEase = value;
         }
 
         [SerializeField]
 
         [UsingCustomProperty]
 
-        [ToggleIf("useCurve", true)]
+        [ToggleIf(nameof(useCustomEase), true)]
 
         private Ease ease = Ease.OutQuad;
 
@@ -59,7 +59,7 @@ namespace ZL.Unity.Tweeners
 
         [UsingCustomProperty]
 
-        [ToggleIf("useCurve", false)]
+        [ToggleIf(nameof(useCustomEase), false)]
 
         [Alias("Ease")]
 
@@ -111,30 +111,22 @@ namespace ZL.Unity.Tweeners
             
             (DOGetter<T1> getter, DOSetter<T1> setter, T2 endValue, float duration);
 
-        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)//, bool ignoreElapsed = false)
+        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)
         {
-            /*float remain = 0f;
-
-            if (ignoreElapsed == false)
-            {
-                remain = current.Remain();
-            }*/
-
             current.Kill();
 
-            current = Instantiate(getter, setter, endValue, duration);// - remain);
+            current = Instantiate(getter, setter, endValue, duration);
 
-            if (useCurve == true)
+            if (useCustomEase == false)
             {
-                current.SetEase(animCurve);
+                current.SetEase(ease);
             }
 
             else
             {
-                current.SetEase(ease);
+                current.SetEase(animCurve);
             }
             
-
             current.SetUpdate(isIndependentUpdate);
 
             current.SetAutoKill(false);

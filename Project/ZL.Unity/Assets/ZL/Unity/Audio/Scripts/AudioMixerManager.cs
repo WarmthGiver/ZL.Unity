@@ -93,7 +93,7 @@ namespace ZL.Unity.Audio
 
         private void Awake()
         {
-            if (IMonoSingleton<AudioMixerManager>.TrySetInstance(this) == true)
+            if (ISingleton<AudioMixerManager>.TrySetInstance(this) == true)
             {
                 LoadVolumes();
             }
@@ -101,7 +101,7 @@ namespace ZL.Unity.Audio
 
         private void OnDestroy()
         {
-            ISingleton<AudioMixerManager>.OnDestroy(this);
+            ISingleton<AudioMixerManager>.Release(this);
         }
 
         public void SaveVolumes()

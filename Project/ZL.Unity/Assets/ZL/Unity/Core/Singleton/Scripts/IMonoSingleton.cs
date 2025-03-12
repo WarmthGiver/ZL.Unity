@@ -6,18 +6,22 @@ namespace ZL.Unity
         
         where T : MonoBehaviour, ISingleton<T>
     {
-        protected static new bool TrySetInstance(T instance)
+        bool ISingleton<T>.TrySetInstance()
         {
-            if (ISingleton<T>.TrySetInstance(instance) == true)
-            {
-                instance.DontDestroyOnLoad();
+            FixedDebug.Log("IMonoSingleton<T>");
 
-                return true;
+            if (IsDuplicated() == true)
+            {
+                ((T)this).Destroy();
+
+                return false;
             }
 
-            instance.Destroy();
+            Instance = (T)this;
 
-            return false;
+            ((T)this).DontDestroyOnLoad();
+
+            return true;
         }
     }
 }
