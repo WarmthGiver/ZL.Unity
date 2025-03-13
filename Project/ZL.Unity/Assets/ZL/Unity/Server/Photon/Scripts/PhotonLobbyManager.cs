@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Server.PUN
+namespace ZL.Unity.Server.Photon
 {
-    [AddComponentMenu("ZL/Server/PUN/PUN Lobby Manager")]
+    [AddComponentMenu("ZL/Server/Photon/Photon Lobby Manager")]
 
     [DisallowMultipleComponent]
 
-    public sealed class PUNLobbyManager : MonoBehaviourPunCallbacks
+    public sealed class PhotonLobbyManager : MonoBehaviourPunCallbacks
     {
         [Space]
 

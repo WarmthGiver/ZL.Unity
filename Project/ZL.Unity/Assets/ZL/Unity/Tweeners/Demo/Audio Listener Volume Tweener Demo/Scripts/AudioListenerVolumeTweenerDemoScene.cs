@@ -33,18 +33,18 @@ namespace ZL.Unity.AudioListenerVolumeTweenerDemo
 
         private void Start()
         {
-            ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f);
+            //ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f);
         }
 
         private void Update()
         {
             if (Input.anyKeyDown == true)
             {
-                ISingleton<AudioListenerVolumeTweener>.Instance.
+                //ISingleton<AudioListenerVolumeTweener>.Instance.
                     
-                    Tween(0f).
+                    //Tween(0f).
 
-                    OnComplete(LoadScene);
+                    //OnComplete(LoadScene);
             }
         }
 

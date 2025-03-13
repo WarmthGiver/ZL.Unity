@@ -14,7 +14,7 @@ namespace ZL.Unity.Tweeners
 
     public sealed class QuaternionTweener : ValueTweener<Quaternion, Vector3, QuaternionOptions>
     {
-        protected override TweenerCore<Quaternion, Vector3, QuaternionOptions> Instantiate
+        protected override TweenerCore<Quaternion, Vector3, QuaternionOptions> To
             
             (DOGetter<Quaternion> getter, DOSetter<Quaternion> setter, Vector3 endValue, float duration)
         {

@@ -1,8 +1,5 @@
 ﻿using DG.Tweening;
 
-using DG.Tweening.Core;
-
-using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 using ZL.Unity.Tweeners;
@@ -15,7 +12,7 @@ namespace ZL.Unity.UI
 
     [RequireComponent(typeof(CanvasGroupAlphaTweener))]
 
-    public sealed class CanvasGroupFader : MonoBehaviour
+    public class CanvasGroupFader : MonoBehaviour
     {
         [Space]
 
@@ -80,7 +77,7 @@ namespace ZL.Unity.UI
             IsFaded = isFaded;
         }
 
-        public void SetFaded(bool value)
+        public void SetFaded(bool value, float duration)
         {
             isFaded = value;
 
@@ -94,7 +91,7 @@ namespace ZL.Unity.UI
 
                 canvasGroup.blocksRaycasts = false;
 
-                canvasGroupAlphaTweener.Tween(0f).
+                canvasGroupAlphaTweener.Tween(0f, duration).
                     
                     OnComplete(SetActiveFalse);
             }
@@ -103,7 +100,7 @@ namespace ZL.Unity.UI
             {
                 gameObject.SetActive(true);
 
-                canvasGroupAlphaTweener.Tween(1f);
+                canvasGroupAlphaTweener.Tween(1f, duration);
             }
         }
 

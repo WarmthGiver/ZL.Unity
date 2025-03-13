@@ -12,7 +12,7 @@ namespace ZL.Unity.Tweeners
 
     public sealed class FloatTweener : ValueTweener<float, float, FloatOptions>
     {
-        protected override TweenerCore<float, float, FloatOptions> Instantiate
+        protected override TweenerCore<float, float, FloatOptions> To
             
             (DOGetter<float> getter, DOSetter<float> setter, float endValue, float duration)
         {

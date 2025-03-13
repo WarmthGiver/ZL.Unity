@@ -262,10 +262,14 @@ namespace ZL.Unity.Phys
                 direction = Vector3.ProjectOnPlane(direction, contactWallsNormal / contactWallsCount);
             }
 
+#if UNITY_EDITOR
+
             if (drawMovementForceGizmo == true)
             {
                 Debug.DrawLine(transform.position, transform.position + movementSpeed * direction, movementDirection.ToColor());
             }
+
+#endif
 
             rigidbody.MovePosition(transform.position + movementSpeed * Time.fixedDeltaTime * direction);
 

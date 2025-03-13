@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace ZL.Unity.UI
 {
-    [RequireComponent(typeof(CanvasGroupFader))]
+    [RequireComponent(typeof(CanvasGroupAnimation))]
 
     public abstract class UIWindow : MonoBehaviour, IPointerDownHandler
     {
@@ -30,7 +30,13 @@ namespace ZL.Unity.UI
 
         [GetComponent]
 
-        private CanvasGroupFader canvasGroupFader;
+        private CanvasGroupAnimation canvasGroupAnimation;
+
+        [Space]
+
+        [SerializeField]
+
+        private float fadeDuration = 0.5f;
 
         public void OnPointerDown(PointerEventData eventData)
         {
@@ -41,12 +47,28 @@ namespace ZL.Unity.UI
         {
             transform.SetAsLastSibling();
 
-            canvasGroupFader.SetFaded(false);
+            if (canvasGroupAnimation != null)
+            {
+                canvasGroupAnimation.SetFaded(false, fadeDuration);
+            }
+
+            else
+            {
+                gameObject.SetActive(true);
+            }
         }
 
         public virtual void Close()
         {
-            canvasGroupFader.SetFaded(true);
+            if (canvasGroupAnimation != null)
+            {
+                canvasGroupAnimation.SetFaded(true, fadeDuration);
+            }
+
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

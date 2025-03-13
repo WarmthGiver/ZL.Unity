@@ -1,5 +1,3 @@
-using DG.Tweening;
-
 using DG.Tweening.Core;
 
 using DG.Tweening.Plugins.Options;
@@ -14,7 +12,7 @@ namespace ZL.Unity.Tweeners
 {
     [Serializable]
 
-    public sealed class KeyFrames<T>
+    public sealed class KeyFrames<T> : List<T>
     {
         [Space]
 
@@ -26,55 +24,29 @@ namespace ZL.Unity.Tweeners
         {
             get => index;
 
-            set => index = value.Repeat(keyFrames.Count);
-        }
-
-        [Space]
-
-        [SerializeField]
-
-        private List<T> keyFrames;
-
-        public KeyFrames()
-        {
-            keyFrames = new();
-        }
-
-        public KeyFrames(int capacity)
-        {
-            keyFrames = new(capacity);
-        }
-
-        public KeyFrames(params T[] values)
-        {
-            keyFrames = new(values);
-        }
-
-        public void Add(T value)
-        {
-
+            set => index = value.Repeat(Count);
         }
 
         public T Current()
         {
-            return keyFrames[index];
+            return this[index];
         }
 
         public T Current(int index)
         {
             Index = index;
 
-            return keyFrames[Index];
+            return this[Index];
         }
 
         public T Next()
         {
-            return keyFrames[++Index];
+            return this[++Index];
         }
 
         public T Prev()
         {
-            return keyFrames[--Index];
+            return this[--Index];
         }
     }
 
@@ -97,6 +69,12 @@ namespace ZL.Unity.Tweeners
         [GetComponent]
 
         protected TComponentTweener componentTweener;
+
+        [Space]
+
+        [SerializeField]
+
+        private float duration;
 
         [Space]
 
@@ -134,7 +112,7 @@ namespace ZL.Unity.Tweeners
 
         protected virtual TweenerCore<T1, T2, TPlugOptions> TweenKeyFrame()
         {
-            return componentTweener.Tween(keyFrames.Current());
+            return componentTweener.Tween(keyFrames.Current(), duration);
         }
     }
 }

@@ -28,23 +28,17 @@ namespace ZL.Unity
 
         private CanvasGroupFader screenFader;
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [Alias("Delay")]
-
-        private float fadeDelay = 0.5f;
+        [Space]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private float startDelay = 0.5f;
 
-        [Alias("Duration")]
+        [SerializeField]
 
         private float fadeDuration = 2f;
 
-        private int pauseCall = 0;
+        private int pauseCount = 0;
 
         private void Awake()
         {
@@ -58,48 +52,57 @@ namespace ZL.Unity
 
         protected virtual IEnumerator Start()
         {
-            yield return WaitFor.Seconds(fadeDelay);
+            yield return WaitFor.Seconds(startDelay);
 
-            ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f);
+            if (ISingleton<AudioListenerVolumeTweener>.Instance != null)
+            {
+                ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f, fadeDuration);
+            }
 
             if (screenFader != null)
             {
-                screenFader.SetFaded(true);
+                screenFader.SetFaded(true, fadeDuration);
             }
 
             yield return WaitFor.Seconds(fadeDuration);
         }
 
-        public virtual void EndScene(bool isPlayerAlive) { }
+        public virtual void EndScene() { }
 
         public void LoadScene(string scaneName)
         {
-            sceneNameToLoad = scaneName;
-
-            ISingleton<AudioListenerVolumeTweener>.Instance.Tween(0f);
-
-            screenFader.SetFaded(false);
+            StartCoroutine(LoadSceneRoutine(scaneName));
         }
 
-        private string sceneNameToLoad;
-
-        protected virtual void OnSceneLoaded()
+        private IEnumerator LoadSceneRoutine(string scaneName)
         {
-            SceneManager.LoadScene(sceneNameToLoad);
+            if (ISingleton<AudioListenerVolumeTweener>.Instance != null)
+            {
+                ISingleton<AudioListenerVolumeTweener>.Instance.Tween(0f, fadeDuration);
+            }
+
+            if (screenFader != null)
+            {
+                screenFader.SetFaded(false, fadeDuration);
+            }
+
+            yield return WaitFor.Seconds(fadeDuration);
+
+            SceneManager.LoadScene(scaneName);
         }
 
         public void Pause()
         {
-            ++pauseCall;
+            ++pauseCount;
 
             Time.timeScale = 0f;
         }
 
         public void Resume()
         {
-            if (--pauseCall <= 0)
+            if (--pauseCount <= 0)
             {
-                pauseCall = 0;
+                pauseCount = 0;
 
                 Time.timeScale = 1f;
             }

@@ -6,20 +6,14 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Server.PUN
+namespace ZL.Unity.Server.Photon
 {
-    [AddComponentMenu("ZL/Server/PUN/PUN Server Manager")]
+    [AddComponentMenu("ZL/Server/Photon/Photon Server Manager")]
 
     [DisallowMultipleComponent]
 
-    public sealed class PUNServerManager : MonoBehaviourPunCallbacks
+    public sealed class PhotonServerManager : MonoBehaviourPunCallbacks
     {
-        [Space]
-
-        [SerializeField]
-
-        private string gameVersion = "1.0";
-
         [Space]
 
         [SerializeField]
@@ -46,7 +40,7 @@ namespace ZL.Unity.Server.PUN
         {
             if (PhotonNetwork.IsConnected == false)
             {
-                PhotonNetwork.GameVersion = gameVersion;
+                PhotonNetwork.GameVersion = Application.unityVersion;
 
                 // 유니티 포톤 세팅 값을 바탕으로 서버에 연결
                 PhotonNetwork.ConnectUsingSettings();

@@ -29,9 +29,9 @@ namespace ZL.Unity.Tweeners
             tweener.Setter = value => Value = value;
         }
 
-        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)
+        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue, float duration)
         {
-            return tweener.Tween(endValue);
+            return tweener.Tween(endValue, duration);
         }
     }
 }

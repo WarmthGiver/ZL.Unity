@@ -14,7 +14,7 @@ namespace ZL.Unity.Tweeners
 
     public sealed class ColorTweener : ValueTweener<Color, Color, ColorOptions>
     {
-        protected override TweenerCore<Color, Color, ColorOptions> Instantiate
+        protected override TweenerCore<Color, Color, ColorOptions> To
             
             (DOGetter<Color> getter, DOSetter<Color> setter, Color endValue, float duration)
         {

@@ -10,15 +10,13 @@ using UnityEngine;
 
 namespace ZL.Unity.Tweeners
 {
-    [Serializable]
-
     public abstract class ValueTweener<T1, T2, TPlugOptions>
 
         where TPlugOptions : struct, IPlugOptions
     {
         [SerializeField]
 
-        private float duration = 1f;
+        private float duration = 0f;
 
         public float Duration
         {
@@ -27,49 +25,15 @@ namespace ZL.Unity.Tweeners
             set => duration = value;
         }
 
-        [Space]
-
         [SerializeField]
 
-        private bool useCustomEase = false;
-
-        public bool UseCustomEase
-        {
-            get => useCustomEase;
-
-            set => useCustomEase = value;
-        }
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [ToggleIf(nameof(useCustomEase), true)]
-
-        private Ease ease = Ease.OutQuad;
+        private Ease ease = Ease.Linear;
 
         public Ease Ease
         {
             get => ease;
 
             set => ease = value;
-        }
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [ToggleIf(nameof(useCustomEase), false)]
-
-        [Alias("Ease")]
-
-        private AnimationCurve animCurve;
-
-        public AnimationCurve AnimCurve
-        {
-            get => animCurve;
-
-            set => animCurve = value;
         }
 
         [Space]
@@ -105,26 +69,23 @@ namespace ZL.Unity.Tweeners
 
         public TweenerCore<T1, T2, TPlugOptions> Current { get; private set; }
 
-        protected abstract TweenerCore<T1, T2, TPlugOptions> Instantiate
-            
+        protected abstract TweenerCore<T1, T2, TPlugOptions> To
+
             (DOGetter<T1> getter, DOSetter<T1> setter, T2 endValue, float duration);
 
         public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)
         {
+            return Tween(endValue, duration);
+        }
+
+        public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue, float duration)
+        {
             Current.Kill();
 
-            Current = Instantiate(getter, setter, endValue, duration);
+            Current = To(getter, setter, endValue, duration);
 
-            if (useCustomEase == false)
-            {
-                Current.SetEase(ease);
-            }
+            Current.SetEase(ease);
 
-            else
-            {
-                Current.SetEase(animCurve);
-            }
-            
             Current.SetUpdate(isIndependentUpdate);
 
             Current.SetAutoKill(false);

@@ -14,7 +14,7 @@ namespace ZL.Unity.Tweeners
 
     public sealed class Vector2Tweener : ValueTweener<Vector2, Vector2, VectorOptions>
     {
-        protected override TweenerCore<Vector2, Vector2, VectorOptions> Instantiate
+        protected override TweenerCore<Vector2, Vector2, VectorOptions> To
             
             (DOGetter<Vector2> getter, DOSetter<Vector2> setter, Vector2 endValue, float duration)
         {
