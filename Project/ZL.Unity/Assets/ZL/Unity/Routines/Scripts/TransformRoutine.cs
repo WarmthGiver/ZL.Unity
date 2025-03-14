@@ -8,11 +8,16 @@ namespace ZL.Unity.Routines
 
         [SerializeField]
 
-        protected Vector3 direction = new(0f, 0f, 0f);
+        protected Vector3 direction = Vector3.zero;
 
         [SerializeField]
 
         protected float speed = 0f;
+
+        private void Awake()
+        {
+            direction = direction.normalized;
+        }
 
         protected abstract void Update();
     }

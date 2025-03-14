@@ -1,3 +1,5 @@
+using DG.Tweening.Plugins.Options;
+
 using UnityEngine;
 
 using UnityEngine.UI;
@@ -10,7 +12,9 @@ namespace ZL.Unity.Tweeners
     
     [RequireComponent(typeof(Image))]
 
-    public sealed class ImageFillAmountTweener : MonoBehaviour
+    public sealed class ImageFillAmountTweener :
+        
+        ComponentValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 
@@ -24,13 +28,6 @@ namespace ZL.Unity.Tweeners
 
         private Image image;
 
-        public FloatTweener FillAmountTweener { get; private set; }
-
-        private void Awake()
-        {
-            FillAmountTweener.Getter = () => image.fillAmount;
-
-            FillAmountTweener.Setter = value => image.fillAmount = value;
-        }
+        protected override float Value { get => image.fillAmount; set => image.fillAmount = value; }
     }
 }

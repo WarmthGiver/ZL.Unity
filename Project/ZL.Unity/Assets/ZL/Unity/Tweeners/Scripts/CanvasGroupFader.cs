@@ -68,10 +68,6 @@ namespace ZL.Unity.UI
             }
         }
 
-        private bool interactable;
-
-        private bool blocksRaycasts;
-
         private void Awake()
         {
             IsFaded = isFaded;
@@ -83,14 +79,6 @@ namespace ZL.Unity.UI
 
             if (isFaded == true)
             {
-                interactable = canvasGroup.interactable;
-
-                blocksRaycasts = canvasGroup.blocksRaycasts;
-
-                canvasGroup.interactable = false;
-
-                canvasGroup.blocksRaycasts = false;
-
                 canvasGroupAlphaTweener.Tween(0f, duration).
                     
                     OnComplete(SetActiveFalse);
@@ -107,10 +95,6 @@ namespace ZL.Unity.UI
         private void SetActiveFalse()
         {
             gameObject.SetActive(false);
-
-            canvasGroup.interactable = interactable;
-
-            canvasGroup.blocksRaycasts = blocksRaycasts;
         }
     }
 }

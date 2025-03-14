@@ -4,8 +4,6 @@ using DG.Tweening.Core;
 
 using DG.Tweening.Plugins.Options;
 
-using System;
-
 using UnityEngine;
 
 namespace ZL.Unity.Tweeners
@@ -49,6 +47,28 @@ namespace ZL.Unity.Tweeners
             set => isIndependentUpdate = value;
         }
 
+        [Space]
+
+        [SerializeField]
+
+        private bool loop = false;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ToggleIf("loop", false)]
+
+        private int loops = -1;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ToggleIf("loop", false)]
+
+        private LoopType loopType = LoopType.Restart;
+
         protected DOGetter<T1> getter;
 
         public DOGetter<T1> Getter
@@ -86,7 +106,15 @@ namespace ZL.Unity.Tweeners
 
             Current.SetEase(ease);
 
-            Current.SetUpdate(isIndependentUpdate);
+            if (isIndependentUpdate == true)
+            {
+                Current.SetUpdate(isIndependentUpdate);
+            }
+
+            if (loop == true)
+            {
+                Current.SetLoops(loops, loopType);
+            }
 
             Current.SetAutoKill(false);
 

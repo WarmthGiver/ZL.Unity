@@ -1,3 +1,5 @@
+using DG.Tweening;
+
 using DG.Tweening.Core;
 
 using DG.Tweening.Plugins.Options;
@@ -24,8 +26,13 @@ namespace ZL.Unity.Tweeners
         {
             get => index;
 
-            set => index = value.Repeat(Count);
+            set
+            {
+                
+            }
         }
+
+        private int delta = 0;
 
         public T Current()
         {
@@ -41,7 +48,11 @@ namespace ZL.Unity.Tweeners
 
         public T Next()
         {
-            return this[++Index];
+            ++delta;
+
+            Index = delta;
+
+            return this[index];
         }
 
         public T Prev()
@@ -84,8 +95,25 @@ namespace ZL.Unity.Tweeners
 
         private void OnValidate()
         {
-            SetKeyFrame(keyFrames.Index);
+            if (keyFrames.Count != 0)
+            {
+                SetKeyFrame(keyFrames.Index);
+            }
         }
+
+        [Space]
+
+        [SerializeField]
+
+        private bool playOnStart = false;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ToggleIf("loop", false)]
+
+        private LoopType loopType = LoopType.Restart;
 
         public abstract void SetKeyFrame(int index);
 

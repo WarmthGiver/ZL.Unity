@@ -47,7 +47,7 @@ namespace ZL.Unity.Collections
 
                     value = Mathf.Repeat(value, MathEx.PI2);
 
-                    return (Mathf.Sin(value) + 1) * 0.5f * length;
+                    return (Mathf.Sin(value) + 1f) * 0.5f * length;
             }
 
             return value;
