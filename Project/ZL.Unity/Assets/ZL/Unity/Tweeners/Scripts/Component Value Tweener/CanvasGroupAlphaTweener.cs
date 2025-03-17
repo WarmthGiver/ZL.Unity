@@ -10,7 +10,7 @@ namespace ZL.Unity.Tweeners
 
     [RequireComponent(typeof(CanvasGroup))]
 
-    public sealed class CanvasGroupAlphaTweener :
+    public class CanvasGroupAlphaTweener :
         
         ComponentValueTweener<FloatTweener, float, float, FloatOptions>
     {
@@ -22,7 +22,7 @@ namespace ZL.Unity.Tweeners
 
         [Toggle(true)]
 
-        private CanvasGroup canvasGroup;
+        protected CanvasGroup canvasGroup;
 
         protected override float Value
         {

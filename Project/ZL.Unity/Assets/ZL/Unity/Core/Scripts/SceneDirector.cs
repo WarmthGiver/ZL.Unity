@@ -61,7 +61,7 @@ namespace ZL.Unity
 
             if (screenFader != null)
             {
-                screenFader.SetFaded(true, fadeDuration);
+                screenFader.SetFaded(false, fadeDuration);
             }
 
             yield return WaitFor.Seconds(fadeDuration);

@@ -90,20 +90,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_Name
-      value: Text (TMP) Variant
+      value: Text (TMP)
       objectReference: {fileID: 0}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 67.85
       objectReference: {fileID: 0}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: fe29fb2188204ad44a311052e1728772, type: 2}
+      objectReference: {fileID: 11400000, guid: 1b298e39527e7de44911d1fd95b31505, type: 2}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -8589762177729308056, guid: fe29fb2188204ad44a311052e1728772, type: 2}
+      objectReference: {fileID: -8023025305311004277, guid: 1b298e39527e7de44911d1fd95b31505, type: 2}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0

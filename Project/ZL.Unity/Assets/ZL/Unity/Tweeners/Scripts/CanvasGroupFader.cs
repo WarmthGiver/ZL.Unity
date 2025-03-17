@@ -2,6 +2,8 @@
 
 using UnityEngine;
 
+using UnityEngine.Events;
+
 using ZL.Unity.Tweeners;
 
 namespace ZL.Unity.UI
@@ -10,90 +12,88 @@ namespace ZL.Unity.UI
 
     [DisallowMultipleComponent]
 
-    [RequireComponent(typeof(CanvasGroupAlphaTweener))]
-
-    public class CanvasGroupFader : MonoBehaviour
+    public class CanvasGroupFader : CanvasGroupAlphaTweener
     {
         [Space]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private bool isFadedIn = false;
 
-        [ReadOnly(true)]
-        
-        [GetComponent]
-
-        private CanvasGroup canvasGroup;
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [ReadOnly(true)]
-
-        [GetComponent]
-
-        [Alias("Alpha Tweener")]
-
-        private CanvasGroupAlphaTweener canvasGroupAlphaTweener;
-
-        [Space]
-
-        [SerializeField]
-
-        private bool isFaded = false;
-
-        public bool IsFaded
+        public bool IsFadedIn
         {
-            get => isFaded;
+            get => isFadedIn;
 
             set
             {
-                isFaded = value;
+                isFadedIn = value;
 
-                if (isFaded == true)
-                {
-                    canvasGroup.alpha = 0f;
-
-                    gameObject.SetActive(false);
-                }
-
-                else
+                if (isFadedIn == true)
                 {
                     gameObject.SetActive(true);
 
                     canvasGroup.alpha = 1f;
                 }
+
+                else
+                {
+                    canvasGroup.alpha = 0f;
+
+                    gameObject.SetActive(false);
+                }
             }
         }
 
-        private void Awake()
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent eventOnFadeIn;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent eventOnFadeOut;
+
+        protected override void Awake()
         {
-            IsFaded = isFaded;
+            base.Awake();
+
+            IsFadedIn = isFadedIn;
+        }
+
+        public void SetFaded(bool value)
+        {
+            SetFaded(value, tweener.Duration);
         }
 
         public void SetFaded(bool value, float duration)
         {
-            isFaded = value;
+            isFadedIn = value;
 
-            if (isFaded == true)
+            if (isFadedIn == true)
             {
-                canvasGroupAlphaTweener.Tween(0f, duration).
-                    
-                    OnComplete(SetActiveFalse);
+                gameObject.SetActive(true);
+
+                Tween(1f, duration).OnComplete(OnFadedIn);
             }
 
             else
             {
-                gameObject.SetActive(true);
-
-                canvasGroupAlphaTweener.Tween(1f, duration);
+                Tween(0f, duration).OnComplete(OnFadedOut);
             }
         }
 
-        private void SetActiveFalse()
+        protected virtual void OnFadedIn()
         {
+            eventOnFadeIn.Invoke();
+        }
+
+        protected virtual void OnFadedOut()
+        {
+            eventOnFadeOut.Invoke();
+
             gameObject.SetActive(false);
         }
     }

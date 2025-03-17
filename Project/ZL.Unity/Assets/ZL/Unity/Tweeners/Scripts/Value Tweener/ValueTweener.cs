@@ -25,32 +25,6 @@ namespace ZL.Unity.Tweeners
 
         [SerializeField]
 
-        private Ease ease = Ease.Linear;
-
-        public Ease Ease
-        {
-            get => ease;
-
-            set => ease = value;
-        }
-
-        [Space]
-
-        [SerializeField]
-
-        private bool isIndependentUpdate = false;
-
-        public bool IsIndependentUpdate
-        {
-            get => isIndependentUpdate;
-
-            set => isIndependentUpdate = value;
-        }
-
-        [Space]
-
-        [SerializeField]
-
         private bool loop = false;
 
         [SerializeField]
@@ -59,7 +33,11 @@ namespace ZL.Unity.Tweeners
 
         [ToggleIf("loop", false)]
 
-        private int loops = -1;
+        [AddIndent]
+
+        [Alias("Count")]
+
+        private int loopCount = -1;
 
         [SerializeField]
 
@@ -67,7 +45,37 @@ namespace ZL.Unity.Tweeners
 
         [ToggleIf("loop", false)]
 
+        [AddIndent]
+
+        [Alias("Type")]
+
+        [PropertyField]
+
+        [Margin]
+
         private LoopType loopType = LoopType.Restart;
+
+        [SerializeField]
+
+        private Ease ease = Ease.Unset;
+
+        public Ease Ease
+        {
+            get => ease;
+
+            set => ease = value;
+        }
+
+        [SerializeField]
+
+        private bool isIndependentUpdate = true;
+
+        public bool IsIndependentUpdate
+        {
+            get => isIndependentUpdate;
+
+            set => isIndependentUpdate = value;
+        }
 
         protected DOGetter<T1> getter;
 
@@ -104,16 +112,16 @@ namespace ZL.Unity.Tweeners
 
             Current = To(getter, setter, endValue, duration);
 
+            if (loop == true)
+            {
+                Current.SetLoops(loopCount, loopType);
+            }
+
             Current.SetEase(ease);
 
             if (isIndependentUpdate == true)
             {
                 Current.SetUpdate(isIndependentUpdate);
-            }
-
-            if (loop == true)
-            {
-                Current.SetLoops(loops, loopType);
             }
 
             Current.SetAutoKill(false);

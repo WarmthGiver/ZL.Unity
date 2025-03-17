@@ -8,6 +8,7 @@ namespace ZL.Unity.PhotonServerManagerDemo
 
     public sealed class PhotonServerManagerDemoSceneDirector : SceneDirector<PhotonServerManagerDemoSceneDirector>
     {
+
         public void TryConnectToServer()
         {
 

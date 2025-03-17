@@ -8,7 +8,7 @@ namespace ZL.Unity
     {
         private readonly int level;
 
-        public AddIndentAttribute(int level)
+        public AddIndentAttribute(int level = 1)
         {
             this.level = level;
         }
