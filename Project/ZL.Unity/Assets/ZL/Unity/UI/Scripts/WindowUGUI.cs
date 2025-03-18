@@ -1,25 +1,11 @@
 using UnityEngine;
 
-using UnityEngine.EventSystems;
-
 namespace ZL.Unity.UI
 {
     [RequireComponent(typeof(CanvasGroupAnimation))]
 
-    public abstract class UIWindow : MonoBehaviour, IPointerDownHandler
+    public abstract class WindowUGUI : MonoBehaviour
     {
-        [Space]
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [ReadOnly(true)]
-
-        [GetComponentInParent]
-
-        private UIWindowManager playerCanvas;
-
         [Space]
 
         [SerializeField]
@@ -32,24 +18,13 @@ namespace ZL.Unity.UI
 
         private CanvasGroupAnimation canvasGroupAnimation;
 
-        [Space]
-
-        [SerializeField]
-
-        private float fadeDuration = 0.5f;
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            transform.SetAsLastSibling();
-        }
-
         public virtual void Open()
         {
             transform.SetAsLastSibling();
 
             if (canvasGroupAnimation != null)
             {
-                canvasGroupAnimation.SetFaded(false, fadeDuration);
+                canvasGroupAnimation.SetFaded(false);
             }
 
             else
@@ -62,7 +37,7 @@ namespace ZL.Unity.UI
         {
             if (canvasGroupAnimation != null)
             {
-                canvasGroupAnimation.SetFaded(true, fadeDuration);
+                canvasGroupAnimation.SetFaded(true);
             }
 
             else

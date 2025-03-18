@@ -36,7 +36,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private float fadeDuration = 2f;
+        private float fadeDuration = 1f;
 
         private int pauseCount = 0;
 
@@ -83,7 +83,7 @@ namespace ZL.Unity
 
             if (screenFader != null)
             {
-                screenFader.SetFaded(false, fadeDuration);
+                screenFader.SetFaded(true, fadeDuration);
             }
 
             yield return WaitFor.Seconds(fadeDuration);

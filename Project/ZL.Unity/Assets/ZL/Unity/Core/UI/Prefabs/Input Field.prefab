@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 7174549530051783553}
   - component: {fileID: 7525142933959112310}
   m_Layer: 5
-  m_Name: Input Field (TMP)
+  m_Name: Input Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_Name
-      value: Text (TMP)
+      value: Text
       objectReference: {fileID: 0}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_text
@@ -339,6 +339,10 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8023025305311004277, guid: 1b298e39527e7de44911d1fd95b31505, type: 2}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4282400832
@@ -458,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_Name
-      value: Placeholder (TMP)
+      value: Placeholder
       objectReference: {fileID: 0}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_text
@@ -466,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontSize
-      value: 71.6
+      value: 72.35
       objectReference: {fileID: 0}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontStyle
@@ -488,6 +492,10 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8023025305311004277, guid: 1b298e39527e7de44911d1fd95b31505, type: 2}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 2151694400

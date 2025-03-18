@@ -1,4 +1,8 @@
+using System.Collections;
+
 using UnityEngine;
+
+using ZL.Unity.Server.Photon;
 
 namespace ZL.Unity.PhotonServerManagerDemo
 {
@@ -6,12 +10,15 @@ namespace ZL.Unity.PhotonServerManagerDemo
 
     [DisallowMultipleComponent]
 
-    public sealed class PhotonServerManagerDemoSceneDirector : SceneDirector<PhotonServerManagerDemoSceneDirector>
+    public sealed class PhotonServerManagerDemoSceneDirector :
+        
+        SceneDirector<PhotonServerManagerDemoSceneDirector>
     {
-
-        public void TryConnectToServer()
+        protected override IEnumerator Start()
         {
+            yield return base.Start();
 
+            ISingleton<PhotonServerConnector>.Instance.TryConnect();
         }
     }
 }

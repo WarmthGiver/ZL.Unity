@@ -72,3 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 Firebase/
+!Project/ZL.Unity/Assets/ZL/Unity/Server/Firebase/

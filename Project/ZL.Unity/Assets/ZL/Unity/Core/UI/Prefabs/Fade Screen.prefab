@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweener:
-    duration: 2
+    duration: 1
     loop: 0
     loopCount: -1
     loopType: 0

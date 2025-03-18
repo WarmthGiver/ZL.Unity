@@ -8,7 +8,7 @@ using ZL.Unity.ObjectPooling;
 
 namespace ZL.Unity.UI
 {
-    public abstract class ContentUIWindow<TUIContent> : UIWindow
+    public abstract class ContentUIWindow<TUIContent> : WindowUGUI
 
         where TUIContent : UIWindowContent<TUIContent>
     {

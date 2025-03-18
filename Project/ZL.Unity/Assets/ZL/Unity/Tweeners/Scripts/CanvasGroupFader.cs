@@ -56,6 +56,8 @@ namespace ZL.Unity.UI
 
         private UnityEvent eventOnFadeOut;
 
+        private bool interactable;
+
         protected override void Awake()
         {
             base.Awake();
@@ -81,6 +83,10 @@ namespace ZL.Unity.UI
 
             else
             {
+                interactable = canvasGroup.interactable;
+
+                canvasGroup.interactable = false;
+
                 Tween(0f, duration).OnComplete(OnFadedOut);
             }
         }
@@ -95,6 +101,8 @@ namespace ZL.Unity.UI
             eventOnFadeOut.Invoke();
 
             gameObject.SetActive(false);
+
+            canvasGroup.interactable = interactable;
         }
     }
 }
