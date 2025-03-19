@@ -53,7 +53,7 @@ MonoBehaviour:
   format: '{0:0.0} ms ({1:0} fps)'
   displayFrameRate:
     key: Display Frame Rate
-    value: 0
+    value: 1
 --- !u!1001 &2830499702674114299
 PrefabInstance:
   m_ObjectHideFlags: 0

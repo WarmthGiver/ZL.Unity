@@ -8,11 +8,11 @@ using UnityEngine;
 
 namespace ZL.Unity.Server.Photon
 {
-    [AddComponentMenu("ZL/Server/Photon/Photon Lobby Manager")]
+    [AddComponentMenu("ZL/Server/Photon/Photon Lobby Creater")]
 
     [DisallowMultipleComponent]
 
-    public sealed class PhotonLobbyManager : MonoBehaviourPunCallbacks
+    public sealed class PhotonLobbyCreater : MonoBehaviourPunCallbacks
     {
         [Space]
 
@@ -65,6 +65,11 @@ namespace ZL.Unity.Server.Photon
         public override void OnJoinedRoom()
         {
             
+        }
+
+        public override void OnLeftRoom()
+        {
+
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)

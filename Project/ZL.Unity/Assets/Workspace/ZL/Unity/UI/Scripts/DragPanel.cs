@@ -10,7 +10,7 @@ namespace ZL.Unity.UI
 
     [DisallowMultipleComponent]
 
-    public sealed class DragPanel : UIBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+    public sealed class DragPanel : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {
         [Space]
 

@@ -8,7 +8,7 @@ namespace ZL.Unity.UI
 
     [DisallowMultipleComponent]
 
-    public sealed class DraggableRect : UIBehaviour, IDragHandler
+    public sealed class DraggableRect : MonoBehaviour, IDragHandler
     {
         [SerializeField]
 
