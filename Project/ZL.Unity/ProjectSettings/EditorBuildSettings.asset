@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ZL/Unity/Server/Photon/Demo/Photon Server Manager Demo/Scenes/Photon
+    path: Assets/Workspace/ZL/Unity/Server/Photon/Demo/Photon Server Manager Demo/Scenes/Photon
       Server Manager Demo Scene.unity
     guid: 45f526a195eda6e458df8e6cdbfff832
   m_configObjects:
