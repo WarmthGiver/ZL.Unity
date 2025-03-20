@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 using ZL.Unity.Collections;
 
-using ZL.Unity.ObjectPooling;
+using ZL.Unity.Pooling;
 
 using ZL.Unity.UI;
 
@@ -34,15 +34,15 @@ namespace ZL.Unity.EulerianTrail
 
         [SerializeField]
 
-        private ManagedGameObjectPool<Line2D> edgePool;
+        private ManagedObjectPool<Line2D> edgePool;
 
         [SerializeField]
 
-        private ManagedGameObjectPool<EulerianTrailNode> nodePool;
+        private ManagedObjectPool<EulerianTrailNode> nodePool;
 
         [SerializeField]
 
-        private ManagedGameObjectPool<Line2D> drawnEdgePool;
+        private ManagedObjectPool<Line2D> drawnEdgePool;
 
         private readonly Dictionary<Segment<int>, bool> edgeVisiteds = new(new Segment<int>.EqualityComparer());
 

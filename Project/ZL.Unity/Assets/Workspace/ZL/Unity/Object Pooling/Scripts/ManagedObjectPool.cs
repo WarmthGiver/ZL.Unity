@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
     [Serializable]
 
-    public sealed class ManagedGameObjectPool<T> : GameObjectPool<T>
+    public sealed class ManagedObjectPool<T> : ObjectPool<T>
 
         where T : Component
     {

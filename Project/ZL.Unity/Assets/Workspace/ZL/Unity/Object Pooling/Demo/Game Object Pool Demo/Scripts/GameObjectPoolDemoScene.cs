@@ -6,7 +6,7 @@ using UnityEngine;
 
 using ZL.Unity.Collections;
 
-using ZL.Unity.ObjectPooling;
+using ZL.Unity.Pooling;
 
 namespace ZL.Unity.ObjectPoolingDemo
 {
@@ -20,7 +20,7 @@ namespace ZL.Unity.ObjectPoolingDemo
 
         [SerializeField]
 
-        private GameObjectPool<Rigidbody>[] pool;
+        private ObjectPool<Rigidbody>[] pool;
 
         [Space]
 

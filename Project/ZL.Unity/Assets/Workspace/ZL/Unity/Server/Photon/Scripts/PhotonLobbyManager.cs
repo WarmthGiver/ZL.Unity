@@ -1,18 +1,20 @@
 using Photon.Pun;
 
 using Photon.Realtime;
-
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Events;
+using ZL.Unity.Collections;
 
 namespace ZL.Unity.Server.Photon
 {
-    [AddComponentMenu("ZL/Server/Photon/Photon Lobby Creater")]
+    [AddComponentMenu("ZL/Server/Photon/Photon Lobby Manager")]
 
     [DisallowMultipleComponent]
 
-    public sealed class PhotonLobbyCreater : MonoBehaviourPunCallbacks
+    public sealed class PhotonLobbyManager : MonoBehaviourPunCallbacks, ISingleton<PhotonLobbyManager>
     {
         [Space]
 
@@ -26,6 +28,18 @@ namespace ZL.Unity.Server.Photon
 
         private TypedLobby[] lobbies;
 
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent eventOnJoinedLobby;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent evenOnLeftLobby;
+
         private Dictionary<string, TypedLobby> lobbyDictionary;
 
         private void Awake()
@@ -37,7 +51,7 @@ namespace ZL.Unity.Server.Photon
                 lobbyDictionary.Add(lobby.Name, lobby);
             }
 
-            lobbies = null;
+            //lobbies = null;
         }
 
         public void JoinLobby(string name)
@@ -47,36 +61,25 @@ namespace ZL.Unity.Server.Photon
             PhotonNetwork.JoinLobby(lobbyDictionary[name]);
         }
 
+        public override void OnJoinedLobby()
+        {
+            FixedDebug.Log($"Joined Lobby: {currentLobbyName}");
+
+            eventOnJoinedLobby.Invoke();
+        }
+
         public void LeaveLobby()
         {
             PhotonNetwork.LeaveLobby();
         }
 
-        public override void OnJoinedLobby()
-        {
-            Debug.Log($"로비 입장: {currentLobbyName}");
-        }
-
         public override void OnLeftLobby()
         {
-            Debug.Log($"로비 퇴장: {currentLobbyName}");
-        }
+            FixedDebug.Log($"Left Lobby: {currentLobbyName}");
 
-        public override void OnJoinedRoom()
-        {
-            
-        }
+            currentLobbyName = string.Empty;
 
-        public override void OnLeftRoom()
-        {
-
-        }
-
-        public override void OnJoinRandomFailed(short returnCode, string message)
-        {
-            Debug.Log("방 참여 실패");
-
-            PhotonNetwork.CreateRoom(null, new RoomOptions());
+            evenOnLeftLobby.Invoke();
         }
     }
 }

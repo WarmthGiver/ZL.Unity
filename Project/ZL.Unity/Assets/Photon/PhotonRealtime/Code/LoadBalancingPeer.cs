@@ -2049,14 +2049,14 @@ namespace Photon.Realtime
         AsyncRandomLobby = 3
     }
 
+    [Serializable]
+
     /// <summary>Refers to a specific lobby on the server.</summary>
     /// <remarks>
     /// Name and Type combined are the unique identifier for a lobby.<br/>
     /// The server will create lobbies "on demand", so no registration or setup is required.<br/>
     /// An empty or null Name always points to the "default lobby" as special case.
     /// </remarks>
-    [Serializable]
-
     public class TypedLobby
     {
         /// <summary>

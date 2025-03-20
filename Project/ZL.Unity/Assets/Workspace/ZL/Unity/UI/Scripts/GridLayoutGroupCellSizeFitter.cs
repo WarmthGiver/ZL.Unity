@@ -40,6 +40,11 @@ namespace ZL.Unity.UI
 
         private Axis axis;
 
+        private void Reset()
+        {
+            container = transform as RectTransform;
+        }
+
         public void Fit()
         {
             Vector2 cellSize = gridLayoutGroup.cellSize;

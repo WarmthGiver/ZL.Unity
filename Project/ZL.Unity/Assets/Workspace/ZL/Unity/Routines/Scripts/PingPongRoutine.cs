@@ -8,11 +8,15 @@ namespace ZL.Unity.Routines
     {
         [Space]
 
-        [SerializeField, Range(-1f, 1f)]
+        [SerializeField]
+        
+        [Range(-1f, 1f)]
 
         private float theta = 0f;
 
-        [SerializeField, Range(0f, 1f)]
+        [SerializeField]
+        
+        [Range(0f, 1f)]
 
         private float delay = 0f;
 

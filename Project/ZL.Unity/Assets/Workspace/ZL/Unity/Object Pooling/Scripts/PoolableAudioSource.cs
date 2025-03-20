@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
-    [AddComponentMenu("ZL/Object Pooling/Audio Source (Poolable)")]
+    [AddComponentMenu("ZL/Pooling/Audio Source (Poolable)")]
 
     [RequireComponent(typeof(AudioSource))]
 

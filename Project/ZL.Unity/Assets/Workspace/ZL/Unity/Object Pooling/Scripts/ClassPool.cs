@@ -1,4 +1,4 @@
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
     public static class ClassPool<T>
 
@@ -21,7 +21,7 @@ namespace ZL.Unity.ObjectPooling
             pool.Collect(value);
         }
 
-        private sealed class Pool : ObjectPool<T>
+        private sealed class Pool : Pool<T>
         {
             public override T Clone()
             {

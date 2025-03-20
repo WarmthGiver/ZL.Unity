@@ -6,7 +6,11 @@ namespace ZL.Unity.UI
 
     public abstract class RectTransformObject : MonoBehaviour
     {
-        [SerializeField, GetComponent, HideInInspector]
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [GetComponent]
 
         protected RectTransform rectTransform;
     }

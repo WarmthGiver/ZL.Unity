@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
-    [AddComponentMenu("ZL/Object Pooling/Particle System (Poolable)")]
+    [AddComponentMenu("ZL/Pooling/Particle System (Poolable)")]
 
     [RequireComponent(typeof(ParticleSystem))]
 

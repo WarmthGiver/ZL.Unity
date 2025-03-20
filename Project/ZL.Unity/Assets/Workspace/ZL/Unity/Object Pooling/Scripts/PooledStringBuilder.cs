@@ -2,7 +2,7 @@ using System.Linq;
 
 using System.Text;
 
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
     public static class PooledStringBuilder
     {

@@ -16,7 +16,7 @@ using ZL.Unity.Collections;
 
 namespace ZL.Unity.Server.Photon
 {
-    [AddComponentMenu("ZL/Server/Photon/Photon Server Connector")]
+    [AddComponentMenu("ZL/Server/Photon/Photon Server Connector (Singleton)")]
 
     [DisallowMultipleComponent]
 
@@ -28,7 +28,7 @@ namespace ZL.Unity.Server.Photon
 
         [SerializeField]
 
-        private float fakeLoadingTime = 2f;
+        private float fakeLoadingTime = 0f;
 
         [Space]
 
@@ -117,7 +117,10 @@ namespace ZL.Unity.Server.Photon
 
         private IEnumerator FakeLoading(float time, Action callback)
         {
-            yield return WaitFor.Seconds(time);
+            if (time > 0f)
+            {
+                yield return WaitFor.Seconds(time);
+            }
 
             callback.Invoke();
         }

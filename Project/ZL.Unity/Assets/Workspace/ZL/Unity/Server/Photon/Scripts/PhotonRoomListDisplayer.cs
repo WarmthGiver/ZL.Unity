@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZL.Unity.Pooling;
 
 namespace ZL.Unity
 {
@@ -8,26 +9,10 @@ namespace ZL.Unity
 
     public sealed class PhotonRoomListDisplayer : MonoBehaviour
     {
-        [Space]
+        //[Space]
 
-        [SerializeField]
+        //[SerializeField]
 
-        private Transform container;
-
-        [Space]
-
-        [SerializeField]
-
-        private PhotonRoomListItem item;
-
-        public void CreateItem(PhotonRoomInfo info)
-        {
-            var item = Instantiate(this.item, container);
-        }
-    }
-
-    public class PhotonRoomInfo
-    {
-
+        //private GameObjectPool<>
     }
 }

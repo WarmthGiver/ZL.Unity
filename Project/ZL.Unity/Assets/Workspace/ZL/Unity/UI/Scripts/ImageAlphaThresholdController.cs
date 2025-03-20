@@ -19,14 +19,16 @@ namespace ZL.Unity.UI
         [UsingCustomProperty]
 
         [ReadOnly(true)]
-
+        
         [GetComponent]
 
         private Image image;
 
         [Space]
 
-        [SerializeField, Range(0f, 1f)]
+        [SerializeField]
+        
+        [Range(0f, 1f)]
 
         private float alphaThreshold = 0.5f;
 

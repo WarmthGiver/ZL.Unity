@@ -1,35 +1,42 @@
-using System.Collections.Generic;
+using System;
 
-using ZL.Unity.Collections;
+using UnityEngine;
 
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
-    public abstract class ObjectPool<T>
+    [Serializable]
 
-        where T : class
+    public class ObjectPool<T> : Pool<T>
+
+        where T : Component
     {
-        private readonly LinkedList<T> stock = new();
+        [SerializeField]
 
-        public virtual T Generate()
+        protected T original;
+
+        public T Original => original;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnlyWhenPlayMode]
+
+        private Transform parent;
+
+        public Transform Parent => parent;
+
+        public void PreGenerate(int count)
         {
-            if (stock.Count == 0)
+            while (count-- > 0)
             {
-                return Clone();
+                Clone().SetActive(false);
             }
-
-            return stock.PopLast();
         }
 
-        public abstract T Clone();
-
-        public virtual void Collect(T value)
+        public override T Clone()
         {
-            stock.AddLast(value);
-        }
-
-        public void Remove(T value)
-        {
-            stock.Remove(value);
+            return PoolCollector.Clone(this);
         }
     }
 }

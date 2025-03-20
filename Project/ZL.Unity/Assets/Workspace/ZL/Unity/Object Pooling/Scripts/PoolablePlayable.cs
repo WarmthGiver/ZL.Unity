@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
     public abstract class PoolablePlayable<T> : MonoBehaviour
 

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.ObjectPooling
+namespace ZL.Unity.Pooling
 {
-    [AddComponentMenu("ZL/Object Pooling/Audio Source (Poolable) Player")]
+    [AddComponentMenu("ZL/Pooling/Audio Source (Poolable) Player")]
 
     public sealed class PoolableAudioSourcePlayer : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace ZL.Unity.ObjectPooling
 
         [SerializeField]
 
-        private GameObjectPool<PoolableAudioSource> pool;
+        private ObjectPool<PoolableAudioSource> pool;
 
         public void Play()
         {
