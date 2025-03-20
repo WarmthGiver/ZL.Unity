@@ -26,17 +26,17 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private CanvasGroupFader screenFader;
+        private CanvasGroupFader screenFader = null;
 
         [Space]
 
         [SerializeField]
 
-        private float startDelay = 0.5f;
+        private float startDelay = 0f;
 
         [SerializeField]
 
-        private float fadeDuration = 1f;
+        private float fadeDuration = 0f;
 
         private int pauseCount = 0;
 

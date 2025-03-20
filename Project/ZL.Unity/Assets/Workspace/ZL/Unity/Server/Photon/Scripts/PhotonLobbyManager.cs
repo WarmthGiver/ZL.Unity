@@ -1,12 +1,12 @@
 using Photon.Pun;
 
 using Photon.Realtime;
-using System;
+
 using System.Collections.Generic;
 
 using UnityEngine;
+
 using UnityEngine.Events;
-using ZL.Unity.Collections;
 
 namespace ZL.Unity.Server.Photon
 {
@@ -16,12 +16,6 @@ namespace ZL.Unity.Server.Photon
 
     public sealed class PhotonLobbyManager : MonoBehaviourPunCallbacks, ISingleton<PhotonLobbyManager>
     {
-        [Space]
-
-        [SerializeField]
-
-        private string currentLobbyName = string.Empty;
-
         [Space]
 
         [SerializeField]
@@ -42,6 +36,8 @@ namespace ZL.Unity.Server.Photon
 
         private Dictionary<string, TypedLobby> lobbyDictionary;
 
+        private string currentLobbyName = null;
+
         private void Awake()
         {
             lobbyDictionary = new(lobbies.Length);
@@ -50,8 +46,6 @@ namespace ZL.Unity.Server.Photon
             {
                 lobbyDictionary.Add(lobby.Name, lobby);
             }
-
-            //lobbies = null;
         }
 
         public void JoinLobby(string name)
@@ -77,7 +71,7 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Left Lobby: {currentLobbyName}");
 
-            currentLobbyName = string.Empty;
+            currentLobbyName = null;
 
             evenOnLeftLobby.Invoke();
         }

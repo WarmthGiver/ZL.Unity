@@ -59,8 +59,6 @@ namespace ZL.Unity.Server.Photon
         private void Awake()
         {
             ISingleton<PhotonServerConnector>.TrySetInstance(this);
-
-            PhotonNetwork.AutomaticallySyncScene = true;
         }
 
         private void OnDestroy()
