@@ -2,7 +2,7 @@
 
 namespace ZL.Unity.Pooling
 {
-    public abstract class PoolablePlayable<T> : MonoBehaviour
+    public abstract class StopAction<T> : MonoBehaviour
 
         where T : Component
     {
@@ -16,15 +16,15 @@ namespace ZL.Unity.Pooling
 
         [GetComponent]
 
-        protected T @base;
+        protected T target;
 
-        public T Base => @base;
+        public T Target => target;
 
-        public abstract bool IsPlaying { get; }
+        public abstract bool IsStoped { get; }
 
         private void LateUpdate()
         {
-            if (IsPlaying == false)
+            if (IsStoped == true)
             {
                 gameObject.SetActive(false);
             }

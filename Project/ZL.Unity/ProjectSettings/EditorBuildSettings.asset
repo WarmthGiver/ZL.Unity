@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Workspace/ZL/Unity/Server/Photon/Demo/Photon Server Manager Demo/Scenes/Photon
-      Server Connector Demo Scene.unity
-    guid: 45f526a195eda6e458df8e6cdbfff832
+    path: Assets/Workspace/ZL/Unity/Server/Photon/Demo/Photon Lobby Demo/Scenes/Photon
+      Lobby Demo Scene.unity
+    guid: a1186228075c9974780f161bcc3753cc
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 672d34e39073c82409697cf8335c0bfe, type: 2}

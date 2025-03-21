@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099835193583749005}
+  - component: {fileID: 8747761527497163077}
   m_Layer: 5
-  m_Name: Room List Item
+  m_Name: Room List Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +35,20 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 417.50003, y: -50}
-  m_SizeDelta: {x: 785.00006, y: 50}
+  m_SizeDelta: {x: 7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8747761527497163077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925974116817982185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abe7ca795bc4a84badf0cd13455f037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &258338600853896479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,12 +106,16 @@ PrefabInstance:
       value: Room Name Room Name Room Name Room Name
       objectReference: {fileID: 0}
     - target: {fileID: 6514689213159542419, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514689213159542419, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
       propertyPath: m_fontSize
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6514689213159542419, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
       propertyPath: m_margin.x
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6514689213159542419, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
       propertyPath: m_fontColor.b
@@ -324,6 +341,10 @@ PrefabInstance:
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_text
       value: (1/6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      propertyPath: m_Maskable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontSize

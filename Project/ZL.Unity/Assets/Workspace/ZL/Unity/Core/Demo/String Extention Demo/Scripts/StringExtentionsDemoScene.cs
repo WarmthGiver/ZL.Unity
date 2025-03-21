@@ -2,11 +2,11 @@
 
 using System;
 
+using System.Text;
+
 using TMPro;
 
 using UnityEngine;
-
-using ZL.Unity.Pooling;
 
 namespace ZL.Unity.StringExtentionsDemo
 {
@@ -28,6 +28,8 @@ namespace ZL.Unity.StringExtentionsDemo
 
         private TMP_InputField inputField;
 
+        private readonly StringBuilder stringBuilder = new();
+
         private void Awake()
         {
             inputField.onValueChanged.AddListener(Refresh);
@@ -35,7 +37,7 @@ namespace ZL.Unity.StringExtentionsDemo
 
         public void Refresh(string text)
         {
-            this.text.text = PooledStringBuilder.Concat(
+            this.text.text = stringBuilder.Concat(
 
                 "\n",
 
@@ -68,6 +70,8 @@ namespace ZL.Unity.StringExtentionsDemo
                 "\n",
 
                 "\n");
+
+            stringBuilder.Clear();
         }
     }
 }

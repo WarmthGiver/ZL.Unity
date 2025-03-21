@@ -1,5 +1,3 @@
-using System.Linq;
-
 using System.Text;
 
 namespace ZL.Unity.Pooling
@@ -10,14 +8,7 @@ namespace ZL.Unity.Pooling
         {
             var stringBuilder = ClassPool<StringBuilder>.Generate();
 
-            stringBuilder.Capacity = values.Length;
-
-            foreach (var value in values)
-            {
-                stringBuilder.Append(value);
-            }
-
-            var @string = stringBuilder.ToString();
+            var @string = stringBuilder.Concat(values);
 
             ClassPool<StringBuilder>.Collect(stringBuilder.Clear());
 
@@ -28,14 +19,7 @@ namespace ZL.Unity.Pooling
         {
             var stringBuilder = ClassPool<StringBuilder>.Generate();
 
-            stringBuilder.Capacity = values.Sum(value => value.Length);
-
-            foreach (var value in values)
-            {
-                stringBuilder.Append(value);
-            }
-
-            var @string = stringBuilder.ToString();
+            var @string = stringBuilder.Concat(values);
 
             ClassPool<StringBuilder>.Collect(stringBuilder.Clear());
 

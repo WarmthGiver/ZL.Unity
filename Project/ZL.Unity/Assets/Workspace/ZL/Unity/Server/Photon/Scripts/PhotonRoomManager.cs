@@ -8,6 +8,8 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
+using ZL.Unity.Collections;
+
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Room Manager")]
@@ -20,7 +22,28 @@ namespace ZL.Unity
 
         [SerializeField]
 
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
         private string currentRoomName = string.Empty;
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        private Wrapper<List<RoomInfo>> roomList;
+
+        public List<RoomInfo> RoomList
+        {
+            get => roomList.value;
+
+            private set => roomList.value = value;
+        }
 
         [Space]
 
@@ -52,14 +75,19 @@ namespace ZL.Unity
 
         private UnityEvent eventOnLeftRoom;
 
-        public List<RoomInfo> RoomList { get; private set; }
-
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
             RoomList = roomList;
         }
 
-        public void CreateRoom(string roomName, RoomOptions roomOptions = null)
+        public void CreateRoom(string roomName)
+        {
+            currentRoomName = roomName;
+
+            PhotonNetwork.CreateRoom(roomName, null);
+        }
+
+        public void CreateRoom(string roomName, RoomOptions roomOptions)
         {
             currentRoomName = roomName;
 
@@ -71,8 +99,6 @@ namespace ZL.Unity
             FixedDebug.Log($"Created Room: {currentRoomName}");
 
             eventOnCreatedRoom.Invoke();
-
-            JoinRoom(currentRoomName);
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)

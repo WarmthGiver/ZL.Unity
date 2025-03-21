@@ -30,7 +30,7 @@ namespace ZL.Unity.CustomPropertyAttributeDemo
 
         [Text("[ReadOnlyWhen(true)]")]
 
-        [ReadOnlyWhen("isReadOnly", true)]
+        [ReadOnlyIf("isReadOnly", true)]
 
         public string test2;
 

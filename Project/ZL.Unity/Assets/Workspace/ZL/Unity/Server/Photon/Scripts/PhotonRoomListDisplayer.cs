@@ -1,18 +1,13 @@
 using UnityEngine;
-using ZL.Unity.Pooling;
 
 namespace ZL.Unity
 {
-    [AddComponentMenu("")]
+    [AddComponentMenu("ZL/Server/Photon/Photon Room List Displayer")]
 
     [DisallowMultipleComponent]
 
     public sealed class PhotonRoomListDisplayer : MonoBehaviour
     {
-        //[Space]
 
-        //[SerializeField]
-
-        //private GameObjectPool<>
     }
 }

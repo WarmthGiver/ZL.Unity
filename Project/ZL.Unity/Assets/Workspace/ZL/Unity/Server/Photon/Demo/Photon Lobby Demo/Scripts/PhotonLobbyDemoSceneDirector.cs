@@ -4,15 +4,11 @@ using UnityEngine;
 
 using ZL.Unity.Server.Photon;
 
-namespace ZL.Unity.PhotonServerConnectorDemo
+namespace ZL.Unity.PhotonLobbyDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class PhotonServerConnectorDemoSceneDirector :
-        
-        SceneDirector<PhotonServerConnectorDemoSceneDirector>
+    public sealed class PhotonLobbyDemoSceneDirector : PhotonSceneDirector
     {
         protected override IEnumerator Start()
         {

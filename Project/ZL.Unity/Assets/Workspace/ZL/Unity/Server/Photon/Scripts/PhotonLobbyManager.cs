@@ -8,6 +8,8 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
+using ZL.Unity.Collections;
+
 namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Lobby Manager")]
@@ -20,7 +22,21 @@ namespace ZL.Unity.Server.Photon
 
         [SerializeField]
 
-        private TypedLobby[] lobbies;
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        private string currentLobbyName = string.Empty;
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnlyWhenPlayMode]
+
+        private Wrapper<TypedLobby[]> lobbies;
 
         [Space]
 
@@ -36,15 +52,16 @@ namespace ZL.Unity.Server.Photon
 
         private Dictionary<string, TypedLobby> lobbyDictionary;
 
-        private string currentLobbyName = null;
-
         private void Awake()
         {
-            lobbyDictionary = new(lobbies.Length);
-
-            foreach (var lobby in lobbies)
+            if (lobbies.value.Length != 0)
             {
-                lobbyDictionary.Add(lobby.Name, lobby);
+                lobbyDictionary = new(lobbies.value.Length);
+
+                foreach (var lobby in lobbies.value)
+                {
+                    lobbyDictionary.Add(lobby.Name, lobby);
+                }
             }
         }
 
@@ -71,7 +88,7 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Left Lobby: {currentLobbyName}");
 
-            currentLobbyName = null;
+            currentLobbyName = string.Empty;
 
             evenOnLeftLobby.Invoke();
         }

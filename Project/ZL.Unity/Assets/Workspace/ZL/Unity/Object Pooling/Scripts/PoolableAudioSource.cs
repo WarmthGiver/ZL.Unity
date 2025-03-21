@@ -6,15 +6,15 @@ namespace ZL.Unity.Pooling
 
     [RequireComponent(typeof(AudioSource))]
 
-    public sealed class PoolableAudioSource : PoolablePlayable<AudioSource>
+    public sealed class PoolableAudioSource : StopAction<AudioSource>
     {
-        public override bool IsPlaying => @base.isPlaying;
+        public override bool IsStoped => target.isPlaying;
 
         public float Volume
         {
-            get => @base.volume;
+            get => target.volume;
 
-            set => @base.volume = value;
+            set => target.volume = value;
         }
     }
 }

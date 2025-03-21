@@ -16,7 +16,7 @@ namespace ZL.Unity
 
     [DisallowMultipleComponent]
 
-    public sealed class SceneDirector : SceneDirector<SceneDirector> { }
+    public class SceneDirector : SceneDirector<SceneDirector> { }
 
     public abstract class SceneDirector<T> : MonoBehaviour, ISingleton<T>
 
@@ -26,7 +26,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private CanvasGroupFader screenFader = null;
+        protected CanvasGroupFader screenFader;
 
         [Space]
 
@@ -36,7 +36,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private float fadeDuration = 0f;
+        protected float fadeDuration = 0f;
 
         private int pauseCount = 0;
 
@@ -67,14 +67,12 @@ namespace ZL.Unity
             ISingleton<T>.Release((T)this);
         }
 
-        public virtual void EndScene() { }
-
-        public void LoadScene(string scaneName)
+        public virtual void LoadScene(string sceneName)
         {
-            StartCoroutine(LoadSceneRoutine(scaneName));
+            StartCoroutine(LoadSceneRoutine(sceneName));
         }
 
-        private IEnumerator LoadSceneRoutine(string scaneName)
+        protected virtual IEnumerator LoadSceneRoutine(string sceneName)
         {
             if (ISingleton<AudioListenerVolumeTweener>.Instance != null)
             {
@@ -88,7 +86,7 @@ namespace ZL.Unity
 
             yield return WaitFor.Seconds(fadeDuration);
 
-            SceneManager.LoadScene(scaneName);
+            SceneManager.LoadScene(sceneName);
         }
 
         public void Pause()
