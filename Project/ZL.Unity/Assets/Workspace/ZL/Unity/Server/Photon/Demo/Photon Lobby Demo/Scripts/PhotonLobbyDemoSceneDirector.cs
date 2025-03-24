@@ -14,7 +14,7 @@ namespace ZL.Unity.PhotonLobbyDemo
         {
             yield return base.Start();
 
-            ISingleton<PhotonServerConnector>.Instance.TryConnect();
+            ISingleton<PhotonServerManager>.Instance.TryConnectToMaster();
         }
     }
 }
