@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 using ZL.Unity.Collections;
 
-namespace ZL.Unity
+namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Room Manager")]
 
@@ -77,6 +77,8 @@ namespace ZL.Unity
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
+            FixedDebug.Log("Room List Update");
+
             RoomList = roomList;
         }
 

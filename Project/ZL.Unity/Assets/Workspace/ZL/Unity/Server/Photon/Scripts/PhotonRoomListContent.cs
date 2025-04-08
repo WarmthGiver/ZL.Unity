@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Room List Content")]
 
