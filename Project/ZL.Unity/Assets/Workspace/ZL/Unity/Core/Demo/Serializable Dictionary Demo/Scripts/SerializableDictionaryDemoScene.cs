@@ -39,7 +39,7 @@ namespace ZL.Unity.SerializableDictionaryDemo
 
         [SerializeField]
 
-        private SerializableDictionary<string, int, IntPrefs> intPrefsDictionary = new()
+        private SerializableDictionary<string, int, IntPref> intPrefDictionary = new()
         {
             new("0", 0),
 
@@ -67,11 +67,11 @@ namespace ZL.Unity.SerializableDictionaryDemo
 
                 "\n" +
 
-                "▼Int Prefs Dictionary\n" +
+                "▼Int Pref Dictionary\n" +
 
                 "▼Elements\n";
 
-            foreach (var element in intPrefsDictionary)
+            foreach (var element in intPrefDictionary)
             {
                 text.text += $"\n{element}";
             }

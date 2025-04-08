@@ -8,13 +8,13 @@ public static partial class SerializedObjectExtensions
 {
     public static void ScriptField(this SerializedObject instance)
     {
-        var enabled = GUI.enabled;
+        var enabled_backup = GUI.enabled;
 
         GUI.enabled = false;
 
         EditorGUILayout.PropertyField(instance.FindProperty("m_Script"));
 
-        GUI.enabled = enabled;
+        GUI.enabled = enabled_backup;
     }
 
     public static bool TryFindProperty(this SerializedObject instance, string propertyPath, out SerializedProperty result)

@@ -14,7 +14,7 @@ using UnityEngine;
 
 using Debug = UnityEngine.Debug;
 
-using UnityObject = UnityEngine.Object;
+using Object = UnityEngine.Object;
 
 namespace ZL.Unity
 {
@@ -22,7 +22,7 @@ namespace ZL.Unity
     {
         [Conditional("UNITY_EDITOR")]
 
-        public static void Assert(bool condition, object message, UnityObject context = null)
+        public static void Assert(bool condition, object message, Object context = null)
         {
             Debug.Assert(condition, message, context);
         }
@@ -36,14 +36,14 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void Assert(bool condition, UnityObject context = null)
+        public static void Assert(bool condition, Object context = null)
         {
             Debug.Assert(condition, context);
         }
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void AssertFormat(bool condition, UnityObject context, string format, params object[] args)
+        public static void AssertFormat(bool condition, Object context, string format, params object[] args)
         {
             Debug.AssertFormat(condition, context, format, args);
         }
@@ -57,14 +57,14 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void Log(object message, UnityObject context = null)
+        public static void Log(object message, Object context = null)
         {
             Debug.Log(message, context);
         }
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogFormat(UnityObject context, string format, params object[] args)
+        public static void LogFormat(Object context, string format, params object[] args)
         {
             Debug.LogFormat(context, format, args);
         }
@@ -78,7 +78,7 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogFormat(LogType logType, LogOption logOptions, UnityObject context, string format, params object[] args)
+        public static void LogFormat(LogType logType, LogOption logOptions, Object context, string format, params object[] args)
         {
             Debug.LogFormat(logType, logOptions, context, format, args);
         }
@@ -92,14 +92,14 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogAssertion(object message, UnityObject context = null)
+        public static void LogAssertion(object message, Object context = null)
         {
             Debug.LogAssertion(message, context);
         }
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogAssertionFormat(UnityObject context, string format, params object[] args)
+        public static void LogAssertionFormat(Object context, string format, params object[] args)
         {
             Debug.LogAssertionFormat(context, format, args);
         }
@@ -113,14 +113,14 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogWarning(object message, UnityObject context = null)
+        public static void LogWarning(object message, Object context = null)
         {
             Debug.LogWarning(message, context);
         }
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogWarningFormat(UnityObject context, string format, params object[] args)
+        public static void LogWarningFormat(Object context, string format, params object[] args)
         {
             Debug.LogWarningFormat(context, format, args);
         }
@@ -134,14 +134,14 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogError(object message, UnityObject context = null)
+        public static void LogError(object message, Object context = null)
         {
             Debug.LogError(message, context);
         }
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogErrorFormat(UnityObject context, string format, params object[] args)
+        public static void LogErrorFormat(Object context, string format, params object[] args)
         {
             Debug.LogErrorFormat(context, format, args);
         }
@@ -155,7 +155,7 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void LogException(Exception exception, UnityObject context = null)
+        public static void LogException(Exception exception, Object context = null)
         {
             Debug.LogException(exception, context);
         }

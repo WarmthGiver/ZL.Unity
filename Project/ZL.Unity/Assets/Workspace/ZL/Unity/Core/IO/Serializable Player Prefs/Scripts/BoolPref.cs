@@ -4,9 +4,12 @@ namespace ZL.Unity.IO
 {
     [Serializable]
 
-    public sealed class BoolPref : SerializablePlayerPrefs<bool>
+    public sealed class BoolPref : SerializablePlayerPref<bool>
     {
-        public BoolPref(string key, bool value) : base(key, value) { }
+        public BoolPref(string key, bool value) : base(key, value)
+        {
+
+        }
 
         public override void LoadValue()
         {

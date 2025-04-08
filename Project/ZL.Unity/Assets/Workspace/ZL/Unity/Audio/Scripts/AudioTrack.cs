@@ -8,7 +8,9 @@ namespace ZL.Unity.Audio
 
     [RequireComponent(typeof(AudioSource))]
 
-    public sealed class AudioTrack : MonoBehaviour, IMonoSingleton<AudioTrack>
+    public sealed class AudioTrack :
+        
+        MonoBehaviour, IMonoSingleton<AudioTrack>
     {
         [Space]
 
@@ -16,9 +18,9 @@ namespace ZL.Unity.Audio
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-        
         [GetComponent]
+
+        [ReadOnly(true)]
 
         private AudioSource audioSource;
 
@@ -81,7 +83,7 @@ namespace ZL.Unity.Audio
 
         private void Awake()
         {
-            IMonoSingleton<AudioTrack>.TrySetInstance(this);
+            ISingleton<AudioTrack>.TrySetInstance(this);
         }
 
         private void Start()

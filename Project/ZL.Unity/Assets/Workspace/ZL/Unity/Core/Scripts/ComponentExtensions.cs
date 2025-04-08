@@ -10,7 +10,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-using UnityObject = UnityEngine.Object;
+using Object = UnityEngine.Object;
 
 namespace ZL.Unity
 {
@@ -177,7 +177,7 @@ namespace ZL.Unity
                 {
                     var gameObject = instance.gameObject;
 
-                    UnityObject.DestroyImmediate(instance);
+                    Object.DestroyImmediate(instance);
 
                     EditorUtility.SetDirty(gameObject);
 
@@ -191,7 +191,7 @@ namespace ZL.Unity
 
 #endif
 
-            UnityObject.DestroyImmediate(instance);
+            Object.DestroyImmediate(instance);
         }
     }
 }

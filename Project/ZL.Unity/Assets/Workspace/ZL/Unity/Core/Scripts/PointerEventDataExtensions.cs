@@ -6,11 +6,18 @@ namespace ZL.Unity
 {
     public static class PointerEventDataExtensions
     {
-        public static Vector2 LocalPosition(this PointerEventData instance, RectTransform target)
+        public static bool TryGetLocalPoint(this PointerEventData instance, RectTransform rect, out Vector2 localPoint)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(target, instance.position, instance.pressEventCamera, out var localPosition);
-
-            return localPosition;
+            return RectTransformUtility.ScreenPointToLocalPointInRectangle
+            (
+                rect,
+                
+                instance.position,
+                
+                instance.pressEventCamera,
+                
+                out localPoint
+            );
         }
     }
 }

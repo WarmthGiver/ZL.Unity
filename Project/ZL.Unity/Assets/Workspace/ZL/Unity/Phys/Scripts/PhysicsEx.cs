@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Phys
+namespace ZL.Unity
 {
     public static class PhysicsEx
     {

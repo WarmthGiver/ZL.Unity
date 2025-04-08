@@ -1,12 +1,12 @@
 namespace ZL.Unity
 {
-    public interface ISingleton<T>
+    public interface ISingleton<TClass>
 
-        where T : class, ISingleton<T>
+        where TClass : class, ISingleton<TClass>
     {
-        public static T Instance { get; protected set; } = null;
+        public static TClass Instance { get; protected set; } = null;
 
-        protected static bool TrySetInstance(T instance)
+        protected static bool TrySetInstance(TClass instance)
         {
             return instance.TrySetInstance();
         }
@@ -18,7 +18,7 @@ namespace ZL.Unity
                 return false;
             }
 
-            Instance = (T)this;
+            Instance = (TClass)this;
 
             return true;
         }
@@ -30,12 +30,12 @@ namespace ZL.Unity
                 return false;
             }
 
-            FixedDebug.LogWarning($"{typeof(T)} instance is duplicated.");
+            FixedDebug.LogWarning($"{typeof(TClass)} instance is duplicated.");
 
             return true;
         }
 
-        protected static void Release(T instance)
+        protected static void Release(TClass instance)
         {
             if (Instance == instance)
             {

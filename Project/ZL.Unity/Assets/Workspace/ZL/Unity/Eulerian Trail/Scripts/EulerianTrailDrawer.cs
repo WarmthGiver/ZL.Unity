@@ -62,11 +62,11 @@ namespace ZL.Unity.EulerianTrail
 
             this.actionOnEnd = actionOnEnd;
 
-            edgePool.Recall();
+            edgePool.CollectAll();
 
-            nodePool.Recall();
+            nodePool.CollectAll();
 
-            drawnEdgePool.Recall();
+            drawnEdgePool.CollectAll();
 
             edgeVisiteds.Clear();
 
@@ -111,8 +111,16 @@ namespace ZL.Unity.EulerianTrail
 
             drawingEdge.StartPoint = node.transform.localPosition;
 
-            drawingEdge.EndPoint = eventData.LocalPosition(rectTransform);
+            if (eventData.TryGetLocalPoint(rectTransform, out var localPoint) == true)
+            {
+                drawingEdge.EndPoint = localPoint;
+            }
 
+            else
+            {
+                drawingEdge.EndPoint = drawingEdge.StartPoint;
+            }
+            
             drawingEdge.Thickness = Info.DrawnEdgeThickness;
 
             drawingEdge.gameObject.SetActive(true);
@@ -139,7 +147,7 @@ namespace ZL.Unity.EulerianTrail
 
         public void ClearDrawing()
         {
-            drawnEdgePool.Recall();
+            drawnEdgePool.CollectAll();
 
             foreach (var edgeSegment in Info.EdgeSegments)
             {
@@ -178,9 +186,14 @@ namespace ZL.Unity.EulerianTrail
 
         public void DragEdge(PointerEventData eventData)
         {
-            if (drawingEdge != null)
+            if (drawingEdge == null)
             {
-                drawingEdge.EndPoint = eventData.LocalPosition(rectTransform);
+                return;
+            }
+
+            if (eventData.TryGetLocalPoint(rectTransform, out var localPoint) == true)
+            {
+                drawingEdge.EndPoint = localPoint;
             }
         }
     }

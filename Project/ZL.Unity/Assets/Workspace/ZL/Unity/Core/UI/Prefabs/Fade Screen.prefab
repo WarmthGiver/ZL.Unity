@@ -103,12 +103,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweener:
-    duration: 0
+    duration: 2
+    delay: 0
+    ease: 0
+    isIndependentUpdate: 1
     loop: 0
     loopCount: -1
     loopType: 0
-    ease: 0
-    isIndependentUpdate: 1
+    eventOnStart:
+      m_PersistentCalls:
+        m_Calls: []
+    eventOnComplete:
+      m_PersistentCalls:
+        m_Calls: []
   canvasGroup: {fileID: 7764160314332781730}
 --- !u!114 &7385273142717139498
 MonoBehaviour:
@@ -119,15 +126,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6774704113132190040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba0077f8ded3f464a80f2161ff974bc7, type: 3}
+  m_Script: {fileID: 11500000, guid: c7de13888ac3b1b4eb71afaf13b8cf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 7764160314332781730}
   alphaTweener: {fileID: 5449394640197298269}
   isFadedIn: 1
-  eventOnFadeIn:
+  eventOnFadingIn:
     m_PersistentCalls:
       m_Calls: []
-  eventOnFadeOut:
+  eventOnFadedIn:
+    m_PersistentCalls:
+      m_Calls: []
+  eventOnFadingOut:
+    m_PersistentCalls:
+      m_Calls: []
+  eventOnFadedOut:
     m_PersistentCalls:
       m_Calls: []

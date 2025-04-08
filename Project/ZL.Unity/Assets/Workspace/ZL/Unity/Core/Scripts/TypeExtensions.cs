@@ -19,9 +19,9 @@ public static class TypeExtensions
 
     public static bool IsInheritGeneric(this Type instance, out Type result)
     {
-        Type type = typeof(Component);
+        Type componentType = typeof(Component);
 
-        while (instance != type)
+        while (instance != componentType)
         {
             if (instance.IsGenericType == true)
             {

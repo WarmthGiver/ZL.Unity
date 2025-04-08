@@ -12,27 +12,26 @@ using ZL.Unity.UI;
 
 namespace ZL.Unity
 {
-    [AddComponentMenu("ZL/Scene Director")]
+    [AddComponentMenu("ZL/Scene Director (Singleton)")]
+
+    public class SceneDirector : SceneDirector<SceneDirector>
+    {
+
+    }
 
     [DisallowMultipleComponent]
 
-    public class SceneDirector : SceneDirector<SceneDirector> { }
+    public abstract class SceneDirector<TSceneDirector> :
+        
+        MonoBehaviour, ISingleton<TSceneDirector>
 
-    public abstract class SceneDirector<T> : MonoBehaviour, ISingleton<T>
-
-        where T : SceneDirector<T>
+        where TSceneDirector : SceneDirector<TSceneDirector>
     {
         [Space]
 
         [SerializeField]
 
-        protected CanvasGroupFader screenFader;
-
-        [Space]
-
-        [SerializeField]
-
-        private float startDelay = 0f;
+        protected UGUIScreen fadeScreen;
 
         [SerializeField]
 
@@ -42,29 +41,19 @@ namespace ZL.Unity
 
         private void Awake()
         {
-            ISingleton<T>.TrySetInstance((T)this);
+            ISingleton<TSceneDirector>.TrySetInstance((TSceneDirector)this);
         }
 
         protected virtual IEnumerator Start()
         {
-            yield return WaitFor.Seconds(startDelay);
-
-            if (ISingleton<AudioListenerVolumeTweener>.Instance != null)
-            {
-                ISingleton<AudioListenerVolumeTweener>.Instance.Tween(1f, fadeDuration);
-            }
-
-            if (screenFader != null)
-            {
-                screenFader.SetFaded(false, fadeDuration);
-            }
+            FadeIn();
 
             yield return WaitFor.Seconds(fadeDuration);
         }
 
         private void OnDestroy()
         {
-            ISingleton<T>.Release((T)this);
+            ISingleton<TSceneDirector>.Release((TSceneDirector)this);
         }
 
         public virtual void LoadScene(string sceneName)
@@ -74,19 +63,25 @@ namespace ZL.Unity
 
         protected virtual IEnumerator LoadSceneRoutine(string sceneName)
         {
-            if (ISingleton<AudioListenerVolumeTweener>.Instance != null)
-            {
-                ISingleton<AudioListenerVolumeTweener>.Instance.Tween(0f, fadeDuration);
-            }
-
-            if (screenFader != null)
-            {
-                screenFader.SetFaded(true, fadeDuration);
-            }
+            FadeOut();
 
             yield return WaitFor.Seconds(fadeDuration);
 
             SceneManager.LoadScene(sceneName);
+        }
+
+        public void FadeIn()
+        {
+            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(1f, fadeDuration);
+
+            fadeScreen?.FadeOut();
+        }
+
+        public void FadeOut()
+        {
+            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(0f, fadeDuration);
+
+            fadeScreen?.FadeIn();
         }
 
         public void Pause()

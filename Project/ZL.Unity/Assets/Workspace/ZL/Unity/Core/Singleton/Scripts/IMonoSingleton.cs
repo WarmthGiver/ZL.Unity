@@ -2,24 +2,22 @@ using UnityEngine;
 
 namespace ZL.Unity
 {
-    public interface IMonoSingleton<T> : ISingleton<T>
+    public interface IMonoSingleton<TMonoBehaviour> : ISingleton<TMonoBehaviour>
         
-        where T : MonoBehaviour, ISingleton<T>
+        where TMonoBehaviour : MonoBehaviour, ISingleton<TMonoBehaviour>
     {
-        bool ISingleton<T>.TrySetInstance()
+        bool ISingleton<TMonoBehaviour>.TrySetInstance()
         {
-            FixedDebug.Log("IMonoSingleton<T>");
-
             if (IsDuplicated() == true)
             {
-                ((T)this).Destroy();
+                ((TMonoBehaviour)this).Destroy();
 
                 return false;
             }
 
-            Instance = (T)this;
+            Instance = (TMonoBehaviour)this;
 
-            ((T)this).DontDestroyOnLoad();
+            ((TMonoBehaviour)this).DontDestroyOnLoad();
 
             return true;
         }
