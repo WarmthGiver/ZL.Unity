@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZL.Unity
 {
-    public static class ScreenPlus
+    public static class ScreenEx
     {
         public static RenderTexture RenderTexture { get; private set; } = new(Screen.width, Screen.height, 24);
 

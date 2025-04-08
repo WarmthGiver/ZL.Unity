@@ -2,11 +2,13 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity
+namespace ZL.Unity.Events
 {
+    [AddComponentMenu("ZL/Events/Event Invoker")]
+
 	[DisallowMultipleComponent]
 
-	public sealed class Invoker : MonoBehaviour
+	public sealed class EventInvoker : MonoBehaviour
 	{
         [Space]
 
@@ -29,17 +31,20 @@ namespace ZL.Unity
 
         public UnityEvent EventOnTime => eventOnTime;
 
-        private void OnEnable()
-        {
-            Invoke(nameOfOnTime, time);
-        }
-
         private void OnDisable()
         {
-            CancelInvoke(nameOfOnTime);
+            CancelInvoke(nameof(OnTime));
         }
 
-        private const string nameOfOnTime = nameof(OnTime);
+        public void Invoke()
+        {
+            Invoke(time);
+        }
+
+        public void Invoke(float time)
+        {
+            Invoke(nameof(OnTime), time);
+        }
 
         private void OnTime()
         {

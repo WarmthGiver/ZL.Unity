@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace ZL.Unity
 {
@@ -118,7 +118,7 @@ namespace ZL.Unity
 
             if (parent == null)
             {
-                var canvas = Object.FindObjectOfType<Canvas>();
+                var canvas = UnityObject.FindObjectOfType<Canvas>();
 
                 if (canvas == null)
                 {
@@ -150,7 +150,7 @@ namespace ZL.Unity
 
         public static void TryCreateEventSystem()
         {
-            if (Object.FindObjectOfType<EventSystem>() == null)
+            if (UnityObject.FindObjectOfType<EventSystem>() == null)
             {
                 Create<EventSystem>(null, typeof(StandaloneInputModule));
             }

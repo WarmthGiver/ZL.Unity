@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace ZL.Unity.Phys
 {
-    [AddComponentMenu("ZL/Phys/Collider Check Sphere")]
+    [AddComponentMenu("ZL/Phys/Collider Check Box")]
 
-    public sealed class ColliderCheckSphere : ColliderChecker
+    public sealed class ColliderCheckBox : ColliderChecker
     {
 #if UNITY_EDITOR
 
@@ -12,21 +12,21 @@ namespace ZL.Unity.Phys
         {
             if (wireGizmo == true)
             {
-                Gizmos.DrawWireSphere
+                Gizmos.DrawWireCube
                 (
-                    transform.position,
+                    Vector3.zero,
 
-                    transform.localScale.GetMaxAxis()
+                    transform.lossyScale
                 );
             }
 
             else
             {
-                Gizmos.DrawSphere
+                Gizmos.DrawCube
                 (
-                    transform.position,
+                    Vector3.zero,
 
-                    transform.localScale.GetMaxAxis()
+                    transform.lossyScale
                 );
             }
         }
@@ -35,14 +35,16 @@ namespace ZL.Unity.Phys
 
         public override bool Check()
         {
-            return Physics.CheckSphere
+            return Physics.CheckBox
             (
                 transform.position,
 
-                transform.localScale.GetMaxAxis(),
-                
+                transform.lossyScale,
+
+                transform.rotation,
+
                 layerMask,
-                
+
                 triggerInteraction
             );
         }

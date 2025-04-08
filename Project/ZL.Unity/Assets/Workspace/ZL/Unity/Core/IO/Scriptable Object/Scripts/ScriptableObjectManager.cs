@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ZL.Unity.IO
 {
-    public static partial class SOManager
+    public static partial class ScriptableObjectManager
     {
         public static T Load<T>(string directoryPath, string assetPath)
 

@@ -10,7 +10,7 @@ namespace ZL.Unity.UI
 
     public class NewButtonEditor : SelectableEditor
     {
-        private NewButton newButton;
+        private NewButton instance;
 
         private SerializedProperty onClick;
 
@@ -18,7 +18,7 @@ namespace ZL.Unity.UI
         {
             base.OnEnable();
 
-            newButton = (NewButton)target;
+            instance = (NewButton)target;
 
             onClick = serializedObject.FindProperty("m_OnClick");
         }
@@ -35,17 +35,17 @@ namespace ZL.Unity.UI
 
             if (GUILayout.Button("Create Image"))
             {
-                newButton.CreateImage();
+                instance.CreateImage();
             }
 
             if (GUILayout.Button("Create Text"))
             {
-                newButton.CreateText("Button");
+                instance.CreateText("Button");
             }
 
             if (GUILayout.Button("Create Text (TMP)"))
             {
-                newButton.CreateTextMeshPro("Button");
+                instance.CreateTextMeshPro("Button");
             }
 
             EditorGUILayout.EndHorizontal();
@@ -58,7 +58,7 @@ namespace ZL.Unity.UI
 
             if (GUILayout.Button("Invoke"))
             {
-                newButton.onClick.Invoke();
+                instance.onClick.Invoke();
             }
 
             EditorGUILayout.PropertyField(onClick);

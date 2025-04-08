@@ -8,7 +8,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        protected LayerMask layerMask = 0;
+        protected LayerMask layerMask = ~0;
 
         public LayerMask LayerMask
         {
@@ -19,7 +19,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        protected QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Ignore;
+        protected QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.UseGlobal;
 
 #if UNITY_EDITOR
 
@@ -43,11 +43,19 @@ namespace ZL.Unity.Phys
 
         [ToggleIf(nameof(drawGizmo), false)]
 
+        protected bool wireGizmo = false;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ToggleIf(nameof(drawGizmo), false)]
+
         [AddIndent(1)]
 
         [Alias("Default Color")]
 
-        private Color defaultGizmoColor = new(1f, 0f, 0f, 0.5f);
+        private Color defaultGizmoColor = new(0f, 1f, 0f, 0.5f);
 
         [SerializeField]
 
@@ -59,7 +67,7 @@ namespace ZL.Unity.Phys
 
         [Alias("Collided Color")]
 
-        private Color collidedGizmoColor = new(0f, 1f, 0f, 0.5f);
+        private Color collidedGizmoColor = new(1f, 0f, 0f, 0.5f);
 
         private void OnDrawGizmosSelected()
         {
@@ -78,9 +86,11 @@ namespace ZL.Unity.Phys
                 Gizmos.color = defaultGizmoColor;
             }
 
+            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, new(2f, 2f, 2f));
+
             DrawGizmos();
         }
-
+        
         protected abstract void DrawGizmos();
 
 #endif

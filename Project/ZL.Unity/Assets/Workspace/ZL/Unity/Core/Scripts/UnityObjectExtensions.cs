@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZL.Unity
 {
-    public static partial class UnityEngineObjectExtensions
+    public static partial class UnityObjectExtensions
     {
         public static void Destroy(this Object instance)
         {
