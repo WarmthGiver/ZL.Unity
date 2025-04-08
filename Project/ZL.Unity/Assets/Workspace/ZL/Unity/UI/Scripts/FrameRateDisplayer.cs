@@ -36,9 +36,9 @@ namespace ZL.Unity.UI
 
         [Button(nameof(Save))]
 
-        private BoolPrefs displayFrameRate = new("Display Frame Rate", true);
+        private BoolPref displayFrameRate = new("Display Frame Rate", true);
 
-        public BoolPrefs DisplayFrameRate => displayFrameRate;
+        public BoolPref DisplayFrameRate => displayFrameRate;
 
         private float time = 0f;
 
