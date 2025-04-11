@@ -10,7 +10,7 @@ namespace ZL.Unity
         {
             if (IsDuplicated() == true)
             {
-                ((TMonoBehaviour)this).Destroy();
+                ((TMonoBehaviour)this).gameObject.Destroy();
 
                 return false;
             }

@@ -10,15 +10,15 @@ namespace ZL.Unity.IO
 {
     public static partial class ScriptableObjectManager
     {
-        public static T Load<T>(string directoryPath, string assetPath)
+        public static TScriptableObject Load<TScriptableObject>(string directoryPath, string assetPath)
 
-            where T : ScriptableObject
+            where TScriptableObject : ScriptableObject
         {
-            var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+            var asset = AssetDatabase.LoadAssetAtPath<TScriptableObject>(assetPath);
 
             if (asset == null)
             {
-                asset = ScriptableObject.CreateInstance<T>();
+                asset = ScriptableObject.CreateInstance<TScriptableObject>();
 
                 if (Directory.Exists(directoryPath) == false)
                 {

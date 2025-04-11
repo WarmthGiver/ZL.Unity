@@ -8,9 +8,9 @@ namespace ZL.CS.IO.CSV
 {
     public static class CSVManager
     {
-        public static bool TryLoad<T>(string filePath, out List<T> datas)
+        public static bool TryLoad<TCSVConvertible>(string filePath, out List<TCSVConvertible> datas)
 
-            where T : ICSVConvertible, new()
+            where TCSVConvertible : ICSVConvertible, new()
         {
             if (File.Exists(filePath) == false)
             {
@@ -25,7 +25,7 @@ namespace ZL.CS.IO.CSV
 
             for (int i = 1; i < lines.Length; ++i)
             {
-                T data = new();
+                TCSVConvertible data = new();
 
                 data.FromCSV(lines[i].Split(','));
 
@@ -35,9 +35,9 @@ namespace ZL.CS.IO.CSV
             return true;
         }
 
-        public static void Save<T>(string filePath, List<T> datas)
+        public static void Save<TCSVConvertible>(string filePath, List<TCSVConvertible> datas)
 
-            where T : ICSVConvertible, new()
+            where TCSVConvertible : ICSVConvertible, new()
         {
             StringBuilder stringBuilder = new();
 

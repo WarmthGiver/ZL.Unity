@@ -6,6 +6,8 @@ namespace ZL.Unity.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Audio Listener Volume Tweener (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     [DisallowMultipleComponent]
 
     public sealed class AudioListenerVolumeTweener :

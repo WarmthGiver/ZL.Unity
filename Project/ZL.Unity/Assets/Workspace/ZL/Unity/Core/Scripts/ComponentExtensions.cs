@@ -10,7 +10,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace ZL.Unity
 {
@@ -18,40 +18,52 @@ namespace ZL.Unity
     {
         #region GetComponentInChildren
 
-        public static bool TryGetComponentInChildren<T>(this Component instance, out T result)
+        public static bool TryGetComponentInChildren<TComponent>
+            
+            (this Component instance, out TComponent result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentInChildren(out result);
         }
 
-        public static bool TryGetComponentInChildren(this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInChildren
+            
+            (this Component instance, Type type, out Component result)
         {
             return instance.transform.TryGetComponentInChildren(type, out result);
         }
 
-        public static bool TryGetComponentInChildrenOnly<T>(this Component instance, out T result)
+        public static bool TryGetComponentInChildrenOnly<TComponent>
+            
+            (this Component instance, out TComponent result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentInChildrenOnly(out result);
         }
 
-        public static bool TryGetComponentInChildrenOnly(this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInChildrenOnly
+            
+            (this Component instance, Type type, out Component result)
         {
             return instance.transform.TryGetComponentInChildrenOnly(type, out result);
         }
 
-        public static bool TryGetComponentsInChildren<T>(this Component instance, out List<T> result)
+        public static bool TryGetComponentsInChildren<TComponent>
+            
+            (this Component instance, out List<TComponent> result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentsInChildren(out result);
         }
 
-        public static bool TryGetComponentsInChildrenOnly<T>(this Component instance, out List<T> result)
+        public static bool TryGetComponentsInChildrenOnly<TComponent>
+            
+            (this Component instance, out List<TComponent> result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentsInChildrenOnly(out result);
         }
@@ -60,72 +72,92 @@ namespace ZL.Unity
 
         #region GetComponentInParent
 
-        public static bool TryGetComponentInParent<T>(this Component instance, out T result)
+        public static bool TryGetComponentInParent<TComponent>
+            
+            (this Component instance, out TComponent result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentInParent(out result);
         }
 
-        public static bool TryGetComponentInParent(this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInParent
+            
+            (this Component instance, Type type, out Component result)
         {
             return instance.transform.TryGetComponentInParent(type, out result);
         }
 
-        public static bool TryGetComponentInParentOnly<T>(this Component instance, out T result)
+        public static bool TryGetComponentInParentOnly<TComponent>
+            
+            (this Component instance, out TComponent result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentInParentOnly(out result);
         }
 
-        public static bool TryGetComponentInParentOnly(this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInParentOnly
+            
+            (this Component instance, Type type, out Component result)
         {
             return instance.transform.TryGetComponentInParentOnly(type, out result);
         }
 
-        public static bool TryGetComponentsInParent<T>(this Component instance, out List<T> result)
+        public static bool TryGetComponentsInParent<TComponent>
+            
+            (this Component instance, out List<TComponent> result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentsInParent(out result);
         }
 
-        public static bool TryGetComponentsInParentOnly<T>(this Component instance, out List<T> result)
+        public static bool TryGetComponentsInParentOnly<TComponent>
+            
+            (this Component instance, out List<TComponent> result)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.transform.TryGetComponentsInParentOnly(out result);
         }
 
         #endregion
 
-        public static T AddComponent<T>(this Component instance)
+        public static TComponent AddComponent<TComponent>
+            
+            (this Component instance)
 
-            where T : Component
+            where TComponent : Component
         {
-            return instance.gameObject.AddComponent<T>();
+            return instance.gameObject.AddComponent<TComponent>();
         }
 
-        public static GameObject AddComponents<T>(this T instance, params Type[] components)
+        public static GameObject AddComponents<TComponent>
+            
+            (this TComponent instance, params Type[] components)
 
-            where T : Component
+            where TComponent : Component
         {
             return instance.gameObject.AddComponents(components);
         }
 
-        public static T SetActive<T>(this T instance, bool value)
+        public static TComponent SetActive<TComponent>
+            
+            (this TComponent instance, bool value)
 
-            where T : Component
+            where TComponent : Component
         {
             instance.gameObject.SetActive(value);
 
             return instance;
         }
 
-        public static void DisallowMultiple<T>(this T instance)
+        public static void DisallowMultiple<TComponent>
+            
+            (this TComponent instance)
 
-            where T : Component
+            where TComponent : Component
         {
             void DestroyImmediate()
             {
@@ -133,7 +165,14 @@ namespace ZL.Unity
 
                 string typeName = instance.GetType().Name;
 
-                FixedEditorUtility.DisplayDialog("Invalid operation.", $"Can't add '{typeName}' to {instance.gameObject.name} because a '{typeName}' is already added to the game object!", "Ok");
+                FixedEditorUtility.DisplayDialog
+                (
+                    "Invalid operation.",
+                    
+                    $"Can't add '{typeName}' to {instance.gameObject.name} because a '{typeName}' is already added to the game object!",
+                    
+                    "Ok"
+                );
             }
 
             if (instance.GetType().IsInheritGeneric(out var type) == true)
@@ -159,15 +198,17 @@ namespace ZL.Unity
                 }
             }
 
-            else if (instance.GetComponents<T>().Length > 1)
+            else if (instance.GetComponents<TComponent>().Length > 1)
             {
                 DestroyImmediate();
             }
         }
 
-        public static void DestroyImmediate<T>(this T instance)
+        public static void DestroyImmediate<TComponent>
+            
+            (this TComponent instance)
 
-            where T : Component
+            where TComponent : Component
         {
 #if UNITY_EDITOR
 
@@ -177,7 +218,7 @@ namespace ZL.Unity
                 {
                     var gameObject = instance.gameObject;
 
-                    Object.DestroyImmediate(instance);
+                    UnityObject.DestroyImmediate(instance);
 
                     EditorUtility.SetDirty(gameObject);
 
@@ -191,7 +232,7 @@ namespace ZL.Unity
 
 #endif
 
-            Object.DestroyImmediate(instance);
+            UnityObject.DestroyImmediate(instance);
         }
     }
 }

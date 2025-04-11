@@ -12,6 +12,10 @@ namespace ZL.Unity.IO
     {
         [SerializeField]
 
+        [UsingCustomProperty]
+
+        [ReadOnlyWhenPlayMode]
+
         protected string key;
 
         public string Key
@@ -36,11 +40,11 @@ namespace ZL.Unity.IO
             {
                 this.value = value;
 
-                ActionOnValueChanged?.Invoke(value);
+                OnValueChangedAction?.Invoke(value);
             }
         }
 
-        public event Action<T> ActionOnValueChanged;
+        public event Action<T> OnValueChangedAction;
 
         public SerializablePlayerPref(string key, T value)
         {

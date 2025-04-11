@@ -4,10 +4,12 @@ namespace ZL.Unity
 {
     [DisallowMultipleComponent]
 
-    public abstract class SingletonReceiver<T> : MonoBehaviour
+    public abstract class SingletonReceiver<TSingleton> :
         
-        where T : MonoBehaviour, ISingleton<T>
+        MonoBehaviour
+        
+        where TSingleton : MonoBehaviour, ISingleton<TSingleton>
     {
-        protected T Instance => ISingleton<T>.Instance;
+        protected TSingleton Target => ISingleton<TSingleton>.Instance;
     }
 }

@@ -10,11 +10,11 @@ namespace ZL.Unity.Phys
 
         protected override void DrawGizmos()
         {
-            if (wireGizmo == true)
+            if (isWireGizmo == true)
             {
                 Gizmos.DrawWireSphere
                 (
-                    transform.position,
+                    Vector3.zero,
 
                     transform.localScale.GetMaxAxis()
                 );
@@ -24,7 +24,7 @@ namespace ZL.Unity.Phys
             {
                 Gizmos.DrawSphere
                 (
-                    transform.position,
+                    Vector3.zero,
 
                     transform.localScale.GetMaxAxis()
                 );
@@ -39,7 +39,7 @@ namespace ZL.Unity.Phys
             (
                 transform.position,
 
-                transform.localScale.GetMaxAxis(),
+                transform.localScale.GetMaxAxis() * 0.5f,
                 
                 layerMask,
                 

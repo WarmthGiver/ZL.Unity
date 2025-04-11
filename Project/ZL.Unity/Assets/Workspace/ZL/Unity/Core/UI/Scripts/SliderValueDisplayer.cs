@@ -1,16 +1,12 @@
-using TMPro;
-
 using UnityEngine;
 
 using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Slider Value Displayer")]
-
     [DisallowMultipleComponent]
 
-    public class SliderValueDisplayer : MonoBehaviour
+    public abstract class SliderValueDisplayer<TTextUGUI> : MonoBehaviour
     {
         [Space]
 
@@ -18,9 +14,9 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnlyWhenPlayMode]
-
         [Essential]
+
+        [ReadOnlyWhenPlayMode]
 
         protected Slider slider;
 
@@ -28,15 +24,42 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnlyWhenPlayMode]
-
         [Essential]
 
-        private TextMeshProUGUI valueText;
+        [ReadOnlyWhenPlayMode]
 
-        public virtual void OnValueChanged()
+        protected TextController<TTextUGUI> valueTextController;
+
+#if UNITY_EDITOR
+
+        protected float sliderValue = 0f;
+
+        protected virtual void Awake()
         {
-            valueText.text = slider.value.ToString();
+            if (slider != null)
+            {
+                sliderValue = slider.value;
+            }
         }
+
+        protected virtual void Update()
+        {
+            if (Application.isPlaying == true)
+            {
+                return;
+            }
+
+            if (valueTextController != null && slider != null)
+            {
+                if (sliderValue != slider.value)
+                {
+                    valueTextController.SetText(slider.value);
+                }
+
+                sliderValue = slider.value;
+            }
+        }
+
+#endif
     }
 }

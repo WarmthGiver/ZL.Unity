@@ -10,7 +10,7 @@ namespace ZL.Unity.Audio
 
     public sealed class AudioTrack :
         
-        MonoBehaviour, IMonoSingleton<AudioTrack>
+        MonoSingleton<AudioTrack>, IMonoSingleton<AudioTrack>
     {
         [Space]
 
@@ -50,7 +50,10 @@ namespace ZL.Unity.Audio
 
         private AudioTrackPlayMode playMode = AudioTrackPlayMode.RepeatOne;
 
-        public AudioTrackPlayMode PlayMode { set => playMode = value; }
+        public AudioTrackPlayMode PlayMode
+        {
+            set => playMode = value;
+        }
 
         [Space]
 
@@ -81,11 +84,6 @@ namespace ZL.Unity.Audio
 
 #endif
 
-        private void Awake()
-        {
-            ISingleton<AudioTrack>.TrySetInstance(this);
-        }
-
         private void Start()
         {
             if (playOnAwake == true)
@@ -100,11 +98,6 @@ namespace ZL.Unity.Audio
             {
                 Play();
             }
-        }
-
-        private void OnDestroy()
-        {
-            ISingleton<AudioTrack>.Release(this);
         }
 
         bool ISingleton<AudioTrack>.IsDuplicated()
@@ -184,17 +177,6 @@ namespace ZL.Unity.Audio
             audioSource.clip = playlist[playlistIndex];
 
             audioSource.Play();
-        }
-
-        public enum AudioTrackPlayMode
-        {
-            RepeatOne,
-
-            RepeatAll,
-
-            Reverse,
-
-            Shuffle,
         }
     }
 }

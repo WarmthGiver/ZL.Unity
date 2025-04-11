@@ -8,11 +8,11 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Frame Rate Displayer (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     [DisallowMultipleComponent]
 
-    public sealed class FrameRateDisplayer :
-        
-        MonoBehaviour, ISingleton<FrameRateDisplayer>
+    public sealed class FrameRateDisplayer : Singleton<FrameRateDisplayer>
     {
         [Space]
 
@@ -58,11 +58,11 @@ namespace ZL.Unity.UI
 
 #endif
 
-        private void Awake()
+        protected override void Awake()
         {
-            ISingleton<FrameRateDisplayer>.TrySetInstance(this);
+            base.Awake();
 
-            displayFrameRatePref.ActionOnValueChanged += (value) =>
+            displayFrameRatePref.OnValueChangedAction += (value) =>
             {
                 gameObject.SetActive(value);
             };
@@ -79,11 +79,6 @@ namespace ZL.Unity.UI
             fps = 1f / time;
 
             text.text = string.Format(format, ms, fps);
-        }
-
-        private void OnDestroy()
-        {
-            ISingleton<FrameRateDisplayer>.Release(this);
         }
 
         public void Load()

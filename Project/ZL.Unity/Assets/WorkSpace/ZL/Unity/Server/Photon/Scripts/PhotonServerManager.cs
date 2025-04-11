@@ -24,6 +24,8 @@ namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Server Manager (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     [DisallowMultipleComponent]
 
     public sealed class PhotonServerManager :
@@ -62,122 +64,122 @@ namespace ZL.Unity.Server.Photon
 
         [SerializeField]
 
-        private UnityEvent eventOnConnectingToMaster;
+        private UnityEvent onConnectingToMasterEvent;
 
-        public UnityEvent EventOnConnectingToMaster => eventOnConnectedToMaster;
-
-        [Space]
-
-        [SerializeField]
-
-        private UnityEvent eventOnConnectedToMaster;
-
-        public UnityEvent EventOnConnectedToMaster => eventOnConnectedToMaster;
+        public UnityEvent OnConnectingToMasterEvent => onConnectedToMasterEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnDisconnected;
+        private UnityEvent onConnectedToMasterEvent;
 
-        public UnityEvent EventOnDisconnected => eventOnConnectedToMaster;
-
-        [Space]
-
-        [SerializeField]
-
-        private UnityEvent eventOnJoinedLobby;
-
-        public UnityEvent EventOnJoinedLobby => eventOnJoinedLobby;
+        public UnityEvent OnConnectedToMasterEvent => onConnectedToMasterEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent evenOnLeftLobby;
+        private UnityEvent onDisconnectedEvent;
 
-        public UnityEvent EvenOnLeftLobby => evenOnLeftLobby;
-
-        [Space]
-
-        [SerializeField]
-
-        private UnityEvent<List<RoomInfo>> eventOnRoomListUpdate;
-
-        public UnityEvent<List<RoomInfo>> EventOnRoomListUpdate => eventOnRoomListUpdate;
+        public UnityEvent OnDisconnectedEvent => onConnectedToMasterEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnCreatedRoom;
+        private UnityEvent onJoinedLobbyEvent;
 
-        public UnityEvent EventOnCreatedRoom => eventOnCreatedRoom;
-
-        [Space]
-
-        [SerializeField]
-
-        private UnityEvent<short> eventOnCreateRoomFailed;
-
-        public UnityEvent<short> EventOnCreateRoomFailed => eventOnCreateRoomFailed;
-
+        public UnityEvent OnJoinedLobbyEvent => onJoinedLobbyEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent<Hashtable> eventOnRoomPropertiesUpdate;
+        private UnityEvent onLeftLobbyEvent;
 
-        public UnityEvent<Hashtable> EventOnRoomPropertiesUpdate => eventOnRoomPropertiesUpdate;
-
-        [Space]
-
-        [SerializeField]
-
-        private UnityEvent eventOnJoinedRoom;
-
-        public UnityEvent EventOnJoinedRoom => eventOnJoinedRoom;
+        public UnityEvent OnLeftLobbyEvent => onLeftLobbyEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent<short> evenOnJoinRoomFailed;
+        private UnityEvent<List<RoomInfo>> onRoomListUpdateEvent;
 
-        public UnityEvent<short> EvenOnJoinRoomFailed => evenOnJoinRoomFailed;
-
-        [Space]
-
-        [SerializeField]
-
-        private UnityEvent eventOnLeftRoom;
-
-        public UnityEvent EventOnLeftRoom => eventOnLeftRoom;
+        public UnityEvent<List<RoomInfo>> OnRoomListUpdateEvent => onRoomListUpdateEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent<Player> eventOnPlayerEnteredRoom;
+        private UnityEvent onCreatedRoomEvent;
 
-        public UnityEvent<Player> EventOnPlayerEnteredRoom => eventOnPlayerEnteredRoom;
-
-        [Space]
-
-        [SerializeField]
-
-        private UnityEvent<Player> eventOnPlayerLeftRoom;
-
-        public UnityEvent<Player> EventOnPlayerLeftRoom => eventOnPlayerLeftRoom;
+        public UnityEvent OnCreatedRoomEvent => onCreatedRoomEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnMasterClientSwitched;
+        private UnityEvent<short> onCreateRoomFailedEvent;
 
-        public UnityEvent EventOnMasterClientSwitched => eventOnMasterClientSwitched;
+        public UnityEvent<short> OnCreateRoomFailedEvent => onCreateRoomFailedEvent;
+
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent<Hashtable> onRoomPropertiesUpdateEvent;
+
+        public UnityEvent<Hashtable> OnRoomPropertiesUpdateEvent => onRoomPropertiesUpdateEvent;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent onJoinedRoomEvent;
+
+        public UnityEvent OnJoinedRoomEvent => onJoinedRoomEvent;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent<short> onJoinRoomFailedEvent;
+
+        public UnityEvent<short> OnJoinRoomFailedEvent => onJoinRoomFailedEvent;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent onLeftRoomEvent;
+
+        public UnityEvent OnLeftRoomEvent => onLeftRoomEvent;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent<Player> onPlayerEnteredRoomEvent;
+
+        public UnityEvent<Player> OnPlayerEnteredRoomEvent => onPlayerEnteredRoomEvent;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent<Player> onPlayerLeftRoomEvent;
+
+        public UnityEvent<Player> OnPlayerLeftRoomEvent => onPlayerLeftRoomEvent;
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent onMasterClientSwitchedEvent;
+
+        public UnityEvent OnMasterClientSwitchedEvent => onMasterClientSwitchedEvent;
 
         private Dictionary<string, TypedLobby> lobbyDictionary;
 
@@ -187,7 +189,7 @@ namespace ZL.Unity.Server.Photon
         {
             ISingleton<PhotonServerManager>.TrySetInstance(this);
 
-            nicknamePref.ActionOnValueChanged += (value) =>
+            nicknamePref.OnValueChangedAction += (value) =>
             {
                 PhotonNetwork.NickName = value;
             };
@@ -233,7 +235,7 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log("Connecting To Master...");
 
-            eventOnConnectingToMaster.Invoke();
+            onConnectingToMasterEvent.Invoke();
         }
 
         public override void OnConnectedToMaster()
@@ -246,7 +248,7 @@ namespace ZL.Unity.Server.Photon
             {
                 FixedDebug.Log($"Connected To Master. (Version: {PhotonNetwork.GameVersion})");
 
-                eventOnConnectedToMaster.Invoke();
+                onConnectedToMasterEvent.Invoke();
             }));
         }
 
@@ -260,7 +262,7 @@ namespace ZL.Unity.Server.Photon
             {
                 FixedDebug.LogWarning($"Disconnected: {cause}");
 
-                eventOnDisconnected.Invoke();
+                onDisconnectedEvent.Invoke();
             }));
         }
 
@@ -292,7 +294,7 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Joined lobby: {PhotonNetwork.CurrentLobby.Name}");
 
-            eventOnJoinedLobby.Invoke();
+            onJoinedLobbyEvent.Invoke();
         }
 
         public void LeaveLobby()
@@ -304,14 +306,14 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Left lobby");
 
-            evenOnLeftLobby.Invoke();
+            onLeftLobbyEvent.Invoke();
         }
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
             FixedDebug.Log($"Room list update.");
 
-            eventOnRoomListUpdate.Invoke(roomList);
+            onRoomListUpdateEvent.Invoke(roomList);
         }
 
         public void CreateRoom(string roomName, RoomOptions roomOptions)
@@ -323,21 +325,21 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Created room: {PhotonNetwork.CurrentRoom.Name}");
 
-            eventOnCreatedRoom.Invoke();
+            onCreatedRoomEvent.Invoke();
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
             FixedDebug.Log($"Create room failed: ({returnCode}) {message}");
 
-            eventOnCreateRoomFailed.Invoke(returnCode);
+            onCreateRoomFailedEvent.Invoke(returnCode);
         }
 
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
         {
             FixedDebug.Log("Room Properties Update.");
 
-            eventOnRoomPropertiesUpdate.Invoke(propertiesThatChanged);
+            onRoomPropertiesUpdateEvent.Invoke(propertiesThatChanged);
         }
 
         public void JoinRoom(string roomName)
@@ -359,21 +361,21 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Joined room: {PhotonNetwork.CurrentRoom.Name}");
 
-            eventOnJoinedRoom.Invoke();
+            onJoinedRoomEvent.Invoke();
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)
         {
             FixedDebug.Log($"Join room failed: ({returnCode}) {message}");
 
-            evenOnJoinRoomFailed.Invoke(returnCode);
+            onJoinRoomFailedEvent.Invoke(returnCode);
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
             FixedDebug.Log($"Join random failed: ({returnCode}) {message}");
 
-            evenOnJoinRoomFailed.Invoke(returnCode);
+            onJoinRoomFailedEvent.Invoke(returnCode);
         }
 
         public void LeaveRoom()
@@ -385,14 +387,14 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Left room.");
 
-            eventOnLeftRoom.Invoke();
+            onLeftRoomEvent.Invoke();
         }
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             FixedDebug.Log($"Player {newPlayer.ActorNumber} '{newPlayer.NickName}' entered room.");
 
-            eventOnPlayerEnteredRoom.Invoke(newPlayer);
+            onPlayerEnteredRoomEvent.Invoke(newPlayer);
 
             if (PhotonNetwork.IsMasterClient == true)
             {
@@ -406,14 +408,14 @@ namespace ZL.Unity.Server.Photon
         {
             FixedDebug.Log($"Player {otherPlayer.ActorNumber} '{otherPlayer.NickName}' left room.");
 
-            eventOnPlayerLeftRoom.Invoke(otherPlayer);
+            onPlayerLeftRoomEvent.Invoke(otherPlayer);
         }
 
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
             FixedDebug.Log($"Master client switched to Player {newMasterClient.ActorNumber} '{newMasterClient.NickName}'");
 
-            eventOnMasterClientSwitched.Invoke();
+            onMasterClientSwitchedEvent.Invoke();
         }
 
         public void SetRoomOpened(bool value)

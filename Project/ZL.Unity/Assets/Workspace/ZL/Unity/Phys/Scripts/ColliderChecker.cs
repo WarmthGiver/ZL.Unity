@@ -31,7 +31,7 @@ namespace ZL.Unity.Phys
 
         [Line(Margin = 0)]
 
-        [Text("<b>Debugging Options</b>", FontSize = 16)]
+        [Text("<b>Debugging</b>", FontSize = 16)]
 
         [Margin]
 
@@ -43,7 +43,11 @@ namespace ZL.Unity.Phys
 
         [ToggleIf(nameof(drawGizmo), false)]
 
-        protected bool wireGizmo = false;
+        [AddIndent(1)]
+
+        [Alias("Is Wire")]
+
+        protected bool isWireGizmo = false;
 
         [SerializeField]
 
@@ -69,7 +73,7 @@ namespace ZL.Unity.Phys
 
         private Color collidedGizmoColor = new(1f, 0f, 0f, 0.5f);
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             if (drawGizmo == false)
             {
@@ -86,7 +90,7 @@ namespace ZL.Unity.Phys
                 Gizmos.color = defaultGizmoColor;
             }
 
-            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, new(2f, 2f, 2f));
+            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
 
             DrawGizmos();
         }

@@ -10,13 +10,13 @@ namespace ZL.Unity.UI
 
     [DisallowMultipleComponent]
 
-    public sealed class DragPanel : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+    public sealed class DragPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
 
         [SerializeField]
 
-        private RectTransform container = null;
+        private RectTransform rect;
 
         [Space]
 
@@ -31,18 +31,26 @@ namespace ZL.Unity.UI
         [Space]
 
         [SerializeField]
-
-        private bool debug;
-
-        [Space]
-
-        [SerializeField]
         
         [UsingCustomProperty]
 
         [ReadOnly(true)]
 
-        private Vector2 pointerDownPosition;
+        private Vector2 startPoint;
+
+        public Vector2 StartPoint => startPoint;
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ReadOnly(true)]
+
+        private Vector2 endPoint;
+
+        public Vector2 EndPoint => endPoint;
 
         [SerializeField]
         
@@ -58,22 +66,58 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private UnityEvent<Vector2> eventOnDrag;
+        private UnityEvent<Vector2> onDragEvent;
 
-        public UnityEvent<Vector2> EventOnDrag => eventOnDrag;
+        public UnityEvent<Vector2> OnDragEvent => onDragEvent;
 
-        public void OnDrag(PointerEventData eventData)
+#if UNITY_EDITOR
+
+        [Space]
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Line(Margin = 0)]
+
+        [Text("<b>Debugging</b>", FontSize = 16)]
+
+        [Margin]
+
+        private bool drawGizmo = true;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [ToggleIf(nameof(drawGizmo), false)]
+
+        [AddIndent(1)]
+
+        [Alias("Color")]
+
+        private Color gizmoColor = new(0f, 1f, 0f, 0.5f);
+
+        private void OnDrawGizmos()
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, eventData.position, eventData.pressEventCamera, out var pointerDragPosition);
+            if (drawGizmo == false)
+            {
+                return;
+            }
 
-            dragDirection = Vector2.ClampMagnitude((pointerDragPosition - pointerDownPosition) * dragSensitivity, maxMagnitude);
+            Gizmos.color = gizmoColor;
 
-            eventOnDrag.Invoke(dragDirection);
+            Gizmos.DrawLine(startPoint, endPoint);
         }
+
+#endif
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, eventData.position, eventData.pressEventCamera, out pointerDownPosition);
+            if (eventData.TryGetLocalPoint(rect, out startPoint) == false)
+            {
+                return;
+            }
 
             OnDrag(eventData);
         }
@@ -82,7 +126,24 @@ namespace ZL.Unity.UI
         {
             dragDirection = Vector2.zero;
 
-            eventOnDrag.Invoke(Vector2.zero);
+            onDragEvent.Invoke(dragDirection);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (eventData.TryGetLocalPoint(rect, out endPoint) == false)
+            {
+                return;
+            }
+
+            dragDirection = Vector2.ClampMagnitude
+            (
+                (endPoint - startPoint) * dragSensitivity,
+                
+                maxMagnitude
+            );
+
+            onDragEvent.Invoke(dragDirection);
         }
     }
 }

@@ -1,5 +1,7 @@
 using System.Collections;
 
+using UnityEditor;
+
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
@@ -21,9 +23,7 @@ namespace ZL.Unity
 
     [DisallowMultipleComponent]
 
-    public abstract class SceneDirector<TSceneDirector> :
-        
-        MonoBehaviour, ISingleton<TSceneDirector>
+    public abstract class SceneDirector<TSceneDirector> : Singleton<TSceneDirector>
 
         where TSceneDirector : SceneDirector<TSceneDirector>
     {
@@ -39,11 +39,6 @@ namespace ZL.Unity
 
         private int pauseCount = 0;
 
-        private void Awake()
-        {
-            ISingleton<TSceneDirector>.TrySetInstance((TSceneDirector)this);
-        }
-
         protected virtual IEnumerator Start()
         {
             FadeIn();
@@ -51,35 +46,23 @@ namespace ZL.Unity
             yield return WaitFor.Seconds(fadeDuration);
         }
 
-        private void OnDestroy()
-        {
-            ISingleton<TSceneDirector>.Release((TSceneDirector)this);
-        }
-
-        public virtual void LoadScene(string sceneName)
-        {
-            StartCoroutine(LoadSceneRoutine(sceneName));
-        }
-
-        protected virtual IEnumerator LoadSceneRoutine(string sceneName)
+        public virtual void FadeScene(string loadSceneName)
         {
             FadeOut();
 
-            yield return WaitFor.Seconds(fadeDuration);
-
-            SceneManager.LoadScene(sceneName);
+            FixedSceneManager.LoadScene(this, fadeDuration, loadSceneName);
         }
 
         public void FadeIn()
         {
-            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(1f, fadeDuration);
+            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(1f);
 
             fadeScreen?.FadeOut();
         }
 
         public void FadeOut()
         {
-            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(0f, fadeDuration);
+            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(0f);
 
             fadeScreen?.FadeIn();
         }

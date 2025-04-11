@@ -10,7 +10,7 @@ namespace ZL.Unity.Phys
 
         protected override void DrawGizmos()
         {
-            if (wireGizmo == true)
+            if (isWireGizmo == true)
             {
                 Gizmos.DrawWireCube
                 (
@@ -39,7 +39,7 @@ namespace ZL.Unity.Phys
             (
                 transform.position,
 
-                transform.lossyScale,
+                transform.localScale * 0.5f,
 
                 transform.rotation,
 

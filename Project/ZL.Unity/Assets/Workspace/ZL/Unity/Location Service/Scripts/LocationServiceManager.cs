@@ -8,6 +8,12 @@ using ZL.Unity.Collections;
 
 namespace ZL.Unity.LS
 {
+    [AddComponentMenu("ZL/LS/Location Service Manager ")]
+
+    [DefaultExecutionOrder(-1)]
+
+    [DisallowMultipleComponent]
+
     public sealed class LocationServiceManager : MonoBehaviour
     {
         private void Awake()

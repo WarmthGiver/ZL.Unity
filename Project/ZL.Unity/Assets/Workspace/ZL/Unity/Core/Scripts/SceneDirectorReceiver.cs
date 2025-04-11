@@ -15,22 +15,22 @@ namespace ZL.Unity
     {
         public void LoadScene(string scaneName)
         {
-            Instance.LoadScene(scaneName);
+            Target.FadeScene(scaneName);
         }
 
         public void Pause()
         {
-            Instance.Pause();
+            Target.Pause();
         }
 
         public void Resume()
         {
-            Instance.Resume();
+            Target.Resume();
         }
 
         public void Quit()
         {
-            Instance.Quit();
+            Target.Quit();
         }
     }
 }

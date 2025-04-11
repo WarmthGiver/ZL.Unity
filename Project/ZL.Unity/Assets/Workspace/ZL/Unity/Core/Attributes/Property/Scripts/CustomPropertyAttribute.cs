@@ -89,7 +89,7 @@ namespace ZL.Unity
 
             public GUIContent PropertyLabel { get; private set; }
 
-            public Component TargetComponent { get; private set; } = null;
+            public Component TargetComponent { get; private set; }
 
             private IEnumerable<CustomPropertyAttribute> attributes = null;
 

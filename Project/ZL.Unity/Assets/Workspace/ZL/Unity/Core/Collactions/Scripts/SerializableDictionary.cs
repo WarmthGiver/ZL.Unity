@@ -132,5 +132,10 @@ namespace ZL.Unity.Collections
 
 #endif
         }
+
+        public TKeyValueContainer GetContainer(TKey key)
+        {
+            return @base[key];
+        }
     }
 }

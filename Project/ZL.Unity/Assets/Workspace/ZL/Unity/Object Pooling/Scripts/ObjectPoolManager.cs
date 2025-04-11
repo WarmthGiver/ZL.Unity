@@ -4,6 +4,8 @@ namespace ZL.Unity.Pooling
 {
     [AddComponentMenu("ZL/Pooling/Object Pool Manager")]
 
+    [DefaultExecutionOrder(-1)]
+
     public abstract class ObjectPoolManager : MonoBehaviour
     {
         [Space]

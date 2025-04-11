@@ -16,8 +16,6 @@ namespace ZL.Unity.Audio
 
         private bool pause = false;
 
-        [Space]
-
         [SerializeField]
         
         [Range(0f, 1f)]

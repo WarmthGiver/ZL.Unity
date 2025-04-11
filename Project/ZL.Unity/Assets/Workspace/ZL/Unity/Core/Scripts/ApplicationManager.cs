@@ -8,11 +8,7 @@ namespace ZL.Unity
 
     [CreateAfterSceneLoad]
 
-    [DisallowMultipleComponent]
-
-    public class ApplicationManager :
-        
-        MonoBehaviour, IMonoSingleton<ApplicationManager>
+    public class ApplicationManager : MonoSingleton<ApplicationManager>
     {
         [Space]
 
@@ -31,16 +27,13 @@ namespace ZL.Unity
             Application.runInBackground = runInBackground;
         }
 
-        private void Awake()
+        protected override void Awake()
         {
-            if (ISingleton<ApplicationManager>.TrySetInstance(this) == false)
-            {
-                return;
-            }
+            base.Awake();
 
             Application.runInBackground = runInBackground;
 
-            targetFrameRatePref.ActionOnValueChanged += (value) =>
+            targetFrameRatePref.OnValueChangedAction += (value) =>
             {
                 Application.targetFrameRate = value;
             };
@@ -48,11 +41,6 @@ namespace ZL.Unity
             targetFrameRatePref.TryLoadValue();
 
             Application.targetFrameRate = targetFrameRatePref.Value;
-        }
-
-        private void OnDestroy()
-        {
-            ISingleton<ApplicationManager>.Release(this);
         }
     }
 }

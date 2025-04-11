@@ -18,9 +18,7 @@ namespace ZL.Unity.Audio
 
     [DisallowMultipleComponent]
 
-    public sealed class AudioMixerManager :
-        
-        MonoBehaviour, IMonoSingleton<AudioMixerManager>
+    public sealed class AudioMixerManager : Singleton<AudioMixerManager>
     {
         [Space]
 
@@ -48,12 +46,12 @@ namespace ZL.Unity.Audio
 
         private SerializableDictionary<string, float, FloatPref> parameterPrefs;
 
-#if UNITY_EDITOR
-
-        private void Reset()
+        public SerializableDictionary<string, float, FloatPref> ParameterPrefs
         {
-            LoadAudioMixerParameters();
+            get => parameterPrefs;
         }
+
+#if UNITY_EDITOR
 
         private void OnValidate()
         {
@@ -93,16 +91,11 @@ namespace ZL.Unity.Audio
 
 #endif
 
-        private void Awake()
-        {
-            ISingleton<AudioMixerManager>.TrySetInstance(this);
-        }
-
         private void Start()
         {
             foreach (var parameterPref in parameterPrefs)
             {
-                parameterPref.ActionOnValueChanged += (value) =>
+                parameterPref.OnValueChangedAction += (value) =>
                 {
                     audioMixer.SetVolume(parameterPref.Key, value);
                 };
@@ -111,9 +104,12 @@ namespace ZL.Unity.Audio
             LoadVolumes();
         }
 
-        private void OnDestroy()
+        public void LoadVolumes()
         {
-            ISingleton<AudioMixerManager>.Release(this);
+            foreach (var parameterPref in parameterPrefs)
+            {
+                parameterPref.TryLoadValue();
+            }
         }
 
         public void SaveVolumes()
@@ -121,14 +117,6 @@ namespace ZL.Unity.Audio
             foreach (var parameterPref in parameterPrefs)
             {
                 parameterPref.SaveValue();
-            }
-        }
-
-        public void LoadVolumes()
-        {
-            foreach (var parameterPref in parameterPrefs)
-            {
-                parameterPref.TryLoadValue();
             }
         }
 
