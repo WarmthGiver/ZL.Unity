@@ -20,8 +20,10 @@ namespace ZL.Unity.Tweeners
 
         private RotateMode rotateMode;
 
-        public override void SetKeyFrame()
+        public override void SetKeyFrame(int index)
         {
+            keyFrames.Index = index;
+
             if (keyFrames.TryGetCurrent(out var result) == true)
             {
                 transform.rotation = Quaternion.Euler(result);

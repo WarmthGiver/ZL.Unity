@@ -16,15 +16,9 @@ namespace ZL.Unity.Collections
 
         public int Index
         {
-            get
-            {
-                return index;
-            }
+            get => index;
 
-            set
-            {
-                index = value;
-            }
+            set => index = value;
         }
 
         [SerializeField]
@@ -37,7 +31,10 @@ namespace ZL.Unity.Collections
 
         private List<T> list = new();
 
-        public int Count => list.Count;
+        public int Count
+        {
+            get => list.Count;
+        }
 
         public bool TryGetCurrent(out T result)
         {

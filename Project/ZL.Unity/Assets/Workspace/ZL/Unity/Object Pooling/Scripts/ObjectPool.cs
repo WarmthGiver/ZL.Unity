@@ -14,13 +14,19 @@ namespace ZL.Unity.Pooling
 
         protected TComponent original;
 
-        public TComponent Original => original;
+        public TComponent Original
+        {
+            get => original;
+        }
 
         [SerializeField]
 
         private Transform parent;
 
-        public Transform Parent => parent;
+        public Transform Parent
+        {
+            get => parent;
+        }
 
         public void PreGenerate(int count)
         {

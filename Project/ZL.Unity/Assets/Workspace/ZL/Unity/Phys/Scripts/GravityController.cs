@@ -24,7 +24,10 @@ namespace ZL.Unity.Phys
 
         private Rigidbody rigidbody;
 
-        public Rigidbody Rigidbody => rigidbody;
+        public Rigidbody Rigidbody
+        {
+            get => rigidbody;
+        }
 
 #pragma warning restore CS0108
 
@@ -133,7 +136,10 @@ namespace ZL.Unity.Phys
 
         private Vector3 gravityDirection = Vector3.zero;
 
-        public Vector3 GravityDirection => gravityDirection;
+        public Vector3 GravityDirection
+        {
+            get => gravityDirection;
+        }
 
         private Vector3 oldGravityDirection;
 

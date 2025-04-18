@@ -6,7 +6,7 @@ using ZL.Unity.Collections;
 
 using ZL.Unity.EulerianTrail;
 
-namespace ZL.Unity.EulerianTrailDemo
+namespace ZL.Unity.Demo.EulerianTrailDemo
 {
     [AddComponentMenu("")]
 
@@ -18,15 +18,7 @@ namespace ZL.Unity.EulerianTrailDemo
 
         [SerializeField]
 
-        [UsingCustomProperty]
-
-        [ReadOnly(true)]
-        
-        [GetComponentInChildren]
-
         private EulerianTrailDrawer eulerianTrailDrawer;
-
-        [Space]
 
         [SerializeField]
 

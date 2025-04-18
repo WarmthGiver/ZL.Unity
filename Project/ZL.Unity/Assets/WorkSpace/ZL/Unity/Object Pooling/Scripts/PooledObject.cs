@@ -2,8 +2,6 @@ using System;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity.Pooling
 {
     [AddComponentMenu("ZL/Pooling/Pooled Object")]
@@ -12,9 +10,9 @@ namespace ZL.Unity.Pooling
 
     public class PooledObject : MonoBehaviour
     {
-        private Action actionOnDisable;
+        private Action onDisableAction = null;
 
-        private Action actionOnDestroy;
+        private Action onDestroyAction = null;
 
         public static TReplica Replicate<TReplica>(ObjectPool<TReplica> pool)
 
@@ -29,21 +27,21 @@ namespace ZL.Unity.Pooling
                 pooledObject = replica.AddComponent<PooledObject>();
             }
 
-            pooledObject.actionOnDisable = () => pool.Collect(replica);
+            pooledObject.onDisableAction = () => pool.Collect(replica);
 
-            pooledObject.actionOnDestroy = () => pool.Release(replica);
+            pooledObject.onDestroyAction = () => pool.Release(replica);
 
             return replica;
         }
 
         private void OnDisable()
         {
-            actionOnDisable.Invoke();
+            onDisableAction?.Invoke();
         }
 
         private void OnDestroy()
         {
-            actionOnDestroy.Invoke();
+            onDestroyAction?.Invoke();
         }
     }
 }

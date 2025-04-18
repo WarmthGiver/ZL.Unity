@@ -10,9 +10,7 @@ namespace ZL.Unity.Tweeners
 {
     [DefaultExecutionOrder(-1)]
 
-    public abstract class ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions> :
-        
-        MonoBehaviour
+    public abstract class ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
 
@@ -24,7 +22,10 @@ namespace ZL.Unity.Tweeners
 
         protected TValueTweener tweener;
 
-        public TValueTweener Tweener => tweener;
+        public TValueTweener Tweener
+        {
+            get => tweener;
+        }
 
         public float Duration
         {
@@ -75,7 +76,10 @@ namespace ZL.Unity.Tweeners
             set => tweener.LoopType = value;
         }
 
-        public TweenerCore<T1, T2, TPlugOptions> Current => tweener.Current;
+        public TweenerCore<T1, T2, TPlugOptions> Current
+        {
+            get => tweener.Current;
+        }
 
         protected abstract T1 Value { get; set; }
 
@@ -83,7 +87,7 @@ namespace ZL.Unity.Tweeners
         {
             tweener.Getter = () => Value;
 
-            tweener.Setter = value => Value = value;
+            tweener.Setter = (value) => Value = value;
         }
 
         public void SetEase(int value)

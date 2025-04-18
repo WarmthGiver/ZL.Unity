@@ -113,17 +113,23 @@ namespace ZL.Unity.Tweeners
 
         [SerializeField]
 
-        private UnityEvent eventOnStart = new();
+        private UnityEvent onStartEvent = new();
 
-        public UnityEvent EventOnStart => eventOnStart;
+        public UnityEvent OnStartEvent
+        {
+            get => onStartEvent;
+        }
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnComplete = new();
+        private UnityEvent onCompleteEvent = new();
 
-        public UnityEvent EventOnComplete => eventOnComplete;
+        public UnityEvent OnCompleteEvent
+        {
+            get => onCompleteEvent;
+        }
 
         protected DOGetter<T1> getter = null;
 
@@ -174,14 +180,14 @@ namespace ZL.Unity.Tweeners
                 Current.SetLoops(loopCount, loopType);
             }
 
-            if (eventOnStart.GetPersistentEventCount() != 0)
+            if (onStartEvent.GetPersistentEventCount() != 0)
             {
-                Current.OnStart(eventOnStart.Invoke);
+                Current.OnStart(onStartEvent.Invoke);
             }
 
-            if (eventOnComplete.GetPersistentEventCount() != 0)
+            if (onCompleteEvent.GetPersistentEventCount() != 0)
             {
-                Current.OnComplete(eventOnComplete.Invoke);
+                Current.OnComplete(onCompleteEvent.Invoke);
             }
 
             Current.SetAutoKill(false);

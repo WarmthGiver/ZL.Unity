@@ -32,9 +32,12 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private UnityEvent<Vector2> eventOnDrag = null;
+        private UnityEvent<Vector2> onDragEvent = null;
 
-        public Vector2 DragDirection => dragDirection;
+        public Vector2 DragDirection
+        {
+            get => dragDirection;
+        }
 
         private void Start()
         {
@@ -55,7 +58,7 @@ namespace ZL.Unity.UI
 
             dragDirection = new(pointerPosition.x / container.sizeDelta.x, pointerPosition.y / container.sizeDelta.y);
 
-            eventOnDrag.Invoke(dragDirection);
+            onDragEvent.Invoke(dragDirection);
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -67,7 +70,7 @@ namespace ZL.Unity.UI
         {
             dragDirection = Vector2.zero;
 
-            eventOnDrag.Invoke(Vector2.zero);
+            onDragEvent.Invoke(Vector2.zero);
 
             if (handle != null)
             {

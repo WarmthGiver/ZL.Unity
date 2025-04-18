@@ -8,7 +8,9 @@ namespace ZL.Unity.EulerianTrail
 {
     [RequireComponent(typeof(Image))]
 
-    public sealed class EulerianTrailNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public sealed class EulerianTrailNode :
+        
+        MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
 
@@ -36,7 +38,10 @@ namespace ZL.Unity.EulerianTrail
 
         private int number;
 
-        public int Number => number;
+        public int Number
+        {
+            get => number;
+        }
 
         public Vector2 Point
         {

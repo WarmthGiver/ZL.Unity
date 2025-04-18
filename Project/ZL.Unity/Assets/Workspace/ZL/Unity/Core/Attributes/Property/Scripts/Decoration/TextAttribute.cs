@@ -29,7 +29,7 @@ namespace ZL.Unity
                 richText = true,
             };
 
-            style.normal.textColor = Color.gray;
+            style.normal.textColor = defaultTextColor;
         }
 
 #if UNITY_EDITOR

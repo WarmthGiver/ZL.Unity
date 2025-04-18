@@ -1,3 +1,5 @@
+using System;
+
 namespace ZL.CS
 {
     public static partial class CharExtensions
@@ -16,7 +18,7 @@ namespace ZL.CS
         {
             int length = value.Length;
 
-            return string.Create(1 + length, value, (span, state) =>
+            void SpanAction(Span<char> span, string state)
             {
                 span[0] = instance;
 
@@ -24,7 +26,9 @@ namespace ZL.CS
                 {
                     span[i + 1] = state[i];
                 }
-            });
+            }
+
+            return string.Create(1 + length, value, SpanAction);
         }
     }
 }

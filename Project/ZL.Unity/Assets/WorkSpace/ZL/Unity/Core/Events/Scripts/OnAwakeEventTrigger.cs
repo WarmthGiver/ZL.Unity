@@ -14,11 +14,11 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private UnityEvent OnAwakeEvent;
+        private UnityEvent onAwakeEvent;
 
         private void Awake()
         {
-            OnAwakeEvent.Invoke();
+            onAwakeEvent.Invoke();
 
             Destroy(this);
         }

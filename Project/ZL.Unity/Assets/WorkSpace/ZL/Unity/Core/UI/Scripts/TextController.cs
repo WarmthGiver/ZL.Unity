@@ -18,7 +18,10 @@ namespace ZL.Unity.UI
 
         private TTextUGUI target;
 
-        public TTextUGUI Target => target;
+        public TTextUGUI Target
+        {
+            get => target;
+        }
 
         public abstract string Text { get; set; }
 

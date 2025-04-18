@@ -42,7 +42,10 @@ namespace ZL.Unity.Server.Photon
 
         private StringPref nicknamePref = new("Nickname", string.Empty);
 
-        public string Nickname => nicknamePref.Value;
+        public string Nickname
+        {
+            get => nicknamePref.Value;
+        }
 
         [Space]
 
@@ -66,7 +69,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onConnectingToMasterEvent;
 
-        public UnityEvent OnConnectingToMasterEvent => onConnectedToMasterEvent;
+        public UnityEvent OnConnectingToMasterEvent
+        {
+            get => onConnectedToMasterEvent;
+        }
 
         [Space]
 
@@ -74,7 +80,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onConnectedToMasterEvent;
 
-        public UnityEvent OnConnectedToMasterEvent => onConnectedToMasterEvent;
+        public UnityEvent OnConnectedToMasterEvent
+        {
+            get => onConnectedToMasterEvent;
+        }
 
         [Space]
 
@@ -82,7 +91,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onDisconnectedEvent;
 
-        public UnityEvent OnDisconnectedEvent => onConnectedToMasterEvent;
+        public UnityEvent OnDisconnectedEvent
+        {
+            get => onConnectedToMasterEvent;
+        }
 
         [Space]
 
@@ -90,7 +102,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onJoinedLobbyEvent;
 
-        public UnityEvent OnJoinedLobbyEvent => onJoinedLobbyEvent;
+        public UnityEvent OnJoinedLobbyEvent
+        {
+            get => onJoinedLobbyEvent;
+        }
 
         [Space]
 
@@ -98,7 +113,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onLeftLobbyEvent;
 
-        public UnityEvent OnLeftLobbyEvent => onLeftLobbyEvent;
+        public UnityEvent OnLeftLobbyEvent
+        {
+            get => onLeftLobbyEvent;
+        }
 
         [Space]
 
@@ -106,7 +124,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent<List<RoomInfo>> onRoomListUpdateEvent;
 
-        public UnityEvent<List<RoomInfo>> OnRoomListUpdateEvent => onRoomListUpdateEvent;
+        public UnityEvent<List<RoomInfo>> OnRoomListUpdateEvent
+        {
+            get => onRoomListUpdateEvent;
+        }
 
         [Space]
 
@@ -114,7 +135,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onCreatedRoomEvent;
 
-        public UnityEvent OnCreatedRoomEvent => onCreatedRoomEvent;
+        public UnityEvent OnCreatedRoomEvent
+        {
+            get => onCreatedRoomEvent;
+        }
 
         [Space]
 
@@ -122,8 +146,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent<short> onCreateRoomFailedEvent;
 
-        public UnityEvent<short> OnCreateRoomFailedEvent => onCreateRoomFailedEvent;
-
+        public UnityEvent<short> OnCreateRoomFailedEvent
+        {
+            get => onCreateRoomFailedEvent;
+        }
 
         [Space]
 
@@ -131,7 +157,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent<Hashtable> onRoomPropertiesUpdateEvent;
 
-        public UnityEvent<Hashtable> OnRoomPropertiesUpdateEvent => onRoomPropertiesUpdateEvent;
+        public UnityEvent<Hashtable> OnRoomPropertiesUpdateEvent
+        {
+            get => onRoomPropertiesUpdateEvent;
+        }
 
         [Space]
 
@@ -139,7 +168,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onJoinedRoomEvent;
 
-        public UnityEvent OnJoinedRoomEvent => onJoinedRoomEvent;
+        public UnityEvent OnJoinedRoomEvent
+        {
+            get => onJoinedRoomEvent;
+        }
 
         [Space]
 
@@ -147,7 +179,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent<short> onJoinRoomFailedEvent;
 
-        public UnityEvent<short> OnJoinRoomFailedEvent => onJoinRoomFailedEvent;
+        public UnityEvent<short> OnJoinRoomFailedEvent
+        {
+            get => onJoinRoomFailedEvent;
+        }
 
         [Space]
 
@@ -155,7 +190,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onLeftRoomEvent;
 
-        public UnityEvent OnLeftRoomEvent => onLeftRoomEvent;
+        public UnityEvent OnLeftRoomEvent
+        {
+            get => onLeftRoomEvent;
+        }
 
         [Space]
 
@@ -163,7 +201,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent<Player> onPlayerEnteredRoomEvent;
 
-        public UnityEvent<Player> OnPlayerEnteredRoomEvent => onPlayerEnteredRoomEvent;
+        public UnityEvent<Player> OnPlayerEnteredRoomEvent
+        {
+            get => onPlayerEnteredRoomEvent;
+        }
 
         [Space]
 
@@ -171,7 +212,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent<Player> onPlayerLeftRoomEvent;
 
-        public UnityEvent<Player> OnPlayerLeftRoomEvent => onPlayerLeftRoomEvent;
+        public UnityEvent<Player> OnPlayerLeftRoomEvent
+        {
+            get => onPlayerLeftRoomEvent;
+        }
 
         [Space]
 
@@ -179,7 +223,10 @@ namespace ZL.Unity.Server.Photon
 
         private UnityEvent onMasterClientSwitchedEvent;
 
-        public UnityEvent OnMasterClientSwitchedEvent => onMasterClientSwitchedEvent;
+        public UnityEvent OnMasterClientSwitchedEvent
+        {
+            get => onMasterClientSwitchedEvent;
+        }
 
         private Dictionary<string, TypedLobby> lobbyDictionary;
 

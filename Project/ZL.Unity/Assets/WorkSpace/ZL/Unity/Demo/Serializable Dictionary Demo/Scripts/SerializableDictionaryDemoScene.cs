@@ -8,7 +8,7 @@ using ZL.Unity.Collections;
 
 using ZL.Unity.IO;
 
-namespace ZL.Unity.SerializableDictionaryDemo
+namespace ZL.Unity.Demo.SerializableDictionaryDemo
 {
     [AddComponentMenu("")]
 

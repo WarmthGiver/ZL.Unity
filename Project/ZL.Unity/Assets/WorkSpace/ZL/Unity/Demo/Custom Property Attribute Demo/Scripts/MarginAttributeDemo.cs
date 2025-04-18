@@ -2,12 +2,14 @@
 
 using UnityEngine;
 
-namespace ZL.Unity.CustomPropertyAttributeDemo
+namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 {
     [AddComponentMenu("")]
 
     public sealed class MarginAttributeDemo : MonoBehaviour
     {
+        [Space]
+
         public string test0;
 
         [UsingCustomProperty]

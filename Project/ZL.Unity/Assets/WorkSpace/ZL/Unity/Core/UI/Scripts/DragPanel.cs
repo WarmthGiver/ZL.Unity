@@ -38,7 +38,10 @@ namespace ZL.Unity.UI
 
         private Vector2 startPoint;
 
-        public Vector2 StartPoint => startPoint;
+        public Vector2 StartPoint
+        {
+            get => startPoint;
+        }
 
         [Space]
 
@@ -50,7 +53,10 @@ namespace ZL.Unity.UI
 
         private Vector2 endPoint;
 
-        public Vector2 EndPoint => endPoint;
+        public Vector2 EndPoint
+        {
+            get => endPoint;
+        }
 
         [SerializeField]
         
@@ -60,7 +66,10 @@ namespace ZL.Unity.UI
 
         private Vector2 dragDirection;
 
-        public Vector2 DragDirection => dragDirection;
+        public Vector2 DragDirection
+        {
+            get => dragDirection;
+        }
 
         [Space]
 
@@ -68,7 +77,10 @@ namespace ZL.Unity.UI
 
         private UnityEvent<Vector2> onDragEvent;
 
-        public UnityEvent<Vector2> OnDragEvent => onDragEvent;
+        public UnityEvent<Vector2> OnDragEvent
+        {
+            get => onDragEvent;
+        }
 
 #if UNITY_EDITOR
 

@@ -12,8 +12,10 @@ namespace ZL.Unity.Tweeners
         
         KeyFrameTweener<TransformScaleTweener, Vector3Tweener, Vector3, Vector3, VectorOptions>
     {
-        public override void SetKeyFrame()
+        public override void SetKeyFrame(int index)
         {
+            keyFrames.Index = index;
+
             if (keyFrames.TryGetCurrent(out var result) == true)
             {
                 transform.localScale = result;

@@ -207,6 +207,8 @@ namespace ZL.Unity
             {
                 Rect position = drawPosition;
 
+                position.x += 1f;
+
                 position.height = height;
 
                 EditorGUI.LabelField(position, label, style);

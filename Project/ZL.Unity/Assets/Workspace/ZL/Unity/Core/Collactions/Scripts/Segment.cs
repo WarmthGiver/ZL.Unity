@@ -16,13 +16,19 @@ namespace ZL.Unity.Collections
 
         private T start;
 
-        public readonly T Start => start;
+        public readonly T Start
+        {
+            get => start;
+        }
 
         [SerializeField]
 
         private T end;
 
-        public readonly T End => end;
+        public readonly T End
+        {
+            get => end;
+        }
 
         public Segment(T start, T end)
         {

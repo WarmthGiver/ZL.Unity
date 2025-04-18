@@ -6,7 +6,7 @@ using UnityEngine;
 
 using ZL.Unity.Collections;
 
-namespace ZL.Unity.WrapprDemo
+namespace ZL.Unity.Demo.WrapprDemo
 {
     [AddComponentMenu("")]
 

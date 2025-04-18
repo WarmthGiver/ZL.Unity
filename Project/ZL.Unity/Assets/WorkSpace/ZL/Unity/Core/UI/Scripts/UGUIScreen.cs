@@ -62,31 +62,34 @@ namespace ZL.Unity.UI
 
         private bool isFadedIn = false;
 
-        public bool IsFadedIn => isFadedIn;
+        public bool IsFadedIn
+        {
+            get => isFadedIn;
+        }
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnFadingIn;
+        private UnityEvent onFadeInEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnFadedIn;
+        private UnityEvent onFadedInEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnFadingOut;
+        private UnityEvent onFadeOutEvent;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent eventOnFadedOut;
+        private UnityEvent onFadedOutEvent;
 
         private void Awake()
         {
@@ -126,28 +129,28 @@ namespace ZL.Unity.UI
 
             isFadedIn = true;
 
-            eventOnFadingIn.Invoke();
+            onFadeInEvent.Invoke();
 
             alphaTweener.Tween(1f).OnComplete(OnFadedIn);
         }
 
         private void OnFadedIn()
         {
-            eventOnFadedIn.Invoke();
+            onFadedInEvent.Invoke();
         }
 
         public void FadeOut()
         {
             isFadedIn = false;
 
-            eventOnFadingOut.Invoke();
+            onFadeOutEvent.Invoke();
 
             alphaTweener.Tween(0f).OnComplete(OnFadedOut);
         }
 
         private void OnFadedOut()
         {
-            eventOnFadedOut.Invoke();
+            onFadedOutEvent.Invoke();
 
             gameObject.SetActive(false);
         }

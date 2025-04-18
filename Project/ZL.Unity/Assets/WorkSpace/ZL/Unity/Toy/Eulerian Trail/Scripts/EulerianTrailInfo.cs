@@ -16,25 +16,37 @@ namespace ZL.Unity.EulerianTrail
 
         private float nodeThickness = 90f;
 
-        public float NodeThickness => nodeThickness;
+        public float NodeThickness
+        {
+            get => nodeThickness;
+        }
 
         [SerializeField]
 
         private float edgeThickness = 30f;
 
-        public float EdgeThickness => edgeThickness;
+        public float EdgeThickness
+        {
+            get => edgeThickness;
+        }
 
         [SerializeField]
 
         private float drawnEdgeThickness = 10f;
 
-        public float DrawnEdgeThickness => drawnEdgeThickness;
+        public float DrawnEdgeThickness
+        {
+            get => drawnEdgeThickness;
+        }
 
         [SerializeField]
 
         private Vector2[] nodePositions;
 
-        public Vector2[] NodePositions => nodePositions;
+        public Vector2[] NodePositions
+        {
+            get => nodePositions;
+        }
 
         [SerializeField]
 
@@ -42,7 +54,9 @@ namespace ZL.Unity.EulerianTrail
 
         public Segment<int>[] EdgeSegments { get; private set; }
 
-        public EulerianTrailInfo(float nodeThickness, float edgeThickness, float drawnEdgeThickness, Vector2[] nodePositions, int[][] edgeMap) : this(nodePositions, edgeMap)
+        public EulerianTrailInfo(float nodeThickness, float edgeThickness, float drawnEdgeThickness, Vector2[] nodePositions, int[][] edgeMap) :
+            
+            this(nodePositions, edgeMap)
         {
             this.nodeThickness = nodeThickness;
 

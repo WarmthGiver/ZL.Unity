@@ -50,7 +50,7 @@ namespace ZL.Unity.Tweeners
         {
             if (preview == true)
             {
-                SetKeyFrame();
+                SetKeyFrame(keyFrames.Index);
             }
         }
 
@@ -58,10 +58,10 @@ namespace ZL.Unity.Tweeners
 
         private void Awake()
         {
-            SetKeyFrame();
+            SetKeyFrame(keyFrames.Index);
         }
 
-        public abstract void SetKeyFrame();
+        public abstract void SetKeyFrame(int index);
 
         public void TweenKeyFrameNext()
         {

@@ -1,10 +1,6 @@
 using System.Collections;
 
-using UnityEditor;
-
 using UnityEngine;
-
-using UnityEngine.SceneManagement;
 
 using ZL.Unity.Collections;
 
@@ -35,7 +31,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        protected float fadeDuration = 0f;
+        protected float startDelay = 0f;
 
         private int pauseCount = 0;
 
@@ -43,14 +39,14 @@ namespace ZL.Unity
         {
             FadeIn();
 
-            yield return WaitFor.Seconds(fadeDuration);
+            yield return WaitFor.Seconds(startDelay);
         }
 
         public virtual void FadeScene(string loadSceneName)
         {
             FadeOut();
 
-            FixedSceneManager.LoadScene(this, fadeDuration, loadSceneName);
+            FixedSceneManager.LoadScene(this, startDelay, loadSceneName);
         }
 
         public void FadeIn()

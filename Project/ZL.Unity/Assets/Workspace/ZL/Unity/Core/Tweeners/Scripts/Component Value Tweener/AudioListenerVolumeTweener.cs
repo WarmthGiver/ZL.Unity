@@ -25,12 +25,10 @@ namespace ZL.Unity.Tweeners
 
         protected override void Awake()
         {
-            if (ISingleton<AudioListenerVolumeTweener>.TrySetInstance(this) == false)
+            if (ISingleton<AudioListenerVolumeTweener>.TrySetInstance(this) == true)
             {
-                return;
+                base.Awake();
             }
-
-            base.Awake();
         }
 
         private void OnDestroy()

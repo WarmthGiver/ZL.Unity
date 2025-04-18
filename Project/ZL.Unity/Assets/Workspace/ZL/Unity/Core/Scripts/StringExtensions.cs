@@ -114,13 +114,13 @@ namespace ZL.Unity
 
                 case LetterCaseStyle.Title:
 
-                    instance = instance.SplitToWords().Select(word => word.ToUpperInitial()).Join(separator);
+                    instance = instance.SplitToWords().Select((word) => word.ToUpperInitial()).Join(separator);
 
                     break;
 
                 case LetterCaseStyle.Sentence:
 
-                    instance = instance.SplitToWords().Select(word => word.ToLower()).Join(separator);
+                    instance = instance.SplitToWords().Select((word) => word.ToLower()).Join(separator);
 
                     instance = instance.ToUpperInitial();
 
@@ -128,7 +128,7 @@ namespace ZL.Unity
 
                 case LetterCaseStyle.Camel:
 
-                    instance = instance.SplitToWords().Select(word => word.ToUpperInitial()).Join(separator);
+                    instance = instance.SplitToWords().Select((word) => word.ToUpperInitial()).Join(separator);
 
                     instance = instance.ToLowerInitial();
 

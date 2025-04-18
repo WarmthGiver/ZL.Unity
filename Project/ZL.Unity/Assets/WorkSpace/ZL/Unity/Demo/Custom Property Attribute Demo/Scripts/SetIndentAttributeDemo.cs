@@ -8,12 +8,14 @@ using UnityEngine;
 
 using ZL.Unity.Collections;
 
-namespace ZL.Unity.CustomPropertyAttributeDemo
+namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 {
     [AddComponentMenu("")]
 
     public sealed class SetIndentAttributeDemo : MonoBehaviour
     {
+        [Space]
+
         public string test0;
 
         [Space]

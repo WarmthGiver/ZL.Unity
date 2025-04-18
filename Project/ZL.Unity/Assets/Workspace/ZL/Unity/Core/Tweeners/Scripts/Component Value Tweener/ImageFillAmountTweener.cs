@@ -28,6 +28,11 @@ namespace ZL.Unity.Tweeners
 
         private Image image;
 
-        protected override float Value { get => image.fillAmount; set => image.fillAmount = value; }
+        protected override float Value
+        {
+            get => image.fillAmount;
+
+            set => image.fillAmount = value;
+        }
     }
 }

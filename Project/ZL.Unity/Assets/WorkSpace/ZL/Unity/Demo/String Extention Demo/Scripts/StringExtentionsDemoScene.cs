@@ -8,7 +8,7 @@ using TMPro;
 
 using UnityEngine;
 
-namespace ZL.Unity.StringExtentionsDemo
+namespace ZL.Unity.Demo.StringExtentionsDemo
 {
     [AddComponentMenu("")]
 

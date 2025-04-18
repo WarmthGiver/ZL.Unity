@@ -97,8 +97,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6905878289352424131, guid: 11d5f57377695d049af21a2bd86e52ec, type: 3}
       propertyPath: m_Name
-      value: Input Slider
+      value: Inputable Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 7032346767274427910, guid: 11d5f57377695d049af21a2bd86e52ec, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 5072225392384254474}
     - target: {fileID: 7492545264378366412, guid: 11d5f57377695d049af21a2bd86e52ec, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -205,6 +209,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8526185271519194340, guid: 11d5f57377695d049af21a2bd86e52ec, type: 3}
   m_PrefabInstance: {fileID: 5409289496290858622}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5072225392384254474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 969824497507808372, guid: 11d5f57377695d049af21a2bd86e52ec, type: 3}
+  m_PrefabInstance: {fileID: 5409289496290858622}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd16c5bde81840479730371c78d10fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7986624483303002117 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2722312193279100539, guid: 11d5f57377695d049af21a2bd86e52ec, type: 3}

@@ -28,7 +28,7 @@ namespace ZL.Unity.UI
 
         [ReadOnlyWhenPlayMode]
 
-        protected TextController<TTextUGUI> valueTextController;
+        protected TextController<TTextUGUI> textController;
 
 #if UNITY_EDITOR
 
@@ -49,11 +49,11 @@ namespace ZL.Unity.UI
                 return;
             }
 
-            if (valueTextController != null && slider != null)
+            if (textController != null && slider != null)
             {
                 if (sliderValue != slider.value)
                 {
-                    valueTextController.SetText(slider.value);
+                    textController.SetText(slider.value);
                 }
 
                 sliderValue = slider.value;

@@ -30,7 +30,10 @@ namespace ZL.Unity.Phys
 
         private Rigidbody rigidbody;
 
-        public Rigidbody Rigidbody => rigidbody;
+        public Rigidbody Rigidbody
+        {
+            get => rigidbody;
+        }
 
 #pragma warning restore CS0108
 
@@ -143,7 +146,10 @@ namespace ZL.Unity.Phys
 
         protected bool isGrounded = false;
 
-        public bool IsGrounded => isGrounded;
+        public bool IsGrounded
+        {
+            get => isGrounded;
+        }
 
         private int contactUphillsCount;
 

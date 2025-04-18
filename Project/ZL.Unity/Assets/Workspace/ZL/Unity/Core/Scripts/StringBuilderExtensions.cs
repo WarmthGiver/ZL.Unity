@@ -22,7 +22,7 @@ namespace ZL.Unity
 
         public static string Concat(this StringBuilder instance, params string[] values)
         {
-            instance.Capacity += values.Sum(value => value.Length);
+            instance.Capacity += values.Sum((value) => value.Length);
 
             foreach (var value in values)
             {

@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -243,12 +243,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65093104}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1760645372}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &307927658
 GameObject:
@@ -364,10 +364,10 @@ MonoBehaviour:
     loop: 0
     loopCount: -1
     loopType: 0
-    eventOnStart:
+    onStartEvent:
       m_PersistentCalls:
         m_Calls: []
-    eventOnComplete:
+    onCompleteEvent:
       m_PersistentCalls:
         m_Calls: []
 --- !u!114 &307927663
@@ -794,19 +794,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3973869112723123695, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_text
@@ -2055,8 +2055,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 65093106}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1760645373
@@ -2072,7 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 1922634357}
-  fadeDuration: 3
+  startDelay: 3
   sfxAudioSource: {fileID: 65093105}
   clickSFX: {fileID: 8300000, guid: f76ab7085a839a445a23902d181f54e2, type: 3}
 --- !u!1001 &1922634355
@@ -2241,19 +2240,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3236810618273390514, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3973869112723123695, guid: ce9634777feb63c4cad236941ea07c4e, type: 3}
       propertyPath: m_text
@@ -2480,5 +2479,6 @@ SceneRoots:
   - {fileID: 307927661}
   - {fileID: 954830667}
   - {fileID: 1600660075}
-  - {fileID: 1728831127}
+  - {fileID: 65093106}
   - {fileID: 8262437943268641017}
+  - {fileID: 1728831127}

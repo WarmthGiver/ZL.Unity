@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.CustomPropertyAttributeDemo
+namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 {
     [AddComponentMenu("")]
 
@@ -14,61 +14,61 @@ namespace ZL.Unity.CustomPropertyAttributeDemo
     {
         [Space]
 
+        [UsingCustomProperty]
+
         [Text("[GetComponent]")]
 
         [GetComponent]
-
-        [UsingCustomProperty]
 
         public Transform test1;
 
         [Space]
 
+        [UsingCustomProperty]
+
         [Text("[GetComponentInParent]")]
 
         [GetComponentInParent]
-
-        [UsingCustomProperty]
 
         public Transform test2;
 
         [Space]
 
+        [UsingCustomProperty]
+
         [Text("[GetComponentInParentOnly]")]
 
         [GetComponentInParentOnly]
-
-        [UsingCustomProperty]
 
         public Transform test3;
 
         [Space]
 
+        [UsingCustomProperty]
+
         [Text("[GetComponentInChildren]")]
 
         [GetComponentInChildren]
-
-        [UsingCustomProperty]
 
         public Transform test4;
 
         [Space]
 
+        [UsingCustomProperty]
+
         [Text("[GetComponentInChildrenOnly]")]
 
         [GetComponentInChildrenOnly]
-
-        [UsingCustomProperty]
 
         public Transform test5;
 
         [Space]
 
+        [UsingCustomProperty]
+
         [Text("[GetComponent]")]
 
         [GetComponent]
-
-        [UsingCustomProperty]
 
         public string test6;
     }

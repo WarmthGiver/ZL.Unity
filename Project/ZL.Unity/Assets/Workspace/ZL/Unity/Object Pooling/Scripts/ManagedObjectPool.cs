@@ -1,7 +1,7 @@
 using System;
 
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEngine;
 
 using ZL.Unity.Collections;
@@ -18,7 +18,10 @@ namespace ZL.Unity.Pooling
     {
         private readonly Dictionary<TKey, TComponent> replicas = new();
 
-        public TComponent this[TKey key] => replicas[key];
+        public TComponent this[TKey key]
+        {
+            get => replicas[key];
+        }
 
         public bool TryGenerate(TKey key, out TComponent replica)
         {
@@ -99,7 +102,7 @@ namespace ZL.Unity.Pooling
 
         public void CollectAll()
         {
-            foreach (var replica in replicas)
+            foreach (var replica in replicas.ToArray())
             {
                 replica.gameObject.SetActive(false);
             }
@@ -109,7 +112,7 @@ namespace ZL.Unity.Pooling
 
         public void ReleaseAll()
         {
-            foreach (var replica in replicas)
+            foreach (var replica in replicas.ToArray())
             {
                 replica.gameObject.Destroy();
             }

@@ -26,6 +26,11 @@ namespace ZL.Unity.Tweeners
 
         private Graphic graphic;
 
-        protected override Color Value { get => graphic.color; set => graphic.color = value; }
+        protected override Color Value
+        {
+            get => graphic.color;
+
+            set => graphic.color = value;
+        }
     }
 }

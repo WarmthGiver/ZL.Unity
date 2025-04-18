@@ -10,7 +10,10 @@ namespace ZL.Unity
     {
         private Color color = Color.red;
 
-        public Color Color => color;
+        public Color Color
+        {
+            get => color;
+        }
 
         private float deltaH;
 
@@ -18,7 +21,9 @@ namespace ZL.Unity
 
         private float deltaV;
 
-        public Discolorator(ColorPalette color) : this(color.ToColor())
+        public Discolorator(ColorPalette color) :
+            
+            this(color.ToColor())
         {
 
         }
