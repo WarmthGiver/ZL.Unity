@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "290972251101",
+    "firebase_url": "https://unity-demo-e583c-default-rtdb.firebaseio.com",
+    "project_id": "unity-demo-e583c",
+    "storage_bucket": "unity-demo-e583c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290972251101:android:7215349bf890f6ceedfc34",
+        "android_client_info": {
+          "package_name": "com.ZL.Unity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoLk_ckWjxcV8qbaCY3CqYi3ryjuym78g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

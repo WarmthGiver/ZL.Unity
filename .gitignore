@@ -71,5 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-Firebase/
-!Project/ZL.Unity/Assets/ZL/Unity/Server/Firebase/
+Project/ZL.Unity/Assets/Firebase/
+Project/ZL.Unity/Assets/GeneratedLocalRepo/Firebase/
+Project/ZL.Unity/Assets/Plugins/iOS/Firebase/
+Project/ZL.Unity/Assets/Plugins/tvOS/Firebase/
+Project/ZL.Unity/Assets/Editor Default Resources/Firebase/
