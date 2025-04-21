@@ -26,6 +26,8 @@ namespace ZL.Unity.Pooling
         public Transform Parent
         {
             get => parent;
+
+            set => parent = value;
         }
 
         public void PreGenerate(int count)

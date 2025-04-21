@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.EulerianTrail
 {
+    [AddComponentMenu("ZL/Eulerian Trail/Eulerian Trail Node")]
+
+    [DisallowMultipleComponent]
+
     [RequireComponent(typeof(Image))]
 
     public sealed class EulerianTrailNode :

@@ -4,8 +4,8 @@ namespace ZL.Unity.Collections
 {
     [Serializable]
 
-    public sealed class Wrapper<T>
+    public sealed class Wrapper<TValue>
     {
-        public T value;
+        public TValue value;
     }
 }

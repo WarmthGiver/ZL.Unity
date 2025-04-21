@@ -1,11 +1,7 @@
-using System.Diagnostics;
-
 using UnityEngine;
 
 namespace ZL.Unity
 {
-    [Conditional("UNITY_EDITOR")]
-
     public class GetComponentAttribute : CustomPropertyAttribute
     {
 #if UNITY_EDITOR

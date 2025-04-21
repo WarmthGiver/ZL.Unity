@@ -1,7 +1,9 @@
 using System;
 
 using System.Collections.Generic;
+
 using System.Linq;
+
 using UnityEngine;
 
 using ZL.Unity.Collections;
@@ -10,9 +12,7 @@ namespace ZL.Unity.Pooling
 {
     [Serializable]
 
-    public sealed class ManagedObjectPool<TKey, TComponent> :
-        
-        ObjectPool<TComponent>
+    public sealed class ManagedObjectPool<TKey, TComponent> : ObjectPool<TComponent>
 
         where TComponent : Component, IKeyValueContainer<TKey, TComponent>
     {
@@ -76,9 +76,7 @@ namespace ZL.Unity.Pooling
 
     [Serializable]
 
-    public class ManagedObjectPool<TComponent> :
-        
-        ObjectPool<TComponent>
+    public class ManagedObjectPool<TComponent> : ObjectPool<TComponent>
 
         where TComponent : Component
     {

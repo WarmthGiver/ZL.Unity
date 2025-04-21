@@ -20,9 +20,15 @@ namespace ZL.Unity.Pooling
         {
             var replica = Instantiate(pool.Original, pool.Parent);
 
+#if UNITY_EDITOR
+
+            replica.gameObject.name = $"{pool.Original.name} (Pooled)";
+
+#endif
+
             if (replica.TryGetComponent<PooledObject>(out var pooledObject) == false)
             {
-                FixedDebug.LogWarning($"The '{pool.Original.name}' prefab being pooled doesn't have a component of type 'PooledObject'. We recommend adding it to the prefab to improve performance.");
+                FixedDebug.LogWarning($"The '{replica.gameObject.name}' prefab being pooled doesn't have a component of type 'PooledObject'. We recommend adding it to the prefab to improve performance.");
 
                 pooledObject = replica.AddComponent<PooledObject>();
             }
@@ -33,6 +39,18 @@ namespace ZL.Unity.Pooling
 
             return replica;
         }
+
+#if UNITY_EDITOR
+
+        private void Start()
+        {
+            if (onDisableAction == null)
+            {
+                FixedDebug.LogWarning($"Game object '{gameObject.name}' is a 'Pooled Object' but was not created from an 'Object Pool'.");
+            }
+        }
+
+#endif
 
         private void OnDisable()
         {

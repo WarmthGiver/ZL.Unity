@@ -4,11 +4,11 @@ using UnityEngine.Events;
 
 namespace ZL.Unity.Events
 {
-    [AddComponentMenu("ZL/Events/Invoker")]
+    [AddComponentMenu("ZL/Events/Event Invoker")]
 
 	[DisallowMultipleComponent]
 
-	public sealed class Invoker : MonoBehaviour
+	public sealed class EventInvoker : MonoBehaviour
 	{
         [Space]
 

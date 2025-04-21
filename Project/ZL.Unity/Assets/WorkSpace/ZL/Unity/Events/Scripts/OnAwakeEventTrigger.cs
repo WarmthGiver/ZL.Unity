@@ -2,9 +2,9 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity
+namespace ZL.Unity.Events
 {
-    [AddComponentMenu("ZL/On Awake Event Trigger")]
+    [AddComponentMenu("ZL/Events/On Awake Event Trigger")]
 
     [DisallowMultipleComponent]
 

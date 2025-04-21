@@ -6,9 +6,9 @@ using ZL.Unity.Collections;
 
 namespace ZL.Unity.IO
 {
-    public abstract class SerializablePlayerPref<T> :
+    public abstract class SerializablePlayerPref<TValue> :
         
-        PlayerPrefs, IKeyValueContainer<string, T>
+        PlayerPrefs, IKeyValueContainer<string, TValue>
     {
         [SerializeField]
 
@@ -30,9 +30,9 @@ namespace ZL.Unity.IO
 
         [SerializeField]
 
-        protected T value;
+        protected TValue value;
 
-        public T Value
+        public TValue Value
         {
             get => value;
 
@@ -44,9 +44,9 @@ namespace ZL.Unity.IO
             }
         }
 
-        public event Action<T> OnValueChangedAction;
+        public event Action<TValue> OnValueChangedAction;
 
-        public SerializablePlayerPref(string key, T value)
+        public SerializablePlayerPref(string key, TValue value)
         {
             this.key = key;
 
@@ -69,7 +69,7 @@ namespace ZL.Unity.IO
 
         public abstract void LoadValue();
 
-        public void SaveValue(T value)
+        public void SaveValue(TValue value)
         {
             Value = value;
 

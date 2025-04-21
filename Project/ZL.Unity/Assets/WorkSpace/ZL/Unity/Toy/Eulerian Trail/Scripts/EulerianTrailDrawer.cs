@@ -14,6 +14,8 @@ using ZL.Unity.UI;
 
 namespace ZL.Unity.EulerianTrail
 {
+    [AddComponentMenu("ZL/Eulerian Trail/Eulerian Trail Drawer")]
+
     [DisallowMultipleComponent]
 
     public sealed class EulerianTrailDrawer : MonoBehaviour

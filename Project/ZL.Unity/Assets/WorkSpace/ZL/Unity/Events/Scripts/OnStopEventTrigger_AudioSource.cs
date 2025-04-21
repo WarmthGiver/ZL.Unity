@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZL.Unity.Events
 {
-    [AddComponentMenu("ZL/Pooling/On Stop Event Trigger (Audio Source)")]
+    [AddComponentMenu("ZL/Events/On Stop Event Trigger (Audio Source)")]
 
     [RequireComponent(typeof(AudioSource))]
 
