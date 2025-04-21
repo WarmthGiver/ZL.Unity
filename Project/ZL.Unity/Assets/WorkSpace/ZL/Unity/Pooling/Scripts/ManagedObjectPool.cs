@@ -55,9 +55,9 @@ namespace ZL.Unity.Pooling
 
         public void CollectAll()
         {
-            foreach (var kvp in replicas)
+            foreach (var kvp in replicas.Values.ToArray())
             {
-                kvp.Value.gameObject.SetActive(false);
+                kvp.gameObject.SetActive(false);
             }
 
             replicas.Clear();
@@ -65,7 +65,7 @@ namespace ZL.Unity.Pooling
 
         public void ReleaseAll()
         {
-            foreach (var replica in replicas.Values)
+            foreach (var replica in replicas.Values.ToArray())
             {
                 replica.gameObject.Destroy();
             }

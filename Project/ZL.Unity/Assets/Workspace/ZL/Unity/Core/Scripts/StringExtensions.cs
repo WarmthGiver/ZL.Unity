@@ -158,7 +158,9 @@ namespace ZL.Unity
 
         public static string[] SplitToWords(this string instance)
         {
-            return instance.SplitWords(' ').Split(new[] { ' ', '-', '_'}, StringSplitOptions.RemoveEmptyEntries);
+            var words = instance.SplitWords(' ');
+
+            return words.Split(new[] { ' ', '-', '_'}, StringSplitOptions.RemoveEmptyEntries);
         }
 
         public static string ToUpperInitial(this string instance)
