@@ -10,7 +10,9 @@ namespace ZL.Unity.Tweeners
 
     [RequireComponent(typeof(Light))]
 
-    public sealed class LightIntensityTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public sealed class LightIntensityTweener :
+        
+        ComponentValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 

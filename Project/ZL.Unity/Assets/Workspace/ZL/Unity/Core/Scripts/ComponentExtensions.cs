@@ -124,9 +124,7 @@ namespace ZL.Unity
 
         #endregion
 
-        public static TComponent AddComponent<TComponent>
-            
-            (this Component instance)
+        public static TComponent AddComponent<TComponent>(this Component instance)
 
             where TComponent : Component
         {
@@ -153,9 +151,7 @@ namespace ZL.Unity
             return instance;
         }
 
-        public static void DisallowMultiple<TComponent>
-            
-            (this TComponent instance)
+        public static void DisallowMultiple<TComponent>(this TComponent instance)
 
             where TComponent : Component
         {
@@ -177,7 +173,7 @@ namespace ZL.Unity
 
             if (instance.GetType().IsInheritGeneric(out var type) == true)
             {
-                Component[] components = instance.GetComponents<Component>();
+                var components = instance.GetComponents<Component>();
 
                 foreach (var component in components)
                 {

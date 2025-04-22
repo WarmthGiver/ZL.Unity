@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
+    [AddComponentMenu("ZL/UI/Image Repeater")]
+
     [DisallowMultipleComponent]
     
     [RequireComponent(typeof(Image))]

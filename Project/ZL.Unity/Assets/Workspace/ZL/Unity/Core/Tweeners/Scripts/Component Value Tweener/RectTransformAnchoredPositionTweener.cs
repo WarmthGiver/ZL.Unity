@@ -10,7 +10,9 @@ namespace ZL.Unity.Tweeners
 
     [RequireComponent(typeof(RectTransform))]
 
-    public sealed class RectTransformAnchoredPositionTweener : ComponentValueTweener<Vector2Tweener, Vector2, Vector2, VectorOptions>
+    public sealed class RectTransformAnchoredPositionTweener :
+        
+        ComponentValueTweener<Vector2Tweener, Vector2, Vector2, VectorOptions>
     {
         [Space]
 

@@ -156,11 +156,13 @@ namespace ZL.Unity
             return string.Join(separator, instance);
         }
 
+        private static readonly char[] splitSeparator = new[] { ' ', '-', '_' };
+
         public static string[] SplitToWords(this string instance)
         {
             var words = instance.SplitWords(' ');
 
-            return words.Split(new[] { ' ', '-', '_'}, StringSplitOptions.RemoveEmptyEntries);
+            return words.Split(splitSeparator, StringSplitOptions.RemoveEmptyEntries);
         }
 
         public static string ToUpperInitial(this string instance)

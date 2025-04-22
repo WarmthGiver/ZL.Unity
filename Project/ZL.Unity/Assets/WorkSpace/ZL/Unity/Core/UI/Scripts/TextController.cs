@@ -2,8 +2,6 @@ using UnityEngine;
 
 namespace ZL.Unity.UI
 {
-    [DisallowMultipleComponent]
-
     public abstract class TextController<TTextUGUI> : MonoBehaviour
     {
         [Space]
@@ -24,6 +22,11 @@ namespace ZL.Unity.UI
         }
 
         public abstract string Text { get; set; }
+
+        private void Reset()
+        {
+            this.DisallowMultiple();
+        }
 
         public abstract void SetText(int value);
 

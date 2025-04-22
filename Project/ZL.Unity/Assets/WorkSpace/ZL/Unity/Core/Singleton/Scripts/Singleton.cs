@@ -6,8 +6,6 @@ namespace ZL.Unity
 
     [DefaultExecutionOrder(-1)]
 
-    [DisallowMultipleComponent]
-
     public abstract class Singleton<TSingleton> :
 
         MonoBehaviour, ISingleton<TSingleton>

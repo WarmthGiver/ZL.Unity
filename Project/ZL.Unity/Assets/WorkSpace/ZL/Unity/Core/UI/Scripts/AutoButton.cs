@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Auto Button")]
@@ -16,9 +14,9 @@ namespace ZL.Unity.UI
 
     [RequireComponent(typeof(Button))]
 
-    public sealed class AutoButton :
+    public sealed class AutoButton : MonoBehaviour,
         
-        MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IPointerClickHandler
+        IPointerUpHandler, IPointerDownHandler, IPointerClickHandler
     {
         [Space]
 

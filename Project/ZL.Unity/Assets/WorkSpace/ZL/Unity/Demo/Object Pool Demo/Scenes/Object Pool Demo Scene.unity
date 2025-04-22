@@ -296,8 +296,7 @@ MonoBehaviour:
     parent: {fileID: 890621665}
   - original: {fileID: 1340924721486893460, guid: 37b85216342afa74a8aa42a017a09add, type: 3}
     parent: {fileID: 910967142}
-  generateSpeed: 0
-  spawnPoint: {fileID: 0}
+  generateInterval: 0
 --- !u!1 &890621664
 GameObject:
   m_ObjectHideFlags: 0

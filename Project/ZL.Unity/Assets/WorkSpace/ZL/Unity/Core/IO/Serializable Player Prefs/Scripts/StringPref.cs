@@ -1,16 +1,12 @@
 using System;
 
-namespace ZL.Unity.IO
+namespace ZL.Unity
 {
     [Serializable]
 
-    public sealed class StringPref :
-        
-        SerializablePlayerPref<string>
+    public sealed class StringPref : SerializablePlayerPref<string>
     {
-        public StringPref(string key, string value) :
-            
-            base(key, value)
+        public StringPref(string key, string value) : base(key, value)
         {
 
         }

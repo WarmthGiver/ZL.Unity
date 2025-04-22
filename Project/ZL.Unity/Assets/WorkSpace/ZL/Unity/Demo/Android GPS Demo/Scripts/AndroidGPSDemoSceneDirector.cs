@@ -8,9 +8,7 @@ namespace ZL.Unity.Demo.AndroidGPSDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class AndroidGPSDemoScene : SceneDirector
+    public sealed class AndroidGPSDemoSceneDirector : SceneDirector
     {
         protected override IEnumerator Start()
         {

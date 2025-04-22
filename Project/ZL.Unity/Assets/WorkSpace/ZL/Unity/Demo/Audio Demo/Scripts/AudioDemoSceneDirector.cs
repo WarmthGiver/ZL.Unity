@@ -8,8 +8,6 @@ namespace ZL.Unity.Demo.AudioDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     public sealed class AudioDemoSceneDirector : SceneDirector
 	{
         [Space]

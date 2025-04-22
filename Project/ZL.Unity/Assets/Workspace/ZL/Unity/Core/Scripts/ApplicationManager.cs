@@ -1,20 +1,23 @@
 using UnityEngine;
 
-using ZL.Unity.IO;
-
 namespace ZL.Unity
 {
-    [AddComponentMenu("")]
+    [AddComponentMenu("ZL/Application Manager")]
 
-    [CreateAfterSceneLoad]
+    [DisallowMultipleComponent]
 
-    public class ApplicationManager : MonoSingleton<ApplicationManager>
+    public sealed class ApplicationManager : Singleton<ApplicationManager>
     {
         [Space]
 
         [SerializeField]
 
-        private bool runInBackground = true;
+        private BoolPref runInBackgroundPref = new("Run In Background", true);
+
+        public BoolPref RunInBackgroundPref
+        {
+            get => runInBackgroundPref;
+        }
 
         [Space]
 
@@ -22,16 +25,21 @@ namespace ZL.Unity
 
         private IntPref targetFrameRatePref = new("Target Frame Rate", 60);
 
-        private void OnValidate()
+        public IntPref TargetFrameRatePref
         {
-            Application.runInBackground = runInBackground;
+            get => targetFrameRatePref;
         }
 
         protected override void Awake()
         {
             base.Awake();
 
-            Application.runInBackground = runInBackground;
+            runInBackgroundPref.OnValueChangedAction += (value) =>
+            {
+                Application.runInBackground = value;
+            };
+
+            runInBackgroundPref.TryLoadValue();
 
             targetFrameRatePref.OnValueChangedAction += (value) =>
             {
@@ -39,8 +47,21 @@ namespace ZL.Unity
             };
 
             targetFrameRatePref.TryLoadValue();
+        }
 
-            Application.targetFrameRate = targetFrameRatePref.Value;
+        public static void Pause()
+        {
+            FixedTime.Pause();
+        }
+
+        public static void Resume()
+        {
+            FixedTime.Resume();
+        }
+
+        public void Quit()
+        {
+            FixedApplication.Quit();
         }
     }
 }

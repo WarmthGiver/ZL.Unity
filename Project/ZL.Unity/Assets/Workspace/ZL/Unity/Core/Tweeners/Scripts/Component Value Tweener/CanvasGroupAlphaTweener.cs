@@ -10,9 +10,7 @@ namespace ZL.Unity.Tweeners
 
     [RequireComponent(typeof(CanvasGroup))]
 
-    public class CanvasGroupAlphaTweener :
-        
-        ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public class CanvasGroupAlphaTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [SerializeField]
 

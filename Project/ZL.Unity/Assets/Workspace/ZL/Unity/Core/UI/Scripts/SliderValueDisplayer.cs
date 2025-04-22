@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    [DisallowMultipleComponent]
-
     public abstract class SliderValueDisplayer<TTextUGUI> : MonoBehaviour
     {
         [Space]
@@ -33,6 +31,11 @@ namespace ZL.Unity.UI
 #if UNITY_EDITOR
 
         protected float sliderValue = 0f;
+
+        private void Reset()
+        {
+            this.DisallowMultiple();
+        }
 
         protected virtual void Awake()
         {

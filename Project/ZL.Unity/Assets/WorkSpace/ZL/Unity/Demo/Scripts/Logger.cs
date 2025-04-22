@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZL.Unity.Demo
 {
-    [AddComponentMenu("ZL/Unity/Demo/Logger")]
+    [AddComponentMenu("ZL/Demo/Logger")]
 
     [DisallowMultipleComponent]
 

@@ -37,6 +37,7 @@ namespace ZL.Unity.Demo.WrapprDemo
             text.text =
 
                 "°ÂWrapped Array D2\n" +
+
                 "°ÂElements\n";
 
             foreach (var wrappedArray1D in wrappedArray2D)
@@ -54,8 +55,11 @@ namespace ZL.Unity.Demo.WrapprDemo
             text.text +=
 
                 "\n" +
+
                 "\n" +
+
                 "°ÂWrapped Array D3\n" +
+
                 "°ÂElements\n";
 
             foreach (var wrappedArray2D in wrappedArrayD3)

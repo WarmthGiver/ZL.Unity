@@ -8,11 +8,13 @@ namespace ZL.Unity.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Rotation Key Frame Tweener")]
 
+    [DisallowMultipleComponent]
+
     [RequireComponent(typeof(TransformRotationTweener))]
 
-    public sealed class TransformRotationKeyFrameTweener :
+    public sealed class TransformRotationKeyFrameTweener : KeyFrameTweener
         
-        KeyFrameTweener<TransformRotationTweener, QuaternionTweener, Quaternion, Vector3, QuaternionOptions>
+        <TransformRotationTweener, QuaternionTweener, Quaternion, Vector3, QuaternionOptions>
     {
         [Space]
 

@@ -16,8 +16,6 @@ using UnityEngine.Events;
 
 using ZL.Unity.Collections;
 
-using ZL.Unity.IO;
-
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace ZL.Unity.Server.Photon

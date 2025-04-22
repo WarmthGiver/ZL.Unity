@@ -12,16 +12,16 @@ namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Player List Displayer")]
 
-    public sealed class PhotonPlayerListDisplayer :
-        
-        PhotonPlayerListDisplayer<PhotonPlayerListItem>
+    [DisallowMultipleComponent]
+
+    public sealed class PhotonPlayerListDisplayer : PhotonPlayerListDisplayer<PhotonPlayerListItem>
     {
 
     }
 
-    [DisallowMultipleComponent]
-
-    public abstract class PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
+    public abstract class
+        
+        PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
 
         where TPlayerListItem : Component, IKeyValueContainer<int, TPlayerListItem>
     {

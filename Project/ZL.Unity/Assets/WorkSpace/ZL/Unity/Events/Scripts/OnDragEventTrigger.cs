@@ -4,13 +4,15 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity.Events
 {
-    [AddComponentMenu("ZL/UI/Drag Panel")]
+    [AddComponentMenu("ZL/Events/On Drag Event Trigger")]
 
     [DisallowMultipleComponent]
 
-    public sealed class DragPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public sealed class OnDragEventTrigger :
+        
+        MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
 

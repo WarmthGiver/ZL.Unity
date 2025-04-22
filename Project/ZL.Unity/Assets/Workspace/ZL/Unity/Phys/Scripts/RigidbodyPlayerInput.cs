@@ -8,9 +8,9 @@ namespace ZL.Unity.Phys
 
     [DisallowMultipleComponent]
 
-    [RequireComponent(typeof(RigidbodyCharacterController))]
-
     [RequireComponent(typeof(PlayerInput))]
+
+    [RequireComponent(typeof(RigidbodyCharacterController))]
 
     public class RigidbodyPlayerInput : MonoBehaviour
     {

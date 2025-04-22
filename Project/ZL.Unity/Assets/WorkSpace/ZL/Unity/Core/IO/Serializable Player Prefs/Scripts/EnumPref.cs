@@ -2,7 +2,7 @@ using System;
 
 using ZL.CS;
 
-namespace ZL.Unity.IO
+namespace ZL.Unity
 {
     [Serializable]
 

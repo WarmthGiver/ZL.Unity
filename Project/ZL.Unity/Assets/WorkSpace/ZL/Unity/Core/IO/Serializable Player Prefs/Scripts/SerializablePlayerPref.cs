@@ -4,7 +4,7 @@ using UnityEngine;
 
 using ZL.Unity.Collections;
 
-namespace ZL.Unity.IO
+namespace ZL.Unity
 {
     public abstract class SerializablePlayerPref<TValue> :
         

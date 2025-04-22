@@ -6,8 +6,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Inputable Slider (TMP)")]
 
-    [DisallowMultipleComponent]
-
     [ExecuteInEditMode]
 
     public sealed class InputableSlider_TMP : SliderValueDisplayer<TMP_InputField>

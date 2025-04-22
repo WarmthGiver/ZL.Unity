@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Image Alpha Threshold Controller")]
+    [AddComponentMenu("ZL/UI/Image Controller")]
 
     [DisallowMultipleComponent]
 
     [RequireComponent(typeof(Image))]
 
-    public sealed class ImageAlphaThresholdController : MonoBehaviour
+    public sealed class ImageController : MonoBehaviour
     {
         [Space]
 
@@ -18,9 +18,9 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-        
         [GetComponent]
+
+        [ReadOnly(true)]
 
         private Image image;
 
@@ -30,18 +30,18 @@ namespace ZL.Unity.UI
         
         [Range(0f, 1f)]
 
-        private float alphaThreshold = 0.5f;
+        private float alphaHitTestMinimumThreshold = 0f;
 
         private void Awake()
         {
-            image.alphaHitTestMinimumThreshold = alphaThreshold;
+            image.alphaHitTestMinimumThreshold = alphaHitTestMinimumThreshold;
         }
 
         private void OnValidate()
         {
             if (Application.isPlaying == true)
             {
-                image.alphaHitTestMinimumThreshold = alphaThreshold;
+                image.alphaHitTestMinimumThreshold = alphaHitTestMinimumThreshold;
             }
         }
 
@@ -49,7 +49,7 @@ namespace ZL.Unity.UI
 
         private void Update()
         {
-            alphaThreshold = image.alphaHitTestMinimumThreshold;
+            alphaHitTestMinimumThreshold = image.alphaHitTestMinimumThreshold;
         }
 
 #endif

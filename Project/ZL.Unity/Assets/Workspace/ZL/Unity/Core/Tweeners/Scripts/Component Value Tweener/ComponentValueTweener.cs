@@ -10,7 +10,9 @@ namespace ZL.Unity.Tweeners
 {
     [DefaultExecutionOrder(-1)]
 
-    public abstract class ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
+    public abstract class
+        
+        ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
 

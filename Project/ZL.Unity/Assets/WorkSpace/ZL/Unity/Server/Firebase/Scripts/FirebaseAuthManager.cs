@@ -16,11 +16,11 @@ namespace ZL.Unity.Server.Firebase.Auth
 {
     [AddComponentMenu("ZL/Server/Firebase/Firebase Auth Manager (Singleton)")]
 
-    //[DefaultExecutionOrder(-1)]
+    [DefaultExecutionOrder(-2)]
 
     [DisallowMultipleComponent]
 
-    public sealed class FirebaseAuthManager : MonoSingleton<FirebaseAuthManager>
+    public sealed class FirebaseAuthManager : Singleton<FirebaseAuthManager>
     {
         /*[Space]
 
@@ -52,10 +52,7 @@ namespace ZL.Unity.Server.Firebase.Auth
 
         protected override void Awake()
         {
-            if (ISingleton<FirebaseAuthManager>.TrySetInstance(this) == false)
-            {
-                return;
-            }
+            base.Awake();
 
             FirebaseApp.
 

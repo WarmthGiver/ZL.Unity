@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Forced Layout Rebuilder")]
+    [AddComponentMenu("ZL/UI/Force Layout Rebuilder")]
 
     [DisallowMultipleComponent]
 
-    public sealed class ForcedLayoutRebuilder : MonoBehaviour
+    public sealed class ForceLayoutRebuilder : MonoBehaviour
     {
         [Space]
 

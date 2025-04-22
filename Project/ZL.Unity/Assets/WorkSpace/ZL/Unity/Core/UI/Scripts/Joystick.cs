@@ -4,11 +4,17 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.Events;
 
+using ZL.Unity.Events;
+
 namespace ZL.Unity.UI
 {
+    [AddComponentMenu("ZL/UI/Joystick")]
+
     [DisallowMultipleComponent]
 
-    public sealed class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+    public sealed class Joystick : MonoBehaviour,
+        
+        IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [SerializeField]
 
@@ -47,20 +53,6 @@ namespace ZL.Unity.UI
             }
         }
 
-        public void OnDrag(PointerEventData eventData)
-        {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(container, eventData.position, eventData.pressEventCamera, out var pointerPosition);
-
-            if (handle != null)
-            {
-                handle.anchoredPosition = pointerPosition.magnitude < dragRange ? pointerPosition : pointerPosition.normalized * dragRange;
-            }
-
-            dragDirection = new(pointerPosition.x / container.sizeDelta.x, pointerPosition.y / container.sizeDelta.y);
-
-            onDragEvent.Invoke(dragDirection);
-        }
-
         public void OnPointerDown(PointerEventData eventData)
         {
             OnDrag(eventData);
@@ -76,6 +68,31 @@ namespace ZL.Unity.UI
             {
                 handle.anchoredPosition = Vector2.zero;
             }
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (eventData.TryGetLocalPoint(container, out var pointerPosition) == false)
+            {
+                return;
+            }
+
+            if (handle != null)
+            {
+                if (pointerPosition.magnitude < dragRange)
+                {
+                    handle.anchoredPosition = pointerPosition;
+                }
+
+                else
+                {
+                    handle.anchoredPosition = pointerPosition.normalized * dragRange;
+                }
+            }
+
+            dragDirection = pointerPosition / container.sizeDelta;
+
+            onDragEvent.Invoke(dragDirection);
         }
     }
 }

@@ -10,9 +10,7 @@ namespace ZL.Unity.Tweeners
 
     [RequireComponent(typeof(AudioSource))]
 
-    public sealed class AudioSourceVolumeTweener :
-        
-        ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public sealed class AudioSourceVolumeTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 

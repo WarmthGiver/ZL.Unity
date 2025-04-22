@@ -16,11 +16,9 @@ namespace ZL.Unity.Server.Firebase.Auth
 {
     [AddComponentMenu("ZL/Server/Firebase/Firebase DB Manager (Singleton)")]
 
-    [DefaultExecutionOrder(-1)]
-
     [DisallowMultipleComponent]
 
-    public sealed class FirebaseDBManager : MonoSingleton<FirebaseDBManager>
+    public sealed class FirebaseDBManager : Singleton<FirebaseDBManager>
     {
         public DatabaseReference Database { get; private set; } = null;
 
@@ -28,10 +26,7 @@ namespace ZL.Unity.Server.Firebase.Auth
 
         protected override void Awake()
         {
-            if (ISingleton<FirebaseDBManager>.TrySetInstance(this) == false)
-            {
-                return;
-            }
+            base.Awake();
 
             FirebaseApp.
                 
@@ -51,10 +46,7 @@ namespace ZL.Unity.Server.Firebase.Auth
                     Debug.LogError($"Firebase DB load failed: {task.Result}");
                 }
             });
-        }
 
-        private void Start()
-        {
             User = ISingleton<FirebaseAuthManager>.Instance.User;
         }
 

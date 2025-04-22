@@ -2,13 +2,9 @@ using TMPro;
 
 using UnityEngine;
 
-using ZL.Unity.IO;
-
 namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Frame Rate Displayer (Singleton)")]
-
-    [DefaultExecutionOrder(-1)]
 
     [DisallowMultipleComponent]
 

@@ -6,11 +6,13 @@ namespace ZL.Unity.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Transform Scale Key Frame Tweener")]
 
+    [DisallowMultipleComponent]
+
     [RequireComponent(typeof(TransformScaleTweener))]
 
-    public sealed class TransformScaleKeyFrameTweener :
+    public sealed class TransformScaleKeyFrameTweener : KeyFrameTweener
         
-        KeyFrameTweener<TransformScaleTweener, Vector3Tweener, Vector3, Vector3, VectorOptions>
+        <TransformScaleTweener, Vector3Tweener, Vector3, Vector3, VectorOptions>
     {
         public override void SetKeyFrame(int index)
         {

@@ -2,8 +2,6 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
 using ZL.Unity.Tweeners;
 
 using ZL.Unity.UI;
@@ -16,8 +14,6 @@ namespace ZL.Unity
     {
 
     }
-
-    [DisallowMultipleComponent]
 
     public abstract class SceneDirector<TSceneDirector> : Singleton<TSceneDirector>
 
@@ -33,7 +29,10 @@ namespace ZL.Unity
 
         protected float startDelay = 0f;
 
-        private int pauseCount = 0;
+        private void Reset()
+        {
+            this.DisallowMultiple();
+        }
 
         protected virtual IEnumerator Start()
         {
@@ -42,11 +41,11 @@ namespace ZL.Unity
             yield return WaitFor.Seconds(startDelay);
         }
 
-        public virtual void FadeScene(string loadSceneName)
+        public virtual void FadeScene(string sceneName)
         {
             FadeOut();
 
-            FixedSceneManager.LoadScene(this, startDelay, loadSceneName);
+            FixedSceneManager.LoadScene(this, startDelay, sceneName);
         }
 
         public void FadeIn()
@@ -61,28 +60,6 @@ namespace ZL.Unity
             ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(0f);
 
             fadeScreen?.FadeIn();
-        }
-
-        public void Pause()
-        {
-            ++pauseCount;
-
-            Time.timeScale = 0f;
-        }
-
-        public void Resume()
-        {
-            if (--pauseCount <= 0)
-            {
-                pauseCount = 0;
-
-                Time.timeScale = 1f;
-            }
-        }
-
-        public void Quit()
-        {
-            FixedApplication.Quit();
         }
     }
 }

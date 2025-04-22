@@ -1,6 +1,6 @@
 using System;
 
-namespace ZL.Unity.IO
+namespace ZL.Unity
 {
     [Serializable]
 

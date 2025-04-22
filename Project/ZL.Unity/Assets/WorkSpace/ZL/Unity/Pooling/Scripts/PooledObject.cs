@@ -6,8 +6,6 @@ namespace ZL.Unity.Pooling
 {
     [AddComponentMenu("ZL/Pooling/Pooled Object")]
 
-    [DisallowMultipleComponent]
-
     public class PooledObject : MonoBehaviour
     {
         private Action onDisableAction = null;
@@ -41,6 +39,11 @@ namespace ZL.Unity.Pooling
         }
 
 #if UNITY_EDITOR
+
+        private void Reset()
+        {
+            this.DisallowMultiple();
+        }
 
         private void Start()
         {
