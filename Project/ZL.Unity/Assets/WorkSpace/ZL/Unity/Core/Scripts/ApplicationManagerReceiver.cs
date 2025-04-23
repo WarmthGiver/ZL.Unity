@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
     [AddComponentMenu("ZL/Application Manager Receiver")]
 
     [DisallowMultipleComponent]
 
-    public sealed class ApplicationManagerReceiver : SingletonReceiver<ApplicationManager>
+    public sealed class ApplicationManagerReceiver : MonoSingletonReceiver<ApplicationManager>
     {
         public BoolPref RunInBackgroundPref
         {

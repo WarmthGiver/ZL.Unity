@@ -6,9 +6,9 @@ using System.Linq;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
+using ZL.Collections;
 
-namespace ZL.Unity.Pooling
+namespace ZL.Pooling
 {
     [Serializable]
 

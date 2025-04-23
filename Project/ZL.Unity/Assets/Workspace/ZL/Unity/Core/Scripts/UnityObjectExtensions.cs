@@ -1,17 +1,17 @@
-using UnityEngine;
+using UnityObject = UnityEngine.Object;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class UnityObjectExtensions
     {
-        public static void Destroy(this Object instance)
+        public static void Destroy(this UnityObject instance)
         {
-            Object.Destroy(instance);
+            UnityObject.Destroy(instance);
         }
 
-        public static void DontDestroyOnLoad(this Object instance)
+        public static void DontDestroyOnLoad(this UnityObject instance)
         {
-            Object.DontDestroyOnLoad(instance);
+            UnityObject.DontDestroyOnLoad(instance);
         }
     }
 }

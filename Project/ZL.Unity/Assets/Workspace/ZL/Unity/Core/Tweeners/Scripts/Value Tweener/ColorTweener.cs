@@ -8,15 +8,13 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [Serializable]
 
     public sealed class ColorTweener : ValueTweener<Color, Color, ColorOptions>
     {
-        protected override TweenerCore<Color, Color, ColorOptions> To
-            
-            (DOGetter<Color> getter, DOSetter<Color> setter, Color endValue, float duration)
+        protected override TweenerCore<Color, Color, ColorOptions> To(DOGetter<Color> getter, DOSetter<Color> setter, in Color endValue, float duration)
         {
             return DOTween.To(getter, setter, endValue, duration);
         }

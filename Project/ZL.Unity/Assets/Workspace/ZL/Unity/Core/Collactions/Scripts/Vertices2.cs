@@ -6,11 +6,9 @@ using System.Linq;
 
 using UnityEngine;
 
-using ZL.CS;
-
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
-    public static class Vertices2
+    public static partial class Vertices2
     {
         private static readonly Comparer comparer = new();
 
@@ -81,7 +79,7 @@ namespace ZL.Unity.Collections
         {
             var vertices = new Vector2[vertexCount];
 
-            float angleStep = MathEx.PI2 / vertexCount;
+            float angleStep = MathFEx.PI2 / vertexCount;
 
             float radian = (90f + rotation) * Mathf.Deg2Rad;
 
@@ -93,7 +91,7 @@ namespace ZL.Unity.Collections
 
                 float y = radius * Mathf.Sin(theta);
 
-                vertices[i] = new Vector2(x.Round(2), y.Round(2));
+                vertices[i] = Mathv.Round(new Vector2(x, y), 2);
             }
 
             Array.Sort(vertices, comparer);

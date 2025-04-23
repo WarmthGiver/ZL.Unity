@@ -2,11 +2,9 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Canvas Group Alpha Tweener")]
-
-    [DisallowMultipleComponent]
 
     [RequireComponent(typeof(CanvasGroup))]
 

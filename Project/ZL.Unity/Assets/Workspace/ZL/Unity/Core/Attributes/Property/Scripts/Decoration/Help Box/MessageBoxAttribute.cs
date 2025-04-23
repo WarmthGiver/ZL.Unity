@@ -1,11 +1,5 @@
-using System;
-
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public class MessageBoxAttribute : CustomPropertyAttribute
     {
         protected readonly string message;
@@ -15,13 +9,13 @@ namespace ZL.Unity
             this.message = message;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.DrawMessageBox(message);
         }
 
-#endif
+        #endif
     }
 }

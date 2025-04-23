@@ -1,6 +1,6 @@
 using System;
 
-namespace ZL.CS.Reality
+namespace ZL.Reality
 {
     /// <summary>
     /// Earth-Centered Earth-Fixed coordinate system.
@@ -25,13 +25,13 @@ namespace ZL.CS.Reality
 
         public static ECEF Get(double lat, double lon, double alt)
         {
-            double radLat = MathD.Deg2Rad * lat;
+            double radLat = MathEx.Deg2Rad * lat;
 
             double cosLat = Math.Cos(radLat);
 
             double sinLat = Math.Sin(radLat);
 
-            double radLon = MathD.Deg2Rad * lon;
+            double radLon = MathEx.Deg2Rad * lon;
 
             double cosLon = Math.Cos(radLon);
 

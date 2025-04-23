@@ -6,13 +6,13 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [DefaultExecutionOrder(-1)]
 
-    public abstract class
-        
-        ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
+    [DisallowMultipleComponent]
+
+    public abstract class ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
 
@@ -57,14 +57,7 @@ namespace ZL.Unity.Tweeners
             set => tweener.IsIndependentUpdate = value;
         }
 
-        public bool Loop
-        {
-            get => tweener.Loop;
-
-            set => tweener.Loop = value;
-        }
-
-        public int LoopCount
+        public uint LoopCount
         {
             get => tweener.LoopCount;
 

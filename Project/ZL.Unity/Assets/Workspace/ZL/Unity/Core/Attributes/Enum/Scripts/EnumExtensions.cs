@@ -1,35 +1,35 @@
 ﻿using System;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class EnumExtensions
     {
-        public static bool GetBool<T>(this T instance)
+        public static bool GetBool<TEnum>(this TEnum instance)
 
-            where T : Enum
+            where TEnum : Enum
         {
-            return EnumValueAttribute.Cache<T, EnumBoolAttribute>.Get(instance).value;
+            return EnumValueAttribute.Cache<TEnum, EnumBoolAttribute>.Get(instance).value;
         }
 
-        public static float GetFloat<T>(this T instance)
+        public static float GetFloat<TEnum>(this TEnum instance)
 
-            where T : Enum
+            where TEnum : Enum
         {
-            return EnumValueAttribute.Cache<T, EnumFloatAttribute>.Get(instance).value;
+            return EnumValueAttribute.Cache<TEnum, EnumFloatAttribute>.Get(instance).value;
         }
 
-        public static int GetInt<T>(this T instance)
+        public static int GetInt<TEnum>(this TEnum instance)
 
-            where T : Enum
+            where TEnum : Enum
         {
-            return EnumValueAttribute.Cache<T, EnumIntAttribute>.Get(instance).value;
+            return EnumValueAttribute.Cache<TEnum, EnumIntAttribute>.Get(instance).value;
         }
 
-        public static string GetString<T>(this T instance)
+        public static string GetString<TEnum>(this TEnum instance)
 
-            where T : Enum
+            where TEnum : Enum
         {
-            return EnumValueAttribute.Cache<T, EnumStringAttribute>.Get(instance).value;
+            return EnumValueAttribute.Cache<TEnum, EnumStringAttribute>.Get(instance).value;
         }
     }
 }

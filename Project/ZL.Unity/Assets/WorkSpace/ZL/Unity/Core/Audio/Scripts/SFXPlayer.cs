@@ -1,8 +1,8 @@
 using UnityEngine;
 
-using ZL.Unity.Collections;
+using ZL.Collections;
 
-namespace ZL.Unity.Audio
+namespace ZL.Audio
 {
     [AddComponentMenu("ZL/Audio/SFX Player")]
 

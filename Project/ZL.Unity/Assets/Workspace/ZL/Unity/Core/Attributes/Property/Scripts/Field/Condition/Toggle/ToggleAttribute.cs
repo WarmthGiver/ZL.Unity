@@ -1,9 +1,5 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class ToggleAttribute : CustomPropertyAttribute
     {
         public readonly bool isToggled;
@@ -13,13 +9,13 @@ namespace ZL.Unity
             isToggled = value;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Preset(Drawer drawer)
         {
             drawer.IsToggled = isToggled;
         }
 
-#endif
+        #endif
     }
 }

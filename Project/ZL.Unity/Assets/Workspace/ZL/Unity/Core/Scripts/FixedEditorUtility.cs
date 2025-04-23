@@ -8,7 +8,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class FixedEditorUtility
     {
@@ -16,11 +16,11 @@ namespace ZL.Unity
 
         public static void SetDirty(Object target)
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             EditorUtility.SetDirty(target);
 
-#endif
+            #endif
         }
 
         public static bool DisplayDialog(string title, string message, string ok)
@@ -30,15 +30,15 @@ namespace ZL.Unity
 
         public static bool DisplayDialog(string title, string message, string ok, string cancel)
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             return EditorUtility.DisplayDialog(title, message, ok, cancel);
 
-#else
+            #else
 
             return false;
 
-#endif
+            #endif
         }
     }
 }

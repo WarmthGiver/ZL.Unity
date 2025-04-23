@@ -14,11 +14,11 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Collections;
+using ZL.Collections;
 
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-namespace ZL.Unity.Server.Photon
+namespace ZL.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Server Manager (Singleton)")]
 
@@ -26,9 +26,7 @@ namespace ZL.Unity.Server.Photon
 
     [DisallowMultipleComponent]
 
-    public sealed class PhotonServerManager :
-        
-        MonoBehaviourPunCallbacks, ISingleton<PhotonServerManager>
+    public sealed class PhotonServerManager : MonoBehaviourPunCallbacks, ISingleton<PhotonServerManager>
     {
         [Space]
 

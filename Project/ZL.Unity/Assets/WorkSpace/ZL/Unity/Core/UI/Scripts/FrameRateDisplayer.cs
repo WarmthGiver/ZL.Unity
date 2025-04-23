@@ -2,13 +2,11 @@ using TMPro;
 
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Frame Rate Displayer (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class FrameRateDisplayer : Singleton<FrameRateDisplayer>
+    public sealed class FrameRateDisplayer : MonoSingleton<FrameRateDisplayer>
     {
         [Space]
 
@@ -42,7 +40,7 @@ namespace ZL.Unity.UI
 
         private float fps;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private void OnValidate()
         {
@@ -52,7 +50,7 @@ namespace ZL.Unity.UI
             }
         }
 
-#endif
+        #endif
 
         protected override void Awake()
         {

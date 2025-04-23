@@ -1,11 +1,7 @@
-using System.Diagnostics;
-
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class TextAttribute : CustomPropertyAttribute
     {
         private readonly GUIContent label;
@@ -32,7 +28,7 @@ namespace ZL.Unity
             style.normal.textColor = defaultTextColor;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Initialize(Drawer drawer)
         {
@@ -51,6 +47,6 @@ namespace ZL.Unity
             drawer.DrawText(Height, label, style);
         }
 
-#endif
+        #endif
     }
 }

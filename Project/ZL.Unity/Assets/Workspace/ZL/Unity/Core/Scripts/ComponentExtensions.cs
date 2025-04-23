@@ -12,114 +12,90 @@ using UnityEngine;
 
 using UnityObject = UnityEngine.Object;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class ComponentExtensions
     {
         #region GetComponentInChildren
 
-        public static bool TryGetComponentInChildren<TComponent>
-            
-            (this Component instance, out TComponent result)
+        public static bool TryGetComponentInChildren<TComponent>(this Component instance, out TComponent component)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentInChildren(out result);
+            return instance.transform.TryGetComponentInChildren(out component);
         }
 
-        public static bool TryGetComponentInChildren
-            
-            (this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInChildren(this Component instance, Type type, out Component component)
         {
-            return instance.transform.TryGetComponentInChildren(type, out result);
+            return instance.transform.TryGetComponentInChildren(type, out component);
         }
 
-        public static bool TryGetComponentInChildrenOnly<TComponent>
-            
-            (this Component instance, out TComponent result)
+        public static bool TryGetComponentInChildrenOnly<TComponent>(this Component instance, out TComponent component)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentInChildrenOnly(out result);
+            return instance.transform.TryGetComponentInChildrenOnly(out component);
         }
 
-        public static bool TryGetComponentInChildrenOnly
-            
-            (this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInChildrenOnly(this Component instance, Type type, out Component component)
         {
-            return instance.transform.TryGetComponentInChildrenOnly(type, out result);
+            return instance.transform.TryGetComponentInChildrenOnly(type, out component);
         }
 
-        public static bool TryGetComponentsInChildren<TComponent>
-            
-            (this Component instance, out List<TComponent> result)
+        public static bool TryGetComponentsInChildren<TComponent>(this Component instance, out List<TComponent> components)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentsInChildren(out result);
+            return instance.transform.TryGetComponentsInChildren(out components);
         }
 
-        public static bool TryGetComponentsInChildrenOnly<TComponent>
-            
-            (this Component instance, out List<TComponent> result)
+        public static bool TryGetComponentsInChildrenOnly<TComponent>(this Component instance, out List<TComponent> components)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentsInChildrenOnly(out result);
+            return instance.transform.TryGetComponentsInChildrenOnly(out components);
         }
 
         #endregion
 
         #region GetComponentInParent
 
-        public static bool TryGetComponentInParent<TComponent>
-            
-            (this Component instance, out TComponent result)
+        public static bool TryGetComponentInParent<TComponent>(this Component instance, out TComponent component)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentInParent(out result);
+            return instance.transform.TryGetComponentInParent(out component);
         }
 
-        public static bool TryGetComponentInParent
-            
-            (this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInParent(this Component instance, Type type, out Component component)
         {
-            return instance.transform.TryGetComponentInParent(type, out result);
+            return instance.transform.TryGetComponentInParent(type, out component);
         }
 
-        public static bool TryGetComponentInParentOnly<TComponent>
-            
-            (this Component instance, out TComponent result)
+        public static bool TryGetComponentInParentOnly<TComponent>(this Component instance, out TComponent component)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentInParentOnly(out result);
+            return instance.transform.TryGetComponentInParentOnly(out component);
         }
 
-        public static bool TryGetComponentInParentOnly
-            
-            (this Component instance, Type type, out Component result)
+        public static bool TryGetComponentInParentOnly(this Component instance, Type type, out Component component)
         {
-            return instance.transform.TryGetComponentInParentOnly(type, out result);
+            return instance.transform.TryGetComponentInParentOnly(type, out component);
         }
 
-        public static bool TryGetComponentsInParent<TComponent>
-            
-            (this Component instance, out List<TComponent> result)
+        public static bool TryGetComponentsInParent<TComponent>(this Component instance, out List<TComponent> component)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentsInParent(out result);
+            return instance.transform.TryGetComponentsInParent(out component);
         }
 
-        public static bool TryGetComponentsInParentOnly<TComponent>
-            
-            (this Component instance, out List<TComponent> result)
+        public static bool TryGetComponentsInParentOnly<TComponent>(this Component instance, out List<TComponent> component)
 
             where TComponent : Component
         {
-            return instance.transform.TryGetComponentsInParentOnly(out result);
+            return instance.transform.TryGetComponentsInParentOnly(out component);
         }
 
         #endregion
@@ -131,18 +107,14 @@ namespace ZL.Unity
             return instance.gameObject.AddComponent<TComponent>();
         }
 
-        public static GameObject AddComponents<TComponent>
-            
-            (this TComponent instance, params Type[] components)
+        public static GameObject AddComponents<TComponent>(this TComponent instance, params Type[] components)
 
             where TComponent : Component
         {
             return instance.gameObject.AddComponents(components);
         }
 
-        public static TComponent SetActive<TComponent>
-            
-            (this TComponent instance, bool value)
+        public static TComponent SetActive<TComponent>(this TComponent instance, bool value)
 
             where TComponent : Component
         {
@@ -200,13 +172,11 @@ namespace ZL.Unity
             }
         }
 
-        public static void DestroyImmediate<TComponent>
-            
-            (this TComponent instance)
+        public static void DestroyImmediate<TComponent>(this TComponent instance)
 
             where TComponent : Component
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             if (Application.isPlaying == false)
             {
@@ -226,7 +196,7 @@ namespace ZL.Unity
                 return;
             }
 
-#endif
+            #endif
 
             UnityObject.DestroyImmediate(instance);
         }

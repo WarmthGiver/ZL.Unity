@@ -12,15 +12,13 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
-namespace ZL.Unity.Server.Firebase.Auth
+namespace ZL.Server.Firebase.Auth
 {
     [AddComponentMenu("ZL/Server/Firebase/Firebase Auth Manager (Singleton)")]
 
     [DefaultExecutionOrder(-2)]
 
-    [DisallowMultipleComponent]
-
-    public sealed class FirebaseAuthManager : Singleton<FirebaseAuthManager>
+    public sealed class FirebaseAuthManager : MonoSingleton<FirebaseAuthManager>
     {
         /*[Space]
 
@@ -56,22 +54,22 @@ namespace ZL.Unity.Server.Firebase.Auth
 
             FirebaseApp.
 
-            CheckAndFixDependenciesAsync().
+                CheckAndFixDependenciesAsync().
 
-            ContinueWithOnMainThread((task) =>
-            {
-                if (task.Result == DependencyStatus.Available)
+                ContinueWithOnMainThread((task) =>
                 {
-                    Auth = FirebaseAuth.DefaultInstance;
-
-                    Debug.Log("Firebase Auth load successful.");
-                }
-
-                else
-                {
-                    Debug.LogError($"Firebase Auth load failed: {task.Result}");
-                }
-            });
+                    if (task.Result == DependencyStatus.Available)
+                    {
+                        Auth = FirebaseAuth.DefaultInstance;
+                        
+                        Debug.Log("Firebase Auth load successful.");
+                    }
+                    
+                    else
+                    {
+                        Debug.LogError($"Firebase Auth load failed: {task.Result}");
+                    }
+                });
         }
 
         public void SignIn(string id, string pw)
@@ -115,33 +113,6 @@ namespace ZL.Unity.Server.Firebase.Auth
             {
                 StartCoroutine(routine(task));
             }
-        }
-    }
-
-    public static partial class TaskExtensions
-    {
-        public static IEnumerator WaitForCompleted<TTask>(this TTask instance, Action<TTask> callback = null)
-
-            where TTask : Task
-        {
-            while (instance.IsCompleted == false)
-            {
-                yield return null;
-            }
-
-            callback?.Invoke(instance);
-        }
-
-        public static bool IsExceptionThrown(this Task instance, out FirebaseException exception)
-        {
-            return IsExceptionThrown(instance, out exception);
-        }
-
-        public static bool IsExceptionThrown(this Task instance, out Exception exception)
-        {
-            exception = instance.Exception;
-
-            return exception != null;
         }
     }
 }

@@ -4,24 +4,20 @@ using Photon.Realtime;
 
 using UnityEngine;
 
-using ZL.Unity.Pooling;
+using ZL.Pooling;
 
-using ZL.Unity.Collections;
+using ZL.Collections;
 
-namespace ZL.Unity.Server.Photon
+namespace ZL.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Player List Displayer")]
-
-    [DisallowMultipleComponent]
 
     public sealed class PhotonPlayerListDisplayer : PhotonPlayerListDisplayer<PhotonPlayerListItem>
     {
 
     }
 
-    public abstract class
-        
-        PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
+    public abstract class PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
 
         where TPlayerListItem : Component, IKeyValueContainer<int, TPlayerListItem>
     {
@@ -34,6 +30,11 @@ namespace ZL.Unity.Server.Photon
         [ReadOnlyWhenPlayMode]
 
         protected ManagedObjectPool<int, TPlayerListItem> playerListItemPool;
+
+        private void Reset()
+        {
+            this.DisallowMultiple();
+        }
 
         public void Refresh()
         {

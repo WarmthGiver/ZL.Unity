@@ -8,15 +8,15 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class FixedUndo
+    public static partial class FixedUndo
     {
         [Conditional("UNITY_EDITOR")]
 
         public static void RegisterCreatedObjectUndo(Object objectToUndo, string name)
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             if (EditorApplication.isPlaying == true)
             {
@@ -25,14 +25,14 @@ namespace ZL.Unity
 
             Undo.RegisterCreatedObjectUndo(objectToUndo, name);
 
-#endif
+            #endif
         }
 
         [Conditional("UNITY_EDITOR")]
 
         public static void RecordObject(Object objectToUndo, string name)
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             if (EditorApplication.isPlaying == true)
             {
@@ -41,7 +41,7 @@ namespace ZL.Unity
 
             Undo.RecordObject(objectToUndo, name);
 
-#endif
+            #endif
         }
     }
 }

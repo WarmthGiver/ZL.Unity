@@ -2,11 +2,11 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.Unity.Tweeners;
+using ZL.Tweeners;
 
-using ZL.Unity.UI;
+using ZL.UI;
 
-namespace ZL.Unity
+namespace ZL
 {
     [AddComponentMenu("ZL/Scene Director (Singleton)")]
 
@@ -15,7 +15,7 @@ namespace ZL.Unity
 
     }
 
-    public abstract class SceneDirector<TSceneDirector> : Singleton<TSceneDirector>
+    public abstract class SceneDirector<TSceneDirector> : MonoSingleton<TSceneDirector>
 
         where TSceneDirector : SceneDirector<TSceneDirector>
     {

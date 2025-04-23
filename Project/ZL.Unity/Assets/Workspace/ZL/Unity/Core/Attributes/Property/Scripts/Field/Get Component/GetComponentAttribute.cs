@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
     public class GetComponentAttribute : CustomPropertyAttribute
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private bool isTypeValid;
 
@@ -32,6 +32,6 @@ namespace ZL.Unity
             return component;
         }
 
-#endif
+        #endif
     }
 }

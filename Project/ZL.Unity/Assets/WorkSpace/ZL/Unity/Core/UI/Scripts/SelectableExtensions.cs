@@ -2,7 +2,7 @@ using TMPro;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class SelectableExtensions
     {
@@ -23,17 +23,17 @@ namespace ZL.Unity
 
         public static void CreateImage(this Selectable instance)
         {
-            instance.targetGraphic = Creator.CreateGraphic<Image>();
+            instance.targetGraphic = ObjectCreator.CreateGraphic<Image>();
         }
 
         public static void CreateText(this Selectable instance, string textString)
         {
-            instance.targetGraphic = Creator.CreateText(textString);
+            instance.targetGraphic = ObjectCreator.CreateText(textString);
         }
 
         public static void CreateTextMeshPro(this Selectable instance, string textString)
         {
-            instance.targetGraphic = Creator.CreateTextMeshPro(textString);
+            instance.targetGraphic = ObjectCreator.CreateTextMeshPro(textString);
         }
     }
 }

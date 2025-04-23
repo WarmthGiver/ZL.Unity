@@ -2,7 +2,7 @@ using TMPro;
 
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Inputable Slider (TMP)")]
 
@@ -10,7 +10,7 @@ namespace ZL.Unity.UI
 
     public sealed class InputableSlider_TMP : SliderValueDisplayer<TMP_InputField>
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private string inputText = null;
 
@@ -52,7 +52,7 @@ namespace ZL.Unity.UI
             }
         }
 
-#endif
+        #endif
 
         public void TrySetValue(string text)
         {

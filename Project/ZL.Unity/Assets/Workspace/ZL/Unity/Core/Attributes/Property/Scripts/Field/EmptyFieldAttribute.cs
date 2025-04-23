@@ -1,9 +1,5 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class EmptyFieldAttribute : FieldAttribute
     {
 

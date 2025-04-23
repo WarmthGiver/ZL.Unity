@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.InputSystem;
 
-namespace ZL.Unity.Phys
+namespace ZL.Phys
 {
     [AddComponentMenu("ZL/Phys/Rigidbody Player Input")]
 
@@ -20,9 +20,9 @@ namespace ZL.Unity.Phys
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
+
+        [ReadOnly(true)]
 
         private RigidbodyCharacterController rigidbodyCharacterController;
 

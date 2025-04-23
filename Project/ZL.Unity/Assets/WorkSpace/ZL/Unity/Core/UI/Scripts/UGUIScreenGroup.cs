@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/UGUI Screen Group")]
 

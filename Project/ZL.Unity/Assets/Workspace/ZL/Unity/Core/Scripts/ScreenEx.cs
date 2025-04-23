@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class ScreenEx
+    public static partial class ScreenEx
     {
         public static RenderTexture RenderTexture { get; private set; } = new(Screen.width, Screen.height, 24);
 

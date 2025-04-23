@@ -4,13 +4,11 @@ using DG.Tweening.Core;
 
 using DG.Tweening.Plugins.Options;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class TweenerCoreExtensions
     {
-        public static float Remain<T1, T2, TPlugOptions>
-
-            (this TweenerCore<T1, T2, TPlugOptions> instance)
+        public static float Remain<T1, T2, TPlugOptions>(this TweenerCore<T1, T2, TPlugOptions> instance)
 
             where TPlugOptions : struct, IPlugOptions
         {
@@ -22,9 +20,7 @@ namespace ZL.Unity
             return instance.Duration() - instance.Elapsed();
         }
 
-        public static TweenerCore<T1, T2, QuaternionOptions> SetRotateMode<T1, T2>
-            
-            (this TweenerCore<T1, T2, QuaternionOptions> instance, RotateMode rotateMode)
+        public static TweenerCore<T1, T2, QuaternionOptions> SetRotateMode<T1, T2>(this TweenerCore<T1, T2, QuaternionOptions> instance, RotateMode rotateMode)
         {
             instance.plugOptions.rotateMode = rotateMode;
 

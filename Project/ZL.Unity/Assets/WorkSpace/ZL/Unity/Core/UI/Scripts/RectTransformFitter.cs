@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Rect Transform Fitter")]
 
@@ -16,9 +16,9 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
+
+        [ReadOnly(true)]
 
         private RectTransform rectTransform;
 

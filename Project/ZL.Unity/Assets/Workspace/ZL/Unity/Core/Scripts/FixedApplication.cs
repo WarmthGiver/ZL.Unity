@@ -6,17 +6,17 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class FixedApplication
+    public static partial class FixedApplication
     {
         public static void Quit()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             EditorApplication.isPlaying = false;
 
-#endif
+            #endif
 
             Application.Quit();
         }

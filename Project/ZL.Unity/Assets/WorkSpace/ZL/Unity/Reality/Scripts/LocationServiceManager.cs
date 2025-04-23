@@ -4,13 +4,11 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Reality
+namespace ZL.Reality
 {
     [AddComponentMenu("ZL/Reality/Location Service Manager (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class LocationServiceManager : Singleton<LocationServiceManager>
+    public sealed class LocationServiceManager : MonoSingleton<LocationServiceManager>
     {
         [Space]
 

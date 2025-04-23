@@ -4,11 +4,9 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-using ZL.Unity.Collections;
-
-namespace ZL.Unity
+namespace ZL
 {
-    public static class FixedSceneManager
+    public static partial class FixedSceneManager
     {
         public static void LoadScene(string sceneName)
         {

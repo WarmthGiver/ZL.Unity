@@ -1,26 +1,20 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class WarningBoxAttribute : MessageBoxAttribute
     {
-        public WarningBoxAttribute(string message) :
-            
-            base(message)
+        public WarningBoxAttribute(string message) : base(message)
         {
 
         }
 
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.DrawWarningBox(message);
         }
 
-#endif
+        #endif
     }
 }

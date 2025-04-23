@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class GraphicExtensions
     {

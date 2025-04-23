@@ -1,8 +1,8 @@
 using UnityEngine;
 
-using ZL.Unity.IO;
+using ZL.IO;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class Texture2DExtensions
     {

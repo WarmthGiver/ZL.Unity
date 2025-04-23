@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
+using ZL.Collections;
 
-namespace ZL.Unity
+namespace ZL
 {
     public sealed class Discolorator
     {
@@ -57,21 +57,21 @@ namespace ZL.Unity
 
         private IEnumerator<Color> MoveHSVRoutile(Color color)
         {
-            Color.RGBToHSV(color, out float H, out float S, out float v);
+            Color.RGBToHSV(color, out float h, out float s, out float v);
 
-            Linear linearH = new(H, 1f, LinearMode.Repeat);
+            Linear linearH = new(h, 1f, LinearMode.Repeat);
 
-            Linear linearS = new(S, 1f, LinearMode.PingPong);
+            Linear linearS = new(s, 1f, LinearMode.PingPong);
 
             Linear linearV = new(v, 1f, LinearMode.PingPong);
 
             while (true)
             {
-                yield return Color.HSVToRGB(H, S, v);
+                yield return Color.HSVToRGB(h, s, v);
 
-                H = linearH.Interval(deltaH, LinearMode.Repeat);
+                h = linearH.Interval(deltaH, LinearMode.Repeat);
 
-                S = linearS.Interval(deltaS, LinearMode.PingPong);
+                s = linearS.Interval(deltaS, LinearMode.PingPong);
 
                 v = linearV.Interval(deltaV, LinearMode.Repeat);
             }

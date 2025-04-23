@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class PhysicsEx
+    public static partial class PhysicsEx
     {
         public static bool BoxCast(in Vector3 start, in Quaternion rotation, in Vector3 scale, out RaycastHit raycastHit, LayerMask layerMask)
         {

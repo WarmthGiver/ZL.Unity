@@ -8,30 +8,30 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class FixedAnimationUtility
+    public static partial class FixedAnimationUtility
     {
         [Conditional("UNITY_EDITOR")]
 
         public static void SetKeyRightTangentMode(AnimationCurve curve, int index, FixedTangentMode tangentMode)
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             AnimationUtility.SetKeyRightTangentMode(curve, index, (AnimationUtility.TangentMode)tangentMode);
 
-#endif
+            #endif
         }
 
         [Conditional("UNITY_EDITOR")]
 
         public static void SetKeyLeftTangentMode(AnimationCurve curve, int index, FixedTangentMode tangentMode)
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             AnimationUtility.SetKeyLeftTangentMode(curve, index, (AnimationUtility.TangentMode)tangentMode);
 
-#endif
+            #endif
         }
     }
 }

@@ -2,21 +2,17 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-	public static class WaitFor
+	public static partial class WaitFor
 	{
         private static readonly WaitForEndOfFrame waitForEndOfFrame = new();
 
         private static readonly WaitForFixedUpdate waitForFixedUpdate = new();
 
-        private static readonly Dictionary<float, WaitForSeconds>
-            
-            waitForSecondsDictionary = new(new FloatComparer());
+        private static readonly Dictionary<float, WaitForSeconds>waitForSecondsDictionary = new(new FloatComparer());
 
-        private static readonly Dictionary<float, WaitForSecondsRealtime>
-            
-            waitForSecondsRealtimeDictionary = new(new FloatComparer());
+        private static readonly Dictionary<float, WaitForSecondsRealtime>waitForSecondsRealtimeDictionary = new(new FloatComparer());
 
         public static WaitForEndOfFrame EndOfFrame()
         {
@@ -30,9 +26,7 @@ namespace ZL.Unity
 
         public static WaitForSeconds Seconds(float seconds)
         {
-            if (waitForSecondsDictionary.TryGetValue
-                
-                (seconds, out var waitForSeconds) == false)
+            if (waitForSecondsDictionary.TryGetValue(seconds, out var waitForSeconds) == false)
             {
                 waitForSecondsDictionary.Add(seconds, waitForSeconds = new(seconds));
             }
@@ -42,9 +36,7 @@ namespace ZL.Unity
 
         public static WaitForSecondsRealtime SecondsRealtime(float seconds)
         {
-            if (waitForSecondsRealtimeDictionary.TryGetValue
-                
-                (seconds, out var waitForSecondsRealtime) == false)
+            if (waitForSecondsRealtimeDictionary.TryGetValue(seconds, out var waitForSecondsRealtime) == false)
             {
                 waitForSecondsRealtimeDictionary.Add(seconds, waitForSecondsRealtime = new(seconds));
             }

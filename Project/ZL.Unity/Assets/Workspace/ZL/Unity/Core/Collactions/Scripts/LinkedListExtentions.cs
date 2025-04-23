@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
-    public static class LinkedListExtentions
+    public static partial class LinkedListExtentions
     {
         public static T PopFirst<T>(this LinkedList<T> instance)
         {
-            T value = instance.First.Value;
+            var value = instance.First.Value;
 
             instance.RemoveFirst();
 
@@ -15,7 +15,7 @@ namespace ZL.Unity.Collections
 
         public static T PopLast<T>(this LinkedList<T> instance)
         {
-            T value = instance.Last.Value;
+            var value = instance.Last.Value;
 
             instance.RemoveLast();
 

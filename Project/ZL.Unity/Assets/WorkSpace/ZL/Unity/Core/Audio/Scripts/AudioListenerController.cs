@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Unity.Audio
+namespace ZL.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Listener Controller")]
 

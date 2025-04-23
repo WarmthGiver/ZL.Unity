@@ -6,9 +6,7 @@ using System.Linq;
 
 using Unity.VisualScripting;
 
-using ZL.CS;
-
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class StringExtensions
     {
@@ -172,7 +170,7 @@ namespace ZL.Unity
                 return string.Empty;
             }
 
-            char initial = instance[0].ToUpper();
+            char initial = char.ToUpper(instance[0]);
 
             if (instance.Length > 1)
             {
@@ -191,7 +189,7 @@ namespace ZL.Unity
                 return string.Empty;
             }
 
-            char initial = instance[0].ToLower();
+            char initial = char.ToLower(instance[0]);
 
             if (instance.Length > 1)
             {

@@ -6,7 +6,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity.IO
+namespace ZL.IO
 {
     public static partial class ScriptableObjectManager
     {

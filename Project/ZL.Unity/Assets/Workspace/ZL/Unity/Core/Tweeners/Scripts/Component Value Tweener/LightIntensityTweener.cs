@@ -2,17 +2,13 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Light Intensity Tweener")]
 
-    [DisallowMultipleComponent]
-
     [RequireComponent(typeof(Light))]
 
-    public sealed class LightIntensityTweener :
-        
-        ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public sealed class LightIntensityTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 
@@ -24,11 +20,11 @@ namespace ZL.Unity.Tweeners
 
         [ReadOnly(true)]
 
-#pragma warning disable CS0108
+        #pragma warning disable CS0108
 
         private Light light;
 
-#pragma warning restore CS0108
+        #pragma warning restore CS0108
 
         protected override float Value
         {

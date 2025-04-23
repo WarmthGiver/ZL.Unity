@@ -4,7 +4,7 @@ using System.Collections;
 
 using System.Reflection;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class EnumeratorExtensions
     {

@@ -1,9 +1,5 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class ErrorBoxAttribute : MessageBoxAttribute
     {
         public ErrorBoxAttribute(string message) : base(message)
@@ -11,13 +7,13 @@ namespace ZL.Unity
 
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.DrawErrorBox(message);
         }
 
-#endif
+        #endif
     }
 }

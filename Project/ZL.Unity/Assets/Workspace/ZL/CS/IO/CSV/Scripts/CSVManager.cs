@@ -4,13 +4,11 @@ using System.IO;
 
 using System.Text;
 
-namespace ZL.CS.IO.CSV
+namespace ZL.IO
 {
-    public static class CSVManager
+    public static partial class CSVManager
     {
-        public static bool TryLoad<TCSVConvertible>
-            
-            (string filePath, out List<TCSVConvertible> datas)
+        public static bool TryLoad<TCSVConvertible>(string filePath, out List<TCSVConvertible> datas)
 
             where TCSVConvertible : ICSVConvertible, new()
         {
@@ -37,9 +35,7 @@ namespace ZL.CS.IO.CSV
             return true;
         }
 
-        public static void Save<TCSVConvertible>
-            
-            (string filePath, List<TCSVConvertible> datas)
+        public static void Save<TCSVConvertible>(string filePath, List<TCSVConvertible> datas)
 
             where TCSVConvertible : ICSVConvertible, new()
         {

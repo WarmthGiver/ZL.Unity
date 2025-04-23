@@ -1,18 +1,14 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class PropertyFieldAttribute : FieldAttribute
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.DrawPropertyField();
         }
 
-#endif
+        #endif
     }
 }

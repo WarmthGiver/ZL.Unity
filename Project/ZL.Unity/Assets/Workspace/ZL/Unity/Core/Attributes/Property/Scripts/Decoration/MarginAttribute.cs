@@ -1,9 +1,5 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class MarginAttribute : CustomPropertyAttribute
     {
         private readonly float height;
@@ -13,13 +9,13 @@ namespace ZL.Unity
             this.height = height;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.Margin(height);
         }
 
-#endif
+        #endif
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Image Controller")]
 
@@ -45,13 +45,13 @@ namespace ZL.Unity.UI
             }
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private void Update()
         {
             alphaHitTestMinimumThreshold = image.alphaHitTestMinimumThreshold;
         }
 
-#endif
+        #endif
     }
 }

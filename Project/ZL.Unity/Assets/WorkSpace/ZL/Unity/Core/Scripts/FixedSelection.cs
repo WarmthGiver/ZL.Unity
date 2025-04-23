@@ -8,19 +8,19 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class FixedSelection
+    public static partial class FixedSelection
     {
         [Conditional("UNITY_EDITOR")]
 
         public static void SetActiveObject(Object value)
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             Selection.activeObject = value;
 
-#endif
+            #endif
         }
     }
 }

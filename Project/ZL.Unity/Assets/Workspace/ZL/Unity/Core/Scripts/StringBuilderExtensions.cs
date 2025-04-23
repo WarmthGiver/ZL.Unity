@@ -2,9 +2,9 @@ using System.Linq;
 
 using System.Text;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class StringBuilderExtensions
+    public static partial class StringBuilderExtensions
     {
         public static string Concat(this StringBuilder instance, params char[] values)
         {

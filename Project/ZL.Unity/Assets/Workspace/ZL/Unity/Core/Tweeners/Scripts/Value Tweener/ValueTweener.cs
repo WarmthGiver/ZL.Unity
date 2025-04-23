@@ -8,7 +8,7 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     public abstract class ValueTweener<T1, T2, TPlugOptions>
 
@@ -60,28 +60,9 @@ namespace ZL.Unity.Tweeners
 
         [SerializeField]
 
-        private bool loop = false;
+        private uint loopCount = 0;
 
-        public bool Loop
-        {
-            get => loop;
-
-            set => loop = value;
-        }
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [ToggleIf("loop", false)]
-
-        [AddIndent]
-
-        [Alias("Count")]
-
-        private int loopCount = -1;
-
-        public int LoopCount
+        public uint LoopCount
         {
             get => loopCount;
 
@@ -92,11 +73,9 @@ namespace ZL.Unity.Tweeners
 
         [UsingCustomProperty]
 
-        [ToggleIf("loop", false)]
+        [ToggleIf(nameof(loopCount), 0, true)]
 
         [AddIndent]
-
-        [Alias("Type")]
 
         [PropertyField]
 
@@ -151,9 +130,7 @@ namespace ZL.Unity.Tweeners
 
         public TweenerCore<T1, T2, TPlugOptions> Current { get; private set; }
 
-        protected abstract TweenerCore<T1, T2, TPlugOptions> To
-
-            (DOGetter<T1> getter, DOSetter<T1> setter, T2 endValue, float duration);
+        protected abstract TweenerCore<T1, T2, TPlugOptions> To(DOGetter<T1> getter, DOSetter<T1> setter, in T2 endValue, float duration);
 
         public TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue)
         {
@@ -175,9 +152,9 @@ namespace ZL.Unity.Tweeners
                 Current.SetUpdate(isIndependentUpdate);
             }
 
-            if (loop == true)
+            if (loopCount != 0)
             {
-                Current.SetLoops(loopCount, loopType);
+                Current.SetLoops((int)loopCount, loopType);
             }
 
             if (onStartEvent.GetPersistentEventCount() != 0)

@@ -16,9 +16,9 @@ using Debug = UnityEngine.Debug;
 
 using Object = UnityEngine.Object;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class FixedDebug
+    public static partial class FixedDebug
     {
         [Conditional("UNITY_EDITOR")]
 
@@ -220,17 +220,17 @@ namespace ZL.Unity
 
         public static void ClearLog()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
-            Assembly.GetAssembly(typeof(Editor)).
+            var assembly = Assembly.GetAssembly(typeof(Editor));
 
-                GetType("UnityEditor.LogEntries").
+            var type = assembly.GetType("UnityEditor.LogEntries");
 
-                GetMethod("Clear").
+            var method = type.GetMethod("Clear");
+            
+            method.Invoke(new object(), null);
 
-                Invoke(new object(), null);
-
-#endif
+            #endif
         }
     }
 }

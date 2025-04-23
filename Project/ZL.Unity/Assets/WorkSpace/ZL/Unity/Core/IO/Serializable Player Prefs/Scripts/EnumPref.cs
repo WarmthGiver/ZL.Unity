@@ -1,8 +1,6 @@
 using System;
 
-using ZL.CS;
-
-namespace ZL.Unity
+namespace ZL
 {
     [Serializable]
 

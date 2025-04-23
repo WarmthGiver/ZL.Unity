@@ -4,15 +4,11 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
-    [AddComponentMenu("ZL/Unity/Tweeners/Graphic Color Tweener")]
+    [AddComponentMenu("ZL/Tweeners/Graphic Color Tweener")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class GraphicColorTweener :
-        
-        ComponentValueTweener<ColorTweener, Color, Color, ColorOptions>
+    public sealed class GraphicColorTweener : ComponentValueTweener<ColorTweener, Color, Color, ColorOptions>
     {
         [Space]
 

@@ -2,17 +2,13 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Rect Transform Anchored Position Tweener")]
 
-    [DisallowMultipleComponent]
-
     [RequireComponent(typeof(RectTransform))]
 
-    public sealed class RectTransformAnchoredPositionTweener :
-        
-        ComponentValueTweener<Vector2Tweener, Vector2, Vector2, VectorOptions>
+    public sealed class RectTransformAnchoredPositionTweener : ComponentValueTweener<Vector2Tweener, Vector2, Vector2, VectorOptions>
     {
         [Space]
 

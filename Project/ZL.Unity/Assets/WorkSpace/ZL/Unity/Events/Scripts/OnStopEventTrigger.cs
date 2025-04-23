@@ -2,11 +2,11 @@
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Events
+namespace ZL.Events
 {
-    public abstract class OnStopEventTrigger<T> : MonoBehaviour
+    public abstract class OnStopEventTrigger<TComponent> : MonoBehaviour
 
-        where T : Component
+        where TComponent : Component
     {
         [Space]
 
@@ -18,9 +18,9 @@ namespace ZL.Unity.Events
 
         [ReadOnly(true)]
 
-        protected T target;
+        protected TComponent target;
 
-        public T Target
+        public TComponent Target
         {
             get => target;
         }

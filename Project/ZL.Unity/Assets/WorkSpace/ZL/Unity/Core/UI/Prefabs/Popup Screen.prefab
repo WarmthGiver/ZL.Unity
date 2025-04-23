@@ -69,13 +69,12 @@ MonoBehaviour:
     delay: 0
     ease: 0
     isIndependentUpdate: 1
-    loop: 0
-    loopCount: -1
+    loopCount: 0
     loopType: 0
-    eventOnStart:
+    onStartEvent:
       m_PersistentCalls:
         m_Calls: []
-    eventOnComplete:
+    onCompleteEvent:
       m_PersistentCalls:
         m_Calls: []
   canvasGroup: {fileID: 5499842037260510847}
@@ -95,94 +94,16 @@ MonoBehaviour:
   alphaTweener: {fileID: 31930668838741612}
   screenGroup: {fileID: 0}
   isFadedIn: 0
-  eventOnFadingIn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2778954448509355801}
-        m_TargetAssemblyTypeName: ZL.Unity.Tweeners.ComponentValueTweener`4[[ZL.Unity.Tweeners.Vector3Tweener,
-          Assembly-CSharp
-        m_MethodName: set_Duration
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 24
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2778954448509355801}
-        m_TargetAssemblyTypeName: ZL.Unity.Tweeners.ComponentValueTweener`4[[ZL.Unity.Tweeners.Vector3Tweener,
-          Assembly-CSharp
-        m_MethodName: SetEase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 24
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3914126819475232145}
-        m_TargetAssemblyTypeName: ZL.Unity.Tweeners.KeyFrameTweener`5[[ZL.Unity.Tweeners.TransformScaleTweener,
-          Assembly-CSharp
-        m_MethodName: TweenKeyFrame
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  eventOnFadedIn:
+  onFadeInEvent:
     m_PersistentCalls:
       m_Calls: []
-  eventOnFadingOut:
+  onFadedInEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2778954448509355801}
-        m_TargetAssemblyTypeName: ZL.Unity.Tweeners.ComponentValueTweener`4[[ZL.Unity.Tweeners.Vector3Tweener,
-          Assembly-CSharp
-        m_MethodName: set_Duration
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 26
-          m_FloatArgument: 0.5
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2778954448509355801}
-        m_TargetAssemblyTypeName: ZL.Unity.Tweeners.ComponentValueTweener`4[[ZL.Unity.Tweeners.Vector3Tweener,
-          Assembly-CSharp
-        m_MethodName: SetEase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 26
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3914126819475232145}
-        m_TargetAssemblyTypeName: ZL.Unity.Tweeners.KeyFrameTweener`5[[ZL.Unity.Tweeners.TransformScaleTweener,
-          Assembly-CSharp
-        m_MethodName: TweenKeyFrame
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  eventOnFadedOut:
+      m_Calls: []
+  onFadeOutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFadedOutEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5631244452092991899
@@ -357,30 +278,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d741e7fc535c1845ab3694a76f619de, type: 3}
---- !u!114 &2778954448509355801 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6250606063434649940, guid: 7d741e7fc535c1845ab3694a76f619de, type: 3}
-  m_PrefabInstance: {fileID: 8083478920798180941}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aef6fec7dd860054791828e9b5776c04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &3404424237074774268 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6850177955203313329, guid: 7d741e7fc535c1845ab3694a76f619de, type: 3}
   m_PrefabInstance: {fileID: 8083478920798180941}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3914126819475232145 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5079933775566996444, guid: 7d741e7fc535c1845ab3694a76f619de, type: 3}
-  m_PrefabInstance: {fileID: 8083478920798180941}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7317a4dca20e5574d9ec16f67158d2eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

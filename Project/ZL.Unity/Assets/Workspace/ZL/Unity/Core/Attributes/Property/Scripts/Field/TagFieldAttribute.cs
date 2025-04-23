@@ -1,18 +1,14 @@
-﻿using System.Diagnostics;
-
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
 
 using UnityEditor;
 
 #endif
 
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class TagFieldAttribute : FieldAttribute
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
@@ -26,6 +22,6 @@ namespace ZL.Unity
             drawer.DrawTagField();
         }
 
-#endif
+        #endif
     }
 }

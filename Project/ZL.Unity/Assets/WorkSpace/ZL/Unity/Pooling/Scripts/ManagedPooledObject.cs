@@ -1,10 +1,8 @@
-using ZL.Unity.Collections;
+using ZL.Collections;
 
-namespace ZL.Unity.Pooling
+namespace ZL.Pooling
 {
-    public abstract class ManagedPooledObject<TKey, TValue> :
-
-        PooledObject, IKeyValueContainer<TKey, TValue>
+    public abstract class ManagedPooledObject<TKey, TValue> : PooledObject, IKeyValueContainer<TKey, TValue>
 
         where TValue : ManagedPooledObject<TKey, TValue>
     {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
     [Serializable]
 
@@ -35,14 +35,14 @@ namespace ZL.Unity.Collections
                 }
             }
 
-#if !UNITY_EDITOR
+            #if !UNITY_EDITOR
 
             elements = null;
 
-#endif
+            #endif
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         public new void Add(TKey key, TValue value)
         {
@@ -51,7 +51,7 @@ namespace ZL.Unity.Collections
             elements.Add(new(key, value));
         }
 
-#endif
+        #endif
     }
 
     [Serializable]
@@ -66,13 +66,13 @@ namespace ZL.Unity.Collections
 
         private List<TKeyValueContainer> elements = new();
 
-        private readonly Dictionary<TKey, TKeyValueContainer> @base = new();
+        private readonly Dictionary<TKey, TKeyValueContainer> dictionary = new();
 
         public TValue this[TKey key]
         {
-            get => @base[key].Value;
+            get => dictionary[key].Value;
 
-            set => @base[key].Value = value;
+            set => dictionary[key].Value = value;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -82,7 +82,7 @@ namespace ZL.Unity.Collections
 
         public IEnumerator<TKeyValueContainer> GetEnumerator()
         {
-            return @base.Values.GetEnumerator();
+            return dictionary.Values.GetEnumerator();
         }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
@@ -94,48 +94,48 @@ namespace ZL.Unity.Collections
         {
             if (elements != null)
             {
-                @base.Clear();
+                dictionary.Clear();
 
                 foreach (var element in elements)
                 {
                     if (element != null)
                     {
-                        @base.TryAdd(element.Key, element);
+                        dictionary.TryAdd(element.Key, element);
                     }
                 }
             }
 
-#if !UNITY_EDITOR
+            #if !UNITY_EDITOR
 
             elements = null;
 
-#endif
+            #endif
         }
 
         public void Add(TKeyValueContainer element)
         {
-            @base.Add(element.Key, element);
+            dictionary.Add(element.Key, element);
 
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             elements.Add(element);
 
-#endif
+            #endif
         }
         public void Clear()
         {
-            @base.Clear();
+            dictionary.Clear();
 
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             elements.Clear();
 
-#endif
+            #endif
         }
 
         public TKeyValueContainer GetContainer(TKey key)
         {
-            return @base[key];
+            return dictionary[key];
         }
     }
 }

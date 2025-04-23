@@ -1,13 +1,9 @@
-using System.Diagnostics;
-
 using System.Reflection;
 
 using Unity.VisualScripting;
 
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class ButtonAttribute : CustomPropertyAttribute
     {
         private readonly string methodName;
@@ -25,7 +21,7 @@ namespace ZL.Unity
             this.text = text;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private MethodInfo method = null;
 
@@ -41,6 +37,6 @@ namespace ZL.Unity
             drawer.DrawButton(method, text, Height);
         }
 
-#endif
+        #endif
     }
 }

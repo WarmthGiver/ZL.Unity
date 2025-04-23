@@ -4,15 +4,11 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Transform Rotation Tweener")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class TransformRotationTweener :
-        
-        ComponentValueTweener<QuaternionTweener, Quaternion, Vector3, QuaternionOptions>
+    public sealed class TransformRotationTweener : ComponentValueTweener<QuaternionTweener, Quaternion, Vector3, QuaternionOptions>
     {
         [Space]
 

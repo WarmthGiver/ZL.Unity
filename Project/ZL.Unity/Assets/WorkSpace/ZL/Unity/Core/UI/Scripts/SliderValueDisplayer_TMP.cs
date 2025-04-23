@@ -2,7 +2,7 @@ using TMPro;
 
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Slider Value Displayer (TMP)")]
 

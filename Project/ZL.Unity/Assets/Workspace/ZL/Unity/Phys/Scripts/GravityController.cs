@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.Phys
+namespace ZL.Phys
 {
-    [AddComponentMenu("ZL/Unity/Phys/Gravity Controller")]
+    [AddComponentMenu("ZL/Phys/Gravity Controller")]
 
     [DisallowMultipleComponent]
 
@@ -16,11 +16,11 @@ namespace ZL.Unity.Phys
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
 
-#pragma warning disable CS0108
+        [ReadOnly(true)]
+
+        #pragma warning disable CS0108
 
         private Rigidbody rigidbody;
 
@@ -29,7 +29,7 @@ namespace ZL.Unity.Phys
             get => rigidbody;
         }
 
-#pragma warning restore CS0108
+        #pragma warning restore CS0108
 
         [Space]
 
@@ -145,7 +145,7 @@ namespace ZL.Unity.Phys
 
         private Vector3 gravityForce = Vector3.zero;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         [Space]
 
@@ -216,7 +216,7 @@ namespace ZL.Unity.Phys
             }
         }
 
-#endif
+        #endif
 
         private void FixedUpdate()
         {

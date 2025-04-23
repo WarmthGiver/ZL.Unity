@@ -1,10 +1,10 @@
+using System;
+
 using UnityEngine;
 
-using ZL.CS;
-
-namespace ZL.Unity.Phys
+namespace ZL.Phys
 {
-    [AddComponentMenu("ZL/Unity/Phys/Rigidbody Character Controller")]
+    [AddComponentMenu("ZL/Phys/Rigidbody Character Controller")]
 
     [DisallowMultipleComponent]
 
@@ -22,11 +22,11 @@ namespace ZL.Unity.Phys
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
 
-#pragma warning disable CS0108
+        [ReadOnly(true)]
+
+        #pragma warning disable CS0108
 
         private Rigidbody rigidbody;
 
@@ -35,15 +35,15 @@ namespace ZL.Unity.Phys
             get => rigidbody;
         }
 
-#pragma warning restore CS0108
+        #pragma warning restore CS0108
 
         [SerializeField]
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
+
+        [ReadOnly(true)]
 
         private GravityController gravityController;
 
@@ -126,7 +126,7 @@ namespace ZL.Unity.Phys
             set => groundSlopeThreshold = value;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         [SerializeField]
 
@@ -136,7 +136,7 @@ namespace ZL.Unity.Phys
 
         private float groundSlope = 0f;
 
-#endif
+        #endif
 
         [SerializeField]
 
@@ -210,7 +210,7 @@ namespace ZL.Unity.Phys
             set => impulseForce = value;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         [Space]
 
@@ -232,7 +232,7 @@ namespace ZL.Unity.Phys
 
         private bool drawCollisionContactGizmo = true;
 
-#endif
+        #endif
 
         protected virtual void FixedUpdate()
         {
@@ -268,14 +268,14 @@ namespace ZL.Unity.Phys
                 direction = Vector3.ProjectOnPlane(direction, contactWallsNormal / contactWallsCount);
             }
 
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             if (drawMovementForceGizmo == true)
             {
                 Debug.DrawLine(transform.position, transform.position + movementSpeed * direction, movementDirection.ToColor());
             }
 
-#endif
+            #endif
 
             rigidbody.MovePosition(transform.position + movementSpeed * Time.fixedDeltaTime * direction);
 
@@ -306,14 +306,14 @@ namespace ZL.Unity.Phys
 
                 foreach (var contact in collision.contacts)
                 {
-#if UNITY_EDITOR
+                    #if UNITY_EDITOR
 
                     if (drawCollisionContactGizmo == true)
                     {
                         Debug.DrawLine(transform.position, contact.point, Color.red, Time.fixedDeltaTime);
                     }
 
-#endif
+                    #endif
 
                     float bottomDotContact = Vector3.Dot(contact.point - transform.position, transform.up);
 
@@ -331,7 +331,9 @@ namespace ZL.Unity.Phys
                         continue;
                     }
 
-                    float groundSlope = Vector3.Angle(transform.up, contact.normal).Round(2);
+                    float groundSlope = Vector3.Angle(transform.up, contact.normal);
+
+                    groundSlope = MathF.Round(groundSlope, 2);
 
                     if (groundSlope > groundSlopeThreshold)
                     {
@@ -342,15 +344,17 @@ namespace ZL.Unity.Phys
                         continue;
                     }
 
-#if UNITY_EDITOR
+                    #if UNITY_EDITOR
 
                     this.groundSlope = groundSlope;
 
-#endif
+                    #endif
 
                     isGrounded = true;
 
-                    float groundDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal).Round(2);
+                    float groundDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
+
+                    groundDotDirection = MathF.Round(groundDotDirection, 2);
 
                     if (groundDotDirection < -0.1f)
                     {

@@ -1,12 +1,10 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    [AddComponentMenu("ZL/Application Manager")]
+    [AddComponentMenu("ZL/Application Manager (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class ApplicationManager : Singleton<ApplicationManager>
+    public sealed class ApplicationManager : MonoSingleton<ApplicationManager>
     {
         [Space]
 

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class ColorPaletteExtensions
+    public static partial class ColorPaletteExtensions
     {
         public static Color ToColor(this ColorPalette instance) => instance switch
         {

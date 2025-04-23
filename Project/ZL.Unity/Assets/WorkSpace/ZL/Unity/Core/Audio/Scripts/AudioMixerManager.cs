@@ -1,24 +1,20 @@
-using UnityEngine;
-
-using UnityEngine.Audio;
-
 #if UNITY_EDITOR
 
 using UnityEditor;
 
 #endif
 
-using ZL.Unity.Collections;
+using UnityEngine;
 
-using ZL.Unity.IO;
+using UnityEngine.Audio;
 
-namespace ZL.Unity.Audio
+using ZL.Collections;
+
+namespace ZL.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Mixer Manager (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class AudioMixerManager : Singleton<AudioMixerManager>
+    public sealed class AudioMixerManager : MonoSingleton<AudioMixerManager>
     {
         [Space]
 
@@ -51,7 +47,7 @@ namespace ZL.Unity.Audio
             get => parameterPrefs;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private void OnValidate()
         {
@@ -89,7 +85,7 @@ namespace ZL.Unity.Audio
             EditorUtility.SetDirty(this);
         }
 
-#endif
+        #endif
 
         private void Start()
         {

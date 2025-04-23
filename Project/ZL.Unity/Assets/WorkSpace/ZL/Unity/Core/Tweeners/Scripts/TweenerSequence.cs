@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL.Tweeners
 {
-    [AddComponentMenu("")]
+    [AddComponentMenu("ZL/Tweeners/Tweener Sequence")]
 
     [DisallowMultipleComponent]
 

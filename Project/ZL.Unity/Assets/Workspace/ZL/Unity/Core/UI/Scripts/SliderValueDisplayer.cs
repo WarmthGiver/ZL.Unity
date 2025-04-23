@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     public abstract class SliderValueDisplayer<TTextUGUI> : MonoBehaviour
     {
@@ -28,7 +28,7 @@ namespace ZL.Unity.UI
 
         protected TextController<TTextUGUI> textController;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected float sliderValue = 0f;
 
@@ -63,6 +63,6 @@ namespace ZL.Unity.UI
             }
         }
 
-#endif
+        #endif
     }
 }

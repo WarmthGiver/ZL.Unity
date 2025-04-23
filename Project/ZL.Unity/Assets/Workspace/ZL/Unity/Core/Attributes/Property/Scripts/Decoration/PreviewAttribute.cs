@@ -1,14 +1,10 @@
-using System.Diagnostics;
-
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class PreviewAttribute : CustomPropertyAttribute
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
@@ -22,6 +18,6 @@ namespace ZL.Unity
             drawer.DrawPreview();
         }
 
-#endif
+        #endif
     }
 }

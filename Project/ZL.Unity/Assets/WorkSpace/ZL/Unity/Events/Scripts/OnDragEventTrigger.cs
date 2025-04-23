@@ -4,15 +4,13 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Events
+namespace ZL.Events
 {
     [AddComponentMenu("ZL/Events/On Drag Event Trigger")]
 
     [DisallowMultipleComponent]
 
-    public sealed class OnDragEventTrigger :
-        
-        MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public sealed class OnDragEventTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
 
@@ -150,12 +148,9 @@ namespace ZL.Unity.Events
                 return;
             }
 
-            dragDirection = Vector2.ClampMagnitude
-            (
-                (endPoint - startPoint) * dragSensitivity,
-                
-                maxMagnitude
-            );
+            dragDirection = (endPoint - startPoint) * dragSensitivity;
+
+            dragDirection = Vector2.ClampMagnitude(dragDirection, maxMagnitude);
 
             onDragEvent.Invoke(dragDirection);
         }

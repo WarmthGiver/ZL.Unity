@@ -1,4 +1,4 @@
-namespace ZL.Unity
+namespace ZL
 {
     public sealed class EnumFloatAttribute : EnumValueAttribute
     {

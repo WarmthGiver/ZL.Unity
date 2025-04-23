@@ -1,9 +1,5 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class AddIndentAttribute : CustomPropertyAttribute
     {
         private readonly int level;
@@ -13,13 +9,13 @@ namespace ZL.Unity
             this.level = level;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.IndentLevel += level;
         }
 
-#endif
+        #endif
     }
 }

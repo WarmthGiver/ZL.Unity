@@ -1,50 +1,31 @@
 using UnityEngine;
 
-namespace ZL.Unity.Phys
+namespace ZL.Phys
 {
     [AddComponentMenu("ZL/Phys/Collider Check Sphere")]
 
     public sealed class ColliderCheckSphere : ColliderChecker
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void DrawGizmos()
         {
             if (isWireGizmo == true)
             {
-                Gizmos.DrawWireSphere
-                (
-                    Vector3.zero,
-
-                    transform.localScale.GetMaxAxis()
-                );
+                Gizmos.DrawWireSphere(Vector3.zero, transform.lossyScale.GetMaxAxis());
             }
 
             else
             {
-                Gizmos.DrawSphere
-                (
-                    Vector3.zero,
-
-                    transform.localScale.GetMaxAxis()
-                );
+                Gizmos.DrawSphere(Vector3.zero, transform.lossyScale.GetMaxAxis());
             }
         }
 
-#endif
+        #endif
 
         public override bool Check()
         {
-            return Physics.CheckSphere
-            (
-                transform.position,
-
-                transform.localScale.GetMaxAxis() * 0.5f,
-                
-                layerMask,
-                
-                triggerInteraction
-            );
+            return Physics.CheckSphere(transform.position, transform.lossyScale.GetMaxAxis() * 0.5f, layerMask, triggerInteraction);
         }
     }
 }

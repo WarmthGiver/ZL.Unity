@@ -1,23 +1,14 @@
 using System;
 
-namespace ZL.CS
+namespace ZL
 {
     public static partial class EnumExtensions
     {
-        private struct EnumUnion<T>
+        public static int ToInt<TEnum>(this TEnum instance)
 
-            where T : Enum
+            where TEnum : Enum
         {
-            public T enumValue;
-
-            public int intValue;
-        }
-
-        public static int ToInt<T>(this T instance)
-
-            where T : Enum
-        {
-            EnumUnion<T> enumUnion = new()
+            EnumUnion<TEnum> enumUnion = new()
             {
                 enumValue = instance,
             };
@@ -32,11 +23,11 @@ namespace ZL.CS
             }
         }
 
-        public static T ToEnum<T>(this int instance)
+        public static TEnum ToEnum<TEnum>(this int instance)
 
-            where T : Enum
+            where TEnum : Enum
         {
-            EnumUnion<T> enumUnion = new();
+            EnumUnion<TEnum> enumUnion = new();
 
             unsafe
             {
@@ -48,15 +39,6 @@ namespace ZL.CS
             }
 
             return enumUnion.enumValue;
-        }
-
-        public static TTo ToEnum<TFrom, TTo>(this TFrom instance)
-
-            where TFrom : Enum
-
-            where TTo : Enum
-        {
-            return instance.ToInt().ToEnum<TTo>();
         }
     }
 }

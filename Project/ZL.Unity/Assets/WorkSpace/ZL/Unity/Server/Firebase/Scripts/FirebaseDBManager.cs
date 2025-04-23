@@ -12,13 +12,11 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
-namespace ZL.Unity.Server.Firebase.Auth
+namespace ZL.Server.Firebase.Auth
 {
     [AddComponentMenu("ZL/Server/Firebase/Firebase DB Manager (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class FirebaseDBManager : Singleton<FirebaseDBManager>
+    public sealed class FirebaseDBManager : MonoSingleton<FirebaseDBManager>
     {
         public DatabaseReference Database { get; private set; } = null;
 
@@ -30,22 +28,22 @@ namespace ZL.Unity.Server.Firebase.Auth
 
             FirebaseApp.
                 
-            CheckAndFixDependenciesAsync().
-
-            ContinueWithOnMainThread((task) =>
-            {
-                if (task.Result == DependencyStatus.Available)
+                CheckAndFixDependenciesAsync().
+                
+                ContinueWithOnMainThread((task) =>
                 {
-                    Database = FirebaseDatabase.DefaultInstance.RootReference;
+                    if (task.Result == DependencyStatus.Available)
+                    {
+                        Database = FirebaseDatabase.DefaultInstance.RootReference;
 
-                    Debug.Log("Firebase DB load Successful.");
-                }
+                        Debug.Log("Firebase DB load Successful.");
+                    }
 
-                else
-                {
-                    Debug.LogError($"Firebase DB load failed: {task.Result}");
-                }
-            });
+                    else
+                    {
+                        Debug.LogError($"Firebase DB load failed: {task.Result}");
+                    }
+                });
 
             User = ISingleton<FirebaseAuthManager>.Instance.User;
         }
@@ -70,19 +68,6 @@ namespace ZL.Unity.Server.Firebase.Auth
             var routine = task.WaitForCompleted(callback);
 
             StartCoroutine(routine);
-        }
-    }
-
-    public static class DatabaseReferenceExtensions
-    {
-        public static DatabaseReference Child(this DatabaseReference instance, string[] paths)
-        {
-            foreach (var path in paths)
-            {
-                instance = instance.Child(path);
-            }
-
-            return instance;
         }
     }
 }

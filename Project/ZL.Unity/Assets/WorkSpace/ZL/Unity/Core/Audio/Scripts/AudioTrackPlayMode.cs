@@ -1,4 +1,4 @@
-namespace ZL.Unity.Audio
+namespace ZL.Audio
 {
     public enum AudioTrackPlayMode
     {

@@ -1,9 +1,5 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class ReadOnlyAttribute : CustomPropertyAttribute
     {
         private readonly bool isEnabled;
@@ -13,13 +9,13 @@ namespace ZL.Unity
             isEnabled = !value;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Preset(Drawer drawer)
         {
             drawer.IsEnabled = isEnabled;
         }
 
-#endif
+        #endif
     }
 }

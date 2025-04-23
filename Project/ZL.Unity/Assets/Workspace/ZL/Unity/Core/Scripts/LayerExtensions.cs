@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class LayerExtensions
+    public static partial class LayerExtensions
     {
         public static bool Contains(this LayerMask instance, int layer)
         {

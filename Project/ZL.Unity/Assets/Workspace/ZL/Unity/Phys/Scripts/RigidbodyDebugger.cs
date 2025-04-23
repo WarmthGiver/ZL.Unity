@@ -2,9 +2,9 @@
 
 using UnityEngine;
 
-namespace ZL.Unity.Phys
+namespace ZL.Phys
 {
-    [AddComponentMenu("ZL/Unity/Phys/Rigidbody Debugger")]
+    [AddComponentMenu("ZL/Phys/Rigidbody Debugger")]
 
     [DisallowMultipleComponent]
 
@@ -24,11 +24,11 @@ namespace ZL.Unity.Phys
 
         [ReadOnly(true)]
 
-#pragma warning disable CS0108
+        #pragma warning disable CS0108
 
         private Rigidbody rigidbody;
 
-#pragma warning restore CS0108
+        #pragma warning restore CS0108
 
         [Space]
 
@@ -48,11 +48,11 @@ namespace ZL.Unity.Phys
 
         [Alias("Megnitude")]
 
-#pragma warning disable CS0414
+        #pragma warning disable CS0414
 
         private float velocityMagnitude = 0f;
 
-#pragma warning restore CS0414
+        #pragma warning restore CS0414
 
         [Space]
 

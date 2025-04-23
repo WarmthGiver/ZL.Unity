@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Auto Button")]
 

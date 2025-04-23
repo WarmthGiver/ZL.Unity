@@ -2,13 +2,13 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
+using ZL.Collections;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
-    public abstract class
+    [DisallowMultipleComponent]
 
-        KeyFrameTweener<TComponentTweener, TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
+    public abstract class KeyFrameTweener<TComponentTweener, TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
 
         where TComponentTweener : ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions>
 
@@ -28,7 +28,7 @@ namespace ZL.Unity.Tweeners
 
         protected TComponentTweener componentTweener;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         [Space]
 
@@ -36,7 +36,7 @@ namespace ZL.Unity.Tweeners
 
         private bool preview = false;
 
-#endif
+        #endif
 
         [Space]
 
@@ -44,7 +44,7 @@ namespace ZL.Unity.Tweeners
 
         protected LoopList<T2> keyFrames;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private void OnValidate()
         {
@@ -54,7 +54,7 @@ namespace ZL.Unity.Tweeners
             }
         }
 
-#endif
+        #endif
 
         private void Awake()
         {
@@ -86,9 +86,9 @@ namespace ZL.Unity.Tweeners
 
         protected virtual void TweenKeyFrame()
         {
-            if (keyFrames.TryGetCurrent(out T2 result) == true)
+            if (keyFrames.TryGetCurrent(out T2 endValue) == true)
             {
-                componentTweener.Tween(result);
+                componentTweener.Tween(endValue);
             }
         }
     }

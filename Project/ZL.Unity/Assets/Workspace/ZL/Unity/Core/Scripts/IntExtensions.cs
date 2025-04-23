@@ -1,16 +1,7 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public enum LoopPattern
-    {
-        Clamp,
-
-        Repeat,
-
-        PingPong,
-    }
-
     public static partial class IntExtensions
     {
         public static int Loop(this int instance, int min, int max, LoopPattern loopPattern)

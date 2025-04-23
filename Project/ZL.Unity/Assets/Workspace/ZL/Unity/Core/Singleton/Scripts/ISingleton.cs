@@ -1,4 +1,4 @@
-namespace ZL.Unity
+namespace ZL
 {
     public interface ISingleton<TClass>
 

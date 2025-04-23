@@ -8,15 +8,13 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [Serializable]
 
     public sealed class QuaternionTweener : ValueTweener<Quaternion, Vector3, QuaternionOptions>
     {
-        protected override TweenerCore<Quaternion, Vector3, QuaternionOptions> To
-            
-            (DOGetter<Quaternion> getter, DOSetter<Quaternion> setter, Vector3 endValue, float duration)
+        protected override TweenerCore<Quaternion, Vector3, QuaternionOptions> To(DOGetter<Quaternion> getter, DOSetter<Quaternion> setter, in Vector3 endValue, float duration)
         {
             return DOTween.To(getter, setter, endValue, duration);
         }

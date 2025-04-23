@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Phys
+namespace ZL.Phys
 {
     public abstract class ColliderChecker : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace ZL.Unity.Phys
 
         protected QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.UseGlobal;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         [Space]
 
@@ -97,7 +97,7 @@ namespace ZL.Unity.Phys
         
         protected abstract void DrawGizmos();
 
-#endif
+        #endif
 
         public abstract bool Check();
     }

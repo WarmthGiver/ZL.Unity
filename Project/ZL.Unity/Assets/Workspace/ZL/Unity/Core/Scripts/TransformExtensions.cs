@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class TransformExtensions
     {
-        #region GetComponentInChildren
+        #region Get Component In Children
 
         public static bool TryGetComponentInChildren<TComponent>(this Transform instance, out TComponent component)
 
@@ -134,7 +134,7 @@ namespace ZL.Unity
 
         #endregion
 
-        #region GetComponentInParent
+        #region Get Component In Parent
 
         public static bool TryGetComponentInParent<TComponent>(this Transform instance, out TComponent component)
 
@@ -245,13 +245,6 @@ namespace ZL.Unity
         }
 
         #endregion
-
-        public static void Set(this Transform instance, TransformData value)
-        {
-            instance.SetPositionAndRotation(value.position, value.rotation);
-
-            instance.localScale = value.localScale;
-        }
 
         public static void SetPositionAndRotation(this Transform instance, Transform transform)
         {

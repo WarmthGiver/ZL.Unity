@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Routines
+namespace ZL.Routines
 {
     [AddComponentMenu("ZL/Routines/Spinner")]
 

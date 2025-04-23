@@ -4,24 +4,27 @@ using UnityEditor;
 
 using UnityEngine;
 
-public static partial class SerializedObjectExtensions
+namespace ZL
 {
-    public static void ScriptField(this SerializedObject instance)
+    public static partial class SerializedObjectExtensions
     {
-        var enabled_backup = GUI.enabled;
+        public static void ScriptField(this SerializedObject instance)
+        {
+            var enabled_backup = GUI.enabled;
 
-        GUI.enabled = false;
+            GUI.enabled = false;
 
-        EditorGUILayout.PropertyField(instance.FindProperty("m_Script"));
+            EditorGUILayout.PropertyField(instance.FindProperty("m_Script"));
 
-        GUI.enabled = enabled_backup;
-    }
+            GUI.enabled = enabled_backup;
+        }
 
-    public static bool TryFindProperty(this SerializedObject instance, string propertyPath, out SerializedProperty result)
-    {
-        result = instance.FindProperty(propertyPath);
+        public static bool TryFindProperty(this SerializedObject instance, string propertyPath, out SerializedProperty property)
+        {
+            property = instance.FindProperty(propertyPath);
 
-        return result != null;
+            return property != null;
+        }
     }
 }
 

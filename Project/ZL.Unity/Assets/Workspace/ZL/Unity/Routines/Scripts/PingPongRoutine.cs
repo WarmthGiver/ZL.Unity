@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Routines
+namespace ZL.Routines
 {
     [AddComponentMenu("ZL/Routines/Ping Pong (Routine)")]
 
@@ -39,7 +39,7 @@ namespace ZL.Unity.Routines
 
             time += Time.deltaTime;
 
-            theta = Mathf.Sin(MathEx.PI2 * (time + delta) * speed) + delay;
+            theta = Mathf.Sin(MathFEx.PI2 * (time + delta) * speed) + delay;
 
             moveDirection = direction * theta;
 

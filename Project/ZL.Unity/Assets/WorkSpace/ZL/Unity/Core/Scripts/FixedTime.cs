@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    public static class FixedTime
+    public static partial class FixedTime
     {
         public static bool IsPaused { get; private set; } = false;
 

@@ -1,14 +1,10 @@
-using System.Diagnostics;
-
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class GetComponentInChildrenOnlyAttribute : GetComponentAttribute
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override Component GetComponent(Drawer drawer)
         {
@@ -17,6 +13,6 @@ namespace ZL.Unity
             return component;
         }
 
-#endif
+        #endif
     }
 }

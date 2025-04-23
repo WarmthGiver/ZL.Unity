@@ -1,4 +1,4 @@
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
     public interface IKeyValueContainer<TKey, TValue>
     {

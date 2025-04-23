@@ -4,7 +4,7 @@ using UnityEditor;
 
 #endif
 
-namespace ZL.Unity
+namespace ZL
 {
     public abstract class FieldConditionAttribute : CustomPropertyAttribute
     {
@@ -36,7 +36,7 @@ namespace ZL.Unity
             this.condition = condition;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected SerializedProperty property = null;
 
@@ -62,6 +62,6 @@ namespace ZL.Unity
 
         protected abstract void SetCondition(Drawer drawer);
 
-#endif
+        #endif
     }
 }

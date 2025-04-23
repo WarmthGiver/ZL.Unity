@@ -4,13 +4,11 @@ using UnityEngine.Android;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Android
+namespace ZL.Android
 {
     [AddComponentMenu("ZL/Android/Android Permission Manager (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class AndroidPermissionManager : Singleton<AndroidPermissionManager>
+    public sealed class AndroidPermissionManager : MonoSingleton<AndroidPermissionManager>
     {
         [Space]
 

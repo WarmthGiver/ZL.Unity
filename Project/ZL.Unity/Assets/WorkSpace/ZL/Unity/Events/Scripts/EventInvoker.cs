@@ -2,19 +2,19 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Events
+namespace ZL.Events
 {
     [AddComponentMenu("ZL/Events/Event Invoker")]
 
-	[DisallowMultipleComponent]
+    [DisallowMultipleComponent]
 
-	public sealed class EventInvoker : MonoBehaviour
-	{
+    public sealed class EventInvoker : MonoBehaviour
+    {
         [Space]
 
-		[SerializeField]
+        [SerializeField]
 
-		private float time = 0f;
+        private float time = 0f;
 
         public float Time
         {

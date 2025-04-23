@@ -1,14 +1,12 @@
 using UnityEngine;
 
-namespace ZL.Unity.Events
+namespace ZL.Events
 {
     [AddComponentMenu("ZL/Events/On Stop Event Trigger (Audio Source)")]
 
     [RequireComponent(typeof(AudioSource))]
 
-    public sealed class OnStopEventTrigger_AudioSource :
-        
-        OnStopEventTrigger<AudioSource>
+    public sealed class OnStopEventTrigger_AudioSource : OnStopEventTrigger<AudioSource>
     {
         public override bool IsStoped
         {

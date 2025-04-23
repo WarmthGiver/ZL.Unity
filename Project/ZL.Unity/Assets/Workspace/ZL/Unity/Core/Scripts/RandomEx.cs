@@ -1,24 +1,24 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class RandomEx
     {
-        public static Vector3 Range(in Vector3 min, in Vector3 max)
+        public static Vector3 Range(in Vector3 minInclusive, in Vector3 maxInclusive)
         {
-            return new Vector3
+            return new()
             {
-                x = Random.Range(min.x, max.x),
+                x = Random.Range(minInclusive.x, maxInclusive.x),
 
-                y = Random.Range(min.y, max.y),
+                y = Random.Range(minInclusive.y, maxInclusive.y),
 
-                z = Random.Range(min.z, max.z)
+                z = Random.Range(minInclusive.z, maxInclusive.z)
             };
         }
 
         public static Vector3 Angles()
         {
-            return new Vector3
+            return new()
             {
                 x = Random.Range(0f, 360f),
 

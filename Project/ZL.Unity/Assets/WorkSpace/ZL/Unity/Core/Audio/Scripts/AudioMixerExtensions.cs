@@ -1,19 +1,26 @@
 using UnityEngine.Audio;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class AudioMixerExtensions
     {
         public static void SetVolume(this AudioMixer instance, string key, float value)
         {
-            instance.SetFloat(key, MathEx.LinearToDecibel(value));
+            instance.SetFloat(key, MathFEx.LinearToDecibel(value));
         }
 
-        public static float GetVolume(this AudioMixer instance, string key)
+        public static bool TryGetVolume(this AudioMixer instance, string key, out float volume)
         {
-            instance.GetFloat(key, out float value);
+            if (instance.GetFloat(key, out volume) == false)
+            {
+                volume = 0f;
 
-            return MathEx.DecibelToLinear(value);
+                return false;
+            }
+
+            volume = MathFEx.DecibelToLinear(volume);
+
+            return true;
         }
     }
 }

@@ -2,39 +2,42 @@ using System;
 
 using UnityEngine;
 
-public static class TypeExtensions
+namespace ZL
 {
-    public static bool Belong(this Type instance, params Type[] types)
+    public static partial class TypeExtensions
     {
-        foreach (var type in types)
+        public static bool Belong(this Type instance, params Type[] types)
         {
-            if (instance == type)
+            foreach (var type in types)
             {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public static bool IsInheritGeneric(this Type instance, out Type result)
-    {
-        Type componentType = typeof(Component);
-
-        while (instance != componentType)
-        {
-            if (instance.IsGenericType == true)
-            {
-                result = instance;
-
-                return true;
+                if (instance == type)
+                {
+                    return true;
+                }
             }
 
-            instance = instance.BaseType;
+            return false;
         }
 
-        result = null;
+        public static bool IsInheritGeneric(this Type instance, out Type genericType)
+        {
+            var componentType = typeof(Component);
 
-        return false;
+            while (instance != componentType)
+            {
+                if (instance.IsGenericType == true)
+                {
+                    genericType = instance;
+
+                    return true;
+                }
+
+                instance = instance.BaseType;
+            }
+
+            genericType = null;
+
+            return false;
+        }
     }
 }

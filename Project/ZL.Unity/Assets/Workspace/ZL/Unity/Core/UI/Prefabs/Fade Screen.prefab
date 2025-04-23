@@ -107,13 +107,12 @@ MonoBehaviour:
     delay: 0
     ease: 0
     isIndependentUpdate: 1
-    loop: 0
-    loopCount: -1
+    loopCount: 0
     loopType: 0
-    eventOnStart:
+    onStartEvent:
       m_PersistentCalls:
         m_Calls: []
-    eventOnComplete:
+    onCompleteEvent:
       m_PersistentCalls:
         m_Calls: []
   canvasGroup: {fileID: 7764160314332781730}
@@ -133,15 +132,15 @@ MonoBehaviour:
   alphaTweener: {fileID: 5449394640197298269}
   screenGroup: {fileID: 0}
   isFadedIn: 1
-  eventOnFadingIn:
+  onFadeInEvent:
     m_PersistentCalls:
       m_Calls: []
-  eventOnFadedIn:
+  onFadedInEvent:
     m_PersistentCalls:
       m_Calls: []
-  eventOnFadingOut:
+  onFadeOutEvent:
     m_PersistentCalls:
       m_Calls: []
-  eventOnFadedOut:
+  onFadedOutEvent:
     m_PersistentCalls:
       m_Calls: []

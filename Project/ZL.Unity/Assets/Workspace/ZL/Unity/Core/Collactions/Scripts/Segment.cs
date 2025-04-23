@@ -4,33 +4,33 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
     [Serializable]
 
-    public struct Segment<T> : IEquatable<Segment<T>>
+    public struct Segment<TEquatable> : IEquatable<Segment<TEquatable>>
 
-        where T : IEquatable<T>
+        where TEquatable : IEquatable<TEquatable>
     {
         [SerializeField]
 
-        private T start;
+        private TEquatable start;
 
-        public readonly T Start
+        public readonly TEquatable Start
         {
             get => start;
         }
 
         [SerializeField]
 
-        private T end;
+        private TEquatable end;
 
-        public readonly T End
+        public readonly TEquatable End
         {
             get => end;
         }
 
-        public Segment(T start, T end)
+        public Segment(TEquatable start, TEquatable end)
         {
             this.start = start;
 
@@ -39,7 +39,7 @@ namespace ZL.Unity.Collections
 
         public override bool Equals(object obj)
         {
-            if (obj is Segment<T> other)
+            if (obj is Segment<TEquatable> other)
             {
                 return Equals(other);
             }
@@ -47,7 +47,7 @@ namespace ZL.Unity.Collections
             return false;
         }
 
-        public bool Equals(Segment<T> other)
+        public bool Equals(Segment<TEquatable> other)
         {
             return (start.Equals(other.start) && end.Equals(other.end)) || (start.Equals(other.end) && end.Equals(other.start));
         }
@@ -62,14 +62,14 @@ namespace ZL.Unity.Collections
             return $"[{start}, {end}]";
         }
 
-        public sealed class EqualityComparer : IEqualityComparer<Segment<T>>
+        public sealed class EqualityComparer : IEqualityComparer<Segment<TEquatable>>
         {
-            public bool Equals(Segment<T> x, Segment<T> y)
+            public bool Equals(Segment<TEquatable> x, Segment<TEquatable> y)
             {
                 return x.Equals(y);
             }
 
-            public int GetHashCode(Segment<T> obj)
+            public int GetHashCode(Segment<TEquatable> obj)
             {
                 return obj.GetHashCode();
             }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
     [AddComponentMenu("ZL/Scene Director Receiver")]
 
@@ -9,9 +9,7 @@ namespace ZL.Unity
 
     }
 
-    public abstract class
-        
-        SceneDirectorReceiver<TSceneDirector> : SingletonReceiver<TSceneDirector>
+    public abstract class SceneDirectorReceiver<TSceneDirector> : MonoSingletonReceiver<TSceneDirector>
 
         where TSceneDirector : SceneDirector<TSceneDirector>
     {

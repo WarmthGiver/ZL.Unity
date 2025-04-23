@@ -2,7 +2,7 @@ using TMPro;
 
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Text Controller (TMP)")]
 

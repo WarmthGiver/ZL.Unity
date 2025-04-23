@@ -4,7 +4,7 @@ using TMPro;
 
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Force TMP Mesh Updater")]
 

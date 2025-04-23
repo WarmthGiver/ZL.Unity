@@ -1,26 +1,18 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class ToggleIfAttribute : FieldConditionAttribute
     {
-        public ToggleIfAttribute(string fieldName, bool targetValue) :
-            
-            base(fieldName, targetValue)
+        public ToggleIfAttribute(string fieldName, bool targetValue) : base(fieldName, targetValue)
         {
 
         }
 
-        public ToggleIfAttribute(string fieldName, object targetValue, bool condition) :
-            
-            base(fieldName, targetValue, condition)
+        public ToggleIfAttribute(string fieldName, object targetValue, bool condition) : base(fieldName, targetValue, condition)
         {
 
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void SetCondition(Drawer drawer)
         {
@@ -35,6 +27,6 @@ namespace ZL.Unity
             }
         }
 
-#endif
+        #endif
     }
 }

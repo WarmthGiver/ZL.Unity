@@ -2,15 +2,15 @@
 
 using UnityEditor;
 
-namespace ZL.Unity
+namespace ZL
 {
     public static partial class SerializedPropertyExtensions
     {
-        public static bool TryFindProperty(this SerializedProperty instance, string fieldName, out SerializedProperty result)
+        public static bool TryFindProperty(this SerializedProperty instance, string fieldName, out SerializedProperty property)
         {
             var propertyPath = GetParentPath(instance) + fieldName;
 
-            return instance.serializedObject.TryFindProperty(propertyPath, out result);
+            return instance.serializedObject.TryFindProperty(propertyPath, out property);
         }
 
         public static string GetParentPath(this SerializedProperty instance)

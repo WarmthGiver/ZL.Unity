@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.Phys
+namespace ZL.Phys
 {
-    [AddComponentMenu("ZL/Unity/Phys/Gravity Generator")]
+    [AddComponentMenu("ZL/Phys/Gravity Generator")]
 
     [DisallowMultipleComponent]
 
@@ -21,7 +21,7 @@ namespace ZL.Unity.Phys
             set => gravityStrength = value;
         }
 
-        public Vector3 GetGravityDirection(Vector3 position)
+        public Vector3 GetGravityDirection(in Vector3 position)
         {
             return transform.position - position;
         }

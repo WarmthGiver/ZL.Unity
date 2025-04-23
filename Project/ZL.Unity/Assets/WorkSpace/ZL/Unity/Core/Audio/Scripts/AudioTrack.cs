@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Audio
+namespace ZL.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Track (Singleton)")]
 
@@ -8,9 +8,7 @@ namespace ZL.Unity.Audio
 
     [RequireComponent(typeof(AudioSource))]
 
-    public sealed class AudioTrack :
-        
-        MonoSingleton<AudioTrack>, IMonoSingleton<AudioTrack>
+    public sealed class AudioTrack : PrimaryMonoSingleton<AudioTrack>, IPrimaryMonoSingleton<AudioTrack>
     {
         [Space]
 

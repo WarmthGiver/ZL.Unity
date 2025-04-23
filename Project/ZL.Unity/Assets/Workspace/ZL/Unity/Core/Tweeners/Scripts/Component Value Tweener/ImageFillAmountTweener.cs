@@ -4,17 +4,13 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Image Fill Amount Tweener")]
 
-    [DisallowMultipleComponent]
-    
     [RequireComponent(typeof(Image))]
 
-    public sealed class ImageFillAmountTweener :
-        
-        ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public sealed class ImageFillAmountTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 

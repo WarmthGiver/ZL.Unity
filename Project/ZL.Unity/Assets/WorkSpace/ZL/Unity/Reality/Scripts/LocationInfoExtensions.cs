@@ -1,10 +1,10 @@
 using UnityEngine;
 
-using ZL.CS.Reality;
+using ZL.Reality;
 
-namespace ZL.Unity.Reality
+namespace ZL
 {
-    public static class LocationInfoExtensions
+    public static partial class LocationInfoExtensions
     {
         public static ECEF ToECEF(this LocationInfo instance)
         {

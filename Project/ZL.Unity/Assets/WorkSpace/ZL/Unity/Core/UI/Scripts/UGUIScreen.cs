@@ -4,9 +4,9 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Tweeners;
+using ZL.Tweeners;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/UGUI Screen")]
 

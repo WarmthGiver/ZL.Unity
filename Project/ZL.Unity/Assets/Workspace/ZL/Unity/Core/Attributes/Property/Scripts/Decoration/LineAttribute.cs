@@ -1,11 +1,7 @@
-using System.Diagnostics;
-
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class LineAttribute : CustomPropertyAttribute
     {
         private readonly Color color = Color.gray;
@@ -22,13 +18,13 @@ namespace ZL.Unity
             }
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.DrawLine(Margin, Thickness, color);
         }
 
-#endif
+        #endif
     }
 }

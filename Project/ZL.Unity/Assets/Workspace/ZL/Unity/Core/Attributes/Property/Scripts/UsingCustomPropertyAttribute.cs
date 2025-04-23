@@ -1,12 +1,8 @@
 using System;
 
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-
-    [Conditional("UNITY_EDITOR")]
 
     public sealed class UsingCustomPropertyAttribute : CustomPropertyAttribute
     {

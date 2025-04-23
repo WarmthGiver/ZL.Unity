@@ -4,7 +4,7 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
     [Serializable]
 
@@ -23,7 +23,7 @@ namespace ZL.Unity.Collections
 
         [SerializeField]
 
-        private LoopPattern loopType = LoopPattern.Clamp;
+        private LoopPattern loopPattern = LoopPattern.Clamp;
 
         [Space]
 
@@ -36,16 +36,16 @@ namespace ZL.Unity.Collections
             get => list.Count;
         }
 
-        public bool TryGetCurrent(out T result)
+        public bool TryGetCurrent(out T current)
         {
             if (list.Count == 0)
             {
-                result = default;
+                current = default;
 
                 return false;
             }
 
-            result = list[index.Loop(0, Count - 1, loopType)];
+            current = list[index.Loop(0, Count - 1, loopPattern)];
 
             return true;
         }

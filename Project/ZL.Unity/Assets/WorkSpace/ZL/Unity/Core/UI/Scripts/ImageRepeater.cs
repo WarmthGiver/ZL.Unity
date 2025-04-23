@@ -2,7 +2,7 @@
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Image Repeater")]
 
@@ -18,11 +18,13 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
 
+        [ReadOnly(true)]
+
         private RectTransform rectTransform;
+
+        [Space]
 
         [SerializeField]
 
@@ -32,11 +34,11 @@ namespace ZL.Unity.UI
 
         private float value = 0f;
 
-        private void FixedUpdate()
+        private void Update()
         {
             transform.localPosition = originalPosition + Vector3.right * Mathf.Repeat(value, rectTransform.rect.width);
 
-            value += pixelPerSecond * Time.fixedDeltaTime;
+            value += pixelPerSecond * Time.deltaTime;
         }
     }
 }

@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace ZL.Unity.Audio
+namespace ZL.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Mixer Manager Receiver")]
 
     [DisallowMultipleComponent]
 
-    public sealed class AudioMixerManagerReceiver : SingletonReceiver<AudioMixerManager>
+    public sealed class AudioMixerManagerReceiver : MonoSingletonReceiver<AudioMixerManager>
     {
         public void LoadVolumes()
         {

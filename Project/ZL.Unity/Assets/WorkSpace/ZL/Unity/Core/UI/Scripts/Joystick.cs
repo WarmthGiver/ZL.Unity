@@ -4,17 +4,15 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Events;
+using ZL.Events;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Joystick")]
 
     [DisallowMultipleComponent]
 
-    public sealed class Joystick : MonoBehaviour,
-        
-        IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public sealed class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [SerializeField]
 

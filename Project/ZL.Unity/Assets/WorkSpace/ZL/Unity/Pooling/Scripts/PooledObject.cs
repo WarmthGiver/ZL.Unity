@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Unity.Pooling
+namespace ZL.Pooling
 {
     [AddComponentMenu("ZL/Pooling/Pooled Object")]
 
@@ -18,11 +18,11 @@ namespace ZL.Unity.Pooling
         {
             var replica = Instantiate(pool.Original, pool.Parent);
 
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
 
             replica.gameObject.name = $"{pool.Original.name} (Pooled)";
 
-#endif
+            #endif
 
             if (replica.TryGetComponent<PooledObject>(out var pooledObject) == false)
             {
@@ -38,7 +38,7 @@ namespace ZL.Unity.Pooling
             return replica;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private void Reset()
         {
@@ -53,7 +53,7 @@ namespace ZL.Unity.Pooling
             }
         }
 
-#endif
+        #endif
 
         private void OnDisable()
         {

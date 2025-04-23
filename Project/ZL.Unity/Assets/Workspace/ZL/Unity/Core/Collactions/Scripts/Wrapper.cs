@@ -1,6 +1,6 @@
 using System;
 
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
     [Serializable]
 

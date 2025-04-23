@@ -12,7 +12,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
 
@@ -28,7 +28,7 @@ namespace ZL.Unity
 
         protected static readonly GUIStyle defaultLabelStyle;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private string nameTag = null;
 
@@ -205,7 +205,7 @@ namespace ZL.Unity
 
             public void DrawText(float height, GUIContent label, GUIStyle style)
             {
-                Rect position = drawPosition;
+                var position = drawPosition;
 
                 position.x += 1f;
 
@@ -216,7 +216,7 @@ namespace ZL.Unity
                 Margin(position.height + 2f);
             }
 
-            public void DrawLine(int margin, int thickness, Color color)
+            public void DrawLine(int margin, int thickness, in Color color)
             {
                 var rect = drawPosition;
 
@@ -321,6 +321,6 @@ namespace ZL.Unity
             }
         }
 
-#endif
+        #endif
     }
 }

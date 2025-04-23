@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Collections
+namespace ZL.Collections
 {
     public struct Linear
     {
@@ -45,7 +45,7 @@ namespace ZL.Unity.Collections
 
                 case LinearMode.Sin:
 
-                    value = Mathf.Repeat(value, MathEx.PI2);
+                    value = Mathf.Repeat(value, MathFEx.PI2);
 
                     return (Mathf.Sin(value) + 1f) * 0.5f * length;
             }

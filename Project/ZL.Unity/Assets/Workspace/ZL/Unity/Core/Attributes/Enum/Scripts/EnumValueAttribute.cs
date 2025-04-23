@@ -1,16 +1,16 @@
 using System;
 
-namespace ZL.Unity
+namespace ZL
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = true)]
 
     public abstract class EnumValueAttribute : Attribute
     {
-        public static class Cache<TEnum, TEnumValueAttribute>
+        public static partial class Cache<TEnum, TEnumValueAttribute>
 
-        where TEnum : Enum
+            where TEnum : Enum
 
-        where TEnumValueAttribute : EnumValueAttribute
+            where TEnumValueAttribute : EnumValueAttribute
         {
             private static TEnumValueAttribute attribute = null;
 

@@ -1,9 +1,5 @@
-using System.Diagnostics;
-
-namespace ZL.Unity
+namespace ZL
 {
-    [Conditional("UNITY_EDITOR")]
-
     public sealed class AliasAttribute : CustomPropertyAttribute
     {
         public string Text { get; set; }
@@ -13,13 +9,13 @@ namespace ZL.Unity
             Text = text;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         protected override void Draw(Drawer drawer)
         {
             drawer.PropertyLabel.text = Text;
         }
 
-#endif
+        #endif
     }
 }

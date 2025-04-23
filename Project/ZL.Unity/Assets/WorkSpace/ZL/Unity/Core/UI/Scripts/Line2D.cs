@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Line 2D")]
 
@@ -20,9 +20,9 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
+
+        [ReadOnly(true)]
 
         private RectTransform rectTransform;
 
@@ -30,9 +30,9 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponent]
+
+        [ReadOnly(true)]
 
         private Image image;
 
@@ -103,14 +103,7 @@ namespace ZL.Unity.UI
             set => image.color = value;
         }
 
-#if !UNITY_EDITOR
-
-        private void Awake()
-        {
-            Refresh();
-        }
-
-#else
+        #if UNITY_EDITOR
 
         private static readonly DrivenTransformProperties drivenProperties = DrivenTransformProperties.AnchoredPosition3D | DrivenTransformProperties.Anchors | DrivenTransformProperties.Rotation | DrivenTransformProperties.SizeDelta | DrivenTransformProperties.Pivot;
 
@@ -162,7 +155,14 @@ namespace ZL.Unity.UI
             }
         }
 
-#endif
+        #else
+
+        private void Awake()
+        {
+            Refresh();
+        }
+
+        #endif
 
         private void Refresh()
         {

@@ -1,6 +1,6 @@
-namespace ZL.CS.Reality
+namespace ZL.Reality
 {
-    public static class Earth
+    public static partial class Earth
     {
         /// <summary>
         /// Earth's average radius (in meters)

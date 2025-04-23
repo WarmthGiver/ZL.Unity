@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.EventSystems;
 
-namespace ZL.Unity.UI
+namespace ZL.UI
 {
     [AddComponentMenu("ZL/UI/Draggable Rect")]
 
@@ -24,9 +24,9 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
-
         [GetComponentInParent]
+
+        [ReadOnly(true)]
 
         private Canvas canvas;
 

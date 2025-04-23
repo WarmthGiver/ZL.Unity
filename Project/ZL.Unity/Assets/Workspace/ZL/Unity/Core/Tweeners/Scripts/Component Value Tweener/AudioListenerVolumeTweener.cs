@@ -2,17 +2,11 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweeners
+namespace ZL.Tweeners
 {
     [AddComponentMenu("ZL/Tweeners/Audio Listener Volume Tweener (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    public sealed class
-        
-        AudioListenerVolumeTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>,
-        
-        ISingleton<AudioListenerVolumeTweener>
+    public sealed class AudioListenerVolumeTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>, ISingleton<AudioListenerVolumeTweener>
     {
         protected override float Value
         {
