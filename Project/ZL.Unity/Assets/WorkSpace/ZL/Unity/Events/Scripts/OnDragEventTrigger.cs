@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.Events;
 
-namespace ZL.Events
+namespace ZL.Unity.Events
 {
     [AddComponentMenu("ZL/Events/On Drag Event Trigger")]
 

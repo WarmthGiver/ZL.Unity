@@ -1,6 +1,6 @@
 using UnityObject = UnityEngine.Object;
 
-namespace ZL
+namespace ZL.Unity
 {
     public static partial class UnityObjectExtensions
     {

@@ -2,11 +2,11 @@ using UnityEngine;
 
 using UnityEngine.XR.ARFoundation;
 
-using ZL.Collections;
+using ZL.Unity.Collections;
 
-using ZL.Pooling;
+using ZL.Unity.Pooling;
 
-namespace ZL.XR.AR
+namespace ZL.Unity.XR.AR
 {
     [AddComponentMenu("ZL/XR/AR/Multi AR Tracked Image Manager")]
 

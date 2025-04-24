@@ -1,6 +1,8 @@
 using UnityEngine;
 
-namespace ZL
+using ZL.CS.Singleton;
+
+namespace ZL.Unity.Singleton
 {
     [DefaultExecutionOrder(-2)]
 
@@ -15,12 +17,12 @@ namespace ZL
 
         protected virtual void Awake()
         {
-            IPrimaryMonoSingleton<TPrimaryMonoSingleton>.TrySetInstance((TPrimaryMonoSingleton)this);
+            ISingleton<TPrimaryMonoSingleton>.TrySetInstance((TPrimaryMonoSingleton)this);
         }
 
         protected virtual void OnDestroy()
         {
-            IPrimaryMonoSingleton<TPrimaryMonoSingleton>.Release((TPrimaryMonoSingleton)this);
+            ISingleton<TPrimaryMonoSingleton>.Release((TPrimaryMonoSingleton)this);
         }
 
         bool ISingleton<TPrimaryMonoSingleton>.IsDuplicated()

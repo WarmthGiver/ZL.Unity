@@ -4,11 +4,13 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.Collections;
+using ZL.Unity.Collections;
 
-using ZL.Pooling;
+using ZL.Unity.Coroutines;
 
-namespace ZL.Demo.ObjectPoolingDemo
+using ZL.Unity.Pooling;
+
+namespace ZL.Unity.Demo.ObjectPoolingDemo
 {
     [AddComponentMenu("")]
 
@@ -32,7 +34,7 @@ namespace ZL.Demo.ObjectPoolingDemo
         {
             while (true)
             {
-                yield return WaitFor.Seconds(generateInterval);
+                yield return WaitForSecondsCache.Get(generateInterval);
 
                 var clone = pool[Random.Range(0, pool.Length)].Generate();
 

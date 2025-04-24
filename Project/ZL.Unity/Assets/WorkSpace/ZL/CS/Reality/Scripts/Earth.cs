@@ -1,4 +1,4 @@
-namespace ZL.Reality
+namespace ZL.CS.Reality
 {
     public static partial class Earth
     {

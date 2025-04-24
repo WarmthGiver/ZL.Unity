@@ -1,4 +1,4 @@
-namespace ZL.IO
+namespace ZL.CS.IO
 {
     public interface ICSVConvertible
     {

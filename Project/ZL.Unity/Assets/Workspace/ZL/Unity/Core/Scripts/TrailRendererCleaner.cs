@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Trail Renderer Cleaner")]
 

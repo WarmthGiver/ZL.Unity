@@ -4,7 +4,9 @@ using UnityEngine.Android;
 
 using UnityEngine.Events;
 
-namespace ZL.Android
+using ZL.Unity.Singleton;
+
+namespace ZL.Unity.Android
 {
     [AddComponentMenu("ZL/Android/Android Permission Manager (Singleton)")]
 

@@ -2,7 +2,9 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Pooling
+using ZL.CS.Pooling;
+
+namespace ZL.Unity.Pooling
 {
     [Serializable]
 

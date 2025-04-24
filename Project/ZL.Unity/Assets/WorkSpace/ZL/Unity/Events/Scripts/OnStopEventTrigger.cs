@@ -2,7 +2,7 @@
 
 using UnityEngine.Events;
 
-namespace ZL.Events
+namespace ZL.Unity.Events
 {
     public abstract class OnStopEventTrigger<TComponent> : MonoBehaviour
 

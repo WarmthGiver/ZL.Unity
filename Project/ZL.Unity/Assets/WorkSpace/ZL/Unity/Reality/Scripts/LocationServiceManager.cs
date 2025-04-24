@@ -4,7 +4,9 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Reality
+using ZL.Unity.Singleton;
+
+namespace ZL.Unity.Reality
 {
     [AddComponentMenu("ZL/Reality/Location Service Manager (Singleton)")]
 

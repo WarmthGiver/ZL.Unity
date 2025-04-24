@@ -1,4 +1,4 @@
-namespace ZL.Collections
+namespace ZL.Unity.Collections
 {
     public enum LinearMode
     {

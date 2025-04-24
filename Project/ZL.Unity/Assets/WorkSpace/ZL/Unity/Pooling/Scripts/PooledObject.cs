@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Pooling
+namespace ZL.Unity.Pooling
 {
     [AddComponentMenu("ZL/Pooling/Pooled Object")]
 

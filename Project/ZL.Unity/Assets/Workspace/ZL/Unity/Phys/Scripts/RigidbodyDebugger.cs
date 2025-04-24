@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace ZL.Phys
+namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/Rigidbody Debugger")]
 

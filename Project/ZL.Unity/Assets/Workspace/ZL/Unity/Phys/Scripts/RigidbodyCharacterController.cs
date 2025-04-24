@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Phys
+namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/Rigidbody Character Controller")]
 

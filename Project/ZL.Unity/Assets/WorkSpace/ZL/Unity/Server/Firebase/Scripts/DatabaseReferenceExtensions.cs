@@ -1,6 +1,6 @@
 using Firebase.Database;
 
-namespace ZL
+namespace ZL.Unity.Server.Firebase
 {
     public static partial class DatabaseReferenceExtensions
     {

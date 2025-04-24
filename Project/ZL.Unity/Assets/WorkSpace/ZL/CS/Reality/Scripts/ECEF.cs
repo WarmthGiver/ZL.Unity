@@ -1,6 +1,6 @@
 using System;
 
-namespace ZL.Reality
+namespace ZL.CS.Reality
 {
     /// <summary>
     /// Earth-Centered Earth-Fixed coordinate system.

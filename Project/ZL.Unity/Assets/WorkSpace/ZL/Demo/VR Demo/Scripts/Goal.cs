@@ -4,9 +4,9 @@ using TMPro;
 
 using UnityEngine;
 
-using ZL.Phys;
+using ZL.Unity.Phys;
 
-namespace ZL.Demo.VRDemo
+namespace ZL.Unity.Demo.VRDemo
 {
     [AddComponentMenu("")]
 

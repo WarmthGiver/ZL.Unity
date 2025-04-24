@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace ZL.Demo
+namespace ZL.Unity.Demo
 {
     [AddComponentMenu("ZL/Demo/Logger")]
 

@@ -4,7 +4,9 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-namespace ZL
+using ZL.Unity.Coroutines;
+
+namespace ZL.Unity
 {
     public static partial class FixedSceneManager
     {
@@ -22,7 +24,7 @@ namespace ZL
         {
             if (delay > 0f)
             {
-                yield return WaitFor.Seconds(delay);
+                yield return WaitForSecondsCache.Get(delay);
             }
 
             FixedSelection.SetActiveObject(null);

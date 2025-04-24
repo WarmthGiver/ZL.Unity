@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.EventSystems;
 
-namespace ZL.Events
+namespace ZL.Unity.Events
 {
     public static class PointerEventDataExtensions
     {

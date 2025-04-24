@@ -4,7 +4,7 @@ using UnityEditor;
 
 #endif
 
-namespace ZL
+namespace ZL.Unity
 {
     public sealed class TagFieldAttribute : FieldAttribute
     {

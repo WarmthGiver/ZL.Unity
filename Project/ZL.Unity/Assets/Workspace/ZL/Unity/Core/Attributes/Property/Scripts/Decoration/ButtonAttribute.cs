@@ -2,7 +2,7 @@ using System.Reflection;
 
 using Unity.VisualScripting;
 
-namespace ZL
+namespace ZL.Unity
 {
     public sealed class ButtonAttribute : CustomPropertyAttribute
     {

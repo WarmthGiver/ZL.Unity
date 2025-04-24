@@ -6,7 +6,9 @@ using System.Linq;
 
 using Unity.VisualScripting;
 
-namespace ZL
+using ZL.CS;
+
+namespace ZL.Unity
 {
     public static partial class StringExtensions
     {

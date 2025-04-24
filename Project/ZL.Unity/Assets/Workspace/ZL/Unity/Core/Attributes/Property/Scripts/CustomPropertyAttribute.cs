@@ -12,7 +12,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL
+namespace ZL.Unity
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
 

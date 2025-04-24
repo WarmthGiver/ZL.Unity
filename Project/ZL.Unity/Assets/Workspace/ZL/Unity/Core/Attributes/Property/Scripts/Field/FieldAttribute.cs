@@ -1,4 +1,4 @@
-namespace ZL
+namespace ZL.Unity
 {
     public abstract class FieldAttribute : CustomPropertyAttribute
     {

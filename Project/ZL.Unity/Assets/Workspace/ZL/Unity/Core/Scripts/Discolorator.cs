@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.Collections;
+using ZL.Unity.Collections;
 
-namespace ZL
+namespace ZL.Unity
 {
     public sealed class Discolorator
     {

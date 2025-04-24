@@ -1,6 +1,6 @@
-using ZL.Server.Photon;
+using ZL.Unity.Server.Photon;
 
-namespace ZL
+namespace ZL.Unity
 {
     public static partial class StringExtensions
     {

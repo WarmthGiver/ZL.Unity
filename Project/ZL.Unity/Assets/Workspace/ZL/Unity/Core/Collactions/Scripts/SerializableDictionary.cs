@@ -6,13 +6,11 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Collections
+namespace ZL.Unity.Collections
 {
     [Serializable]
 
-    public class SerializableDictionary<TKey, TValue> :
-        
-        Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
         [SerializeField]
 
@@ -56,17 +54,15 @@ namespace ZL.Collections
 
     [Serializable]
 
-    public class SerializableDictionary<TKey, TValue, TKeyValueContainer> :
-        
-        IEnumerable<TKeyValueContainer>, ISerializationCallbackReceiver
+    public class SerializableDictionary<TKey, TValue, TKeyValuePair> : IEnumerable<TKeyValuePair>, ISerializationCallbackReceiver
 
-        where TKeyValueContainer : IKeyValueContainer<TKey, TValue>
+        where TKeyValuePair : IKeyValuePair<TKey, TValue>
     {
         [SerializeField]
 
-        private List<TKeyValueContainer> elements = new();
+        private List<TKeyValuePair> elements = new();
 
-        private readonly Dictionary<TKey, TKeyValueContainer> dictionary = new();
+        private readonly Dictionary<TKey, TKeyValuePair> dictionary = new();
 
         public TValue this[TKey key]
         {
@@ -80,7 +76,7 @@ namespace ZL.Collections
             return GetEnumerator();
         }
 
-        public IEnumerator<TKeyValueContainer> GetEnumerator()
+        public IEnumerator<TKeyValuePair> GetEnumerator()
         {
             return dictionary.Values.GetEnumerator();
         }
@@ -112,7 +108,7 @@ namespace ZL.Collections
             #endif
         }
 
-        public void Add(TKeyValueContainer element)
+        public void Add(TKeyValuePair element)
         {
             dictionary.Add(element.Key, element);
 
@@ -133,7 +129,7 @@ namespace ZL.Collections
             #endif
         }
 
-        public TKeyValueContainer GetContainer(TKey key)
+        public TKeyValuePair GetContainer(TKey key)
         {
             return dictionary[key];
         }

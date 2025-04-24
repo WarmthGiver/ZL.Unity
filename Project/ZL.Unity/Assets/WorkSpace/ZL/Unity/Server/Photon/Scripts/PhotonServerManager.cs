@@ -14,11 +14,17 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Collections;
+using ZL.CS.Singleton;
+
+using ZL.Unity.Collections;
+
+using ZL.Unity.Coroutines;
+
+using ZL.Unity.IO;
 
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-namespace ZL.Server.Photon
+namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Server Manager (Singleton)")]
 
@@ -472,7 +478,7 @@ namespace ZL.Server.Photon
 
             if (loadingTime > 0f)
             {
-                yield return WaitFor.Seconds(loadingTime);
+                yield return WaitForSecondsCache.Get(loadingTime);
             }
 
             callback.Invoke();

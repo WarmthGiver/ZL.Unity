@@ -6,15 +6,15 @@ using System.Linq;
 
 using UnityEngine;
 
-using ZL.Collections;
+using ZL.Unity.Collections;
 
-namespace ZL.Pooling
+namespace ZL.Unity.Pooling
 {
     [Serializable]
 
     public sealed class ManagedObjectPool<TKey, TComponent> : ObjectPool<TComponent>
 
-        where TComponent : Component, IKeyValueContainer<TKey, TComponent>
+        where TComponent : Component, IKeyValuePair<TKey, TComponent>
     {
         private readonly Dictionary<TKey, TComponent> replicas = new();
 

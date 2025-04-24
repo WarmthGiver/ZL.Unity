@@ -2,7 +2,7 @@
 
 using System;
 
-namespace ZL.Demo
+namespace ZL.Unity.Demo
 {
     [Serializable]
 

@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace ZL.Pooling
+namespace ZL.CS.Pooling
 {
     public static partial class PooledStringBuilder
     {

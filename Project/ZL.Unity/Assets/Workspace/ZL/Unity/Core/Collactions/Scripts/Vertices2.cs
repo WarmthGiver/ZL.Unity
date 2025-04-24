@@ -6,7 +6,9 @@ using System.Linq;
 
 using UnityEngine;
 
-namespace ZL.Collections
+using ZL.CS;
+
+namespace ZL.Unity.Collections
 {
     public static partial class Vertices2
     {

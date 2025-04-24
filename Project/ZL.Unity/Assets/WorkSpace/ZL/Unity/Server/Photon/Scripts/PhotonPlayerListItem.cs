@@ -1,8 +1,8 @@
 using UnityEngine;
 
-using ZL.Pooling;
+using ZL.Unity.Pooling;
 
-namespace ZL.Server.Photon
+namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Player List Item")]
 

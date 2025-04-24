@@ -1,6 +1,10 @@
 using UnityEngine;
 
-namespace ZL
+using ZL.Unity.IO;
+
+using ZL.Unity.Singleton;
+
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Application Manager (Singleton)")]
 

@@ -1,4 +1,4 @@
-namespace ZL.Server.Photon
+namespace ZL.Unity.Server.Photon
 {
     public enum NicknameValidationException
     {

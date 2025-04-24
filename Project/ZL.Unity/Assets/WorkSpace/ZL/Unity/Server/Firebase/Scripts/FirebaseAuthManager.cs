@@ -12,7 +12,11 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
-namespace ZL.Server.Firebase.Auth
+using ZL.CS.Threading;
+
+using ZL.Unity.Singleton;
+
+namespace ZL.Unity.Server.Firebase.Auth
 {
     [AddComponentMenu("ZL/Server/Firebase/Firebase Auth Manager (Singleton)")]
 

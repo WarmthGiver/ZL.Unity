@@ -1,8 +1,8 @@
 using UnityEngine;
 
-using ZL.Reality;
+using ZL.CS.Reality;
 
-namespace ZL
+namespace ZL.Unity.Reality
 {
     public static partial class LocationInfoExtensions
     {

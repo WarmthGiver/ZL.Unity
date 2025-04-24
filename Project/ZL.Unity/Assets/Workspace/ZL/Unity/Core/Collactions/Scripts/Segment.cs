@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Collections
+namespace ZL.Unity.Collections
 {
     [Serializable]
 

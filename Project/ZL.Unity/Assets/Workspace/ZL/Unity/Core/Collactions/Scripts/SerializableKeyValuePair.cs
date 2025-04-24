@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Collections
+namespace ZL.Unity.Collections
 {
     [Serializable]
 
-    public class SerializableKeyValuePair<TKey, TValue> : IKeyValueContainer<TKey, TValue>
+    public class SerializableKeyValuePair<TKey, TValue> : IKeyValuePair<TKey, TValue>
     {
         [SerializeField]
 
@@ -18,10 +18,7 @@ namespace ZL.Collections
         {
             get => key;
 
-            set
-            {
-
-            }
+            set => key = value;
         }
 
         [SerializeField]

@@ -4,7 +4,7 @@ using System.IO;
 
 using System.Text;
 
-namespace ZL.IO
+namespace ZL.CS.IO
 {
     public static partial class CSVManager
     {

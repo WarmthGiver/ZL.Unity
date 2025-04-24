@@ -4,11 +4,11 @@ using TMPro;
 
 using UnityEngine;
 
-using ZL.Collections;
+using ZL.Unity.Collections;
 
-using ZL.IO;
+using ZL.Unity.IO;
 
-namespace ZL.Demo.SerializableDictionaryDemo
+namespace ZL.Unity.Demo.SerializableDictionaryDemo
 {
     [AddComponentMenu("")]
 

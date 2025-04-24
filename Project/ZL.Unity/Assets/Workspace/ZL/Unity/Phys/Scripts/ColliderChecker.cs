@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Phys
+namespace ZL.Unity.Phys
 {
     public abstract class ColliderChecker : MonoBehaviour
     {

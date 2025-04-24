@@ -1,4 +1,4 @@
-namespace ZL.Reality
+namespace ZL.Unity.Reality
 {
     public enum LocationServiceException
     {

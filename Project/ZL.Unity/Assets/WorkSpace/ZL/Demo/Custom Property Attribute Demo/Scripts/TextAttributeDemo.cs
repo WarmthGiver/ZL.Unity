@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Demo.CustomPropertyAttributeDemo
+namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 {
     [AddComponentMenu("")]
 

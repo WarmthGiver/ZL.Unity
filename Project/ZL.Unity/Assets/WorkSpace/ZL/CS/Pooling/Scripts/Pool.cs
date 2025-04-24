@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-using ZL.Collections;
+using ZL.CS.Collections;
 
-namespace ZL.Pooling
+namespace ZL.CS.Pooling
 {
     public abstract class Pool<TClass>
 

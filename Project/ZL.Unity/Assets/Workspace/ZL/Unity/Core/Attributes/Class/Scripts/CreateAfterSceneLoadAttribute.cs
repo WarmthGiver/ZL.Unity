@@ -4,7 +4,7 @@ using System.Reflection;
 
 using UnityEngine;
 
-namespace ZL
+namespace ZL.Unity
 {
     [AttributeUsage(AttributeTargets.Class)]
 

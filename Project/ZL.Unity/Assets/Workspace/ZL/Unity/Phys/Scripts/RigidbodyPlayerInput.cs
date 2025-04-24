@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.InputSystem;
 
-namespace ZL.Phys
+namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/Rigidbody Player Input")]
 

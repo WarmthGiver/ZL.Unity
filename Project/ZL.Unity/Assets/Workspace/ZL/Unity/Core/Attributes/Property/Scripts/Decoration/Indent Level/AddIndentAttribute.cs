@@ -1,4 +1,4 @@
-namespace ZL
+namespace ZL.Unity
 {
     public sealed class AddIndentAttribute : CustomPropertyAttribute
     {

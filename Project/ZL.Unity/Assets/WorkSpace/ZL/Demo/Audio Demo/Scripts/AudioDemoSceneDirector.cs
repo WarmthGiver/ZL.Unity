@@ -4,7 +4,9 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-namespace ZL.Demo.AudioDemo
+using ZL.Unity.Directing;
+
+namespace ZL.Unity.Demo.AudioDemo
 {
     [AddComponentMenu("")]
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.XR.ARFoundation;
 
-namespace ZL.XR.AR
+namespace ZL.Unity.XR.AR
 {
     [AddComponentMenu("ZL/XR/AR/AR Face Changer")]
 

@@ -16,7 +16,7 @@ using Debug = UnityEngine.Debug;
 
 using Object = UnityEngine.Object;
 
-namespace ZL
+namespace ZL.Unity
 {
     public static partial class FixedDebug
     {

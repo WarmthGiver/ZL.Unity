@@ -1,4 +1,4 @@
-namespace ZL.Pooling
+namespace ZL.CS.Pooling
 {
     public static partial class ClassPool<TClass>
 

@@ -4,11 +4,11 @@ using Photon.Realtime;
 
 using UnityEngine;
 
-using ZL.Pooling;
+using ZL.Unity.Pooling;
 
-using ZL.Collections;
+using ZL.Unity.Collections;
 
-namespace ZL.Server.Photon
+namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Player List Displayer")]
 
@@ -19,7 +19,7 @@ namespace ZL.Server.Photon
 
     public abstract class PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
 
-        where TPlayerListItem : Component, IKeyValueContainer<int, TPlayerListItem>
+        where TPlayerListItem : Component, IKeyValuePair<int, TPlayerListItem>
     {
         [Space]
 

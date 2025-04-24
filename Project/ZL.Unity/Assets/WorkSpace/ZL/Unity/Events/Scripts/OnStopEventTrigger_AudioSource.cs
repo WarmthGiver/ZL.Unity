@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Events
+namespace ZL.Unity.Events
 {
     [AddComponentMenu("ZL/Events/On Stop Event Trigger (Audio Source)")]
 

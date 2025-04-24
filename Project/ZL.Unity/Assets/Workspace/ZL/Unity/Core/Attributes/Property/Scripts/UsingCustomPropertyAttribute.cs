@@ -1,6 +1,6 @@
 using System;
 
-namespace ZL
+namespace ZL.Unity
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 

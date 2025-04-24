@@ -6,7 +6,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL
+namespace ZL.Unity
 {
     public static partial class FixedApplication
     {

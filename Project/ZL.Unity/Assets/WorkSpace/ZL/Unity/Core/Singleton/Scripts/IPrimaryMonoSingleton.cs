@@ -1,6 +1,8 @@
 using UnityEngine;
 
-namespace ZL
+using ZL.CS.Singleton;
+
+namespace ZL.Unity.Singleton
 {
     public interface IPrimaryMonoSingleton<TMonoBehaviour> : ISingleton<TMonoBehaviour>
 

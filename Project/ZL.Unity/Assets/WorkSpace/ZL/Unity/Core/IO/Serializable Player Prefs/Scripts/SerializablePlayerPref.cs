@@ -2,11 +2,11 @@ using System;
 
 using UnityEngine;
 
-using ZL.Collections;
+using ZL.Unity.Collections;
 
-namespace ZL
+namespace ZL.Unity.IO
 {
-    public abstract class SerializablePlayerPref<TValue> : PlayerPrefs, IKeyValueContainer<string, TValue>
+    public abstract class SerializablePlayerPref<TValue> : PlayerPrefs, IKeyValuePair<string, TValue>
     {
         [SerializeField]
 

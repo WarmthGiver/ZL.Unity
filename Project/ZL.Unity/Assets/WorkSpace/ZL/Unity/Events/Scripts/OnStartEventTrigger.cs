@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Events
+namespace ZL.Unity.Events
 {
     [AddComponentMenu("ZL/Events/On Start Event Trigger")]
 
