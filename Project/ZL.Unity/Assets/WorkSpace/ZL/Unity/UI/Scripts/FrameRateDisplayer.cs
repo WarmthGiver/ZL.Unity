@@ -16,7 +16,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private TextMeshProUGUI text = null;
+        private TextController textController = null;
 
         [Space]
 
@@ -76,7 +76,7 @@ namespace ZL.Unity.UI
 
             fps = 1f / time;
 
-            text.text = string.Format(format, ms, fps);
+            textController.Text = string.Format(format, ms, fps);
         }
 
         public void Load()

@@ -30,6 +30,8 @@ namespace ZL.Unity.Audio
 
         [Essential]
 
+        [ReadOnlyWhenPlayMode]
+
         [Button("LoadAudioMixerParameters", "Load Parameters")]
 
         private AudioMixer audioMixer = null;

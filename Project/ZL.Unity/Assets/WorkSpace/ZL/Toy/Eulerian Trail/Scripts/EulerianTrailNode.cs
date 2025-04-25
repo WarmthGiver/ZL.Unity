@@ -12,9 +12,7 @@ namespace ZL.Unity.EulerianTrail
 
     [RequireComponent(typeof(Image))]
 
-    public sealed class EulerianTrailNode :
-        
-        MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public sealed class EulerianTrailNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
 
@@ -22,7 +20,9 @@ namespace ZL.Unity.EulerianTrail
 
         [UsingCustomProperty]
 
-        [ReadOnly(true), GetComponent]
+        [GetComponent]
+
+        [ReadOnly(true)]
 
         private RectTransform rectTransform;
 
@@ -30,7 +30,9 @@ namespace ZL.Unity.EulerianTrail
 
         [UsingCustomProperty]
 
-        [ReadOnly(true), GetComponent]
+        [GetComponent]
+
+        [ReadOnly(true)]
 
         private Image image;
 

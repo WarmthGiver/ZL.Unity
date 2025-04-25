@@ -1,19 +1,19 @@
-using TMPro;
-
 using UnityEngine;
+
+using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Text Controller (TextMeshPro - Input Field)")]
+    [AddComponentMenu("ZL/UI/Text Controller (Text (Legacy))")]
 
     [RequireComponent(typeof(TextController))]
 
-    public sealed class TextController_TMP_InputField : ComponentController<TMP_InputField>, ITextController
+    public sealed class TextController_Text : ComponentController<Text>, ITextController
     {
         public string Text
         {
             get => Target.text;
-            
+
             set => Target.text = value;
         }
 

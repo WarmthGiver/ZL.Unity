@@ -18,9 +18,9 @@ namespace ZL.Unity.Audio
 
         [UsingCustomProperty]
 
-        [ReadOnlyWhenPlayMode]
-
         [Essential]
+
+        [ReadOnlyWhenPlayMode]
 
         private Slider slider;
 

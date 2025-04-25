@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace ZL.Unity.UI
 {
-    [AddComponentMenu("ZL/UI/Text Controller (TextMeshPro - Input Field)")]
+    [AddComponentMenu("ZL/UI/Text Controller (TextMeshPro - Text (UI))")]
 
     [RequireComponent(typeof(TextController))]
 
-    public sealed class TextController_TMP_InputField : ComponentController<TMP_InputField>, ITextController
+    public sealed class TextController_TextMeshProUGUI : ComponentController<TextMeshProUGUI>, ITextController
     {
         public string Text
         {

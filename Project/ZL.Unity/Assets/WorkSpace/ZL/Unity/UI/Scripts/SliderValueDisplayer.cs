@@ -4,7 +4,11 @@ using UnityEngine.UI;
 
 namespace ZL.Unity.UI
 {
-    public abstract class SliderValueDisplayer<TTextUGUI> : MonoBehaviour
+    [AddComponentMenu("ZL/UI/Slider Value Displayer")]
+
+    [ExecuteInEditMode]
+
+    public sealed class SliderValueDisplayer : MonoBehaviour
     {
         [Space]
 
@@ -16,7 +20,7 @@ namespace ZL.Unity.UI
 
         [ReadOnlyWhenPlayMode]
 
-        protected Slider slider;
+        private Slider slider;
 
         [SerializeField]
 
@@ -26,26 +30,33 @@ namespace ZL.Unity.UI
 
         [ReadOnlyWhenPlayMode]
 
-        protected TextController<TTextUGUI> textController;
+        private TextController textController;
 
         #if UNITY_EDITOR
 
-        protected float sliderValue = 0f;
+        private float sliderValue = 0f;
+
+        private string inputText = null;
 
         private void Reset()
         {
             this.DisallowMultiple();
         }
 
-        protected virtual void Awake()
+        private void Awake()
         {
             if (slider != null)
             {
                 sliderValue = slider.value;
             }
+
+            if (textController != null)
+            {
+                inputText = textController.Text;
+            }
         }
 
-        protected virtual void Update()
+        private void Update()
         {
             if (Application.isPlaying == true)
             {
@@ -59,10 +70,25 @@ namespace ZL.Unity.UI
                     textController.SetText(slider.value);
                 }
 
+                else if (inputText != textController.Text)
+                {
+                    TrySetValue(textController.Text);
+                }
+
+                inputText = textController.Text;
+
                 sliderValue = slider.value;
             }
         }
 
-        #endif
+#endif
+
+        public void TrySetValue(string text)
+        {
+            if (float.TryParse(text, out float value) == true)
+            {
+                slider.value = value;
+            }
+        }
     }
 }

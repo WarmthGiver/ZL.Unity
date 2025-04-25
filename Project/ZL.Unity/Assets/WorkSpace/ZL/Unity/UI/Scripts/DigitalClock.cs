@@ -1,7 +1,3 @@
-using System.Collections;
-
-using TMPro;
-
 using UnityEngine;
 
 namespace ZL.Unity.UI
@@ -16,17 +12,11 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private TextMeshProUGUI text;
-
-        [Space]
+        private TextController textController;
 
         [SerializeField]
 
-        private bool isRunning = true;
-
-        [SerializeField]
-
-        private float speed = 1f;
+        private float speed = 0f;
 
         [Space]
 
@@ -118,39 +108,25 @@ namespace ZL.Unity.UI
 
             Hour = hour;
 
-            if (text != null)
+            if (textController != null)
             {
-                text.text = $"{hour:D2}:{minute:D2}";
+                textController.Text = $"{hour:D2}:{minute:D2}";
             }
-        }
-
-        private void OnEnable()
-        {
-            StartCoroutine(BlinkingColonRoutine());
         }
 
         private void Update()
         {
-            if (isRunning == false)
+            if (seconds % 1 < 0.5f)
             {
-                return;
+                textController.Text = $"{hour:D2}:{minute:D2}";
+            }
+
+            else
+            {
+                textController.Text = $"{hour:D2} {minute:D2}";
             }
 
             Seconds += Time.deltaTime * speed;
-        }
-
-        private IEnumerator BlinkingColonRoutine()
-        {
-            while (true)
-            {
-                text.text = $"{hour:D2}:{minute:D2}";
-
-                yield return new WaitForSeconds(0.5f);
-
-                text.text = $"{hour:D2} {minute:D2}";
-
-                yield return new WaitForSeconds(0.5f);
-            }
         }
     }
 }

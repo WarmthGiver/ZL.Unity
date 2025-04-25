@@ -2,34 +2,34 @@ using UnityEngine;
 
 namespace ZL.Unity.UI
 {
-    public abstract class TextController<TTextUGUI> : MonoBehaviour
+    [AddComponentMenu("")]
+
+    [DisallowMultipleComponent]
+
+    public sealed class TextController : MonoBehaviour
     {
-        [Space]
+        private ITextController textController;
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [GetComponent]
-
-        [ReadOnly(true)]
-
-        private TTextUGUI target;
-
-        public TTextUGUI Target
+        public string Text
         {
-            get => target;
+            get => textController.Text;
+
+            set => textController.Text = value;
         }
 
-        public abstract string Text { get; set; }
-
-        private void Reset()
+        public void SetText(int value)
         {
-            this.DisallowMultiple();
+            textController.SetText(value);
         }
 
-        public abstract void SetText(int value);
+        public void SetText(float value)
+        {
+            textController.SetText(value);
+        }
 
-        public abstract void SetText(float vaue);
+        private void Awake()
+        {
+            textController = GetComponent<ITextController>();
+        }
     }
 }

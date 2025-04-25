@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b40fd411deb04bb888d24d3204ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 6605276709683598495}
+  textController: {fileID: 0}
   format: '{0:0.0} ms ({1:0} fps)'
-  displayFrameRate:
+  displayFrameRatePref:
     key: Display Frame Rate
     value: 1
 --- !u!1001 &2830499702674114299
@@ -142,6 +142,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6716335369305163009, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      propertyPath: m_fontSize
+      value: 32767
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716335369305163009, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6716335369305163009, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_Name
       value: Text
@@ -176,6 +188,12 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3019094260814314884}
+    - targetCorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7950001776750188655}
+    - targetCorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1831070413000069119}
   m_SourcePrefab: {fileID: 100100000, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
 --- !u!224 &3097917667144341278 stripped
@@ -188,6 +206,31 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
   m_PrefabInstance: {fileID: 2830499702674114299}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3019094260814314884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620130292123395357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff312f4a5642ff1479be928fbb64db53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7950001776750188655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620130292123395357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e775f921b14d74f9057d7b0c0cceb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 8823329113414484986}
 --- !u!114 &1831070413000069119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &6605276709683598495 stripped
+--- !u!114 &8823329113414484986 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9001952730753225316, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6716335369305163009, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
   m_PrefabInstance: {fileID: 2830499702674114299}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4620130292123395357}
