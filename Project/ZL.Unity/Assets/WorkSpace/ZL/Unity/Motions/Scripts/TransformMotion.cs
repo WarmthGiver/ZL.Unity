@@ -6,18 +6,9 @@ namespace ZL.Unity.Motions
     {
         [Space]
 
-        [SerializeField]
+        public Vector3 direction = Vector3.zero;
 
-        protected Vector3 direction = Vector3.zero;
-
-        [SerializeField]
-
-        protected float speed = 0f;
-
-        private void Awake()
-        {
-            direction = direction.normalized;
-        }
+        public float speed = 1f;
 
         protected abstract void Update();
     }
