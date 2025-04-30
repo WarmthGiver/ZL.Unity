@@ -1,4 +1,8 @@
+using System.Collections;
+
 using UnityEngine;
+
+using ZL.Unity.Coroutines;
 
 namespace ZL.Unity.UI
 {
@@ -14,9 +18,15 @@ namespace ZL.Unity.UI
 
         private TextController textController;
 
+        [Space]
+
         [SerializeField]
 
-        private float speed = 0f;
+        private float timeSpeed = 0f;
+
+        [SerializeField]
+
+        private bool syncBlinking = false;
 
         [Space]
 
@@ -56,18 +66,18 @@ namespace ZL.Unity.UI
             {
                 minute = value;
 
-                if (minute > 59)
+                if (minute >= 60)
                 {
-                    minute = 0;
+                    Hour += minute / 60;
 
-                    Hour += 1;
+                    minute %= 60;
                 }
 
                 else if (minute < 0)
                 {
-                    minute = 59;
+                    Hour += minute / 60;
 
-                    Hour -= 1;
+                    minute %= 60;
                 }
             }
         }
@@ -86,19 +96,21 @@ namespace ZL.Unity.UI
 
                 if (seconds >= 60f)
                 {
-                    seconds = Mathf.Repeat(seconds, 60f);
+                    Minute += Mathf.FloorToInt(seconds / 60f);
 
-                    Minute += 1;
+                    seconds %= 60f;
                 }
 
                 else if (seconds < 0f)
                 {
-                    seconds = Mathf.Repeat(seconds, 60f);
+                    Minute += Mathf.FloorToInt(seconds / 60f);
 
-                    Minute -= 1;
+                    seconds %= 60f;
                 }
             }
         }
+
+        private bool isBlinked = false;
 
         private void OnValidate()
         {
@@ -114,9 +126,14 @@ namespace ZL.Unity.UI
             }
         }
 
+        private void OnEnable()
+        {
+            StartCoroutine(Blinking());
+        }
+
         private void Update()
         {
-            if (seconds % 1 < 0.5f)
+            if (isBlinked == false)
             {
                 textController.Text = $"{hour:D2}:{minute:D2}";
             }
@@ -126,7 +143,39 @@ namespace ZL.Unity.UI
                 textController.Text = $"{hour:D2} {minute:D2}";
             }
 
-            Seconds += Time.deltaTime * speed;
+            Seconds += Time.deltaTime * timeSpeed;
+        }
+
+        private IEnumerator Blinking()
+        {
+            while (true)
+            {
+                if (syncBlinking == true)
+                {
+                    if (seconds % 1 < 0.5f)
+                    {
+                        isBlinked = false;
+                    }
+
+                    else
+                    {
+                        isBlinked = true;
+                    }
+
+                    yield return null;
+                }
+
+                else
+                {
+                    isBlinked = false;
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    isBlinked = true;
+
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
         }
     }
 }

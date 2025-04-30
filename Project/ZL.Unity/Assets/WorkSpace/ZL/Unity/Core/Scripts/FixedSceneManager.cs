@@ -12,7 +12,9 @@ namespace ZL.Unity
     {
         public static void LoadScene(string sceneName)
         {
-            LoadScene(null, 0f, sceneName);
+            FixedSelection.SetActiveObject(null);
+
+            SceneManager.LoadScene(sceneName);
         }
 
         public static void LoadScene(MonoBehaviour instance, float delay, string sceneName)
@@ -27,9 +29,7 @@ namespace ZL.Unity
                 yield return WaitForSecondsCache.Get(delay);
             }
 
-            FixedSelection.SetActiveObject(null);
-
-            SceneManager.LoadScene(sceneName);
+            LoadScene(sceneName);
         }
     }
 }

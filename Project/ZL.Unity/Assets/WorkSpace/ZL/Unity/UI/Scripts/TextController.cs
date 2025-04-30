@@ -8,28 +8,42 @@ namespace ZL.Unity.UI
 
     public sealed class TextController : MonoBehaviour
     {
-        private ITextController textController;
+        private ITextController target;
+
+        public ITextController Target
+        {
+            get
+            {
+                #if UNITY_EDITOR
+
+                target ??= GetComponent<ITextController>();
+
+                #endif
+
+                return target;
+            }
+        }
 
         public string Text
         {
-            get => textController.Text;
+            get => Target.Text;
 
-            set => textController.Text = value;
-        }
-
-        public void SetText(int value)
-        {
-            textController.SetText(value);
-        }
-
-        public void SetText(float value)
-        {
-            textController.SetText(value);
+            set => Target.Text = value;
         }
 
         private void Awake()
         {
-            textController = GetComponent<ITextController>();
+            target = GetComponent<ITextController>();
+        }
+
+        public void SetText(int value)
+        {
+            Target.SetText(value);
+        }
+
+        public void SetText(float value)
+        {
+            Target.SetText(value);
         }
     }
 }

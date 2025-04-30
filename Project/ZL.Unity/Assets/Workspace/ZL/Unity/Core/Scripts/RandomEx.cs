@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+
+using System.Linq;
+
 using UnityEngine;
 
 namespace ZL.Unity
@@ -26,6 +30,35 @@ namespace ZL.Unity
 
                 z = Random.Range(0f, 360f)
             };
+        }
+
+        public static bool Toss(float probability = 0.5f)
+        {
+            return Random.value <= probability;
+        }
+
+        public static T Get<T>(T[] array)
+        {
+            return array[Random.Range(0, array.Count())];
+        }
+
+        public static T Get<T>(List<T> list)
+        {
+            return list[Random.Range(0, list.Count())];
+        }
+
+        public static LinkedListNode<T> Get<T>(LinkedList<T> linkedList)
+        {
+            int index = Random.Range(0, linkedList.Count());
+
+            var node = linkedList.First;
+
+            for (int i = 0; i < index; ++i)
+            {
+                node = node.Next;
+            }
+
+            return node;
         }
     }
 }

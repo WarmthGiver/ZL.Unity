@@ -10,8 +10,6 @@ using ZL.Unity.Singleton;
 
 using ZL.Unity.Tweening;
 
-using ZL.Unity.UI;
-
 namespace ZL.Unity.Directing
 {
     [AddComponentMenu("ZL/Directing/Scene Director (Singleton)")]
@@ -29,11 +27,17 @@ namespace ZL.Unity.Directing
 
         [SerializeField]
 
-        protected UGUIScreen fadeScreen;
+        protected float startDelay = 0f;
+
+        [Space]
 
         [SerializeField]
 
-        protected float startDelay = 0f;
+        protected AlphaFader screenFader;
+
+        [SerializeField]
+
+        protected float fadeDuration = 0f;
 
         private void Reset()
         {
@@ -42,30 +46,37 @@ namespace ZL.Unity.Directing
 
         protected virtual IEnumerator Start()
         {
+            yield return WaitForSecondsCache.Get(startDelay);
+
             FadeIn();
 
-            yield return WaitForSecondsCache.Get(startDelay);
+            yield return WaitForSecondsCache.Get(fadeDuration);
         }
 
-        public virtual void FadeScene(string sceneName)
+        public virtual void LoadScene(string sceneName)
         {
             FadeOut();
-
-            FixedSceneManager.LoadScene(this, startDelay, sceneName);
+            
+            FixedSceneManager.LoadScene(this, fadeDuration, sceneName);
         }
 
         public void FadeIn()
         {
-            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(1f);
+            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(1f, fadeDuration);
 
-            fadeScreen?.FadeOut();
+            screenFader?.FadeOut(fadeDuration);
         }
 
         public void FadeOut()
         {
-            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(0f);
+            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(0f, fadeDuration);
 
-            fadeScreen?.FadeIn();
+            screenFader?.FadeIn(fadeDuration);
+        }
+
+        public virtual void Quit()
+        {
+            FixedApplication.Quit();
         }
     }
 }

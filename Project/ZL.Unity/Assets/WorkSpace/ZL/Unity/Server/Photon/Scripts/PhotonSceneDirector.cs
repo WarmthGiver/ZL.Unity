@@ -29,16 +29,16 @@ namespace ZL.Unity.Server.Photon
 
         private PhotonView photonView;
 
-        public void RPCFadeScene(string loadSceneName)
+        public void RPCLoadScene(string loadSceneName)
         {
-            photonView.RPC(nameof(FadeScene), RpcTarget.All, loadSceneName);
+            photonView.RPC(nameof(LoadScene), RpcTarget.All, loadSceneName);
         }
 
         [PunRPC]
 
-        public override void FadeScene(string loadSceneName)
+        public override void LoadScene(string loadSceneName)
         {
-            base.FadeScene(loadSceneName);
+            base.LoadScene(loadSceneName);
         }
     }
 }
