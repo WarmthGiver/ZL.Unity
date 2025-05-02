@@ -46,11 +46,6 @@ namespace ZL.Unity.Audio
 
         private SerializableDictionary<string, float, FloatPref> parameterPrefs;
 
-        public SerializableDictionary<string, float, FloatPref> ParameterPrefs
-        {
-            get => parameterPrefs;
-        }
-
         #if UNITY_EDITOR
 
         private void OnValidate()
@@ -66,7 +61,7 @@ namespace ZL.Unity.Audio
             }
         }
 
-        public void LoadAudioMixerParameters()
+        private void LoadAudioMixerParameters()
         {
             parameterPrefs.Clear();
 

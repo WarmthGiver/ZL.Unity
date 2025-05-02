@@ -2,8 +2,6 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.CS.Singleton;
-
 using ZL.Unity.Coroutines;
 
 using ZL.Unity.Singleton;
@@ -62,14 +60,14 @@ namespace ZL.Unity.Directing
 
         public void FadeIn()
         {
-            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(1f, fadeDuration);
+            AudioListenerVolumeTweener.Instance?.Tween(1f, fadeDuration);
 
             screenFader?.FadeOut(fadeDuration);
         }
 
         public void FadeOut()
         {
-            ISingleton<AudioListenerVolumeTweener>.Instance?.Tween(0f, fadeDuration);
+            AudioListenerVolumeTweener.Instance?.Tween(0f, fadeDuration);
 
             screenFader?.FadeIn(fadeDuration);
         }

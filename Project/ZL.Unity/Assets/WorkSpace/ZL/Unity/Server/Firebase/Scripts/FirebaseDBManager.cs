@@ -1,7 +1,5 @@
 using Firebase;
 
-using Firebase.Auth;
-
 using Firebase.Database;
 
 using Firebase.Extensions;
@@ -11,8 +9,6 @@ using System;
 using System.Threading.Tasks;
 
 using UnityEngine;
-
-using ZL.CS.Singleton;
 
 using ZL.CS.Threading;
 
@@ -26,32 +22,24 @@ namespace ZL.Unity.Server.Firebase.Auth
     {
         public DatabaseReference Database { get; private set; } = null;
 
-        private FirebaseUser User;
-
         protected override void Awake()
         {
             base.Awake();
 
-            FirebaseApp.
-                
-                CheckAndFixDependenciesAsync().
-                
-                ContinueWithOnMainThread((task) =>
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread((task) =>
+            {
+                if (task.Result == DependencyStatus.Available)
                 {
-                    if (task.Result == DependencyStatus.Available)
-                    {
-                        Database = FirebaseDatabase.DefaultInstance.RootReference;
+                    Database = FirebaseDatabase.DefaultInstance.RootReference;
 
-                        Debug.Log("Firebase DB load Successful.");
-                    }
+                    FixedDebug.Log("Firebase DB load Successful.");
+                }
 
-                    else
-                    {
-                        Debug.LogError($"Firebase DB load failed: {task.Result}");
-                    }
-                });
-
-            User = ISingleton<FirebaseAuthManager>.Instance.User;
+                else
+                {
+                    FixedDebug.LogError($"Firebase DB load failed: {task.Result}");
+                }
+            });
         }
 
         public void SetValue(object value, params string[] paths)

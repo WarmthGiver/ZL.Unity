@@ -8,7 +8,7 @@ namespace ZL.Unity.Tweening
 
     [RequireComponent(typeof(AudioSource))]
 
-    public sealed class AudioSourceVolumeTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public sealed class AudioSourceVolumeTweener : ObjectValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 

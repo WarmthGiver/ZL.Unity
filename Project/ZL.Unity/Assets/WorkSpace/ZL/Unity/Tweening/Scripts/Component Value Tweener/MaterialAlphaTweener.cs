@@ -8,7 +8,7 @@ namespace ZL.Unity.Tweening
 {
     [AddComponentMenu("ZL/Tweening/Material Alpha Tweener")]
 
-    public sealed class MaterialAlphaTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public sealed class MaterialAlphaTweener : ObjectValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 

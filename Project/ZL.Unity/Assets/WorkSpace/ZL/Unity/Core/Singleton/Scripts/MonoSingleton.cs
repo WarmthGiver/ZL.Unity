@@ -12,7 +12,7 @@ namespace ZL.Unity.Singleton
 
         where TMonoSingleton : MonoSingleton<TMonoSingleton>
     {
-        public static TMonoSingleton Instance { get; private set; }
+        public static TMonoSingleton Instance { get; private set; } = null;
 
         protected virtual void Awake()
         {

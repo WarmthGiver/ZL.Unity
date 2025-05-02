@@ -56,24 +56,20 @@ namespace ZL.Unity.Server.Firebase.Auth
         {
             base.Awake();
 
-            FirebaseApp.
-
-                CheckAndFixDependenciesAsync().
-
-                ContinueWithOnMainThread((task) =>
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread((task) =>
+            {
+                if (task.Result == DependencyStatus.Available)
                 {
-                    if (task.Result == DependencyStatus.Available)
-                    {
-                        Auth = FirebaseAuth.DefaultInstance;
-                        
-                        Debug.Log("Firebase Auth load successful.");
-                    }
-                    
-                    else
-                    {
-                        Debug.LogError($"Firebase Auth load failed: {task.Result}");
-                    }
-                });
+                    Auth = FirebaseAuth.DefaultInstance;
+
+                    FixedDebug.Log("Firebase Auth load successful.");
+                }
+
+                else
+                {
+                    FixedDebug.LogError($"Firebase Auth load failed: {task.Result}");
+                }
+            });
         }
 
         public void SignIn(string id, string pw)

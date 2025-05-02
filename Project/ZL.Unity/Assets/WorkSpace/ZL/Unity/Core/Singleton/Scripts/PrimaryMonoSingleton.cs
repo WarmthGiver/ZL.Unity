@@ -10,6 +10,8 @@ namespace ZL.Unity.Singleton
 
         where TPrimaryMonoSingleton : PrimaryMonoSingleton<TPrimaryMonoSingleton>
     {
+        public static TPrimaryMonoSingleton Instance { get; private set; } = null;
+
         private void Reset()
         {
             this.DisallowMultiple();
@@ -27,7 +29,7 @@ namespace ZL.Unity.Singleton
 
         bool ISingleton<TPrimaryMonoSingleton>.IsDuplicated()
         {
-            if (ISingleton<TPrimaryMonoSingleton>.Instance == null)
+            if (Instance == null)
             {
                 return false;
             }

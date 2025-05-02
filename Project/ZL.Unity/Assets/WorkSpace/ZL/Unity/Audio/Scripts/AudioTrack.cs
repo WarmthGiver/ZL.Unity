@@ -104,14 +104,14 @@ namespace ZL.Unity.Audio
 
         bool ISingleton<AudioTrack>.IsDuplicated()
         {
-            if (ISingleton<AudioTrack>.Instance != null)
+            if (Instance != null)
             {
-                if (ISingleton<AudioTrack>.Instance.trackName == trackName)
+                if (Instance.trackName == trackName)
                 {
                     return true;
                 }
 
-                DestroyImmediate(ISingleton<AudioTrack>.Instance.gameObject);
+                DestroyImmediate(Instance.gameObject);
             }
 
             return false;

@@ -8,8 +8,10 @@ namespace ZL.Unity.Tweening
 {
     [AddComponentMenu("ZL/Tweening/Audio Listener Volume Tweener (Singleton)")]
 
-    public sealed class AudioListenerVolumeTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>, ISingleton<AudioListenerVolumeTweener>
+    public sealed class AudioListenerVolumeTweener : ObjectValueTweener<FloatTweener, float, float, FloatOptions>, ISingleton<AudioListenerVolumeTweener>
     {
+        public static AudioListenerVolumeTweener Instance { get; private set; } = null;
+
         public override float Value
         {
             get => AudioListener.volume;

@@ -10,7 +10,7 @@ namespace ZL.Unity.Tweening
 
     [RequireComponent(typeof(Image))]
 
-    public sealed class ImageFillAmountTweener : ComponentValueTweener<FloatTweener, float, float, FloatOptions>
+    public sealed class ImageFillAmountTweener : ObjectValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
 

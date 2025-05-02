@@ -1,14 +1,12 @@
-using System.Collections.Generic;
-
 using System.IO;
 
 using System.Text;
 
-namespace ZL.CS.IO
+namespace ZL.CS.IO.CSV
 {
     public static partial class CSVManager
     {
-        public static bool TryLoad<TCSVConvertible>(string filePath, out List<TCSVConvertible> datas)
+        public static bool TryLoad<TCSVConvertible>(string filePath, out TCSVConvertible[] datas)
 
             where TCSVConvertible : ICSVConvertible, new()
         {
@@ -21,7 +19,7 @@ namespace ZL.CS.IO
 
             var lines = File.ReadAllLines(filePath);
 
-            datas = new(lines.Length - 1);
+            datas = new TCSVConvertible[lines.Length - 1];
 
             for (int i = 1; i < lines.Length; ++i)
             {
@@ -29,23 +27,23 @@ namespace ZL.CS.IO
 
                 data.FromCSV(lines[i].Split(','));
 
-                datas.Add(data);
+                datas[i - 1] = data;
             }
 
             return true;
         }
 
-        public static void Save<TCSVConvertible>(string filePath, List<TCSVConvertible> datas)
+        public static void Save<TCSVConvertible>(string filePath, TCSVConvertible[] datas)
 
             where TCSVConvertible : ICSVConvertible, new()
         {
             StringBuilder stringBuilder = new();
 
-            stringBuilder.Append(datas[0].GetCSVHeader());
+            stringBuilder.Append(datas[0].GetHeaders());
 
             stringBuilder.AppendLine();
 
-            for (int i = 0; i < datas.Count; ++i)
+            for (int i = 0; i < datas.Length; ++i)
             {
                 stringBuilder.Append(datas[i].ToCSV());
 

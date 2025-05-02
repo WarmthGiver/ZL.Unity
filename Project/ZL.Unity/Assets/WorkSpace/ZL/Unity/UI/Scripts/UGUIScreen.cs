@@ -24,7 +24,7 @@ namespace ZL.Unity.Tweening
 
         [ReadOnly(true)]
 
-        protected ComponentValueTweener<FloatTweener, float, float, FloatOptions> tweener;
+        protected ObjectValueTweener<FloatTweener, float, float, FloatOptions> tweener;
 
         [Space]
 

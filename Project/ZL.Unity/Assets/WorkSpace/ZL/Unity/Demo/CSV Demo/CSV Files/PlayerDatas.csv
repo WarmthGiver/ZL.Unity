@@ -1,4 +1,4 @@
-﻿Name,Score,Level
-"Player1",100,1
-"Player2",150,2
-"Player3",200,3
+name	score	level
+Player1	100	1
+Player2	150	2
+Player3	200	3

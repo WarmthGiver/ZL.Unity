@@ -4,7 +4,7 @@ namespace ZL.CS.Singleton
 
         where TClass : class, ISingleton<TClass>
     {
-        public static TClass Instance { get; protected set; } = null;
+        static TClass Instance { get; protected set; } = null;
 
         protected static bool TrySetInstance(TClass instance)
         {

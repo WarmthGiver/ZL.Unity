@@ -60,9 +60,11 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        private uint loopCount = 0;
+        [Tooltip("0: Loop once (Default)\n-1: Infinity loop")]
 
-        public uint LoopCount
+        private int loopCount = 0;
+
+        public int LoopCount
         {
             get => loopCount;
 
@@ -74,6 +76,8 @@ namespace ZL.Unity.Tweening
         [UsingCustomProperty]
 
         [ToggleIf(nameof(loopCount), 0, true)]
+
+        [ToggleIf(nameof(loopCount), 1, true)]
 
         [AddIndent]
 
@@ -128,7 +132,7 @@ namespace ZL.Unity.Tweening
             set => setter = value;
         }
 
-        public TweenerCore<T1, T2, TPlugOptions> Current { get; private set; }
+        public TweenerCore<T1, T2, TPlugOptions> Current { get; private set; } = null;
 
         protected abstract TweenerCore<T1, T2, TPlugOptions> To(DOGetter<T1> getter, DOSetter<T1> setter, in T2 endValue, float duration);
 
@@ -157,9 +161,9 @@ namespace ZL.Unity.Tweening
                 Current.SetUpdate(isIndependentUpdate);
             }
 
-            if (loopCount != 0)
+            if (loopCount != 1)
             {
-                Current.SetLoops((int)loopCount, loopType);
+                Current.SetLoops(loopCount, loopType);
             }
 
             if (onStartEvent.GetPersistentEventCount() != 0)

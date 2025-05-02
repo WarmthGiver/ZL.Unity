@@ -8,13 +8,13 @@ namespace ZL.Unity.Tweening
 {
     [DisallowMultipleComponent]
 
-    public abstract class KeyFrameTweener<TComponentTweener, TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
-
-        where TComponentTweener : ComponentValueTweener<TValueTweener, T1, T2, TPlugOptions>
+    public abstract class KeyFrameTweener<TValueTweener, T1, T2, TPlugOptions, TObjectValueTweener> : MonoBehaviour
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
 
         where TPlugOptions : struct, IPlugOptions
+
+        where TObjectValueTweener : ObjectValueTweener<TValueTweener, T1, T2, TPlugOptions>
     {
         [Space]
 
@@ -26,7 +26,7 @@ namespace ZL.Unity.Tweening
 
         [ReadOnly(true)]
 
-        protected TComponentTweener componentTweener;
+        protected TObjectValueTweener objectVaueTweener;
 
         #if UNITY_EDITOR
 
@@ -88,7 +88,7 @@ namespace ZL.Unity.Tweening
         {
             if (keyFrames.TryGetCurrent(out T2 endValue) == true)
             {
-                componentTweener.Tween(endValue);
+                objectVaueTweener.Tween(endValue);
             }
         }
     }

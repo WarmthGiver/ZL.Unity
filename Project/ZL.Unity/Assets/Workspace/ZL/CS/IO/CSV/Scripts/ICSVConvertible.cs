@@ -6,6 +6,6 @@ namespace ZL.CS.IO
 
         public abstract string ToCSV();
 
-        public abstract string GetCSVHeader();
+        public abstract string GetHeaders();
     }
 }

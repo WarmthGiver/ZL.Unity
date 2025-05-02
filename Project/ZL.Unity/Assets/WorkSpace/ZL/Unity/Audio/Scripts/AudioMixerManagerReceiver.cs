@@ -1,33 +1,31 @@
 using UnityEngine;
 
-using ZL.Unity.Singleton;
-
 namespace ZL.Unity.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Mixer Manager Receiver")]
 
     [DisallowMultipleComponent]
 
-    public sealed class AudioMixerManagerReceiver : MonoSingletonReceiver<AudioMixerManager>
+    public sealed class AudioMixerManagerReceiver : MonoBehaviour
     {
         public void LoadVolumes()
         {
-            Target.LoadVolumes();
+            AudioMixerManager.Instance.LoadVolumes();
         }
 
         public void SaveVolumes()
         {
-            Target.SaveVolumes();
+            AudioMixerManager.Instance.SaveVolumes();
         }
 
         public float GetVolume(string key)
         {
-            return Target.GetVolume(key);
+            return AudioMixerManager.Instance.GetVolume(key);
         }
 
         public void SetVolume(string key, float value)
         {
-            Target.SetVolume(key, value);
+            AudioMixerManager.Instance.SetVolume(key, value);
         }
     }
 }

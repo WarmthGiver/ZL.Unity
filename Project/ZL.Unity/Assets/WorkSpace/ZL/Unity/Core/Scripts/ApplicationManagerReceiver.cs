@@ -2,29 +2,27 @@ using UnityEngine;
 
 using ZL.Unity.IO;
 
-using ZL.Unity.Singleton;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Application Manager Receiver")]
 
     [DisallowMultipleComponent]
 
-    public sealed class ApplicationManagerReceiver : MonoSingletonReceiver<ApplicationManager>
+    public sealed class ApplicationManagerReceiver : MonoBehaviour
     {
         public BoolPref RunInBackgroundPref
         {
-            get => Target.RunInBackgroundPref;
+            get => ApplicationManager.Instance.RunInBackgroundPref;
         }
 
         public IntPref TargetFrameRatePref
         {
-            get => Target.TargetFrameRatePref;
+            get => ApplicationManager.Instance.TargetFrameRatePref;
         }
 
         public void Quit()
         {
-            Target.Quit();
+            ApplicationManager.Instance.Quit();
         }
     }
 }

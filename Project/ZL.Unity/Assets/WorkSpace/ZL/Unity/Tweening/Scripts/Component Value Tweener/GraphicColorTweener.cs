@@ -8,7 +8,7 @@ namespace ZL.Unity.Tweening
 {
     [AddComponentMenu("ZL/Tweening/Graphic Color Tweener")]
 
-    public sealed class GraphicColorTweener : ComponentValueTweener<ColorTweener, Color, Color, ColorOptions>
+    public sealed class GraphicColorTweener : ObjectValueTweener<ColorTweener, Color, Color, ColorOptions>
     {
         [Space]
 

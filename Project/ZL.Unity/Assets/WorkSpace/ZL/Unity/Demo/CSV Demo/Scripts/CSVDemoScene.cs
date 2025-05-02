@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.CS.IO;
+using ZL.CS.IO.CSV;
 
 namespace ZL.Unity.Demo.CSVDemo
 {
@@ -32,7 +32,7 @@ namespace ZL.Unity.Demo.CSVDemo
 
         [SerializeField]
 
-        private List<PlayerData> playerDatas;
+        private PlayerData[] playerDatas;
 
         public void LoadData()
         {

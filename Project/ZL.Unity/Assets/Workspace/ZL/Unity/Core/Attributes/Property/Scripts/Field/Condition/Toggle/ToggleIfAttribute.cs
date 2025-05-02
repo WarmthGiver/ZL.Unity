@@ -20,7 +20,7 @@ namespace ZL.Unity
             {
                 drawer.IsToggled = (property.objectReferenceValue == null) == condition;
             }
-
+            
             else
             {
                 drawer.IsToggled = property.boxedValue.Equals(targetValue) == condition;

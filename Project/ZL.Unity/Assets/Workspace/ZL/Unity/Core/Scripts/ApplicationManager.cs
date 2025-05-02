@@ -51,12 +51,12 @@ namespace ZL.Unity
             targetFrameRatePref.TryLoadValue();
         }
 
-        public static void Pause()
+        public void Pause()
         {
             FixedTime.Pause();
         }
 
-        public static void Resume()
+        public void Resume()
         {
             FixedTime.Resume();
         }

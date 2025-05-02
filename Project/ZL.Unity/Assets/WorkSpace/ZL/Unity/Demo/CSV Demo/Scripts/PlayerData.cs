@@ -34,9 +34,9 @@ namespace ZL.Unity.Demo.CSVDemo
             return $"{name},{score},{level}";
         }
 
-        public string GetCSVHeader()
+        public string GetHeaders()
         {
-            return "Name,Score,Level";
+            return $"{nameof(name)},{nameof(score)},{nameof(level)}";
         }
 
         public override string ToString()
