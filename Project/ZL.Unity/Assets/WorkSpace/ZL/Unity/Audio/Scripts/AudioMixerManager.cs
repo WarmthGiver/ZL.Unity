@@ -18,6 +18,8 @@ namespace ZL.Unity.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Mixer Manager (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     public sealed class AudioMixerManager : MonoSingleton<AudioMixerManager>
     {
         [Space]

@@ -8,6 +8,8 @@ namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Application Manager (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     public sealed class ApplicationManager : MonoSingleton<ApplicationManager>
     {
         [Space]

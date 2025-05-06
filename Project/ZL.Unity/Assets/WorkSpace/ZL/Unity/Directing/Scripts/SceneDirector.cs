@@ -12,6 +12,8 @@ namespace ZL.Unity.Directing
 {
     [AddComponentMenu("ZL/Directing/Scene Director (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     public class SceneDirector : SceneDirector<SceneDirector>
     {
 

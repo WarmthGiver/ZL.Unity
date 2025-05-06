@@ -4,15 +4,13 @@ using ZL.CS.Singleton;
 
 namespace ZL.Unity.Singleton
 {
-    [DefaultExecutionOrder(-1)]
-
     [DisallowMultipleComponent]
 
     public abstract class MonoSingleton<TMonoSingleton> : MonoBehaviour, ISingleton<TMonoSingleton>
 
         where TMonoSingleton : MonoSingleton<TMonoSingleton>
     {
-        public static TMonoSingleton Instance { get; private set; } = null;
+        public static TMonoSingleton Instance => ISingleton<TMonoSingleton>.Instance;
 
         protected virtual void Awake()
         {

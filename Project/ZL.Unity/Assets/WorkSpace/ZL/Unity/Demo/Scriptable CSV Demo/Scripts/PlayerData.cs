@@ -1,18 +1,14 @@
 #pragma warning disable
 
-using System;
-
-using System.Collections.Generic;
-
 using UnityEngine;
 
-using ZL.CS.IO.CSV;
+using ZL.Unity.IO.CSV;
 
-namespace ZL.Unity.Demo.CSVDemo
+namespace ZL.Unity.Demo.ScriptableCSVDemo
 {
-    [Serializable]
+    [CreateAssetMenu(menuName = "ZL/SO/Player Data", fileName = "Player Data")]
 
-    public sealed class PlayerData : ICSVConvertible
+    public sealed class PlayerData : ScriptableCSV
     {
         public string nickname;
 
@@ -20,21 +16,21 @@ namespace ZL.Unity.Demo.CSVDemo
 
         public float score;
 
-        public void FromCSV(string[] values)
+        public override void FromCSV(string[] csv)
         {
-            nickname = values[0];
+            nickname = csv[0];
 
-            level = int.Parse(values[2]);
+            level = int.Parse(csv[2]);
 
-            score = float.Parse(values[1]);
+            score = float.Parse(csv[1]);
         }
 
-        public string ToCSV()
+        public override string ToCSV()
         {
             return $"{nickname},{level},{score}";
         }
 
-        public string GetHeaders()
+        public override string GetHeaders()
         {
             return $"{nameof(nickname)},{nameof(level)},{nameof(score)}";
         }

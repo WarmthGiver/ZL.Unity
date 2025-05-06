@@ -18,6 +18,8 @@ namespace ZL.Unity.Server.Firebase.Auth
 {
     [AddComponentMenu("ZL/Server/Firebase/Firebase DB Manager (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     public sealed class FirebaseDBManager : MonoSingleton<FirebaseDBManager>
     {
         public DatabaseReference Database { get; private set; } = null;

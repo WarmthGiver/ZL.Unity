@@ -6,18 +6,18 @@ namespace ZL.CS.IO.CSV
 {
     public static partial class CSVManager
     {
-        public static bool TryLoad<TCSVConvertible>(string filePath, out TCSVConvertible[] datas)
+        public static bool TryLoad<TCSVConvertible>(string path, out TCSVConvertible[] datas)
 
             where TCSVConvertible : ICSVConvertible, new()
         {
-            if (File.Exists(filePath) == false)
+            if (File.Exists(path) == false)
             {
                 datas = null;
 
                 return false;
             }
 
-            var lines = File.ReadAllLines(filePath);
+            var lines = File.ReadAllLines(path);
 
             datas = new TCSVConvertible[lines.Length - 1];
 
@@ -33,7 +33,7 @@ namespace ZL.CS.IO.CSV
             return true;
         }
 
-        public static void Save<TCSVConvertible>(string filePath, TCSVConvertible[] datas)
+        public static void Save<TCSVConvertible>(string path, TCSVConvertible[] datas)
 
             where TCSVConvertible : ICSVConvertible, new()
         {
@@ -50,7 +50,7 @@ namespace ZL.CS.IO.CSV
                 stringBuilder.AppendLine();
             }
 
-            File.WriteAllText(filePath, stringBuilder.ToString(), Encoding.UTF8);
+            File.WriteAllText(path, stringBuilder.ToString(), Encoding.UTF8);
         }
     }
 }

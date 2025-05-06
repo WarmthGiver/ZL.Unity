@@ -10,6 +10,8 @@ namespace ZL.Unity.Android
 {
     [AddComponentMenu("ZL/Android/Android Permission Manager (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     public sealed class AndroidPermissionManager : MonoSingleton<AndroidPermissionManager>
     {
         [Space]

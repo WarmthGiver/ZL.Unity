@@ -10,6 +10,8 @@ namespace ZL.Unity.Reality
 {
     [AddComponentMenu("ZL/Reality/Location Service Manager (Singleton)")]
 
+    [DefaultExecutionOrder(-1)]
+
     public sealed class LocationServiceManager : MonoSingleton<LocationServiceManager>
     {
         [Space]

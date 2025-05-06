@@ -1,8 +1,8 @@
-namespace ZL.CS.IO
+namespace ZL.CS.IO.CSV
 {
     public interface ICSVConvertible
     {
-        public abstract void FromCSV(string[] datas);
+        public abstract void FromCSV(string[] values);
 
         public abstract string ToCSV();
 
