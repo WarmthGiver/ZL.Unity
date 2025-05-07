@@ -8,7 +8,7 @@ namespace ZL.CS.IO.CSV
     {
         public static bool TryLoad<TCSVConvertible>(string path, out TCSVConvertible[] datas)
 
-            where TCSVConvertible : ICSVConvertible, new()
+            where TCSVConvertible : ICSVRecord, new()
         {
             if (File.Exists(path) == false)
             {
@@ -25,7 +25,7 @@ namespace ZL.CS.IO.CSV
             {
                 TCSVConvertible data = new();
 
-                data.FromCSV(lines[i].Split(','));
+                data.FromCSVRecord(lines[i].Split(','));
 
                 datas[i - 1] = data;
             }
@@ -35,17 +35,17 @@ namespace ZL.CS.IO.CSV
 
         public static void Save<TCSVConvertible>(string path, TCSVConvertible[] datas)
 
-            where TCSVConvertible : ICSVConvertible, new()
+            where TCSVConvertible : ICSVRecord, new()
         {
             StringBuilder stringBuilder = new();
 
-            stringBuilder.Append(datas[0].GetHeaders());
+            stringBuilder.Append(datas[0].GetHeader());
 
             stringBuilder.AppendLine();
 
             for (int i = 0; i < datas.Length; ++i)
             {
-                stringBuilder.Append(datas[i].ToCSV());
+                stringBuilder.Append(datas[i].ToCSVRecord());
 
                 stringBuilder.AppendLine();
             }

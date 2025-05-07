@@ -12,7 +12,7 @@ namespace ZL.Unity.Demo.CSVDemo
 {
     [Serializable]
 
-    public sealed class PlayerData : ICSVConvertible
+    public sealed class PlayerData : ICSVRecord
     {
         public string nickname;
 
@@ -20,7 +20,7 @@ namespace ZL.Unity.Demo.CSVDemo
 
         public float score;
 
-        public void FromCSV(string[] values)
+        public void FromCSVRecord(string[] values)
         {
             nickname = values[0];
 
@@ -29,12 +29,12 @@ namespace ZL.Unity.Demo.CSVDemo
             score = float.Parse(values[1]);
         }
 
-        public string ToCSV()
+        public string ToCSVRecord()
         {
             return $"{nickname},{level},{score}";
         }
 
-        public string GetHeaders()
+        public string GetHeader()
         {
             return $"{nameof(nickname)},{nameof(level)},{nameof(score)}";
         }

@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.elringus.unitygoogledrive": "https://github.com/elringus/unity-google-drive.git#package",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "1.22.3",
     "com.unity.cinemachine": "2.10.3",
