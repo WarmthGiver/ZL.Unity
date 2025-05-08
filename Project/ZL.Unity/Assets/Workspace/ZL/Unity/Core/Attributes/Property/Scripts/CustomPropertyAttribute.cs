@@ -12,6 +12,8 @@ using UnityEditor;
 
 using UnityEngine;
 
+using UnityObject = UnityEngine.Object;
+
 namespace ZL.Unity
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
@@ -89,6 +91,8 @@ namespace ZL.Unity
 
             public GUIContent PropertyLabel { get; private set; }
 
+            public UnityObject TargetObject { get; private set; } = null;
+
             public Component TargetComponent { get; private set; }
 
             private IEnumerable<CustomPropertyAttribute> attributes = null;
@@ -111,9 +115,11 @@ namespace ZL.Unity
 
                 PropertyLabel = label;
 
-                if (TargetComponent == null)
+                if (TargetObject == null)
                 {
-                    TargetComponent = property.serializedObject.targetObject as Component;
+                    TargetObject = property.serializedObject.targetObject;
+
+                    TargetComponent = TargetObject as Component;
 
                     attributes = fieldInfo.GetCustomAttributes<CustomPropertyAttribute>();
 
@@ -241,7 +247,7 @@ namespace ZL.Unity
 
                 if (GUI.Button(position, text) == true)
                 {
-                    method.Invoke(TargetComponent, null);
+                    method.Invoke(TargetObject, null);
                 }
 
                 Margin(height + 2f);

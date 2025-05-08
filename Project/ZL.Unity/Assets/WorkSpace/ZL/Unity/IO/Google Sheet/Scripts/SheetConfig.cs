@@ -1,12 +1,13 @@
 using GoogleSheetsToUnity;
 
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace ZL.Unity.IO.GoogleSheet
 {
-    [CreateAssetMenu(menuName = "ZL/Google Sheet/Sheet Data", fileName = "Sheet Data")]
+    [CreateAssetMenu(menuName = "ZL/Google Sheet/Sheet Config", fileName = "Sheet Config")]
 
-    public sealed class SheetData : ScriptableObject
+    public sealed class SheetConfig : ScriptableObject
     {
         [Space]
 
@@ -46,9 +47,14 @@ namespace ZL.Unity.IO.GoogleSheet
 
         public int TitleRow => titleRow;
 
-        public GSTU_Search Search()
+        public GSTU_Search GetSearch()
         {
             return new(sheetId, worksheetName, startCell, endCell, titleColumn, titleRow);
+        }
+
+        public GSTU_Search GetSearch(ScriptableSheetData data)
+        {
+            return new(sheetId, worksheetName, data.StartCell);
         }
     }
 }

@@ -17,7 +17,7 @@ public class AnimalManager : MonoBehaviour
     }
     public SheetStatus sheetStatus;
 
-    [HideInInspector]
+    //[HideInInspector]
     public string associatedSheet = "1GVXeyWCz0tCjyqE1GWJoayj92rx4a_hu4nQbYmW_PkE";
     [HideInInspector]
     public string associatedWorksheet = "Stats";

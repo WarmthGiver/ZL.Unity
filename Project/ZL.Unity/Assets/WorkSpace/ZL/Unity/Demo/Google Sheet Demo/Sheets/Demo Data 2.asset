@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 186ed8ab1b6f92946b8a1cc907633c67, type: 3}
-  m_Name: Player Data 2
+  m_Name: Demo Data 2
   m_EditorClassIdentifier: 
   nickname: 
   level: 0

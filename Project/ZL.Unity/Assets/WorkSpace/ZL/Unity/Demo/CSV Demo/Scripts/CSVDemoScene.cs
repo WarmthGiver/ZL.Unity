@@ -34,16 +34,16 @@ namespace ZL.Unity.Demo.CSVDemo
 
         [SerializeField]
 
-        private PlayerData[] playerDatas;
+        private DemoData[] datas;
 
         public void LoadData()
         {
-            CSVManager.TryLoad(filePath, out playerDatas);
+            CSVManager.TryLoad(filePath, out datas);
         }
 
         public void SaveData()
         { 
-            CSVManager.Save(filePath, playerDatas);
+            CSVManager.Save(filePath, datas);
         }
     }
 }

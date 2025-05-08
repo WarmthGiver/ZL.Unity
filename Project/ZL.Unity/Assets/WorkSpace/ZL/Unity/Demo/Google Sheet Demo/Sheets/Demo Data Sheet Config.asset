@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c31c7870470a4444a3eba02f9a4a4e8, type: 3}
-  m_Name: Player Data Sheet Data
+  m_Name: Demo Data Sheet Config
   m_EditorClassIdentifier: 
-  sheetId: 1ZV8a2LAC0z-c2Opz6MzjKfL2UmjNFljsZlZXn5BdHsU
-  worksheetName: Player Data Sheet
-  startCell: A2
-  endCell: C4
+  sheetId: 1lYrgcj1jkv_M7x9ToA2e3CQqLjyRdAPUU_US1CCB5Ko
+  worksheetName: Demo Data Sheet
+  startCell: A1
+  endCell: Z100
   titleColumn: A
   titleRow: 1
