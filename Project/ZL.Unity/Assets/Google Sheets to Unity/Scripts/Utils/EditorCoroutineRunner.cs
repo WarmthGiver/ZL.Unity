@@ -1,5 +1,7 @@
 //Provided by https://gist.github.com/LotteMakesStuff/16b5f2fc108f9a0201950c797d53cfbf
 
+#pragma warning disable
+
 #if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;

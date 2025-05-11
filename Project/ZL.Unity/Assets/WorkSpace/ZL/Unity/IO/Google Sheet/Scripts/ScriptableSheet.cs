@@ -6,8 +6,14 @@ namespace ZL.Unity.IO.GoogleSheet
 {
     [CreateAssetMenu(menuName = "ZL/Google Sheet/Sheet", fileName = "Sheet")]
 
-    public class ScriptableSheet : ScriptableObject
+    public sealed class ScriptableSheet : ScriptableObject
     {
+        [Space]
+
+        [SerializeField]
+
+        private SheetConfig sheetConfig;
+
         [Space]
 
         [SerializeField]
@@ -22,7 +28,7 @@ namespace ZL.Unity.IO.GoogleSheet
 
         [Button(nameof(Write))]
 
-        private SheetConfig sheetConfig;
+        private bool containsMergedCells = false;
 
         [Space]
 
@@ -32,22 +38,10 @@ namespace ZL.Unity.IO.GoogleSheet
 
         public void Read()
         {
-            Read(false);
+            SpreadsheetManager.Read(sheetConfig.GetSearch(), ImportAllDatas, containsMergedCells);
         }
 
-        public void Read(bool containsMergedCells)
-        {
-            SpreadsheetManager.Read(sheetConfig.GetSearch(), OnReadSuccessful, containsMergedCells);
-        }
-
-        protected virtual void OnReadSuccessful(GstuSpreadSheet sheet)
-        {
-            FixedDebug.Log($"'{name}' read successful.");
-
-            ImportAllDatas(sheet);
-        }
-
-        protected void ImportAllDatas(GstuSpreadSheet sheet)
+        private void ImportAllDatas(GstuSpreadSheet sheet)
         {
             for (int i = 0; i < datas.Length; ++i)
             {
@@ -61,13 +55,8 @@ namespace ZL.Unity.IO.GoogleSheet
             {
                 var data = datas[i];
 
-                SpreadsheetManager.Write(sheetConfig.GetSearch(data), new ValueRange(data.Export()), OnWriteSuccessful);
+                SpreadsheetManager.Write(sheetConfig.GetSearch(data), new ValueRange(data.Export()), null);
             }
-        }
-
-        protected virtual void OnWriteSuccessful()
-        {
-            FixedDebug.Log($"'{name}' write successful.");
         }
     }
 }

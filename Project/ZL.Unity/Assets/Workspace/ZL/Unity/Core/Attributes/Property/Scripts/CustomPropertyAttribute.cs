@@ -93,7 +93,7 @@ namespace ZL.Unity
 
             public UnityObject TargetObject { get; private set; } = null;
 
-            public Component TargetComponent { get; private set; }
+            public Component TargetComponent { get; private set; } = null;
 
             private IEnumerable<CustomPropertyAttribute> attributes = null;
 

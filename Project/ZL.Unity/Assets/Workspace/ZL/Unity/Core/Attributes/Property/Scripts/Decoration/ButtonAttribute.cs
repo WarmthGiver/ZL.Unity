@@ -1,7 +1,6 @@
 using System.Reflection;
 
 using Unity.VisualScripting;
-using UnityEngine;
 
 namespace ZL.Unity
 {
@@ -28,17 +27,9 @@ namespace ZL.Unity
 
         protected override void Initialize(Drawer drawer)
         {
-            Debug.Log(drawer.TargetObject);
-
             var type = drawer.TargetObject.GetType();
 
-            Debug.Log(type);
-
-            Debug.Log(methodName);
-
             method = type.GetMethod(methodName);
-
-            Debug.Log(method);
         }
 
         protected override void Draw(Drawer drawer)

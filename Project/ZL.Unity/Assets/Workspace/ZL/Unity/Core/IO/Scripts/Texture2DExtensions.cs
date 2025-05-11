@@ -1,14 +1,12 @@
 using UnityEngine;
 
-using ZL.Unity.IO;
-
-namespace ZL.Unity
+namespace ZL.Unity.IO
 {
     public static partial class Texture2DExtensions
     {
-        public static byte[] EncodeTo(this Texture2D instance, ImageFileFormat imageFileFormat)
+        public static byte[] EncodeTo(this Texture2D instance, ImageFileFormat format)
         {
-            return imageFileFormat switch
+            return format switch
             {
                 ImageFileFormat.EXR => instance.EncodeToEXR(),
 

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#pragma warning disable
+
+using System.Collections;
 using System.Text;
 using GoogleSheetsToUnity;
 using GoogleSheetsToUnity.ThirdPary;
