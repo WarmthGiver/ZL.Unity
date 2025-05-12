@@ -12,7 +12,7 @@ namespace ZL.Unity.Collections
 {
     public static partial class Vertices2
     {
-        private static readonly Comparer comparer = new();
+        private static readonly Comparer comparer = new Comparer();
 
         public static Vector2[] Dots(float radius, int column, int row)
         {
@@ -32,7 +32,7 @@ namespace ZL.Unity.Collections
 
                 for (int i = 0; i < row; ++i)
                 {
-                    vertices[index++] = new(x, y);
+                    vertices[index++] = new Vector2(x, y);
 
                     x += interval;
                 }
@@ -49,7 +49,7 @@ namespace ZL.Unity.Collections
 
             int row = map[0].Length;
 
-            List<Vector2> vertices = new(column * row);
+            var vertices = new List<Vector2>(column * row);
 
             float interval = radius * Mathf.Sqrt(2f);
 
@@ -65,7 +65,7 @@ namespace ZL.Unity.Collections
                 {
                     if (map[j][i] != ' ')
                     {
-                        vertices.Add(new(x, y));
+                        vertices.Add(new Vector2(x, y));
                     }
 
                     x += interval;
@@ -93,7 +93,7 @@ namespace ZL.Unity.Collections
 
                 float y = radius * Mathf.Sin(theta);
 
-                vertices[i] = Mathv.Round(new Vector2(x, y), 2);
+                vertices[i] = new Vector2(x, y).Round(2);
             }
 
             Array.Sort(vertices, comparer);
@@ -103,7 +103,7 @@ namespace ZL.Unity.Collections
 
         public static Vector2[] Union(params Vector2[][] set)
         {
-            SortedSet<Vector2> union = new();
+            var union = new SortedSet<Vector2>();
 
             foreach (var vertices in set)
             {

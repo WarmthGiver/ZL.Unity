@@ -16,7 +16,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private BoolPref runInBackgroundPref = new("Run In Background", false);
+        private BoolPref runInBackgroundPref = new BoolPref("Run In Background", false);
 
         public BoolPref RunInBackgroundPref
         {
@@ -27,7 +27,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private IntPref targetFrameRatePref = new("Target Frame Rate", 60);
+        private IntPref targetFrameRatePref = new IntPref("Target Frame Rate", 60);
 
         public IntPref TargetFrameRatePref
         {

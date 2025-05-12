@@ -16,9 +16,9 @@ namespace ZL.Unity
 
         public TextAttribute(string text, TextAnchor alignment = TextAnchor.UpperLeft)
         {
-            label = new(text);
+            label = new GUIContent(text);
 
-            style = new()
+            style = new GUIStyle()
             {
                 alignment = alignment,
 

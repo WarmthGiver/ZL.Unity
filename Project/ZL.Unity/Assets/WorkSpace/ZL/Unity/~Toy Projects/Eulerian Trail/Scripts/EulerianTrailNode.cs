@@ -58,7 +58,7 @@ namespace ZL.Unity.EulerianTrail
 
         public float Thickness
         {
-            set => rectTransform.sizeDelta = new(value, value);
+            set => rectTransform.sizeDelta = new Vector2(value, value);
         }
 
         public Color Color

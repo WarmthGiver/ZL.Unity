@@ -16,7 +16,7 @@ namespace ZL.Unity.Pooling
 
         where TComponent : Component, IKeyValuePair<TKey, TComponent>
     {
-        private readonly Dictionary<TKey, TComponent> replicas = new();
+        private readonly Dictionary<TKey, TComponent> replicas = new Dictionary<TKey, TComponent>();
 
         public TComponent this[TKey key]
         {
@@ -80,7 +80,7 @@ namespace ZL.Unity.Pooling
 
         where TComponent : Component
     {
-        private readonly HashSet<TComponent> replicas = new();
+        private readonly HashSet<TComponent> replicas = new HashSet<TComponent>();
 
         public override TComponent Generate()
         {

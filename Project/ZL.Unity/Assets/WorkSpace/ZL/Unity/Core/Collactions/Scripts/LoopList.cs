@@ -4,6 +4,8 @@ using System;
 
 using UnityEngine;
 
+using ZL.CS;
+
 namespace ZL.Unity.Collections
 {
     [Serializable]
@@ -29,7 +31,7 @@ namespace ZL.Unity.Collections
 
         [SerializeField]
 
-        private List<T> list = new();
+        private List<T> list = new List<T>();
 
         public int Count
         {

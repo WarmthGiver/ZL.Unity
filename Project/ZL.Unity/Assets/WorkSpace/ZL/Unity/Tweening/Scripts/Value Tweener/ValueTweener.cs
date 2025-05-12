@@ -62,7 +62,7 @@ namespace ZL.Unity.Tweening
 
         [Tooltip("0: Loop once (Default)\n-1: Infinity loop")]
 
-        private int loopCount = 0;
+        private int loopCount = 1;
 
         public int LoopCount
         {
@@ -96,7 +96,7 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        private UnityEvent onStartEvent = new();
+        private UnityEvent onStartEvent = new UnityEvent();
 
         public UnityEvent OnStartEvent
         {
@@ -107,7 +107,7 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        private UnityEvent onCompleteEvent = new();
+        private UnityEvent onCompleteEvent = new UnityEvent();
 
         public UnityEvent OnCompleteEvent
         {

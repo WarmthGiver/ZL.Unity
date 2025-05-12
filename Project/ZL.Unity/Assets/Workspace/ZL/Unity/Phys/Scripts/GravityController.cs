@@ -85,7 +85,7 @@ namespace ZL.Unity.Phys
 
         [Alias("Gravity Direction")]
 
-        private Vector3 customGravityDirection = new(0f, -1f, 0f);
+        private Vector3 customGravityDirection = new Vector3(0f, -1f, 0f);
 
         public Vector3 CustomGravityDirection
         {

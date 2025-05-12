@@ -10,7 +10,10 @@ namespace ZL.Unity.Singleton
 
         where TMonoSingleton : MonoSingleton<TMonoSingleton>
     {
-        public static TMonoSingleton Instance => ISingleton<TMonoSingleton>.Instance;
+        public static TMonoSingleton Instance
+        {
+            get => ISingleton<TMonoSingleton>.Instance;
+        }
 
         protected virtual void Awake()
         {

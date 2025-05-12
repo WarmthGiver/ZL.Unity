@@ -48,15 +48,15 @@ namespace ZL.Unity
         {
             if (EditorGUIUtility.isProSkin == true)
             {
-                defaultTextColor = new(0.769f, 0.769f, 0.769f, 1f);
+                defaultTextColor = new Color(0.769f, 0.769f, 0.769f, 1f);
             }
             
             else
             {
-                defaultTextColor = new(0.035f, 0.035f, 0.03f, 1f);
+                defaultTextColor = new Color(0.035f, 0.035f, 0.03f, 1f);
             }
 
-            defaultLabelStyle = new()
+            defaultLabelStyle = new GUIStyle()
             {
                 fontSize = defaultFontSize,
             };

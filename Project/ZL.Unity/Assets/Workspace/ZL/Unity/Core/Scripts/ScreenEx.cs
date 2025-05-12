@@ -4,7 +4,7 @@ namespace ZL.Unity
 {
     public static partial class ScreenEx
     {
-        public static RenderTexture RenderTexture { get; private set; } = new(Screen.width, Screen.height, 24);
+        public static RenderTexture RenderTexture { get; private set; } = new RenderTexture(Screen.width, Screen.height, 24);
 
         public static void SetResolution(int width, int height, FullScreenMode fullScreenMode)
         {
@@ -18,17 +18,17 @@ namespace ZL.Unity
             {
                 float newScreenWidth = ratio / screenRatio;
 
-                Camera.main.rect = new((1f - newScreenWidth) / 2f, 0f, newScreenWidth, 1f);
+                Camera.main.rect = new Rect((1f - newScreenWidth) / 2f, 0f, newScreenWidth, 1f);
             }
 
             else
             {
                 float newScreenHeight = screenRatio / ratio;
 
-                Camera.main.rect = new(0f, (1f - newScreenHeight) / 2f, 1f, newScreenHeight);
+                Camera.main.rect = new Rect(0f, (1f - newScreenHeight) / 2f, 1f, newScreenHeight);
             }
 
-            RenderTexture = new(width, height, 24);
+            RenderTexture = new RenderTexture(width, height, 24);
         }
 
         public static void SetResolution(int width, int height)
@@ -38,7 +38,7 @@ namespace ZL.Unity
 
         public static Texture2D GetScreenPixels(TextureFormat textureFormat)
         {
-            Texture2D texture2D = new(Screen.width, Screen.height, textureFormat, false);
+            var texture2D = new Texture2D(Screen.width, Screen.height, textureFormat, false);
 
             texture2D.ReadPixels(new Rect(0f, 0f, Screen.width, Screen.height), 0, 0);
 

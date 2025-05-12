@@ -20,13 +20,13 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
 
         [SerializeField]
 
-        private TMP_Text text;
+        private TextMeshProUGUI textUI;
 
         [Space]
 
         [SerializeField]
 
-        private SerializableDictionary<string, int> serializableDictionary = new()
+        private SerializableDictionary<string, int> serializableDictionary = new SerializableDictionary<string, int>()
         {
             { "0", 0 },
 
@@ -39,18 +39,18 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
 
         [SerializeField]
 
-        private SerializableDictionary<string, int, IntPref> intPrefDictionary = new()
+        private SerializableDictionary<string, int, IntPref> intPrefDictionary = new SerializableDictionary<string, int, IntPref>()
         {
-            new("0", 0),
+            new IntPref("0", 0),
 
-            new("1", 1),
+            new IntPref("1", 1),
 
-            new("2", 2),
+            new IntPref("2", 2),
         };
 
         private void FixedUpdate()
         {
-            text.text =
+            textUI.text =
                 
                 "▼Serializable Dictionary\n" +
 
@@ -58,10 +58,10 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
 
             foreach (var element in serializableDictionary)
             {
-                text.text += $"\n{element}";
+                textUI.text += $"\n{element}";
             }
 
-            text.text +=
+            textUI.text +=
 
                 "\n" +
 
@@ -73,7 +73,7 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
 
             foreach (var element in intPrefDictionary)
             {
-                text.text += $"\n{element}";
+                textUI.text += $"\n{element}";
             }
         }
     }

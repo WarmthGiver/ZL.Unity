@@ -78,7 +78,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private float thickness = 0f;
+        private float thickness = 1f;
 
         public float Thickness
         {
@@ -107,7 +107,7 @@ namespace ZL.Unity.UI
 
         private static readonly DrivenTransformProperties drivenProperties = DrivenTransformProperties.AnchoredPosition3D | DrivenTransformProperties.Anchors | DrivenTransformProperties.Rotation | DrivenTransformProperties.SizeDelta | DrivenTransformProperties.Pivot;
 
-        private DrivenRectTransformTracker drivenTracker = new();
+        private DrivenRectTransformTracker drivenTracker = new DrivenRectTransformTracker();
 
         private void Awake()
         {
@@ -168,11 +168,11 @@ namespace ZL.Unity.UI
         {
             rectTransform.hasChanged = false;
 
-            rectTransform.anchorMin = new(0.5f, 0.5f);
+            rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
 
-            rectTransform.anchorMax = new(0.5f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
 
-            rectTransform.pivot = new(0f, 0.5f);
+            rectTransform.pivot = new Vector2(0f, 0.5f);
 
             StartPoint = startPoint;
 

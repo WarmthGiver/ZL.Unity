@@ -6,7 +6,7 @@ namespace ZL.Unity.Coroutines
 
         static WaitForSecondsComparerCache()
         {
-            waitForSecondsComparer = new();
+            waitForSecondsComparer = new WaitForSecondsComparer();
         }
 
         public static WaitForSecondsComparer Get()

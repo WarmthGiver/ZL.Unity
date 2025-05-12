@@ -156,7 +156,7 @@ namespace ZL.Unity
             return string.Join(separator, instance);
         }
 
-        private static readonly char[] splitSeparator = new[] { ' ', '-', '_' };
+        private static readonly char[] splitSeparator = new char[] { ' ', '-', '_' };
 
         public static string[] SplitToWords(this string instance)
         {

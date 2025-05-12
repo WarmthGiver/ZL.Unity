@@ -21,9 +21,7 @@ namespace ZL.Unity
 
         private float deltaV;
 
-        public Discolorator(ColorPalette color) :
-            
-            this(color.ToColor())
+        public Discolorator(ColorPalette color) : this(color.ToColor())
         {
 
         }
@@ -57,23 +55,23 @@ namespace ZL.Unity
 
         private IEnumerator<Color> MoveHSVRoutile(Color color)
         {
-            Color.RGBToHSV(color, out float h, out float s, out float v);
+            Color.RGBToHSV(color, out float H, out float S, out float V);
 
-            Linear linearH = new(h, 1f, LinearMode.Repeat);
+            var linearH = new Linear(H, 1f, LinearMode.Repeat);
 
-            Linear linearS = new(s, 1f, LinearMode.PingPong);
+            var linearS = new Linear(S, 1f, LinearMode.PingPong);
 
-            Linear linearV = new(v, 1f, LinearMode.PingPong);
+            var linearV = new Linear(V, 1f, LinearMode.PingPong);
 
             while (true)
             {
-                yield return Color.HSVToRGB(h, s, v);
+                yield return Color.HSVToRGB(H, S, V);
 
-                h = linearH.Interval(deltaH, LinearMode.Repeat);
+                H = linearH.Interval(deltaH, LinearMode.Repeat);
 
-                s = linearS.Interval(deltaS, LinearMode.PingPong);
+                S = linearS.Interval(deltaS, LinearMode.PingPong);
 
-                v = linearV.Interval(deltaV, LinearMode.Repeat);
+                V = linearV.Interval(deltaV, LinearMode.Repeat);
             }
         }
     }

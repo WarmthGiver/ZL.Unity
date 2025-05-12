@@ -46,7 +46,7 @@ namespace ZL.Unity
 
         public static GameObject CreateGameObject(string name, params Type[] components)
         {
-            GameObject gameObject = new(name, components);
+            var gameObject = new GameObject(name, components);
 
             FixedUndo.RegisterCreatedObjectUndo(gameObject, $"Create {gameObject.name}");
 

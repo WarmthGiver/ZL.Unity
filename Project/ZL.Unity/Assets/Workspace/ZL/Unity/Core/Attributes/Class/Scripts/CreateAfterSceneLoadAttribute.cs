@@ -30,7 +30,7 @@ namespace ZL.Unity
                         continue;
                     }
 
-                    GameObject gameObject = new(type.Name.ToTitleCase(), type);
+                    var gameObject = new GameObject(type.Name.ToTitleCase(), type);
 
                     gameObject.DontDestroyOnLoad();
                 }

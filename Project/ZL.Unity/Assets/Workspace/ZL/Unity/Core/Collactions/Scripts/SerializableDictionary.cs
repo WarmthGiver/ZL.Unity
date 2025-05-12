@@ -14,7 +14,7 @@ namespace ZL.Unity.Collections
     {
         [SerializeField]
 
-        protected List<SerializableKeyValuePair<TKey, TValue>> elements = new();
+        protected List<SerializableKeyValuePair<TKey, TValue>> elements = new List<SerializableKeyValuePair<TKey, TValue>>();
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
@@ -46,7 +46,7 @@ namespace ZL.Unity.Collections
         {
             base.Add(key, value);
 
-            elements.Add(new(key, value));
+            elements.Add(new SerializableKeyValuePair<TKey, TValue>(key, value));
         }
 
         #endif
@@ -60,9 +60,9 @@ namespace ZL.Unity.Collections
     {
         [SerializeField]
 
-        private List<TKeyValuePair> elements = new();
+        private List<TKeyValuePair> elements = new List<TKeyValuePair>();
 
-        private readonly Dictionary<TKey, TKeyValuePair> dictionary = new();
+        private readonly Dictionary<TKey, TKeyValuePair> dictionary = new Dictionary<TKey, TKeyValuePair>();
 
         public TValue this[TKey key]
         {

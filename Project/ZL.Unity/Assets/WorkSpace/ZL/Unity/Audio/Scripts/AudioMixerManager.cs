@@ -75,7 +75,7 @@ namespace ZL.Unity.Audio
 
                     audioMixer.GetFloat(key, out float value);
 
-                    FloatPref volumePref = new(key, value);
+                    var volumePref = new FloatPref(key, value);
 
                     volumePref.TryLoadValue();
 

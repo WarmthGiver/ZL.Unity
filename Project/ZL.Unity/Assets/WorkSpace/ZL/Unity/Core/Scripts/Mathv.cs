@@ -6,9 +6,9 @@ namespace ZL.Unity
 {
     public static partial class Mathv
     {
-        public static Vector2 Round(in Vector2 v, int digits)
+        public static Vector2 Round(this Vector2 v, int digits)
         {
-            return new()
+            return new Vector2()
             {
                 x = MathF.Round(v.x, digits),
 
@@ -16,9 +16,9 @@ namespace ZL.Unity
             };
         }
 
-        public static Vector3 Round(in Vector3 v, int digits)
+        public static Vector3 Round(this Vector3 v, int digits)
         {
-            return new()
+            return new Vector3()
             {
                 x = MathF.Round(v.x, digits),
 

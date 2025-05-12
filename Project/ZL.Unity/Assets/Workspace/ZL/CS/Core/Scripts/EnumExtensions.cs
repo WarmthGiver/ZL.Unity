@@ -8,7 +8,7 @@ namespace ZL.CS
 
             where TEnum : Enum
         {
-            EnumUnion<TEnum> enumUnion = new()
+            var enumUnion = new EnumUnion<TEnum>()
             {
                 enumValue = instance,
             };
@@ -27,7 +27,7 @@ namespace ZL.CS
 
             where TEnum : Enum
         {
-            EnumUnion<TEnum> enumUnion = new();
+            var enumUnion = new EnumUnion<TEnum>();
 
             unsafe
             {

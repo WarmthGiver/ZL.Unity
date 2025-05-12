@@ -77,12 +77,12 @@ namespace ZL.Unity.UI
 
             var keyframes = new Keyframe[]
             {
-                new(0f, 1f),
+                new Keyframe(0f, 1f),
 
-                new(3f, 0.1f),
+                new Keyframe(3f, 0.1f),
             };
 
-            autoClickIntervalCurve = new(keyframes);
+            autoClickIntervalCurve = new AnimationCurve(keyframes);
 
             FixedAnimationUtility.SetKeyRightTangentMode(autoClickIntervalCurve, 0, FixedTangentMode.Auto);
 

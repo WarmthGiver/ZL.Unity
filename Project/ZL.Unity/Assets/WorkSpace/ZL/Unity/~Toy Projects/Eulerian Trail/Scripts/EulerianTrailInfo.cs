@@ -73,7 +73,7 @@ namespace ZL.Unity.EulerianTrail
 
             float column = edgeMap.Length;
 
-            List<Segment<int>> edgeSegments = new();
+            var edgeSegments = new List<Segment<int>>();
 
             for (int j = 0; j < column; ++j)
             {
@@ -81,7 +81,7 @@ namespace ZL.Unity.EulerianTrail
 
                 for (int i = 0; i < row; ++i)
                 {
-                    edgeSegments.Add(new(j, edgeMap[j][i]));
+                    edgeSegments.Add(new Segment<int>(j, edgeMap[j][i]));
                 }
             }
 

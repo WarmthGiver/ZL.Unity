@@ -1,4 +1,8 @@
+using System.Collections;
+
 using UnityEngine;
+
+using ZL.Unity.Coroutines;
 
 namespace ZL.Unity.Phys
 {
@@ -23,7 +27,17 @@ namespace ZL.Unity.Phys
 
         protected QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.UseGlobal;
 
-        #if UNITY_EDITOR
+        [Space]
+
+        [SerializeField]
+
+        private bool startCheckingOnEnable = true;
+
+        #if !UNITY_EDITOR
+
+        public bool IsChecked { get; private set; } = false;
+
+        #elif UNITY_EDITOR
 
         [Space]
 
@@ -36,6 +50,21 @@ namespace ZL.Unity.Phys
         [Text("<b>Debugging</b>", FontSize = 16)]
 
         [Margin]
+
+        [ReadOnly(true)]
+
+        private bool isChecked = false;
+
+        public bool IsChecked
+        {
+            get => isChecked;
+
+            private set => isChecked = value;
+        }
+
+        [Space]
+
+        [SerializeField]
 
         protected bool drawGizmo = true;
 
@@ -61,7 +90,7 @@ namespace ZL.Unity.Phys
 
         [Alias("Default Color")]
 
-        private Color defaultGizmoColor = new(0f, 1f, 0f, 0.5f);
+        private Color defaultGizmoColor = new Color(0f, 1f, 0f, 0.5f);
 
         [SerializeField]
 
@@ -73,7 +102,7 @@ namespace ZL.Unity.Phys
 
         [Alias("Collided Color")]
 
-        private Color collidedGizmoColor = new(1f, 0f, 0f, 0.5f);
+        private Color collidedGizmoColor = new Color(1f, 0f, 0f, 0.5f);
 
         private void OnDrawGizmos()
         {
@@ -82,7 +111,7 @@ namespace ZL.Unity.Phys
                 return;
             }
 
-            if (Check() == true)
+            if (IsChecked == true)
             {
                 Gizmos.color = collidedGizmoColor;
             }
@@ -96,10 +125,59 @@ namespace ZL.Unity.Phys
 
             DrawGizmos();
         }
-        
+
+        private void OnEnable()
+        {
+            if (startCheckingOnEnable == true)
+            {
+                StartChecking();
+            }
+        }
+
+        private void OnDisable()
+        {
+            IsChecked = false;
+        }
+
         protected abstract void DrawGizmos();
 
         #endif
+
+        public void StartChecking()
+        {
+            if (checkingRoutine != null)
+            {
+                return;
+            }
+
+            checkingRoutine = CheckingRoutine();
+
+            StartCoroutine(checkingRoutine);
+        }
+
+        public void StopChecking()
+        {
+            if (checkingRoutine == null)
+            {
+                return;
+            }
+
+            StopCoroutine(checkingRoutine);
+
+            checkingRoutine = null;
+        }
+
+        private IEnumerator checkingRoutine = null;
+
+        private IEnumerator CheckingRoutine()
+        {
+            while (true)
+            {
+                IsChecked = Check();
+
+                yield return WaitForFixedUpdateCache.Get();
+            }
+        }
 
         public abstract bool Check();
     }

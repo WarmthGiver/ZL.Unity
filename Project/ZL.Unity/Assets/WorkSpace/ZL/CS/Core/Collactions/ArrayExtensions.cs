@@ -6,7 +6,7 @@ namespace ZL.CS.Collections
     {
         public static LinkedList<T> ToLinkedList<T>(this T[] instance)
         {
-            LinkedList<T> linkedList = new();
+            var linkedList = new LinkedList<T>();
 
             CopyTo(instance, ref linkedList);
 

@@ -8,7 +8,7 @@ namespace ZL.Unity.Coroutines
 
         static WaitForEndOfFrameCache()
         {
-            waitForEndOfFrame = new();
+            waitForEndOfFrame = new WaitForEndOfFrame();
         }
 
         public static WaitForEndOfFrame Get()

@@ -10,7 +10,10 @@ namespace ZL.Unity.Singleton
 
         where TPrimaryMonoSingleton : PrimaryMonoSingleton<TPrimaryMonoSingleton>
     {
-        public static TPrimaryMonoSingleton Instance { get; private set; } = null;
+        public static TPrimaryMonoSingleton Instance
+        {
+            get => ISingleton<TPrimaryMonoSingleton>.Instance;
+        }
 
         private void Reset()
         {

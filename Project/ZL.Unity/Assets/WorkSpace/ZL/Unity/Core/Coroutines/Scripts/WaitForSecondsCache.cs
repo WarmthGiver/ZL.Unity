@@ -10,14 +10,14 @@ namespace ZL.Unity.Coroutines
 
         static WaitForSecondsCache()
         {
-            waitForSecondsDictionary = new(WaitForSecondsComparerCache.Get());
+            waitForSecondsDictionary = new Dictionary<float, WaitForSeconds>(WaitForSecondsComparerCache.Get());
         }
 
         public static WaitForSeconds Get(float seconds)
         {
             if (waitForSecondsDictionary.TryGetValue(seconds, out var waitForSeconds) == false)
             {
-                waitForSecondsDictionary.Add(seconds, waitForSeconds = new(seconds));
+                waitForSecondsDictionary.Add(seconds, waitForSeconds = new WaitForSeconds(seconds));
             }
 
             return waitForSeconds;

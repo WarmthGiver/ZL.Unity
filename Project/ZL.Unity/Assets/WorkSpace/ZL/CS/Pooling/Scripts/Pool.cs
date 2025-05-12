@@ -8,7 +8,7 @@ namespace ZL.CS.Pooling
 
         where TClass : class
     {
-        private readonly LinkedList<TClass> stock = new();
+        private readonly LinkedList<TClass> stock = new LinkedList<TClass>();
 
         public virtual TClass Generate()
         {

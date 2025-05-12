@@ -46,7 +46,7 @@ namespace ZL.Unity.EulerianTrail
 
         private ManagedObjectPool<Line2D> drawnEdgePool;
 
-        private readonly Dictionary<Segment<int>, bool> edgeVisiteds = new(new Segment<int>.EqualityComparer());
+        private readonly Dictionary<Segment<int>, bool> edgeVisiteds = new Dictionary<Segment<int>, bool>(new Segment<int>.EqualityComparer());
 
         private int visitedEdgeCount;
 
@@ -163,7 +163,7 @@ namespace ZL.Unity.EulerianTrail
         {
             if (lastVisitedNode != null)
             {
-                Segment<int> edgeSegment = new(lastVisitedNode.Number, node.Number);
+                var edgeSegment = new Segment<int>(lastVisitedNode.Number, node.Number);
 
                 if (edgeVisiteds.ContainsKey(edgeSegment) == true && edgeVisiteds[edgeSegment] == false)
                 {

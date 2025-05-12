@@ -30,7 +30,7 @@ namespace ZL.Unity.Demo.StringExtentionsDemo
 
         private TMP_InputField inputField;
 
-        private readonly StringBuilder stringBuilder = new();
+        private readonly StringBuilder stringBuilder = new StringBuilder();
 
         private void Awake()
         {
@@ -39,8 +39,8 @@ namespace ZL.Unity.Demo.StringExtentionsDemo
 
         public void Refresh(string text)
         {
-            this.text.text = stringBuilder.Concat(
-
+            this.text.text = stringBuilder.Concat
+            (
                 "\n",
 
                 "\n",
@@ -71,7 +71,8 @@ namespace ZL.Unity.Demo.StringExtentionsDemo
 
                 "\n",
 
-                "\n");
+                "\n"
+            );
 
             stringBuilder.Clear();
         }

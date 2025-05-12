@@ -8,7 +8,7 @@ namespace ZL.Unity.Coroutines
 
         static WaitForFixedUpdateCache()
         {
-            waitForFixedUpdate = new();
+            waitForFixedUpdate = new WaitForFixedUpdate();
         }
 
         public static WaitForFixedUpdate Get()

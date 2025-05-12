@@ -47,7 +47,7 @@ namespace ZL.Unity.Demo.GoogleSheetDemo
 
         public override List<string> Export()
         {
-            return new()
+            return new List<string>()
             {
                 name,
 

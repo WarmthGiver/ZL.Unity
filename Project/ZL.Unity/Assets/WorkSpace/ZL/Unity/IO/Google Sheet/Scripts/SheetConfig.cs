@@ -48,12 +48,12 @@ namespace ZL.Unity.IO.GoogleSheet
 
         public GSTU_Search GetSearch()
         {
-            return new(sheetId, worksheetName, startCell, endCell, titleColumn, titleRow);
+            return new GSTU_Search(sheetId, worksheetName, startCell, endCell, titleColumn, titleRow);
         }
 
         public GSTU_Search GetSearch(ScriptableSheetData data)
         {
-            return new(sheetId, worksheetName, data.StartCell);
+            return new GSTU_Search(sheetId, worksheetName, data.StartCell);
         }
     }
 }

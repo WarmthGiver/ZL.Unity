@@ -4,7 +4,7 @@ namespace ZL.CS.Pooling
 
         where TClass : class, new()
     {
-        private static readonly Pool pool = new();
+        private static readonly Pool pool = new Pool();
 
         public static TClass Generate()
         {

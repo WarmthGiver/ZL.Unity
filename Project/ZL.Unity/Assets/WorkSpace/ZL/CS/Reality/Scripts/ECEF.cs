@@ -47,7 +47,7 @@ namespace ZL.CS.Reality
 
             double z = sinLat * dfc;
 
-            return new(x, y, z);
+            return new ECEF(x, y, z);
         }
 
         public static double Distance(ECEF a, ECEF b)

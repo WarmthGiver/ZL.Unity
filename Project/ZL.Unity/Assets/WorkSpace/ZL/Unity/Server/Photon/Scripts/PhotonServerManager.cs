@@ -44,7 +44,7 @@ namespace ZL.Unity.Server.Photon
 
         [ReadOnlyWhenPlayMode]
 
-        private StringPref nicknamePref = new("Nickname", string.Empty);
+        private StringPref nicknamePref = new StringPref("Nickname", string.Empty);
 
         public string Nickname
         {
@@ -234,7 +234,7 @@ namespace ZL.Unity.Server.Photon
 
         private Dictionary<string, TypedLobby> lobbyDictionary;
 
-        private readonly Stopwatch loadingStopwatch = new();
+        private readonly Stopwatch loadingStopwatch = new Stopwatch();
 
         private void Awake()
         {
@@ -249,7 +249,7 @@ namespace ZL.Unity.Server.Photon
 
             if (lobbies.value.Length != 0)
             {
-                lobbyDictionary = new(lobbies.value.Length);
+                lobbyDictionary = new Dictionary<string, TypedLobby>(lobbies.value.Length);
 
                 foreach (var lobby in lobbies.value)
                 {

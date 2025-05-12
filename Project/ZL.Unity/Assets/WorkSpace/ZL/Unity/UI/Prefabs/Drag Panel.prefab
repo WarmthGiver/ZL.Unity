@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4261032583479788745}
   - component: {fileID: 4261032583479788744}
   - component: {fileID: 4261032583479788747}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Drag Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,12 +88,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fb95107881e6c4e9413d2c7acace2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 4261032583479788746}
+  rect: {fileID: 4261032583479788746}
   dragSensitivity: 0.01
   maxMagnitude: 10
-  debug: 0
-  pointerDownPosition: {x: 0, y: 0}
+  startPoint: {x: 0, y: 0}
+  endPoint: {x: 0, y: 0}
   dragDirection: {x: 0, y: 0}
-  eventOnDrag:
+  onDragEvent:
     m_PersistentCalls:
       m_Calls: []
+  drawGizmo: 1
+  gizmoColor: {r: 0, g: 1, b: 0, a: 0.5}

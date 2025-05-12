@@ -15,7 +15,7 @@ namespace ZL.Unity
                 instance *= 1f / max;
             }
 
-            return new(instance.x, instance.y, instance.z);
+            return new Color(instance.x, instance.y, instance.z);
         }
 
         public static Vector3 Absoulute(this Vector3 instance)

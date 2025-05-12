@@ -2,13 +2,15 @@ using System.IO;
 
 using System.Text;
 
+using ZL.CS.Pooling;
+
 namespace ZL.CS.IO.CSV
 {
     public static partial class CSVManager
     {
-        public static bool TryLoad<TCSVConvertible>(string path, out TCSVConvertible[] datas)
+        public static bool TryLoad<TCSVData>(string path, out TCSVData[] datas)
 
-            where TCSVConvertible : ICSVData, new()
+            where TCSVData : ICSVData, new()
         {
             if (File.Exists(path) == false)
             {
@@ -19,11 +21,11 @@ namespace ZL.CS.IO.CSV
 
             var lines = File.ReadAllLines(path);
 
-            datas = new TCSVConvertible[lines.Length - 1];
+            datas = new TCSVData[lines.Length - 1];
 
             for (int i = 1; i < lines.Length; ++i)
             {
-                TCSVConvertible data = new();
+                var data = new TCSVData();
 
                 data.Import(lines[i].Split(','));
 
@@ -33,11 +35,11 @@ namespace ZL.CS.IO.CSV
             return true;
         }
 
-        public static void Save<TCSVConvertible>(string path, TCSVConvertible[] datas)
+        public static void Save<TCSVData>(string path, TCSVData[] datas)
 
-            where TCSVConvertible : ICSVData, new()
+            where TCSVData : ICSVData, new()
         {
-            StringBuilder stringBuilder = new();
+            var stringBuilder = PooledStringBuilder.Generate();
 
             stringBuilder.Append(datas[0].GetHeader());
 
@@ -50,7 +52,7 @@ namespace ZL.CS.IO.CSV
                 stringBuilder.AppendLine();
             }
 
-            File.WriteAllText(path, stringBuilder.ToString(), Encoding.UTF8);
+            File.WriteAllText(path, PooledStringBuilder.Collect(stringBuilder), Encoding.UTF8);
         }
     }
 }

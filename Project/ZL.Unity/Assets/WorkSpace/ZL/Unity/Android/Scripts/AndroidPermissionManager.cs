@@ -45,7 +45,7 @@ namespace ZL.Unity.Android
                 return;
             }
 
-            PermissionCallbacks permissionCallbacks = new();
+            var permissionCallbacks = new PermissionCallbacks();
 
             permissionCallbacks.PermissionGranted += OnPermissionGranted;
 

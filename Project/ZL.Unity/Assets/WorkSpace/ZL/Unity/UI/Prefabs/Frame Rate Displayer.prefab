@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1334333472231655161}
   - component: {fileID: 1334333472231655162}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Frame Rate Displayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b40fd411deb04bb888d24d3204ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textController: {fileID: 0}
+  textController: {fileID: 3019094260814314884}
   format: '{0:0.0} ms ({1:0} fps)'
   displayFrameRatePref:
     key: Display Frame Rate

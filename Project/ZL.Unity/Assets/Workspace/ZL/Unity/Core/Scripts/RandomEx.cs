@@ -10,7 +10,7 @@ namespace ZL.Unity
     {
         public static Vector3 Range(in Vector3 minInclusive, in Vector3 maxInclusive)
         {
-            return new()
+            return new Vector3()
             {
                 x = Random.Range(minInclusive.x, maxInclusive.x),
 
@@ -22,7 +22,7 @@ namespace ZL.Unity
 
         public static Vector3 Angles()
         {
-            return new()
+            return new Vector3()
             {
                 x = Random.Range(0f, 360f),
 

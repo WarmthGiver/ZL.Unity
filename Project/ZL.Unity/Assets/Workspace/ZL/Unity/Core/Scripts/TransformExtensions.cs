@@ -94,7 +94,7 @@ namespace ZL.Unity
 
             where TComponent : Component
         {
-            components = new();
+            components = new List<TComponent>();
 
             if (instance.TryGetComponent(out TComponent component) == true)
             {
@@ -110,7 +110,7 @@ namespace ZL.Unity
 
             where TComponent : Component
         {
-            components = new();
+            components = new List<TComponent>();
 
             GetComponentsInChildrenOnly(instance, ref components);
 
@@ -204,7 +204,7 @@ namespace ZL.Unity
 
             where TComponent : Component
         {
-            components = new();
+            components = new List<TComponent>();
 
             if (instance.TryGetComponent<TComponent>(out var component) == true)
             {
@@ -220,7 +220,7 @@ namespace ZL.Unity
 
             where TComponent : Component
         {
-            components = new();
+            components = new List<TComponent>();
 
             GetComponentsInParentOnly(instance, ref components);
 

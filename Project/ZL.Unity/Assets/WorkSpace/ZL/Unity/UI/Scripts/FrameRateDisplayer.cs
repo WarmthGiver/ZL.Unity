@@ -32,11 +32,13 @@ namespace ZL.Unity.UI
 
         [PropertyField]
 
+        [AddIndent(3)]
+
         [Button(nameof(Load))]
 
         [Button(nameof(Save))]
 
-        private BoolPref displayFrameRatePref = new("Display Frame Rate", true);
+        private BoolPref displayFrameRatePref = new BoolPref("Display Frame Rate", true);
 
         private float time = 0f;
 
