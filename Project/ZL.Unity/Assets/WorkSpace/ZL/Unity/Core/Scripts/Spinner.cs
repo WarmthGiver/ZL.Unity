@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.Motions
+namespace ZL.Unity
 {
-    [AddComponentMenu("ZL/Motions/Spinner")]
+    [AddComponentMenu("ZL/Spinner")]
 
     public sealed class Spinner : TransformMotion
     {

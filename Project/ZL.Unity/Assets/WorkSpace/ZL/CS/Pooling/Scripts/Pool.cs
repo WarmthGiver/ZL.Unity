@@ -8,16 +8,16 @@ namespace ZL.CS.Pooling
 
         where TClass : class
     {
-        private readonly LinkedList<TClass> stock = new LinkedList<TClass>();
+        protected readonly LinkedList<TClass> stock = new LinkedList<TClass>();
 
         public virtual TClass Generate()
         {
-            if (stock.Count == 0)
+            if (stock.Count != 0)
             {
-                return Replicate();
+                return stock.PopLast();
             }
 
-            return stock.PopLast();
+            return Replicate();
         }
 
         public abstract TClass Replicate();
@@ -25,11 +25,6 @@ namespace ZL.CS.Pooling
         public virtual void Collect(TClass replica)
         {
             stock.AddLast(replica);
-        }
-
-        public void Release(TClass replica)
-        {
-            stock.Remove(replica);
         }
     }
 }

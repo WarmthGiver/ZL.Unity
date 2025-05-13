@@ -39,11 +39,6 @@ namespace ZL.Unity.Directing
 
         protected float fadeDuration = 0f;
 
-        private void Reset()
-        {
-            this.DisallowMultiple();
-        }
-
         protected virtual IEnumerator Start()
         {
             yield return WaitForSecondsCache.Get(startDelay);

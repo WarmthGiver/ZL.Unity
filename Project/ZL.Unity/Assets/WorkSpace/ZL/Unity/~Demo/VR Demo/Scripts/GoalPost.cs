@@ -10,8 +10,6 @@ namespace ZL.Unity.Demo.VRDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     public sealed class GoalPost : MonoBehaviour
     {
         [Space]

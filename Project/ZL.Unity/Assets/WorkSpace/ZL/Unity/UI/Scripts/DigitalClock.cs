@@ -8,8 +8,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Digital Clock")]
 
-    [DisallowMultipleComponent]
-
     public sealed class DigitalClock : MonoBehaviour
     {
         [Space]
@@ -169,11 +167,11 @@ namespace ZL.Unity.UI
                 {
                     isBlinked = false;
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return WaitForSecondsCache.Get(0.5f);
 
                     isBlinked = true;
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return WaitForSecondsCache.Get(0.5f);
                 }
             }
         }

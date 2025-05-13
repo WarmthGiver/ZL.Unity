@@ -1,12 +1,8 @@
 using UnityEngine;
 
-using ZL.Unity.Motions;
-
 namespace ZL.Unity.OIIAOIIA
 {
     [AddComponentMenu("ZL/OIIA OIIA")]
-
-    [DisallowMultipleComponent]
 
     public sealed class OIIAOIIA : MonoBehaviour
     {

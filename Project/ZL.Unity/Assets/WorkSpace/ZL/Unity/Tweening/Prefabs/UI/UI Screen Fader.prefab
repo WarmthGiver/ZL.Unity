@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueTweener:
-    duration: 1
+    duration: 0
     delay: 0
     ease: 0
     isIndependentUpdate: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweener: {fileID: 5449394640197298269}
-  isFadedIn: 0
+  isFadedIn: 1
   onFadeInEvent:
     m_PersistentCalls:
       m_Calls: []

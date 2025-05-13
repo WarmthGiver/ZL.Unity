@@ -30,8 +30,6 @@ namespace ZL.Unity.Server.Photon
 
     [DefaultExecutionOrder(-1)]
 
-    [DisallowMultipleComponent]
-
     public sealed class PhotonServerManager : MonoBehaviourPunCallbacks, ISingleton<PhotonServerManager>
     {
         public PhotonServerManager Instance => ISingleton<PhotonServerManager>.Instance;

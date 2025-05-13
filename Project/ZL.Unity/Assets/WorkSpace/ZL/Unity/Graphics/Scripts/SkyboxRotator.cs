@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL.Unity.GFX
 {
-    [AddComponentMenu("ZL/Skybox Rotator")]
-
-    [DisallowMultipleComponent]
+    [AddComponentMenu("ZL/GFX/Skybox Rotator")]
 
     public sealed class SkyboxRotator : MonoBehaviour
     {

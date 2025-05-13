@@ -6,8 +6,6 @@ namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/On Trigger Enter 2D Event Trigger")]
 
-    [DisallowMultipleComponent]
-
     public sealed class OnTriggerEnter2DEventTrigger : MonoBehaviour
     {
         [Space]

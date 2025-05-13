@@ -6,8 +6,6 @@ namespace ZL.Unity.Tweening
 {
     [AddComponentMenu("ZL/Tweening/Light Color Tweener")]
 
-    [RequireComponent(typeof(Light))]
-
     public sealed class LightColorTweener : ObjectValueTweener<ColorTweener, Color, Color, ColorOptions>
     {
         [Space]
@@ -17,6 +15,8 @@ namespace ZL.Unity.Tweening
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

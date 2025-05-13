@@ -6,8 +6,6 @@ namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/On Check Stay Event Trigger")]
 
-    [DisallowMultipleComponent]
-
     public sealed class OnCheckStayEventTrigger : MonoBehaviour
     {
         [Space]

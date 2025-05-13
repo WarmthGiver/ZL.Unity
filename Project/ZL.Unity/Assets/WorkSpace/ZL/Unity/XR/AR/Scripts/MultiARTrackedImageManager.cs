@@ -1,3 +1,5 @@
+// Working
+
 using UnityEngine;
 
 using UnityEngine.XR.ARFoundation;
@@ -10,10 +12,6 @@ namespace ZL.Unity.XR.AR
 {
     [AddComponentMenu("ZL/XR/AR/Multi AR Tracked Image Manager")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(ARTrackedImageManager))]
-
     public sealed class MultiARTrackedImageManager : MonoBehaviour
     {
         [Space]
@@ -23,6 +21,8 @@ namespace ZL.Unity.XR.AR
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

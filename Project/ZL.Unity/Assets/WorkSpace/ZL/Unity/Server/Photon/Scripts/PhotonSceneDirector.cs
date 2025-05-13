@@ -13,8 +13,6 @@ namespace ZL.Unity.Server.Photon
 
     }
 
-    [RequireComponent(typeof(PhotonView))]
-
     public abstract class PhotonSceneDirector<TPhotonSceneDirector> : SceneDirector<TPhotonSceneDirector>
 
         where TPhotonSceneDirector : PhotonSceneDirector<TPhotonSceneDirector>

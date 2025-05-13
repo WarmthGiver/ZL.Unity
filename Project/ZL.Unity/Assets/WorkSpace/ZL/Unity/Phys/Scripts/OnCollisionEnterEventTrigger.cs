@@ -6,8 +6,6 @@ namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/On Collision Enter Event Trigger")]
 
-    [DisallowMultipleComponent]
-
     public sealed class OnCollisionEnterEventTrigger : MonoBehaviour
     {
         [Space]

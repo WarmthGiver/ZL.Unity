@@ -4,6 +4,8 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
+using ZL.Unity.Audio;
+
 using ZL.Unity.Directing;
 
 namespace ZL.Unity.Demo.AudioDemo
@@ -12,25 +14,11 @@ namespace ZL.Unity.Demo.AudioDemo
 
     public sealed class AudioDemoSceneDirector : SceneDirector
 	{
-        [Space]
-
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [Alias("SFX Audio Source")]
-
-        private AudioSource sfxAudioSource;
-
-        [SerializeField]
-
-        private AudioClip clickSFX;
-
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) == true)
             {
-                sfxAudioSource.PlayOneShot(clickSFX);
+                AudioSourcePoolManager.Instance.Generate("Click");
             }
         }
     }

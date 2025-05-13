@@ -8,8 +8,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Joystick")]
 
-    [DisallowMultipleComponent]
-
     public sealed class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [SerializeField]

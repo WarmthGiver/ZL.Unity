@@ -2,9 +2,9 @@ using UnityEngine;
 
 using ZL.CS;
 
-namespace ZL.Unity.Motions
+namespace ZL.Unity
 {
-    [AddComponentMenu("ZL/Motions/Ping Pong")]
+    [AddComponentMenu("ZL/Ping Pong")]
 
     public sealed class PingPong : TransformMotion
     {
@@ -12,7 +12,7 @@ namespace ZL.Unity.Motions
 
         [SerializeField]
         
-        [Range(-1f, 1f)]
+        [Range(-2f, 2f)]
 
         private float theta = 0f;
 
@@ -20,7 +20,7 @@ namespace ZL.Unity.Motions
         
         [Range(0f, 1f)]
 
-        private float delay = 0f;
+        private float sin = 0.5f;
 
         private float time = 0f;
 
@@ -41,7 +41,7 @@ namespace ZL.Unity.Motions
 
             time += Time.deltaTime;
 
-            theta = Mathf.Sin(MathFEx.PI2 * (time + delta) * speed) + delay;
+            theta = Mathf.Sin(MathFEx.PI2 * (time + delta) * speed) + sin;
 
             moveDirection = direction * theta;
 

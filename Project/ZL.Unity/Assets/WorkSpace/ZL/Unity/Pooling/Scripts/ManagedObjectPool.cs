@@ -62,16 +62,6 @@ namespace ZL.Unity.Pooling
 
             replicas.Clear();
         }
-
-        public void ReleaseAll()
-        {
-            foreach (var replica in replicas.Values.ToArray())
-            {
-                replica.gameObject.Destroy();
-            }
-
-            replicas.Clear();
-        }
     }
 
     [Serializable]
@@ -103,16 +93,6 @@ namespace ZL.Unity.Pooling
             foreach (var replica in replicas.ToArray())
             {
                 replica.gameObject.SetActive(false);
-            }
-
-            replicas.Clear();
-        }
-
-        public void ReleaseAll()
-        {
-            foreach (var replica in replicas.ToArray())
-            {
-                replica.gameObject.Destroy();
             }
 
             replicas.Clear();

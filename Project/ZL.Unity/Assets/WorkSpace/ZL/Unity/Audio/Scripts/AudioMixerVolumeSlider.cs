@@ -6,8 +6,6 @@ namespace ZL.Unity.Audio
 {
     [AddComponentMenu("ZL/UI/Audio Mixer Volume Slider")]
 
-    [DisallowMultipleComponent]
-
     public sealed class AudioMixerVolumeSlider : MonoBehaviour
     {
         [Space]

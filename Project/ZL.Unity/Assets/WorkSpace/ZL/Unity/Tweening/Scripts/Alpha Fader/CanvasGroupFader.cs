@@ -4,8 +4,6 @@ namespace ZL.Unity.Tweening
 {
     [AddComponentMenu("ZL/Tweening/Canvas Group Fader")]
 
-    [RequireComponent(typeof(CanvasGroupAlphaTweener))]
-
     public class CanvasGroupFader : AlphaFader<CanvasGroupAlphaTweener>
     {
         [Space]

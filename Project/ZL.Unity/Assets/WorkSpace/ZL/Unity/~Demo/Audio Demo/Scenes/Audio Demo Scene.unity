@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 65093106}
   - component: {fileID: 65093105}
+  - component: {fileID: 65093107}
   m_Layer: 0
-  m_Name: SFX Audio Source
+  m_Name: SFX Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,6 +252,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &65093107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65093104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd936bf512ef9aa43bc805b5ad9811ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolDictionary:
+    elements: []
 --- !u!1 &307927658
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,13 +372,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a39a868ff3a94448f6eee7a46ac633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tweener:
-    duration: 3
+  valueTweener:
+    duration: 0
     delay: 0
     ease: 0
     isIndependentUpdate: 1
-    loop: 0
-    loopCount: -1
+    loopCount: 1
     loopType: 0
     onStartEvent:
       m_PersistentCalls:
@@ -1140,8 +1155,8 @@ GameObject:
   m_Component:
   - component: {fileID: 979160911}
   - component: {fileID: 979160914}
-  - component: {fileID: 979160913}
   - component: {fileID: 979160912}
+  - component: {fileID: 979160913}
   m_Layer: 5
   m_Name: Horizontal Layout Group
   m_TagString: Untagged
@@ -1165,10 +1180,10 @@ RectTransform:
   - {fileID: 1597214995}
   m_Father: {fileID: 657771612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -350}
-  m_SizeDelta: {x: 450, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979160912
 MonoBehaviour:
@@ -1518,11 +1533,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5229829980479532743, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FadeScene
+      value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 5229829980479532743, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ZL.Unity.SceneDirector`1[[ZL.Unity.SceneDirector, Assembly-CSharp
+      value: ZL.Unity.Directing.SceneDirector`1[[ZL.Unity.Directing.SceneDirector,
+        Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5229829980479532743, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -2070,10 +2086,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5bda80e306410499f1c415ddf28f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeScreen: {fileID: 1922634357}
-  startDelay: 3
-  sfxAudioSource: {fileID: 65093105}
-  clickSFX: {fileID: 8300000, guid: f76ab7085a839a445a23902d181f54e2, type: 3}
+  startDelay: 1
+  screenFader: {fileID: 1922634357}
+  fadeDuration: 2
 --- !u!1001 &1922634355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2168,7 +2183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774704113132190040, guid: 7de158f3754143347a245130bc18a234, type: 3}
       propertyPath: m_Name
-      value: Fade Screen
+      value: UI Screen Fader
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2188,7 +2203,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7de13888ac3b1b4eb71afaf13b8cf43, type: 3}
+  m_Script: {fileID: 11500000, guid: 2311bb4a9725eb8469a770cf54cfbb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1945337569 stripped
@@ -2477,8 +2492,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1760645372}
   - {fileID: 307927661}
+  - {fileID: 65093106}
   - {fileID: 954830667}
   - {fileID: 1600660075}
-  - {fileID: 65093106}
   - {fileID: 8262437943268641017}
   - {fileID: 1728831127}

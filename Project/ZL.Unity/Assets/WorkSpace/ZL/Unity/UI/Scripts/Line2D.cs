@@ -6,11 +6,7 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Line 2D")]
 
-    [DisallowMultipleComponent]
-
     [ExecuteInEditMode]
-
-    [RequireComponent(typeof(Image))]
 
     public sealed class Line2D : MonoBehaviour
     {
@@ -22,6 +18,8 @@ namespace ZL.Unity.UI
 
         [GetComponent]
 
+        [Essential]
+
         [ReadOnly(true)]
 
         private RectTransform rectTransform;
@@ -31,6 +29,8 @@ namespace ZL.Unity.UI
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

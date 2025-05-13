@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.25, g: 0.25, b: 0.25, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -208,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 569821139}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -290,11 +291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool:
-  - original: {fileID: 7500072968511307705, guid: c2fd4ea385732d245b3246c94e6d4480, type: 3}
+  - original: {fileID: 1302944049581753860, guid: c2fd4ea385732d245b3246c94e6d4480, type: 3}
     parent: {fileID: 586711454}
-  - original: {fileID: 3185977572350079029, guid: d7303b074fe63fb458ff89c4602a2b57, type: 3}
+  - original: {fileID: 976453248946588991, guid: d7303b074fe63fb458ff89c4602a2b57, type: 3}
     parent: {fileID: 890621665}
-  - original: {fileID: 1340924721486893460, guid: 37b85216342afa74a8aa42a017a09add, type: 3}
+  - original: {fileID: 4624716389379282761, guid: 37b85216342afa74a8aa42a017a09add, type: 3}
     parent: {fileID: 910967142}
   generateInterval: 0
 --- !u!1 &890621664
@@ -422,7 +423,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295

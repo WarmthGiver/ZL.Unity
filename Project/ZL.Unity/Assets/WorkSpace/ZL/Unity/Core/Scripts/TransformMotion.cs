@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Motions
+namespace ZL.Unity
 {
     public abstract class TransformMotion : MonoBehaviour
     {

@@ -6,8 +6,6 @@ using ZL.Unity.Collections;
 
 namespace ZL.Unity.Tweening
 {
-    [DisallowMultipleComponent]
-
     public abstract class KeyFrameTweener<TValueTweener, T1, T2, TPlugOptions, TObjectValueTweener> : MonoBehaviour
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
@@ -23,6 +21,8 @@ namespace ZL.Unity.Tweening
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

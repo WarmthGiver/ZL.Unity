@@ -1,9 +1,7 @@
 using UnityEngine;
 
-namespace ZL.Unity
+namespace ZL.Unity.GFX
 {
-    [DisallowMultipleComponent]
-
     public abstract class MaterialController : MonoBehaviour
     {
         public abstract Material[] Materials { get; }

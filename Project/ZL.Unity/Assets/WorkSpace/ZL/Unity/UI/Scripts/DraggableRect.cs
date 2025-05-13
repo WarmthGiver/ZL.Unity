@@ -6,8 +6,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Draggable Rect")]
 
-    [DisallowMultipleComponent]
-
     public sealed class DraggableRect : MonoBehaviour, IDragHandler
     {
         [SerializeField]

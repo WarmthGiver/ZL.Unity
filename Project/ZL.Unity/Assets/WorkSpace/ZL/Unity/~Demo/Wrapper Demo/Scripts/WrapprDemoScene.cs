@@ -10,8 +10,6 @@ namespace ZL.Unity.Demo.WrapprDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     public sealed class WrapprDemoScene : MonoBehaviour
     {
         [Space]

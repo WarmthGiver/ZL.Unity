@@ -8,10 +8,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Toggle Event Trigger")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(Toggle))]  
-
     public sealed class ToggleEventTrigger : MonoBehaviour
     {
         [Space]
@@ -21,6 +17,8 @@ namespace ZL.Unity.UI
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

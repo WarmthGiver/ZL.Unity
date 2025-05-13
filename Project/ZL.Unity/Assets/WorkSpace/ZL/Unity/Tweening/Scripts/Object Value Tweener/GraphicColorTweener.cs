@@ -18,7 +18,9 @@ namespace ZL.Unity.Tweening
 
         [GetComponent]
 
-        [ReadOnly(true)]
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
 
         private Graphic graphic;
 

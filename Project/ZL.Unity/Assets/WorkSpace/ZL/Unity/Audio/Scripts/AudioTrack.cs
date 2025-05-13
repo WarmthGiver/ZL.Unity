@@ -8,10 +8,6 @@ namespace ZL.Unity.Audio
 {
     [AddComponentMenu("ZL/Audio/Audio Track (Singleton)")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(AudioSource))]
-
     public sealed class AudioTrack : PrimaryMonoSingleton<AudioTrack>, IPrimaryMonoSingleton<AudioTrack>
     {
         [Space]
@@ -21,6 +17,8 @@ namespace ZL.Unity.Audio
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

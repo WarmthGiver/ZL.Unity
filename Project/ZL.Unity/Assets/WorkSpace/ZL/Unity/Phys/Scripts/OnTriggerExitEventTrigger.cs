@@ -6,8 +6,6 @@ namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/On Trigger Exit Event Trigger")]
 
-    [DisallowMultipleComponent]
-
     public sealed class OnTriggerExitEventTrigger : MonoBehaviour
     {
         [Space]

@@ -8,10 +8,6 @@ namespace ZL.Unity.EulerianTrail
 {
     [AddComponentMenu("ZL/Eulerian Trail/Eulerian Trail Node")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(Image))]
-
     public sealed class EulerianTrailNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
@@ -31,6 +27,8 @@ namespace ZL.Unity.EulerianTrail
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

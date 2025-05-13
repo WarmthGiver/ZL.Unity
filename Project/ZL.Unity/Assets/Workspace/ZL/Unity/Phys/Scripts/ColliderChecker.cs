@@ -6,8 +6,6 @@ using ZL.Unity.Coroutines;
 
 namespace ZL.Unity.Phys
 {
-    [DisallowMultipleComponent]
-
     public abstract class ColliderChecker : MonoBehaviour
     {
         [Space]

@@ -6,8 +6,6 @@ namespace ZL.Unity.EulerianTrail.StarterKit
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     public sealed class EulerianTrailManager : MonoBehaviour
     {
         [Space]

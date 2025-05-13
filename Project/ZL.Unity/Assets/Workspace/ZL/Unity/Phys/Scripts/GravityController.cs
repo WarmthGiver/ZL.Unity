@@ -4,10 +4,6 @@ namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/Gravity Controller")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(Rigidbody))]
-
     public sealed class GravityController : MonoBehaviour
     {
         [Space]
@@ -17,6 +13,8 @@ namespace ZL.Unity.Phys
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

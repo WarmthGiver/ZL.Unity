@@ -4,10 +4,6 @@ namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Trail Renderer Cleaner")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(TrailRenderer))]
-
     public sealed class TrailRendererCleaner : MonoBehaviour
     {
         [Space]
@@ -17,6 +13,8 @@ namespace ZL.Unity
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

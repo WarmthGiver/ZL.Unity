@@ -6,14 +6,6 @@ namespace ZL.Unity.Phys
 {
     [AddComponentMenu("ZL/Phys/Rigidbody Character Controller")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(CapsuleCollider))]
-
-    [RequireComponent(typeof(Rigidbody))]
-
-    [RequireComponent(typeof(GravityController))]
-
     public class RigidbodyCharacterController : MonoBehaviour
     {
         [Space]
@@ -23,6 +15,8 @@ namespace ZL.Unity.Phys
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 
@@ -42,6 +36,8 @@ namespace ZL.Unity.Phys
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

@@ -6,8 +6,6 @@ namespace ZL.Unity.Demo
 {
     [AddComponentMenu("ZL/Demo/Logger")]
 
-    [DisallowMultipleComponent]
-
     public sealed class Logger : MonoBehaviour
     {
         [Space]

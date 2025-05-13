@@ -15,11 +15,6 @@ namespace ZL.Unity.Singleton
             get => ISingleton<TPrimaryMonoSingleton>.Instance;
         }
 
-        private void Reset()
-        {
-            this.DisallowMultiple();
-        }
-
         protected virtual void Awake()
         {
             ISingleton<TPrimaryMonoSingleton>.TrySetInstance((TPrimaryMonoSingleton)this);

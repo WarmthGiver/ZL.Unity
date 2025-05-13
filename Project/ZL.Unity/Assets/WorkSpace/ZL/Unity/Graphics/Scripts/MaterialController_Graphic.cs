@@ -2,11 +2,11 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity
+namespace ZL.Unity.GFX
 {
-    [AddComponentMenu("ZL/Graphic Material Controller")]
+    [AddComponentMenu("ZL/GFX/Material Controller (Graphic)")]
 
-    public sealed class GraphicMaterialController : MaterialController
+    public sealed class MaterialController_Graphic : MaterialController
     {
         [Space]
 
@@ -16,7 +16,9 @@ namespace ZL.Unity
 
         [GetComponent]
 
-        [ReadOnly(true)]
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
 
         private Graphic graphic;
 

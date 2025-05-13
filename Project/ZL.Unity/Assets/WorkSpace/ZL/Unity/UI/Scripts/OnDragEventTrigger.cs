@@ -8,8 +8,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/On Drag Event Trigger")]
 
-    [DisallowMultipleComponent]
-
     public sealed class OnDragEventTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]

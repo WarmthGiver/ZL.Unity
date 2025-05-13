@@ -8,10 +8,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Grid Layout Group Cell Size Fitter")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(GridLayoutGroup))]
-
     public sealed class GridLayoutGroupCellSizeFitter : MonoBehaviour
     {
         [SerializeField]
@@ -19,6 +15,8 @@ namespace ZL.Unity.UI
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

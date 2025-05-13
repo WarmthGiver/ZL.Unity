@@ -8,8 +8,6 @@ using UnityEngine.Events;
 
 namespace ZL.Unity.Tweening
 {
-    [DisallowMultipleComponent]
-
     public abstract class AlphaFader<TTweener> : AlphaFader
 
         where TTweener : ObjectValueTweener<FloatTweener, float, float, FloatOptions>
@@ -21,6 +19,8 @@ namespace ZL.Unity.Tweening
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

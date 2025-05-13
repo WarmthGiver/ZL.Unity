@@ -14,8 +14,6 @@ namespace ZL.Unity.Demo.StringExtentionsDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     [ExecuteInEditMode]
 
     public sealed class StringExtentionsDemoScene : MonoBehaviour

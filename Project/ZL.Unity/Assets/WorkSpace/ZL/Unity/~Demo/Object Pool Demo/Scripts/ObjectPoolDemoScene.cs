@@ -14,15 +14,13 @@ namespace ZL.Unity.Demo.ObjectPoolingDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     public sealed class ObjectPoolDemoScene : MonoBehaviour
     {
         [Space]
 
         [SerializeField]
 
-        private ObjectPool<Rigidbody>[] pool;
+        private ObjectPool<Transform>[] pool;
 
         [Space]
 
@@ -34,15 +32,11 @@ namespace ZL.Unity.Demo.ObjectPoolingDemo
         {
             while (true)
             {
+                var replica = pool[Random.Range(0, pool.Length)].Generate();
+
+                replica.SetActive(true);
+
                 yield return WaitForSecondsCache.Get(generateInterval);
-
-                var clone = pool[Random.Range(0, pool.Length)].Generate();
-
-                clone.transform.position = transform.position;
-
-                clone.velocity = Vector3.zero;
-
-                clone.SetActive(true);
             }
         }
     }

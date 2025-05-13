@@ -14,8 +14,6 @@ namespace ZL.Unity.Demo.CSVDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     public sealed class CSVDemoScene : MonoBehaviour
     {
         [Space]

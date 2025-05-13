@@ -6,10 +6,6 @@ namespace ZL.Unity.Demo
 {
     [AddComponentMenu("ZL/Demo/Rigidbody Debugger")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(Rigidbody))]
-
     public sealed class RigidbodyDebugger : MonoBehaviour
     {
         [Space]
@@ -21,6 +17,10 @@ namespace ZL.Unity.Demo
         [WarningBox("Warning! This component is for debugging purposes and is excluded from the build.")]
 
         [Margin]
+
+        [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 
@@ -78,16 +78,13 @@ namespace ZL.Unity.Demo
             }
         }
 
-        private void Reset()
-        {
-            if (rigidbody == null)
-            {
-                rigidbody = GetComponent<Rigidbody>();
-            }
-        }
-
         private void OnValidate()
         {
+            if (Application.isPlaying == true)
+            {
+                return;
+            }
+
             if (rigidbody.velocity != velocity)
             {
                 rigidbody.velocity = velocity;
@@ -103,14 +100,9 @@ namespace ZL.Unity.Demo
 
         private void Awake()
         {
-            if (rigidbody == null)
-            {
-                rigidbody = GetComponent<Rigidbody>();
+            velocity = rigidbody.velocity;
 
-                velocity = rigidbody.velocity;
-
-                angularVelocity = rigidbody.angularVelocity;
-            }
+            angularVelocity = rigidbody.angularVelocity;
         }
 
         private void FixedUpdate()

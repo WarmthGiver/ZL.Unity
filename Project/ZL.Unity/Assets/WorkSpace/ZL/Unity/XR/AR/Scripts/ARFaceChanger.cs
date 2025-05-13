@@ -1,3 +1,5 @@
+// Working
+
 using UnityEngine;
 
 using UnityEngine.XR.ARFoundation;
@@ -5,10 +7,6 @@ using UnityEngine.XR.ARFoundation;
 namespace ZL.Unity.XR.AR
 {
     [AddComponentMenu("ZL/XR/AR/AR Face Changer")]
-
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(ARFaceManager))]
 
     public sealed class ARFaceChanger : MonoBehaviour
     {
@@ -19,6 +17,8 @@ namespace ZL.Unity.XR.AR
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

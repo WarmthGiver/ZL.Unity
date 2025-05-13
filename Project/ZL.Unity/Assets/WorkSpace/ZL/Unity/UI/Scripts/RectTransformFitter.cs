@@ -4,10 +4,6 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Rect Transform Fitter")]
 
-    [DisallowMultipleComponent]
-
-    [RequireComponent(typeof(RectTransform))]
-
     public sealed class RectTransformFitter : MonoBehaviour
     {
         [Space]
@@ -17,6 +13,8 @@ namespace ZL.Unity.UI
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

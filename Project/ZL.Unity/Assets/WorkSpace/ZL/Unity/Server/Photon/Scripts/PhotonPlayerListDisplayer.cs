@@ -31,11 +31,6 @@ namespace ZL.Unity.Server.Photon
 
         protected ManagedObjectPool<int, TPlayerListItem> playerListItemPool;
 
-        private void Reset()
-        {
-            this.DisallowMultiple();
-        }
-
         public void Refresh()
         {
             playerListItemPool.CollectAll();

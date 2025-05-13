@@ -12,8 +12,6 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
 {
     [AddComponentMenu("")]
 
-    [DisallowMultipleComponent]
-
     public sealed class SerializableDictionaryDemoScene : MonoBehaviour
     {
         [Space]

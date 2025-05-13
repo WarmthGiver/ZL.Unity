@@ -2,6 +2,8 @@ using System;
 
 using UnityEngine;
 
+using ZL.CS.Collections;
+
 using ZL.CS.Pooling;
 
 namespace ZL.Unity.Pooling
@@ -25,24 +27,24 @@ namespace ZL.Unity.Pooling
 
         private Transform parent;
 
-        public Transform Parent
+        public TComponent Generate(Transform parent)
         {
-            get => parent;
-
-            set => parent = value;
-        }
-
-        public void PreGenerate(int count)
-        {
-            while (count-- > 0)
+            if (stock.Count != 0)
             {
-                Replicate().SetActive(false);
+                return stock.PopLast();
             }
+
+            return Replicate(parent);
         }
 
         public override TComponent Replicate()
         {
-            return PooledObject.Replicate(this);
+            return Replicate(parent);
+        }
+
+        public TComponent Replicate(Transform parent)
+        {
+            return PooledObject.Replicate(this, parent);
         }
     }
 }

@@ -6,8 +6,6 @@ namespace ZL.Unity.Tweening
 {
     [AddComponentMenu("ZL/Tweening/Light Intensity Tweener")]
 
-    [RequireComponent(typeof(Light))]
-
     public sealed class LightIntensityTweener : ObjectValueTweener<FloatTweener, float, float, FloatOptions>
     {
         [Space]
@@ -17,6 +15,8 @@ namespace ZL.Unity.Tweening
         [UsingCustomProperty]
 
         [GetComponent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

@@ -6,8 +6,6 @@ namespace ZL.Unity
 {
     [AddComponentMenu("ZL/On Start Event Trigger")]
 
-    [DisallowMultipleComponent]
-
     public sealed class OnStartEventTrigger : MonoBehaviour
     {
         [Space]
@@ -15,6 +13,11 @@ namespace ZL.Unity
         [SerializeField]
 
         private UnityEvent onStartEvent;
+
+        public UnityEvent OnStartEvent
+        {
+            get => onStartEvent;
+        }
 
         private void Start()
         {

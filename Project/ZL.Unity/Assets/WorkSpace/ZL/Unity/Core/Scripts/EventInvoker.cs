@@ -6,8 +6,6 @@ namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Event Invoker")]
 
-    [DisallowMultipleComponent]
-
     public sealed class EventInvoker : MonoBehaviour
     {
         [Space]

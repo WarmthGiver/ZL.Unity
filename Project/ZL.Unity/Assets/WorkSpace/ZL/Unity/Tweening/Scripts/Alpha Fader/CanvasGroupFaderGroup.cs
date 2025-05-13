@@ -4,8 +4,6 @@ namespace ZL.Unity.Tweening
 {
     [AddComponentMenu("ZL/Tweening/Canvas Group Fader Group")]
 
-    [DisallowMultipleComponent]
-
     public sealed class CanvasGroupFaderGroup : MonoBehaviour
     {
         [Space]

@@ -4,8 +4,6 @@ using ZL.CS.Singleton;
 
 namespace ZL.Unity.Singleton
 {
-    [DisallowMultipleComponent]
-
     public abstract class MonoSingleton<TMonoSingleton> : MonoBehaviour, ISingleton<TMonoSingleton>
 
         where TMonoSingleton : MonoSingleton<TMonoSingleton>

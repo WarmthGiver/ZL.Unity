@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4739206575850308668}
   - component: {fileID: 8145400139566314067}
   - component: {fileID: 4157601173515470355}
+  - component: {fileID: -5143055979923714419}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Audio Source (Pooled)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,3 +158,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-5143055979923714419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550737977028138482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8db60971b477a4498a4df5c4fbf9624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
