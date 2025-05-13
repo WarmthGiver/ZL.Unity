@@ -16,6 +16,12 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
+        [UsingCustomProperty]
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
+
         private TextController textController = null;
 
         [Space]

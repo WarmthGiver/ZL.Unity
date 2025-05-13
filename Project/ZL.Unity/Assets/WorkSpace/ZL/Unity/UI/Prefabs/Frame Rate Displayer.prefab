@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557b40fd411deb04bb888d24d3204ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textController: {fileID: 3019094260814314884}
+  textController: {fileID: 7950001776750188655}
   format: '{0:0.0} ms ({1:0} fps)'
   displayFrameRatePref:
     key: Display Frame Rate
@@ -188,9 +188,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3019094260814314884}
-    - targetCorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7950001776750188655}
     - targetCorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       insertIndex: -1
@@ -206,18 +203,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7447252281050014694, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
   m_PrefabInstance: {fileID: 2830499702674114299}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3019094260814314884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4620130292123395357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff312f4a5642ff1479be928fbb64db53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7950001776750188655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e775f921b14d74f9057d7b0c0cceb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8823329113414484986}
+  text: {fileID: 8823329113414484986}
 --- !u!114 &1831070413000069119
 MonoBehaviour:
   m_ObjectHideFlags: 0
