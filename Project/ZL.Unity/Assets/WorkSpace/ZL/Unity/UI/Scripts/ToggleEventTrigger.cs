@@ -38,10 +38,10 @@ namespace ZL.Unity.UI
 
         private void Awake()
         {
-            toggle.onValueChanged.AddListener(OnToggleSwitched);
+            toggle.onValueChanged.AddListener(OnToggleChanged);
         }
 
-        private void OnToggleSwitched(bool value)
+        private void OnToggleChanged(bool value)
         {
             if (value == true)
             {

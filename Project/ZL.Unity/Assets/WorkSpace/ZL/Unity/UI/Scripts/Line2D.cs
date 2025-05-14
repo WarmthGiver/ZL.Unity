@@ -78,7 +78,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private float thickness = 1f;
+        private float thickness = 0f;
 
         public float Thickness
         {

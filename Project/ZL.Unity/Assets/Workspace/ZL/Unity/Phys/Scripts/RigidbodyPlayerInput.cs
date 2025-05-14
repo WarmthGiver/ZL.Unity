@@ -1,5 +1,7 @@
 // Working
 
+#pragma warning disable
+
 using UnityEngine;
 
 using UnityEngine.InputSystem;
