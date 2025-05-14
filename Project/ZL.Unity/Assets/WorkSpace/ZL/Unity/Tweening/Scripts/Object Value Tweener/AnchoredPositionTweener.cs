@@ -20,7 +20,7 @@ namespace ZL.Unity.Tweening
 
         [ReadOnly(true)]
 
-        private RectTransform rectTransform;
+        private RectTransform rectTransform = null;
 
         public override Vector2 Value
         {

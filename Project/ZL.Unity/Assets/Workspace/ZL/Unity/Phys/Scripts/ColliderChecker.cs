@@ -1,8 +1,6 @@
-using System.Collections;
-
 using UnityEngine;
 
-using ZL.Unity.Coroutines;
+using UnityEngine.Events;
 
 namespace ZL.Unity.Phys
 {
@@ -29,13 +27,34 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private bool startCheckingOnEnable = true;
+        private UnityEvent onEnterEvent;
 
-        #if !UNITY_EDITOR
+        public UnityEvent OnEnterEvent
+        {
+            get => onEnterEvent;
+        }
 
-        public bool IsChecked { get; private set; } = false;
+        [Space]
 
-        #elif UNITY_EDITOR
+        [SerializeField]
+
+        private UnityEvent onStayEvent;
+
+        public UnityEvent OnStayEvent
+        {
+            get => onStayEvent;
+        }
+
+        [Space]
+
+        [SerializeField]
+
+        private UnityEvent onExitEvent;
+
+        public UnityEvent OnExitEvent
+        {
+            get => onExitEvent;
+        }
 
         [Space]
 
@@ -53,12 +72,7 @@ namespace ZL.Unity.Phys
 
         private bool isChecked = false;
 
-        public bool IsChecked
-        {
-            get => isChecked;
-
-            private set => isChecked = value;
-        }
+        #if UNITY_EDITOR
 
         [Space]
 
@@ -109,7 +123,7 @@ namespace ZL.Unity.Phys
                 return;
             }
 
-            if (IsChecked == true)
+            if (isChecked == true)
             {
                 Gizmos.color = collidedGizmoColor;
             }
@@ -124,59 +138,37 @@ namespace ZL.Unity.Phys
             DrawGizmos();
         }
 
-        private void OnEnable()
-        {
-            if (startCheckingOnEnable == true)
-            {
-                StartChecking();
-            }
-        }
-
         private void OnDisable()
         {
-            IsChecked = false;
+            isChecked = false;
         }
 
         protected abstract void DrawGizmos();
 
-        #endif
+#endif
 
-        public void StartChecking()
+        private void FixedUpdate()
         {
-            if (checkingRoutine != null)
+            if (Check() == true)
             {
-                return;
+                if (isChecked == false)
+                {
+                    isChecked = true;
+
+                    onEnterEvent.Invoke();
+                }
+
+                onStayEvent.Invoke();
             }
 
-            checkingRoutine = CheckingRoutine();
-
-            StartCoroutine(checkingRoutine);
-        }
-
-        public void StopChecking()
-        {
-            if (checkingRoutine == null)
+            else if (isChecked == true)
             {
-                return;
-            }
+                isChecked = false;
 
-            StopCoroutine(checkingRoutine);
-
-            checkingRoutine = null;
-        }
-
-        private IEnumerator checkingRoutine = null;
-
-        private IEnumerator CheckingRoutine()
-        {
-            while (true)
-            {
-                IsChecked = Check();
-
-                yield return WaitForFixedUpdateCache.Get();
+                onExitEvent.Invoke();
             }
         }
 
-        public abstract bool Check();
+        protected abstract bool Check();
     }
 }

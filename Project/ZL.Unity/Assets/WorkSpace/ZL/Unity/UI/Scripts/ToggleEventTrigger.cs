@@ -22,19 +22,19 @@ namespace ZL.Unity.UI
 
         [ReadOnly(true)]
 
-        private Toggle toggle;
+        private Toggle toggle = null;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent OnToggleOnEvent;
+        private UnityEvent OnToggleOnEvent = null;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent OnToggleOffEvent;
+        private UnityEvent OnToggleOffEvent = null;
 
         private void Awake()
         {

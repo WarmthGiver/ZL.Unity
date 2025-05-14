@@ -25,7 +25,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private UnityEvent onTimeEvent;
+        private UnityEvent onTimeEvent = null;
 
         public UnityEvent OnTimeEvent
         {

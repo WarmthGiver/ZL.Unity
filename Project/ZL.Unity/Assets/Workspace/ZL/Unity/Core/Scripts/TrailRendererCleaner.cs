@@ -18,7 +18,7 @@ namespace ZL.Unity
 
         [ReadOnly(true)]
 
-        private TrailRenderer trailRenderer;
+        private TrailRenderer trailRenderer = null;
 
         private void OnDisable()
         {

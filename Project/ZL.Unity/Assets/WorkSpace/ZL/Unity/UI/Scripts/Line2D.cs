@@ -22,7 +22,7 @@ namespace ZL.Unity.UI
 
         [ReadOnly(true)]
 
-        private RectTransform rectTransform;
+        private RectTransform rectTransform = null;
 
         [SerializeField]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.UI
 
         [ReadOnly(true)]
 
-        private Image image;
+        private Image image = null;
 
         [Space]
 

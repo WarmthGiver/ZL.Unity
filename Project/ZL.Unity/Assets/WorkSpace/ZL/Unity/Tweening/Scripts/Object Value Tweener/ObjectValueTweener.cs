@@ -8,8 +8,6 @@ using UnityEngine;
 
 namespace ZL.Unity.Tweening
 {
-    [DefaultExecutionOrder(-1)]
-
     public abstract class ObjectValueTweener<TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
@@ -20,7 +18,7 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        protected TValueTweener valueTweener;
+        protected TValueTweener valueTweener = null;
 
         public TValueTweener ValueTweener
         {

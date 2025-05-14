@@ -22,13 +22,13 @@ namespace ZL.Unity.Phys
 
         [ReadOnly(true)]
 
-        private RigidbodyCharacterController rigidbodyCharacterController;
+        private RigidbodyCharacterController rigidbodyCharacterController = null;
 
         [Space]
 
         [SerializeField]
 
-        private Transform virtualCameraFollower;
+        private Transform virtualCameraFollower = null;
 
         [Space]
 

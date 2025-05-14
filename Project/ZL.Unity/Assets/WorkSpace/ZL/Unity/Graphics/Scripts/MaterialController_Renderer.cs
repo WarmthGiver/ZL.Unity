@@ -20,7 +20,7 @@ namespace ZL.Unity.GFX
 
         #pragma warning disable CS0108
 
-        private Renderer renderer;
+        private Renderer renderer = null;
 
         #pragma warning restore CS0108
 

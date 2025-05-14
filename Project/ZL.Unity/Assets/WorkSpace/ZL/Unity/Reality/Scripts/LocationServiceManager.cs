@@ -10,39 +10,37 @@ namespace ZL.Unity.Reality
 {
     [AddComponentMenu("ZL/Reality/Location Service Manager (Singleton)")]
 
-    [DefaultExecutionOrder(-1)]
-
     public sealed class LocationServiceManager : MonoSingleton<LocationServiceManager>
     {
         [Space]
 
         [SerializeField]
 
-        private float maxInitializationTime;
+        private float maxInitializationTime = 60f;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent onLocationServiceStartedEvent;
+        private UnityEvent onLocationServiceStartedEvent = null;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent onLocationServiceInitializedEvent;
+        private UnityEvent onLocationServiceInitializedEvent = null;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent<LocationServiceException> onLocationServiceFailedEvent;
+        private UnityEvent<LocationServiceException> onLocationServiceFailedEvent = null;
 
         [Space]
 
         [SerializeField]
 
-        private UnityEvent onLocationServiceStopedEvent;
+        private UnityEvent onLocationServiceStopedEvent = null;
 
         protected override void Awake()
         {

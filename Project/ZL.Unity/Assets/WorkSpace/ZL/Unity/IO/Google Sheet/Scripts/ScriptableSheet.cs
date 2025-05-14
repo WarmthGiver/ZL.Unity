@@ -12,7 +12,7 @@ namespace ZL.Unity.IO.GoogleSheet
 
         [SerializeField]
 
-        private SheetConfig sheetConfig;
+        private SheetConfig sheetConfig = null;
 
         [Space]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.IO.GoogleSheet
 
         [SerializeField]
 
-        private ScriptableSheetData[] datas;
+        private ScriptableSheetData[] datas = null;
 
         public void Read()
         {

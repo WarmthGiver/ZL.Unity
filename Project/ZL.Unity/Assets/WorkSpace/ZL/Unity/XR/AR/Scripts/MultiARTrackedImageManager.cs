@@ -28,13 +28,13 @@ namespace ZL.Unity.XR.AR
 
         [Alias("AR Tracked Image Manager")]
 
-        private ARTrackedImageManager arTrackedImageManager;
+        private ARTrackedImageManager arTrackedImageManager = null;
 
         [Space]
 
         [SerializeField]
 
-        private SerializableDictionary<string, ObjectPool<Transform>> prefabPools;
+        private SerializableDictionary<string, ObjectPool<Transform>> prefabPools = null;
 
         private void Awake()
         {

@@ -22,11 +22,11 @@ namespace ZL.Unity.Demo.StringExtentionsDemo
 
         [SerializeField]
 
-        private TextMeshProUGUI text;
+        private TextMeshProUGUI text = null;
 
         [SerializeField]
 
-        private TMP_InputField inputField;
+        private TMP_InputField inputField = null;
 
         private readonly StringBuilder stringBuilder = new StringBuilder();
 

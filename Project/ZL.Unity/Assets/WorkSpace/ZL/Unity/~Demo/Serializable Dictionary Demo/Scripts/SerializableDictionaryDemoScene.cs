@@ -18,7 +18,7 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
 
         [SerializeField]
 
-        private TextMeshProUGUI textUI;
+        private TextMeshProUGUI textUI = null;
 
         [Space]
 

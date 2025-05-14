@@ -10,7 +10,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [Space]
 
@@ -20,11 +20,11 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [ReadOnly(true)]
 
-        public string test1;
+        public string test1 = "";
 
         [Space]
 
-        public bool isReadOnly;
+        public bool isReadOnly = false;
 
         [Space]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [ReadOnlyIf("isReadOnly", true)]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -44,7 +44,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [ReadOnlyWhenEditMode]
 
-        public string test3;
+        public string test3 = "";
 
         [Space]
 
@@ -54,6 +54,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [ReadOnlyWhenPlayMode]
 
-        public string test4;
+        public string test4 = "";
     }
 }

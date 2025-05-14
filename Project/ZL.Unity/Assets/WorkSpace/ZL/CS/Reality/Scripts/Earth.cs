@@ -4,7 +4,7 @@ namespace ZL.CS.Reality
     {
         /// <summary>
         /// Earth's average radius (in meters)<br/>
-        /// 지구의 평균 반지름 (미터)
+        /// 지구의 평균 반지름 (미터)<br/>
         /// </summary>
         public const double AVGRadius = 6371008.8;
     }

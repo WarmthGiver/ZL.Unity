@@ -20,7 +20,7 @@ namespace ZL.Unity.GFX
 
         [ReadOnlyWhenPlayMode]
 
-        private Graphic graphic;
+        private Graphic graphic = null;
 
         [Space]
 

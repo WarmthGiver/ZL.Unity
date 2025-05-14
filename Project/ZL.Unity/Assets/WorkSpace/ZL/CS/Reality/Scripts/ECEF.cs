@@ -3,10 +3,10 @@ using System;
 namespace ZL.CS.Reality
 {
     /// <summary>
-    /// ECEF(지구 중심 지구 고정) 좌표계<br/>
+    /// ECEF(Earth-Centered Earth-Fixed) coordinate system;<br/>
+    /// A Cartesian spatial reference system that describes locations around the Earth as X, Y, and Z measurements from the center of mass.<br/>
+    /// ECEF(지구 중심 지구 고정) 좌표계;<br/>
     /// 지구 주변의 위치를 질량 중심으로부터의 X, Y, Z 측정값으로 설명하는 데카르트 공간 참조 체계입니다.<br/>
-    /// ECEF(Earth-Centered Earth-Fixed) coordinate system<br/>
-    /// A Cartesian spatial reference system that describes locations around the Earth as X, Y, and Z measurements from the center of mass.
     /// </summary>
     public struct ECEF
     {

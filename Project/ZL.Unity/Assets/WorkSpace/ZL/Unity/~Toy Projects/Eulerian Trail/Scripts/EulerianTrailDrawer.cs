@@ -28,33 +28,33 @@ namespace ZL.Unity.EulerianTrail
 
         [ReadOnly(true)]
 
-        private RectTransform rectTransform;
+        private RectTransform rectTransform = null;
 
         [Space]
 
         [SerializeField]
 
-        private ManagedObjectPool<Line2D> edgePool;
+        private ManagedObjectPool<Line2D> edgePool = null;
 
         [SerializeField]
 
-        private ManagedObjectPool<EulerianTrailNode> nodePool;
+        private ManagedObjectPool<EulerianTrailNode> nodePool = null;
 
         [SerializeField]
 
-        private ManagedObjectPool<Line2D> drawnEdgePool;
+        private ManagedObjectPool<Line2D> drawnEdgePool = null;
 
         private readonly Dictionary<Segment<int>, bool> edgeVisiteds = new Dictionary<Segment<int>, bool>(new Segment<int>.EqualityComparer());
 
-        private int visitedEdgeCount;
+        private int visitedEdgeCount = 0;
 
-        private static EulerianTrailNode lastVisitedNode;
+        private static EulerianTrailNode lastVisitedNode = null;
 
-        private static Line2D drawingEdge;
+        private static Line2D drawingEdge = null;
 
-        public EulerianTrailInfo Info { get; private set; }
+        public EulerianTrailInfo Info { get; private set; } = null;
 
-        private Action actionOnEnd;
+        private Action actionOnEnd = null;
 
         public void Initialize(EulerianTrailInfo info, Action actionOnEnd = null)
         {

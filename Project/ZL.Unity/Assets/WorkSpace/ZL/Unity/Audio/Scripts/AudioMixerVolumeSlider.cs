@@ -18,7 +18,7 @@ namespace ZL.Unity.Audio
 
         [Essential]
 
-        private Slider slider;
+        private Slider slider = null;
 
         [SerializeField]
         
@@ -26,7 +26,7 @@ namespace ZL.Unity.Audio
         
         [ReadOnlyWhenPlayMode]
 
-        private string key;
+        private string key = "";
 
         public void Refresh()
         {

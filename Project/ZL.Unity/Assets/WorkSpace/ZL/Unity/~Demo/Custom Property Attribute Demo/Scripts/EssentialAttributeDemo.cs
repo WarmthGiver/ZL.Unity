@@ -16,7 +16,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Essential]
 
-        public Transform test1;
+        public Transform test1 = null;
 
         [Space]
 
@@ -26,7 +26,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Essential]
 
-        public Transform test2;
+        public Transform test2 = null;
 
         [Space]
 
@@ -36,6 +36,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Essential]
 
-        public string test3;
+        public string test3 = null;
     }
 }

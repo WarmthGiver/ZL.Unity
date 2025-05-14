@@ -12,15 +12,15 @@ namespace ZL.Unity.EulerianTrail.StarterKit
 
         [SerializeField]
 
-        private EulerianTrailDrawer eulerianTrailDrawer;
+        private EulerianTrailDrawer eulerianTrailDrawer = null;
 
         [SerializeField]
 
         private int level = 0;
 
-        private EulerianTrailInfo[] eulerianTrailInfos;
+        private EulerianTrailInfo[] eulerianTrailInfos = null;
 
-        private int maxLevel;
+        private int maxLevel = 0;
 
         private void Awake()
         {

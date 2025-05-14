@@ -26,13 +26,13 @@ namespace ZL.Unity.Demo.CSVDemo
 
         [Button(nameof(SaveData))]
 
-        private string filePath = string.Empty;
+        private string filePath = "";
 
         [Space]
 
         [SerializeField]
 
-        private DemoData[] datas;
+        private DemoData[] datas = null;
 
         public void LoadData()
         {

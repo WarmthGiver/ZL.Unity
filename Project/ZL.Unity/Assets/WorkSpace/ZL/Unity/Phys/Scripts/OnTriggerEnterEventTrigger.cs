@@ -12,7 +12,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private UnityEvent<Collider> onTriggerEnterEvent;
+        private UnityEvent<Collider> onTriggerEnterEvent = null;
 
         private void OnTriggerEnter(Collider other)
         {

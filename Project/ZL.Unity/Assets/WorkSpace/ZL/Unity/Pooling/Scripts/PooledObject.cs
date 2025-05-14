@@ -10,15 +10,17 @@ namespace ZL.Unity.Pooling
     {
         private Action onDisableAction = null;
 
-        public static TComponent Replicate<TComponent>(ObjectPool<TComponent> pool, Transform parent)
+        public static TComponent Replicate<TComponent>(ObjectPool<TComponent> pool)
 
             where TComponent : Component
         {
-            var replica = Instantiate(pool.Original, parent);
+            var replica = Instantiate(pool.Original, pool.Parent);
+
+            replica.name = pool.Original.name;
 
             if (replica.TryGetComponent<PooledObject>(out var pooledObject) == false)
             {
-                FixedDebug.LogWarning($"Prefab '{replica.gameObject.name}' being pooled does not have a component of type 'Pooled Object'. We recommend adding it to the prefab to improve performance.");
+                FixedDebug.LogWarning($"Prefab '{pool.Original.name}' being pooled does not have a component of type 'Pooled Object'. We recommend adding it to the prefab to improve performance.");
 
                 pooledObject = replica.AddComponent<PooledObject>();
             }

@@ -12,7 +12,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private UnityEvent onAwakeEvent;
+        private UnityEvent onAwakeEvent = null;
 
         public UnityEvent OnAwakeEvent
         {

@@ -18,19 +18,19 @@ namespace ZL.Unity.Demo.CSVDemo
 
         [SerializeField]
 
-        private string nickname;
+        private string nickname = "";
 
         public string Nickname => nickname;
 
         [SerializeField]
 
-        private int level;
+        private int level = 0;
 
         public int Level => level;
 
         [SerializeField]
 
-        private float speed;
+        private float speed = 0;
 
         public float Speed => speed;
 
@@ -51,11 +51,6 @@ namespace ZL.Unity.Demo.CSVDemo
         public string Export()
         {
             return $"{nickname},{level},{speed}";
-        }
-
-        public string ToString()
-        {
-            return $"[{nickname}, {level}, {speed}]";
         }
     }
 }

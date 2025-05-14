@@ -20,7 +20,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Preview]
 
-        public Texture test1;
+        public Texture test1 = null;
 
         [Space]
 
@@ -30,7 +30,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Preview]
 
-        public Texture2D test2;
+        public Texture2D test2 = null;
 
         [Space]
 
@@ -40,7 +40,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Preview]
 
-        public Sprite test3;
+        public Sprite test3 = null;
 
         [Space]
 
@@ -50,7 +50,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Preview]
 
-        public GameObject test4;
+        public GameObject test4 = null;
 
         [Space]
 
@@ -60,6 +60,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Preview]
 
-        public Material test5;
+        public Material test5 = null;
     }
 }

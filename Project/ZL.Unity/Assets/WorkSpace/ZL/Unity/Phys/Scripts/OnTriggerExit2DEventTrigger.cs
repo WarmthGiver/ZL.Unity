@@ -12,7 +12,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private UnityEvent<Collider2D> onTriggerExit2DEvent;
+        private UnityEvent<Collider2D> onTriggerExit2DEvent = null;
 
         private void OnTriggerExit2D(Collider2D other)
         {

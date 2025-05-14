@@ -16,6 +16,8 @@ namespace ZL.Unity.UI
 
         [GetComponent]
 
+        [Essential]
+
         [ReadOnly(true)]
 
         [PropertyField]
@@ -24,7 +26,7 @@ namespace ZL.Unity.UI
 
         [Button(nameof(ForceRebuildLayout))]
 
-        private RectTransform rectTransform;
+        private RectTransform rectTransform = null;
 
         private void Start()
         {

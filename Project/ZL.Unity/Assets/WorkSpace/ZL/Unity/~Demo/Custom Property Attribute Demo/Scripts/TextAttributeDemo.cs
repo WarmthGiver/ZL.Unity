@@ -14,7 +14,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [Space]
 
@@ -24,7 +24,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("Hello World!")]
 
-        public string test1;
+        public string test1 = "";
 
         [Space]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("<color=#FF0000>Hello World!</color>")]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -44,7 +44,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [UsingCustomProperty]
 
-        public string test3;
+        public string test3 = "";
 
         [Space]
 
@@ -54,7 +54,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("<color=#0000FF>Hello World!</color>")]
 
-        public string test4;
+        public string test4 = "";
 
         [Space]
 
@@ -64,7 +64,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("Hello World!", TextAnchor.UpperLeft, Height = 36f)]
 
-        public string test5;
+        public string test5 = "";
 
         [Space]
 
@@ -74,7 +74,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("Hello World!", TextAnchor.MiddleCenter, Height = 36f)]
 
-        public string test6;
+        public string test6 = "";
 
         [Space]
 
@@ -84,7 +84,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("Hello World!", TextAnchor.LowerRight, Height = 36f)]
 
-        public string test7;
+        public string test7 = "";
 
         [Space]
 
@@ -94,7 +94,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("<b>Hello World!</b>")]
 
-        public string test8;
+        public string test8 = "";
 
         [Space]
 
@@ -104,7 +104,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("<i>Hello World!</i>")]
 
-        public string test9;
+        public string test9 = "";
 
         [Space]
 
@@ -114,7 +114,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("<b><i>Hello World!</i></b>")]
 
-        public string test10;
+        public string test10 = "";
 
         [Space]
 
@@ -124,7 +124,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("Hello World!", FontSize = 24)]
 
-        public string test11;
+        public string test11 = "";
 
         [Space]
 
@@ -134,7 +134,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("Hello World!", FontSize = 36)]
 
-        public string test12;
+        public string test12 = "";
 
         [Space]
 
@@ -144,6 +144,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("<color=#FF00FF><b><i>Hello World!</b></i></color>", TextAnchor.MiddleCenter, FontSize = 36, Height = 72f)]
 
-        public string test13;
+        public string test13 = "";
     }
 }

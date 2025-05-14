@@ -16,7 +16,7 @@ namespace ZL.Unity.Demo.VRDemo
 
         [SerializeField]
 
-        private TextMeshPro goalCountText;
+        private TextMeshPro goalCountText = null;
 
         private int goalCount = 0;
 

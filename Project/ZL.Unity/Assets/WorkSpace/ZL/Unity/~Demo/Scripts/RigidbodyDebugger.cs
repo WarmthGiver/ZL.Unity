@@ -26,7 +26,7 @@ namespace ZL.Unity.Demo
 
         #pragma warning disable CS0108
 
-        private Rigidbody rigidbody;
+        private Rigidbody rigidbody = null;
 
         #pragma warning restore CS0108
 

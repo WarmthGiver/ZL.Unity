@@ -20,7 +20,7 @@ namespace ZL.Unity.Demo.ObjectPoolingDemo
 
         [SerializeField]
 
-        private ObjectPool<Transform>[] pool;
+        private ObjectPool<Transform>[] pool = null;
 
         [Space]
 

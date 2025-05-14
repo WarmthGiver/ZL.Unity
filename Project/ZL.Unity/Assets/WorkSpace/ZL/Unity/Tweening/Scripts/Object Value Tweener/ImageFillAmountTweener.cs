@@ -22,7 +22,7 @@ namespace ZL.Unity.Tweening
 
         [ReadOnly(true)]
 
-        private Image image;
+        private Image image = null;
 
         public override float Value
         {

@@ -10,7 +10,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private UnityEvent onStopEvent;
+        private UnityEvent onStopEvent = null;
 
         public UnityEvent OnStopEvent
         {

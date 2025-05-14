@@ -32,7 +32,7 @@ namespace ZL.Unity.UI
 
         private TextController textController = null;
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
 
         private float sliderValue = 0f;
 

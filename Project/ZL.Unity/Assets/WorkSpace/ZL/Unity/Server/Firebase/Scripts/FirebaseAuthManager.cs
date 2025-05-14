@@ -1,3 +1,5 @@
+// Working
+
 using Firebase;
 
 using Firebase.Auth;
@@ -19,8 +21,6 @@ using ZL.Unity.Singleton;
 namespace ZL.Unity.Server.Firebase.Auth
 {
     [AddComponentMenu("ZL/Server/Firebase/Firebase Auth Manager (Singleton)")]
-
-    [DefaultExecutionOrder(-2)]
 
     public sealed class FirebaseAuthManager : MonoSingleton<FirebaseAuthManager>
     {

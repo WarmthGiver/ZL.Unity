@@ -12,7 +12,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private UnityEvent<Collider2D> onTriggerStay2DEvent;
+        private UnityEvent<Collider2D> onTriggerStay2DEvent = null;
 
         private void OnTriggerStay2D(Collider2D other)
         {

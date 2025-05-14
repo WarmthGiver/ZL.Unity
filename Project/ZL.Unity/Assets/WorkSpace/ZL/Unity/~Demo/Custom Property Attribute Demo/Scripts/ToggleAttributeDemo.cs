@@ -10,11 +10,11 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [Space]
 
-        public bool toggle;
+        public bool toggle = false;
 
         [Space]
 
@@ -24,7 +24,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("[Toggle(\"toggle\", true)]")]
 
-        public string test1;
+        public string test1 = "";
 
         [UsingCustomProperty]
 
@@ -32,7 +32,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("[Toggle(\"toggle\", false)]")]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -42,6 +42,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("[Toggle(\"Toggle\", false)]")]
 
-        public string test3;
+        public string test3 = "";
     }
 }

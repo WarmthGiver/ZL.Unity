@@ -20,7 +20,7 @@ namespace ZL.Unity.Tweening
 
         [ReadOnly(true)]
 
-        private AudioSource audioSource;
+        private AudioSource audioSource = null;
 
         public override float Value
         {

@@ -12,7 +12,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private UnityEvent<Collider> onTriggerStayEvent;
+        private UnityEvent<Collider> onTriggerStayEvent = null;
 
         private void OnTriggerStay(Collider other)
         {

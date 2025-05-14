@@ -24,13 +24,19 @@ namespace ZL.Unity.XR.AR
 
         [Alias("AR Face Manager")]
 
-        private ARFaceManager arFaceManager;
+        private ARFaceManager arFaceManager = null;
 
         [Space]
 
         [SerializeField]
 
-        private GameObject vertex;
+        [UsingCustomProperty]
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
+
+        private GameObject vertex = null;
 
         private void Awake()
         {

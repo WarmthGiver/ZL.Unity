@@ -43,7 +43,7 @@ namespace ZL.Unity.Tweening
             set => material = value;
         }
 
-        private Color color;
+        private Color color = Color.white;
 
         public override float Value
         {

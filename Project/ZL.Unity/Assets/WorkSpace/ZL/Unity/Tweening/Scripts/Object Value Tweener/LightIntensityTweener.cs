@@ -22,7 +22,7 @@ namespace ZL.Unity.Tweening
 
         #pragma warning disable CS0108
 
-        private Light light;
+        private Light light = null;
 
         #pragma warning restore CS0108
 

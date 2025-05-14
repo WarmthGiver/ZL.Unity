@@ -10,35 +10,59 @@ namespace ZL.Unity.OIIAOIIA
 
         [SerializeField]
 
-        private GameObject ethel;
+        [UsingCustomProperty]
 
-        [SerializeField]
+        [Essential]
 
-        private GameObject maxwell;
+        [ReadOnlyWhenPlayMode]
+
+        private GameObject ethel = null;
 
         [SerializeField]
 
         [UsingCustomProperty]
 
-        [AddIndent]
+        [Essential]
 
-        private AudioSource audioSource;
+        [ReadOnlyWhenPlayMode]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
-        [AddIndent]
-
-        private Spinner spinner;
+        private GameObject maxwell = null;
 
         [SerializeField]
 
         [UsingCustomProperty]
 
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
+
         [AddIndent]
 
-        private PingPong pingPong;
+        private AudioSource audioSource = null;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
+
+        [AddIndent]
+
+        private Spinner spinner = null;
+
+        [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
+
+        [AddIndent]
+
+        private PingPong pingPong = null;
 
         [Space]
 

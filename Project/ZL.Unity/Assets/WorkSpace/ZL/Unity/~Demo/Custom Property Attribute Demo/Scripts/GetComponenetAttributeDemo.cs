@@ -20,7 +20,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [GetComponent]
 
-        public Transform test1;
+        public Transform test1 = null;
 
         [Space]
 
@@ -30,7 +30,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [GetComponentInParent]
 
-        public Transform test2;
+        public Transform test2 = null;
 
         [Space]
 
@@ -40,7 +40,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [GetComponentInParentOnly]
 
-        public Transform test3;
+        public Transform test3 = null;
 
         [Space]
 
@@ -50,7 +50,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [GetComponentInChildren]
 
-        public Transform test4;
+        public Transform test4 = null;
 
         [Space]
 
@@ -60,7 +60,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [GetComponentInChildrenOnly]
 
-        public Transform test5;
+        public Transform test5 = null;
 
         [Space]
 
@@ -70,6 +70,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [GetComponent]
 
-        public string test6;
+        public string test6 = "";
     }
 }

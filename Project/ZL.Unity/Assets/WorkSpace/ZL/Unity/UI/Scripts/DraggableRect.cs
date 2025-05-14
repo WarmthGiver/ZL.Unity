@@ -8,21 +8,29 @@ namespace ZL.Unity.UI
 
     public sealed class DraggableRect : MonoBehaviour, IDragHandler
     {
+        [Space]
+
         [SerializeField]
 
         [UsingCustomProperty]
 
         [GetComponent]
 
-        [Toggle(true)]
+        [Essential]
+
+        [ReadOnly(true)]
 
         private RectTransform rectTransform;
+
+        [Space]
 
         [SerializeField]
 
         [UsingCustomProperty]
 
         [GetComponentInParent]
+
+        [Essential]
 
         [ReadOnly(true)]
 

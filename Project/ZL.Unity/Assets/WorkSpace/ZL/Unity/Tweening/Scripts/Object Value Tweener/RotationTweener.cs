@@ -14,7 +14,7 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        private RotateMode rotateMode;
+        private RotateMode rotateMode = RotateMode.Fast;
 
         public override Quaternion Value
         {

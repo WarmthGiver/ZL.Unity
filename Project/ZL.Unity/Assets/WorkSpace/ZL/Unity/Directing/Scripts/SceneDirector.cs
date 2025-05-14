@@ -12,12 +12,12 @@ namespace ZL.Unity.Directing
 {
     [AddComponentMenu("ZL/Directing/Scene Director (Singleton)")]
 
-    [DefaultExecutionOrder(-1)]
-
     public class SceneDirector : SceneDirector<SceneDirector>
     {
 
     }
+
+    [DefaultExecutionOrder((int)ScriptExecutionOrder.SceneDirector)]
 
     public abstract class SceneDirector<TSceneDirector> : MonoSingleton<TSceneDirector>
 
@@ -33,7 +33,7 @@ namespace ZL.Unity.Directing
 
         [SerializeField]
 
-        protected AlphaFader screenFader;
+        protected Fader screenFader = null;
 
         [SerializeField]
 

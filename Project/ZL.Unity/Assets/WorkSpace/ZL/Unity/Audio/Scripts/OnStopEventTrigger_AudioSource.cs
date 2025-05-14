@@ -18,11 +18,11 @@ namespace ZL.Unity.Audio
 
         [ReadOnly(true)]
 
-        private AudioSource target;
+        private AudioSource audioSource = null;
 
         protected override bool IsStoped
         {
-            get => !target.isPlaying;
+            get => !audioSource.isPlaying;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [Space]
 
@@ -20,7 +20,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [PropertyField]
 
-        public string test1;
+        public string test1 = "";
 
         [Space]
 
@@ -30,7 +30,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [LabelField]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -40,7 +40,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [LayerField]
 
-        public int test3;
+        public int test3 = 0;
 
         [Space]
 
@@ -50,7 +50,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [LayerField]
 
-        public string test4;
+        public string test4 = "";
 
         [Space]
 
@@ -70,7 +70,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [TagField]
 
-        public int test6;
+        public int test6 = 0;
 
         [Space]
 
@@ -80,6 +80,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [EmptyField]
 
-        public string test7;
+        public string test7 = "";
     }
 }

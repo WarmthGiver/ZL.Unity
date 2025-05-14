@@ -10,7 +10,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [UsingCustomProperty]
 
@@ -18,7 +18,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("[Margin]")]
 
-        public string test1;
+        public string test1 = "";
 
         [UsingCustomProperty]
 
@@ -26,7 +26,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("[Margin(30)]")]
 
-        public int test2;
+        public int test2 = 0;
 
         [UsingCustomProperty]
 
@@ -34,6 +34,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Text("[Margin(50)]")]
 
-        public string test3;
+        public string test3 = "";
     }
 }

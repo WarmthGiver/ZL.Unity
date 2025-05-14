@@ -10,11 +10,25 @@ namespace ZL.Unity.UI
 
     public sealed class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
+        [Space]
+
         [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
 
         private RectTransform container = null;
 
         [SerializeField]
+
+        [UsingCustomProperty]
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
 
         private RectTransform handle = null;
 

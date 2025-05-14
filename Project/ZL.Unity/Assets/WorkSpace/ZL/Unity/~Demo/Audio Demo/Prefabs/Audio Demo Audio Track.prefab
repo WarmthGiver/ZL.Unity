@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: playlist.value.Array.data[8]
       value: 
       objectReference: {fileID: 8300000, guid: 2858c080d81a2f8449a38c52d4206e0e, type: 3}
+    - target: {fileID: 1183779243766800996, guid: 67840085902bfd547b98c82b3331e95e, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1601949834979663467, guid: 0952a5ffeaec72d40b8f88f93353cdf6, type: 2}
     - target: {fileID: 1883791633323217857, guid: 67840085902bfd547b98c82b3331e95e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -142,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4420748478114087488, guid: 67840085902bfd547b98c82b3331e95e, type: 3}
       propertyPath: m_Name
-      value: Audio Demo Scene Audio Track
+      value: Audio Demo Audio Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

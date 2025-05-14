@@ -16,19 +16,19 @@ namespace ZL.Unity.Demo.WrapprDemo
 
         [SerializeField]
 
-        private TMP_Text text;
+        private TMP_Text text = null;
 
         [Space]
 
-        public string[][] array2D;
+        public string[][] array2D = null;
 
         [Space]
 
-        public Wrapper<string[]>[] wrappedArray2D;
+        public Wrapper<string[]>[] wrappedArray2D = null;
 
         [Space]
 
-        public Wrapper<Wrapper<string[]>[]>[] wrappedArrayD3;
+        public Wrapper<Wrapper<string[]>[]>[] wrappedArrayD3 = null;
 
         private void FixedUpdate()
         {

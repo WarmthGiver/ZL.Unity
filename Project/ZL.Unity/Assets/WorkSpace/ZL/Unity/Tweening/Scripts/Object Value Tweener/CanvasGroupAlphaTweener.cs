@@ -20,7 +20,7 @@ namespace ZL.Unity.Tweening
 
         [ReadOnly(true)]
 
-        private CanvasGroup canvasGroup;
+        private CanvasGroup canvasGroup = null;
 
         public override float Value
         {

@@ -20,7 +20,7 @@ namespace ZL.Unity.EulerianTrail
 
         [ReadOnly(true)]
 
-        private RectTransform rectTransform;
+        private RectTransform rectTransform = null;
 
         [SerializeField]
 
@@ -32,20 +32,9 @@ namespace ZL.Unity.EulerianTrail
 
         [ReadOnly(true)]
 
-        private Image image;
+        private Image image = null;
 
-        private EulerianTrailDrawer eulerianTrail;
-
-        [Space]
-
-        [SerializeField]
-
-        private int number;
-
-        public int Number
-        {
-            get => number;
-        }
+        public int Number { get; private set; } = 0;
 
         public Vector2 Point
         {
@@ -64,11 +53,13 @@ namespace ZL.Unity.EulerianTrail
             set => image.color = value;
         }
 
+        private EulerianTrailDrawer eulerianTrail = null;
+
         public void Initialize(EulerianTrailDrawer eulerianTrail, int nodeNumber)
         {
             this.eulerianTrail = eulerianTrail;
 
-            number = nodeNumber;
+            Number = nodeNumber;
         }
 
         public void OnPointerEnter(PointerEventData eventData)

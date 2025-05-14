@@ -22,15 +22,15 @@ namespace ZL.Unity.Audio
 
         [ReadOnly(true)]
 
-        private AudioSource audioSource;
+        private AudioSource audioSource = null;
 
         [Space]
 
         [SerializeField]
 
-        private string trackName = string.Empty;
+        private string trackName = "";
 
-        [Space]
+        [Space] 
 
         [SerializeField]
 
@@ -67,7 +67,7 @@ namespace ZL.Unity.Audio
 
         [SerializeField]
 
-        private AudioClip[] playlist;
+        private AudioClip[] playlist = null;
 
         private bool isLooping = false;
 
@@ -75,7 +75,7 @@ namespace ZL.Unity.Audio
 
         [HideInInspector]
 
-        public bool isPlayModeShuffle;
+        public bool isPlayModeShuffle = false;
 
         private void OnValidate()
         {

@@ -12,7 +12,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private Vector3 vector;
+        private Vector3 vector = Vector3.zero;
 
         public Vector3 Vector
         {

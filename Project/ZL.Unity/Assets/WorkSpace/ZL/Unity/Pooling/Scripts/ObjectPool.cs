@@ -2,8 +2,6 @@ using System;
 
 using UnityEngine;
 
-using ZL.CS.Collections;
-
 using ZL.CS.Pooling;
 
 namespace ZL.Unity.Pooling
@@ -16,7 +14,7 @@ namespace ZL.Unity.Pooling
     {
         [SerializeField]
 
-        protected TComponent original;
+        protected TComponent original = null;
 
         public TComponent Original
         {
@@ -25,26 +23,16 @@ namespace ZL.Unity.Pooling
 
         [SerializeField]
 
-        private Transform parent;
+        private Transform parent = null;
 
-        public TComponent Generate(Transform parent)
+        public Transform Parent
         {
-            if (stock.Count != 0)
-            {
-                return stock.PopLast();
-            }
-
-            return Replicate(parent);
+            get => parent;
         }
 
         public override TComponent Replicate()
         {
-            return Replicate(parent);
-        }
-
-        public TComponent Replicate(Transform parent)
-        {
-            return PooledObject.Replicate(this, parent);
+            return PooledObject.Replicate(this);
         }
     }
 }

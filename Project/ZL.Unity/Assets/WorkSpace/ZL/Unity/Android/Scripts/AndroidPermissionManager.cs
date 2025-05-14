@@ -10,15 +10,13 @@ namespace ZL.Unity.Android
 {
     [AddComponentMenu("ZL/Android/Android Permission Manager (Singleton)")]
 
-    [DefaultExecutionOrder(-1)]
-
     public sealed class AndroidPermissionManager : MonoSingleton<AndroidPermissionManager>
     {
         [Space]
 
         [SerializeField]
 
-        private UnityEvent<string> onPermissionGrantedEvent;
+        private UnityEvent<string> onPermissionGrantedEvent = null;
 
         public UnityEvent<string> OnPermissionGrantedEvent
         {
@@ -29,7 +27,7 @@ namespace ZL.Unity.Android
 
         [SerializeField]
 
-        private UnityEvent<string> onPermissionDeniedEvent;
+        private UnityEvent<string> onPermissionDeniedEvent = null;
 
         public UnityEvent<string> OnPermissionDeniedEvent
         {

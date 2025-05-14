@@ -28,7 +28,7 @@ namespace ZL.Unity.UI
 
         [Button(nameof(ForceMeshUpdate))]
 
-        private TMP_Text text;
+        private TMP_Text text = null;
 
         private void OnEnable()
         {

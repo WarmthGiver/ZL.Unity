@@ -16,7 +16,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [Space]
 
@@ -26,7 +26,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [AddIndent(-1)]
 
-        public string test1;
+        public string test1 = "";
 
         [Space]
 
@@ -36,7 +36,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [AddIndent(0)]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -46,13 +46,13 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [AddIndent(1)]
 
-        public string test3;
+        public string test3 = "";
 
         [UsingCustomProperty]
 
         [Line]
 
-        public TestClass classTest0;
+        public TestClass classTest0 = null;
 
         [Space]
 
@@ -64,7 +64,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [AddIndent(-1)]
 
-        public TestClass classTest1;
+        public TestClass classTest1 = null;
 
         [Space]
 
@@ -76,7 +76,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [AddIndent(0)]
 
-        public TestClass classTest2;
+        public TestClass classTest2 = null;
 
         [Space]
 
@@ -88,19 +88,19 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [AddIndent(1)]
 
-        public TestClass classTest3;
+        public TestClass classTest3 = null;
 
         [UsingCustomProperty]
 
         [Line]
 
-        public Wrapper<List<TestClass>> collectionTest;
+        public Wrapper<List<TestClass>> collectionTest = null;
 
         [Serializable]
 
         public sealed class TestClass
         {
-            public string test0;
+            public string test0 = "";
 
             [Space]
 
@@ -110,7 +110,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
             [AddIndent(-1)]
 
-            public string test1;
+            public string test1 = "";
 
             [Space]
 
@@ -120,7 +120,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
             [AddIndent(0)]
 
-            public string test2;
+            public string test2 = "";
 
             [Space]
 
@@ -130,7 +130,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
             [AddIndent(1)]
 
-            public string test3;
+            public string test3 = "";
         }
     }
 }

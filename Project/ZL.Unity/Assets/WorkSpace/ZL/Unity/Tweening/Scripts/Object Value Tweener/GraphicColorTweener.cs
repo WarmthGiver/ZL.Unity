@@ -22,7 +22,7 @@ namespace ZL.Unity.Tweening
 
         [ReadOnlyWhenPlayMode]
 
-        private Graphic graphic;
+        private Graphic graphic = null;
 
         public override Color Value
         {

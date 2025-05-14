@@ -12,7 +12,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private UnityEvent<Collision2D> onCollisionEnter2DEvent;
+        private UnityEvent<Collision2D> onCollisionEnter2DEvent = null;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

@@ -25,7 +25,7 @@ namespace ZL.Unity.Server.Photon
 
         [ReadOnly(true)]
 
-        private PhotonView photonView;
+        private PhotonView photonView = null;
 
         public void RPCLoadScene(string loadSceneName)
         {

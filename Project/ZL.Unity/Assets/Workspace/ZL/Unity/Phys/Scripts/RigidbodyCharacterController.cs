@@ -22,7 +22,7 @@ namespace ZL.Unity.Phys
 
         #pragma warning disable CS0108
 
-        private Rigidbody rigidbody;
+        private Rigidbody rigidbody = null;
 
         public Rigidbody Rigidbody
         {
@@ -41,13 +41,13 @@ namespace ZL.Unity.Phys
 
         [ReadOnly(true)]
 
-        private GravityController gravityController;
+        private GravityController gravityController = null;
 
         [Space]
 
         [SerializeField]
 
-        private Transform model;
+        private Transform model = null;
 
         [Space]
 

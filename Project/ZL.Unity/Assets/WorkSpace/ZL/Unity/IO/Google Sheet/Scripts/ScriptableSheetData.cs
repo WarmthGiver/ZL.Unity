@@ -16,7 +16,7 @@ namespace ZL.Unity.IO.GoogleSheet
 
         [ReadOnly(true)]
 
-        private string startCell;
+        private string startCell = "";
 
         public string StartCell => startCell;
 

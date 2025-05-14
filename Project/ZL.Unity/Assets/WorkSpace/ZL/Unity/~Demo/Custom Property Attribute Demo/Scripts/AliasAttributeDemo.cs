@@ -10,7 +10,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [Space]
 
@@ -20,7 +20,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Alias("TEST 1")]
 
-        public string test1;
+        public string test1 = "";
 
         [Space]
 
@@ -30,7 +30,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Alias(null)]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -40,7 +40,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Alias("")]
 
-        public string test3;
+        public string test3 = "";
 
         [Space]
 
@@ -56,6 +56,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [PropertyField]
 
-        public string test4;
+        public string test4 = "";
     }
 }

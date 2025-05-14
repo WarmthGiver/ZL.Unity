@@ -14,7 +14,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [Space]
 
@@ -24,7 +24,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [MessageBox("This is message.")]
 
-        public string test1;
+        public string test1 = "";
 
         [Space]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [InfoBox("This is info message.")]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -44,7 +44,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [WarningBox("This is warning message.")]
 
-        public string test3;
+        public string test3 = "";
 
         [Space]
 
@@ -54,6 +54,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [ErrorBox("This is error message.")]
 
-        public string test4;
+        public string test4 = "";
     }
 }

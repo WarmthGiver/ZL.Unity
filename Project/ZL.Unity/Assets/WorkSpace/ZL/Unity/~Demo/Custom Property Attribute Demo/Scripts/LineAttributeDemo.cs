@@ -14,7 +14,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0;
+        public string test0 = "";
 
         [UsingCustomProperty]
 
@@ -24,7 +24,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line]
 
-        public string test1;
+        public string test1 = "";
 
         [Space]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line(Margin = 2)]
 
-        public string test2;
+        public string test2 = "";
 
         [Space]
 
@@ -44,7 +44,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#ff0000")]
 
-        public string test3;
+        public string test3 = "";
 
         [Space]
 
@@ -54,7 +54,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#ff8000", Thickness = 2)]
 
-        public string test4;
+        public string test4 = "";
 
         [Space]
 
@@ -64,7 +64,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#ffff00", Thickness = 3)]
 
-        public string test5;
+        public string test5 = "";
 
         [Space]
 
@@ -74,7 +74,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#80ff00", Thickness = 4)]
 
-        public string test6;
+        public string test6 = "";
 
         [Space]
 
@@ -84,7 +84,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#00ff00", Thickness = 5)]
 
-        public string test7;
+        public string test7 = "";
 
         [Space]
 
@@ -94,7 +94,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#00ff80", Thickness = 6)]
 
-        public string test8;
+        public string test8 = "";
 
         [Space]
 
@@ -104,7 +104,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#00ffff", Thickness = 7)]
 
-        public string test9;
+        public string test9 = "";
 
         [Space]
 
@@ -114,7 +114,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#0000ff", Thickness = 8)]
 
-        public string test10;
+        public string test10 = "";
 
         [Space]
 
@@ -124,7 +124,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#8000ff", Thickness = 9)]
 
-        public string test11;
+        public string test11 = "";
 
         [Space]
 
@@ -134,7 +134,7 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#ff00ff", Thickness = 10)]
 
-        public string test12;
+        public string test12 = "";
 
         [Space]
 
@@ -144,6 +144,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Line("#ff0080", Thickness = 11)]
 
-        public string test13;
+        public string test13 = "";
     }
 }
