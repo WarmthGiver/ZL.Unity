@@ -1,9 +1,11 @@
 using System;
 
+using System.Collections.Generic;
+
+using System.Reflection;
+
 namespace ZL.Unity
 {
-    [AttributeUsage(AttributeTargets.Field, Inherited = true)]
-
     public abstract class EnumValueAttribute : Attribute
     {
         public static partial class Cache<TEnum, TEnumValueAttribute>
@@ -12,20 +14,20 @@ namespace ZL.Unity
 
             where TEnumValueAttribute : EnumValueAttribute
         {
-            private static TEnumValueAttribute attribute = null;
+            private static readonly Dictionary<TEnum, TEnumValueAttribute> attributes = new Dictionary<TEnum, TEnumValueAttribute>();
 
             public static TEnumValueAttribute Get(TEnum @enum)
             {
-                if (attribute == null)
+                if (attributes.ContainsKey(@enum) == false)
                 {
                     var field = @enum.GetType().GetField(@enum.ToString());
 
-                    var attributes = field.GetCustomAttributes(typeof(TEnumValueAttribute), false);
+                    var attribute = field.GetCustomAttribute<TEnumValueAttribute>(false);
 
-                    attribute = (TEnumValueAttribute)attributes[0];
+                    attributes.Add(@enum, attribute);
                 }
 
-                return attribute;
+                return attributes[@enum];
             }
         }
     }

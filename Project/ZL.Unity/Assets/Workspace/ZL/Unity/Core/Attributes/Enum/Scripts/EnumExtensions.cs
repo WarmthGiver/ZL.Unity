@@ -1,5 +1,7 @@
 ﻿using System;
 
+using UnityEngine;
+
 namespace ZL.Unity
 {
     public static partial class EnumExtensions
@@ -30,6 +32,13 @@ namespace ZL.Unity
             where TEnum : Enum
         {
             return EnumValueAttribute.Cache<TEnum, EnumStringAttribute>.Get(instance).value;
+        }
+
+        public static Color GetColor<TEnum>(this TEnum instance)
+
+            where TEnum : Enum
+        {
+            return EnumValueAttribute.Cache<TEnum, EnumColorAttribute>.Get(instance).value;
         }
     }
 }
