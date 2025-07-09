@@ -2,8 +2,6 @@ using Photon.Pun;
 
 using UnityEngine;
 
-using ZL.Unity.Directing;
-
 namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Scene Director (Singleton)")]

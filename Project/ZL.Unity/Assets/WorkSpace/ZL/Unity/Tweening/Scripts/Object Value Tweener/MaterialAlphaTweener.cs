@@ -1,5 +1,3 @@
-using DG.Tweening.Core;
-
 using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
@@ -14,25 +12,25 @@ namespace ZL.Unity.Tweening
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnly(true)]
 
-        private MaterialController materialController = null;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private MaterialController materialController = null;
 
         [ToggleIf(nameof(materialController), null, false)]
 
         [Margin]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private Material material = null;
 
@@ -69,11 +67,11 @@ namespace ZL.Unity.Tweening
             color = material.color;
         }
 
-        public override TweenerCore<float, float, FloatOptions> Tween(float endValue, float duration = -1f)
+        public override void Play()
         {
             color = material.color;
 
-            return valueTweener.Tween(endValue, duration);
+            base.Play();
         }
     }
 }

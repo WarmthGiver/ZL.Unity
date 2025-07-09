@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -441,10 +442,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eulerian Trail Drawer
       objectReference: {fileID: 0}
-    - target: {fileID: 1435120264671857789, guid: fa5cfcfb228aaf846afb9d134225b199, type: 3}
-      propertyPath: drawnEdgePool.original
-      value: 
-      objectReference: {fileID: 5230578150007751533, guid: 9e736b4784b8294449ebc28590bb26a3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -563,6 +560,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1540718681}
-  - {fileID: 1349130099}
   - {fileID: 609276904}
   - {fileID: 331299909}
+  - {fileID: 1349130099}

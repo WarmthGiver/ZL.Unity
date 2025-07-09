@@ -10,23 +10,25 @@ namespace ZL.Unity.UI
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
 
-        private InputField text = null;
+        [Alias("Text (UI)")]
 
-        public override string Text
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private InputField textUI = null;
+
+        public override string text
         {
-            get => text.text;
+            get => textUI.text;
 
-            set => text.text = value;
+            set => textUI.text = value;
         }
     }
 }

@@ -10,17 +10,17 @@ namespace ZL.Unity.Audio
     {
         [Space]
 
+        [Range(0f, 1f)]
+
+        [SerializeField]
+
+        private float volume = 0f;
+
         [SerializeField]
 
         private bool pause = false;
 
-        [SerializeField]
-        
-        [Range(0f, 1f)]
-
-        private float volume = 0f;
-
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         private void OnValidate()
         {
@@ -41,9 +41,9 @@ namespace ZL.Unity.Audio
             pause = AudioListener.pause;
         }
 
-#endif
+        #endif
 
-        private void Awake()
+        private void Start()
         {
             AudioListener.volume = volume;
 

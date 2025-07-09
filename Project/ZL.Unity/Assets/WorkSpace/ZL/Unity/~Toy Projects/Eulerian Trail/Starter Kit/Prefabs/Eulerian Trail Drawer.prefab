@@ -123,13 +123,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 1435120264671857784}
   edgePool:
-    original: {fileID: 505040898810423772, guid: 8df03e8a76ebd0d4480d5c7ac2b7f8a2, type: 3}
+    prefab: {fileID: 505040898810423772, guid: 8df03e8a76ebd0d4480d5c7ac2b7f8a2, type: 3}
     parent: {fileID: 1435120263769471842}
   nodePool:
-    original: {fileID: 7466423285477989058, guid: 00c892e32c2149949a5250336b9c4d07, type: 3}
+    prefab: {fileID: 7466423285477989058, guid: 00c892e32c2149949a5250336b9c4d07, type: 3}
     parent: {fileID: 1435120264890676635}
   drawnEdgePool:
-    original: {fileID: 5230578150007751533, guid: 9e736b4784b8294449ebc28590bb26a3, type: 3}
+    prefab: {fileID: 5230578150007751533, guid: 9e736b4784b8294449ebc28590bb26a3, type: 3}
     parent: {fileID: 1435120264195397179}
 --- !u!1 &1435120264890676632
 GameObject:

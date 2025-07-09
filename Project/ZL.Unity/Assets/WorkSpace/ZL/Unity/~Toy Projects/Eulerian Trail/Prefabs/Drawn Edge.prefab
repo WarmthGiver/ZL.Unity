@@ -20,9 +20,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3093309543351859226, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 2316474431573181289}
+    - target: {fileID: 3093309543351859226, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 1776597278885951878}
+    - target: {fileID: 3093309543351859226, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+      propertyPath: rectTransform
+      value: 
+      objectReference: {fileID: 4331688790585517914}
     - target: {fileID: 3303704619691123381, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
       propertyPath: m_Name
-      value: Drawn Edge Variant
+      value: Drawn Edge
       objectReference: {fileID: 0}
     - target: {fileID: 3303704619691123381, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
       propertyPath: m_IsActive
@@ -138,14 +150,48 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3303704619691123381, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3032473188997849060}
+      addedObject: {fileID: 6496726479100022666}
+    - targetCorrespondingSourceObject: {fileID: 3303704619691123381, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4260175589996794460}
+    - targetCorrespondingSourceObject: {fileID: 3303704619691123381, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2316474431573181289}
   m_SourcePrefab: {fileID: 100100000, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+--- !u!114 &1776597278885951878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8853133973142749937, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+  m_PrefabInstance: {fileID: 7096296143510961015}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738155917584652738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &4331688790585517914 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6802225165747215405, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
+  m_PrefabInstance: {fileID: 7096296143510961015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5738155917584652738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3303704619691123381, guid: 3fa6ec622b3cc954999b4a106ca5c241, type: 3}
   m_PrefabInstance: {fileID: 7096296143510961015}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3032473188997849060
+--- !u!225 &6496726479100022666
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738155917584652738}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &4260175589996794460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,6 +200,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 5738155917584652738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8db60971b477a4498a4df5c4fbf9624, type: 3}
+  m_Script: {fileID: 11500000, guid: baa6ef35b2c9ff1439d8656aa9dbd5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueTweener:
+    endValue: 0
+    duration: 0.5
+    delay: 0
+    ease: 1
+    isIndependentUpdate: 1
+    loops: 1
+    loopType: 0
+    onStartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  canvasGroup: {fileID: 6496726479100022666}
+--- !u!114 &2316474431573181289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738155917584652738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a0eac61e5677d43bcf89219e29910d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweener: {fileID: 4260175589996794460}
+  onFadeInEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFadedInEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFadeOutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFadedOutEvent:
+    m_PersistentCalls:
+      m_Calls: []

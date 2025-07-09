@@ -4,8 +4,6 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.Unity.Directing;
-
 namespace ZL.Unity.Demo.AndroidGPSDemo
 {
     [AddComponentMenu("")]

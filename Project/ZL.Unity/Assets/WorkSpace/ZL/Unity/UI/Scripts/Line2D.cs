@@ -2,37 +2,39 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
+using ZL.Unity.Pooling;
+
 namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Line 2D")]
 
     [ExecuteInEditMode]
 
-    public sealed class Line2D : MonoBehaviour
+    public sealed class Line2D : PooledUI
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private RectTransform rectTransform = null;
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private Image image = null;
 
@@ -105,27 +107,12 @@ namespace ZL.Unity.UI
 
         #if UNITY_EDITOR
 
-        private static readonly DrivenTransformProperties drivenProperties = DrivenTransformProperties.AnchoredPosition3D | DrivenTransformProperties.Anchors | DrivenTransformProperties.Rotation | DrivenTransformProperties.SizeDelta | DrivenTransformProperties.Pivot;
+        /// <summary>
+        /// AnchoredPosition3D | DrivenTransformProperties.Anchors | DrivenTransformProperties.Rotation | DrivenTransformProperties.SizeDelta | DrivenTransformProperties.Pivot;
+        /// </summary>
+        private static readonly DrivenTransformProperties drivenTransformProperties = (DrivenTransformProperties)65310;
 
-        private DrivenRectTransformTracker drivenTracker = new DrivenRectTransformTracker();
-
-        private void Awake()
-        {
-            if (rectTransform == null)
-            {
-                rectTransform = GetComponent<RectTransform>();
-            }
-        }
-
-        private void OnEnable()
-        {
-            drivenTracker.Add(this, rectTransform, drivenProperties);
-        }
-
-        private void OnDisable()
-        {
-            drivenTracker.Clear();
-        }
+        private DrivenRectTransformTracker drivenTracker = new();
 
         private void Reset()
         {
@@ -143,6 +130,24 @@ namespace ZL.Unity.UI
             }
 
             rectTransform.hasChanged = true;
+        }
+
+        private void Awake()
+        {
+            if (rectTransform == null)
+            {
+                rectTransform = GetComponent<RectTransform>();
+            }
+        }
+
+        private void OnEnable()
+        {
+            drivenTracker.Add(this, rectTransform, drivenTransformProperties);
+        }
+
+        private void OnDisable()
+        {
+            drivenTracker.Clear();
         }
 
         private void LateUpdate()

@@ -244,7 +244,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1226644804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &678877072
 GameObject:
@@ -290,14 +290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151019dc60500bb4f952de7d5699193a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool:
-  - original: {fileID: 1302944049581753860, guid: c2fd4ea385732d245b3246c94e6d4480, type: 3}
-    parent: {fileID: 586711454}
-  - original: {fileID: 976453248946588991, guid: d7303b074fe63fb458ff89c4602a2b57, type: 3}
-    parent: {fileID: 890621665}
-  - original: {fileID: 4624716389379282761, guid: 37b85216342afa74a8aa42a017a09add, type: 3}
-    parent: {fileID: 910967142}
   generateInterval: 0
+  keys:
+  - Capsule
+  - Cube
+  - Sphere
 --- !u!1 &890621664
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +324,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1226644804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910967141
 GameObject:
@@ -358,7 +355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1226644804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211487967
 GameObject:
@@ -454,6 +451,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1226644802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226644804}
+  - component: {fileID: 1226644803}
+  m_Layer: 0
+  m_Name: Object Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1226644803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226644802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1bd0f48c13a0e40a58686d6f3b5e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolDictionary:
+    items:
+    - key: Capsule
+      value:
+        prefab: {fileID: 9089365196435845896, guid: c2fd4ea385732d245b3246c94e6d4480, type: 3}
+        parent: {fileID: 586711454}
+    - key: Cube
+      value:
+        prefab: {fileID: -96307495839699558, guid: d7303b074fe63fb458ff89c4602a2b57, type: 3}
+        parent: {fileID: 890621665}
+    - key: Sphere
+      value:
+        prefab: {fileID: 2039983117434236933, guid: 37b85216342afa74a8aa42a017a09add, type: 3}
+        parent: {fileID: 910967142}
+--- !u!4 &1226644804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226644802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 586711454}
+  - {fileID: 890621665}
+  - {fileID: 910967142}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -461,6 +519,4 @@ SceneRoots:
   - {fileID: 678877073}
   - {fileID: 569821142}
   - {fileID: 1211487969}
-  - {fileID: 586711454}
-  - {fileID: 890621665}
-  - {fileID: 910967142}
+  - {fileID: 1226644804}

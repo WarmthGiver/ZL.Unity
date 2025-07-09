@@ -16,15 +16,15 @@ namespace ZL.Unity.Tweening
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         protected TObjectValueTweener objectVaueTweener = null;
 
@@ -56,10 +56,10 @@ namespace ZL.Unity.Tweening
 
         #endif
 
-        private void Awake()
+        /*private void Awake()
         {
             SetKeyFrame(keyFrames.Index);
-        }
+        }*/
 
         public abstract void SetKeyFrame(int index);
 
@@ -88,7 +88,9 @@ namespace ZL.Unity.Tweening
         {
             if (keyFrames.TryGetCurrent(out T2 endValue) == true)
             {
-                objectVaueTweener.Tween(endValue);
+                objectVaueTweener.SetEndValue(endValue);
+
+                objectVaueTweener.Play();
             }
         }
     }

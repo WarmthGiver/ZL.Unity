@@ -238,7 +238,7 @@ namespace ZL.Unity.Server.Photon
         {
             ISingleton<PhotonServerManager>.TrySetInstance(this);
 
-            nicknamePref.OnValueChangedAction += (value) =>
+            nicknamePref.OnValueChanged += (value) =>
             {
                 PhotonNetwork.NickName = value;
             };

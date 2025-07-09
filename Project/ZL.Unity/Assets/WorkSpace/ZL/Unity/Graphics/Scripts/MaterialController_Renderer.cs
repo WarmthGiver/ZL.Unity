@@ -8,25 +8,32 @@ namespace ZL.Unity.GFX
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnlyWhenPlayMode]
 
-        #pragma warning disable CS0108
+        [UsingCustomProperty]
 
-        private Renderer renderer = null;
+        [SerializeField]
 
-        #pragma warning restore CS0108
+        private Renderer targetRenderer = null;
 
-        public override Material[] Materials
+        [Space]
+
+        [SerializeField]
+
+        private int index = 0;
+
+        public override Material Material
         {
-            get => renderer.materials;
+            get => Materials[index];
+        }
+
+        public Material[] Materials
+        {
+            get => targetRenderer.materials;
         }
     }
 }

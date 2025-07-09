@@ -6,8 +6,12 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace ZL.Unity.Tweening
 {
+    [DefaultExecutionOrder((int)ScriptExecutionOrder.Tweener)]
+
     public abstract class ObjectValueTweener<TValueTweener, T1, T2, TPlugOptions> : MonoBehaviour
 
         where TValueTweener : ValueTweener<T1, T2, TPlugOptions>
@@ -18,77 +22,82 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        protected TValueTweener valueTweener = null;
+        private TValueTweener valueTweener = null;
 
         public TValueTweener ValueTweener
         {
             get => valueTweener;
         }
 
-        public float Duration
+        public UnityEvent OnStartEvent
         {
-            get => valueTweener.Duration;
-
-            set => valueTweener.Duration = value;
+            get => ValueTweener.OnStartEvent;
         }
 
-        public float Delay
+        public UnityEvent OnCompleteEvent
         {
-            get => valueTweener.Delay;
-
-            set => valueTweener.Delay = value;
-        }
-
-        public Ease Ease
-        {
-            get => valueTweener.Ease;
-
-            set => valueTweener.Ease = value;
-        }
-
-        public bool IsIndependentUpdate
-        {
-            get => valueTweener.IsIndependentUpdate;
-
-            set => valueTweener.IsIndependentUpdate = value;
-        }
-
-        public int LoopCount
-        {
-            get => valueTweener.LoopCount;
-
-            set => valueTweener.LoopCount = value;
-        }
-
-        public LoopType LoopType
-        {
-            get => valueTweener.LoopType;
-
-            set => valueTweener.LoopType = value;
+            get => ValueTweener.OnCompleteEvent;
         }
 
         public TweenerCore<T1, T2, TPlugOptions> Current
         {
-            get => valueTweener.Current;
+            get => ValueTweener.Current;
         }
 
         public abstract T1 Value { get; set; }
 
         protected virtual void Awake()
         {
-            valueTweener.Getter = () => Value;
+            ValueTweener.Getter = () => Value;
 
-            valueTweener.Setter = (value) => Value = value;
+            ValueTweener.Setter = (value) => Value = value;
+
+            ValueTweener.Target = this;
         }
 
-        public void SetEase(int value)
+        public void SetEndValue(T2 endValue)
         {
-            Ease = (Ease)value;
+            ValueTweener.SetEndValue(endValue);
         }
 
-        public virtual TweenerCore<T1, T2, TPlugOptions> Tween(T2 endValue, float duration = -1f)
+        public void SetDuration(float duration)
         {
-            return valueTweener.Tween(endValue, duration);
+            ValueTweener.SetDuration(duration);
+        }
+
+        public void SetDelay(float delay)
+        {
+            ValueTweener.SetDelay(delay);
+        }
+
+        public void SetEase(int ease)
+        {
+            ValueTweener.SetEase((Ease)ease);
+        }
+
+        public void SetEase(Ease ease)
+        {
+            ValueTweener.SetEase(ease);
+        }
+
+        public void SetLoops(int loops)
+        {
+            ValueTweener.SetLoops(loops);
+        }
+
+        public void SetLoopType(int loopType)
+        {
+            ValueTweener.SetLoopType((LoopType)loopType);
+        }
+
+        public void SetLoopType(LoopType loopType)
+        {
+            ValueTweener.SetLoopType(loopType);
+        }
+
+        public virtual void Play()
+        {
+            ValueTweener.Play();
         }
     }
 }

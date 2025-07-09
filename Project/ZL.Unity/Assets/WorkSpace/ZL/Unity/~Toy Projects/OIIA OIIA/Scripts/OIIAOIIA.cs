@@ -8,59 +8,61 @@ namespace ZL.Unity.OIIAOIIA
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
+        [GetComponent]
 
         [Essential]
 
-        [ReadOnlyWhenPlayMode]
-
-        private GameObject ethel = null;
-
-        [SerializeField]
+        [ReadOnly(true)]
 
         [UsingCustomProperty]
 
-        [Essential]
-
-        [ReadOnlyWhenPlayMode]
-
-        private GameObject maxwell = null;
-
         [SerializeField]
-
-        [UsingCustomProperty]
-
-        [Essential]
-
-        [ReadOnlyWhenPlayMode]
-
-        [AddIndent]
 
         private AudioSource audioSource = null;
 
-        [SerializeField]
+        [Space]
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
 
         [UsingCustomProperty]
+
+        [SerializeField]
+
+        private GameObject ethel = null;
+
+        [Essential]
+
+        [ReadOnlyWhenPlayMode]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private GameObject maxwell = null;
 
         [Essential]
 
         [ReadOnlyWhenPlayMode]
 
         [AddIndent]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private Spinner spinner = null;
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Essential]
 
         [ReadOnlyWhenPlayMode]
 
         [AddIndent]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private PingPong pingPong = null;
 
@@ -77,6 +79,8 @@ namespace ZL.Unity.OIIAOIIA
             set
             {
                 isOIIA = value;
+
+                audioSource.Play(isOIIA);
 
                 ethel.SetActive(!isOIIA);
 
@@ -104,20 +108,16 @@ namespace ZL.Unity.OIIAOIIA
             }
         }
 
-        #if UNITY_EDITOR
-
-        private void Update()
+        private void OnValidate()
         {
             IsOIIA = isOIIA;
 
             Speed = speed;
         }
 
-        #endif
-
         public void ToggleOIIA()
         {
-            isOIIA = !isOIIA;
+            IsOIIA = !isOIIA;
         }
     }
 }

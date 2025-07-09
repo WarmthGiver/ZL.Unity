@@ -6,8 +6,6 @@ using UnityEngine;
 
 using ZL.Unity.Pooling;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Player List Displayer")]
@@ -19,7 +17,7 @@ namespace ZL.Unity.Server.Photon
 
     public abstract class PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
 
-        where TPlayerListItem : Component, IKeyValuePair<int, TPlayerListItem>
+        where TPlayerListItem : ManagedPooledObject<int>
     {
         [Space]
 
@@ -43,16 +41,16 @@ namespace ZL.Unity.Server.Photon
 
         public virtual void Add(Player player)
         {
-            playerListItemPool.TryGenerate(player.ActorNumber, out var item);
+            playerListItemPool.TryClone(player.ActorNumber, out var item);
 
             item.transform.SetAsLastSibling();
 
-            item.SetActive(true);
+            item.Appear();
         }
 
         public void Remove(Player player)
         {
-            playerListItemPool[player.ActorNumber].SetActive(false);
+            playerListItemPool[player.ActorNumber].Disappear();
         }
     }
 }

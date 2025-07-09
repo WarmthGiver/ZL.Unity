@@ -4,11 +4,13 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
+using ZL.Unity.Pooling;
+
 namespace ZL.Unity.EulerianTrail
 {
     [AddComponentMenu("ZL/Eulerian Trail/Eulerian Trail Node")]
 
-    public sealed class EulerianTrailNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    public sealed class EulerianTrailNode : PooledUI, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Space]
 

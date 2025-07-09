@@ -12,15 +12,15 @@ namespace ZL.Unity.Tweening
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private Graphic graphic = null;
 

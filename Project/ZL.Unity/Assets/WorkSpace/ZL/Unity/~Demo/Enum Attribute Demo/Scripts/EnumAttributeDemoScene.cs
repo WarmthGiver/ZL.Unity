@@ -10,6 +10,8 @@ namespace ZL.Unity.Demo.EnumAttributeDemo
     {
         private void Update()
         {
+            FixedDebug.ClearLog();
+
             FixedDebug.Log(DemoEnum.Bool.GetBool());
 
             FixedDebug.Log(DemoEnum.Int.GetInt());

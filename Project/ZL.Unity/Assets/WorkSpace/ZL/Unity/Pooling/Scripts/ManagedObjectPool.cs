@@ -4,98 +4,59 @@ using System.Collections.Generic;
 
 using System.Linq;
 
-using UnityEngine;
-
-using ZL.Unity.Collections;
-
 namespace ZL.Unity.Pooling
 {
     [Serializable]
 
-    public sealed class ManagedObjectPool<TKey, TComponent> : ObjectPool<TComponent>
-
-        where TComponent : Component, IKeyValuePair<TKey, TComponent>
+    public sealed class ManagedObjectPool<TKey> : ManagedObjectPool<TKey, ManagedPooledObject<TKey>>
     {
-        private readonly Dictionary<TKey, TComponent> replicas = new Dictionary<TKey, TComponent>();
 
-        public TComponent this[TKey key]
-        {
-            get => replicas[key];
-        }
-
-        public bool TryGenerate(TKey key, out TComponent replica)
-        {
-            if (replicas.ContainsKey(key) == true)
-            {
-                replica = replicas[key];
-
-                return false;
-            }
-
-            replica = Generate();
-
-            replica.Key = key;
-
-            replicas.Add(key, replica);
-
-            return true;
-        }
-
-        public TComponent Find(TKey key)
-        {
-            return replicas[key];
-        }
-
-        public override void Collect(TComponent replica)
-        {
-            replicas.Remove(replica.Key);
-
-            base.Collect(replica);
-        }
-
-        public void CollectAll()
-        {
-            foreach (var kvp in replicas.Values.ToArray())
-            {
-                kvp.gameObject.SetActive(false);
-            }
-
-            replicas.Clear();
-        }
     }
 
     [Serializable]
 
-    public class ManagedObjectPool<TComponent> : ObjectPool<TComponent>
+    public class ManagedObjectPool<TKey, TClone> : ObjectPool<TClone>
 
-        where TComponent : Component
+        where TClone : ManagedPooledObject<TKey>
     {
-        private readonly HashSet<TComponent> replicas = new HashSet<TComponent>();
+        private readonly Dictionary<TKey, TClone> clones = new();
 
-        public override TComponent Generate()
+        public TClone this[TKey key]
         {
-            var clone = base.Generate();
-
-            replicas.Add(clone);
-
-            return clone;
+            get => clones[key];
         }
 
-        public override void Collect(TComponent replica)
+        public bool TryClone(TKey key, out TClone clone)
         {
-            replicas.Remove(replica);
+            if (clones.ContainsKey(key) == true)
+            {
+                clone = clones[key];
 
-            base.Collect(replica);
+                return false;
+            }
+
+            clone = Clone();
+
+            clone.Key = key;
+
+            clones.Add(key, clone);
+
+            return true;
+        }
+
+        public override void Collect(TClone clone)
+        {
+            base.Collect(clone);
+
+            clones.Remove(clone.Key);
         }
 
         public void CollectAll()
         {
-            foreach (var replica in replicas.ToArray())
+            foreach (var clone in clones.Values.ToArray())
             {
-                replica.gameObject.SetActive(false);
+                clone.Disappear();
             }
-
-            replicas.Clear();
         }
     }
 }

@@ -12,10 +12,21 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
+        private LayerMask layerMask = ~0;
+
+        [Space]
+
+        [SerializeField]
+
         private UnityEvent<Collision> onCollisionStayEvent = null;
 
         private void OnCollisionStay(Collision collision)
         {
+            if (layerMask.Contains(collision.gameObject.layer) == false)
+            {
+                return;
+            }
+
             onCollisionStayEvent.Invoke(collision);
         }
     }

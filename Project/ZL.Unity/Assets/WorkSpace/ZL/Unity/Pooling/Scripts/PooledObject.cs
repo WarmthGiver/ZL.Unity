@@ -8,43 +8,64 @@ namespace ZL.Unity.Pooling
 
     public class PooledObject : MonoBehaviour
     {
-        private Action onDisableAction = null;
+        [Space]
 
-        public static TComponent Replicate<TComponent>(ObjectPool<TComponent> pool)
+        [SerializeField]
 
-            where TComponent : Component
+        private float lifeTime = -1f;
+
+        public float LifeTime
         {
-            var replica = Instantiate(pool.Original, pool.Parent);
-
-            replica.name = pool.Original.name;
-
-            if (replica.TryGetComponent<PooledObject>(out var pooledObject) == false)
-            {
-                FixedDebug.LogWarning($"Prefab '{pool.Original.name}' being pooled does not have a component of type 'Pooled Object'. We recommend adding it to the prefab to improve performance.");
-
-                pooledObject = replica.AddComponent<PooledObject>();
-            }
-
-            pooledObject.onDisableAction = () => pool.Collect(replica);
-
-            return replica;
+            set => lifeTime = value;
         }
 
-        #if UNITY_EDITOR
+        public event Action OnDisappearedAction = null;
 
-        private void Start()
+        private event Action OnCollectedAction = null;
+
+        public static TClone Instantiate<TClone>(ObjectPool<TClone> objectPool)
+
+            where TClone : PooledObject
         {
-            if (onDisableAction == null)
+            var clone = Instantiate(objectPool.Prefab, objectPool.Parent);
+
+            clone.OnCollectedAction += () => objectPool.Collect(clone);
+
+            return clone;
+        }
+
+        public virtual void Appear()
+        {
+            gameObject.SetActive(true);
+
+            OnAppeared();
+        }
+
+        public virtual void OnAppeared()
+        {
+            if (lifeTime != -1f)
             {
-                FixedDebug.LogWarning($"Game Object '{gameObject.name}' is a 'Pooled Object' but was not created from an'Object Pool'.");
+                Invoke(nameof(Disappear), lifeTime);
             }
         }
 
-        #endif
-
-        private void OnDisable()
+        public virtual void Disappear()
         {
-            onDisableAction?.Invoke();
+            OnDisappeared();
+        }
+
+        public virtual void OnDisappeared()
+        {
+            if (OnDisappearedAction != null)
+            {
+                OnDisappearedAction.Invoke();
+
+                OnDisappearedAction = null;
+            }
+
+            OnCollectedAction?.Invoke();
+
+            gameObject.SetActive(false);
         }
     }
 }

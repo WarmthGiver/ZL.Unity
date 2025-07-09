@@ -6,19 +6,25 @@ namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Ping Pong")]
 
-    public sealed class PingPong : TransformMotion
+    public sealed class PingPong : MonoBehaviour
     {
         [Space]
 
-        [SerializeField]
-        
+        public Vector3 direction = Vector3.zero;
+
+        public float speed = 1f;
+
+        [Space]
+
         [Range(-2f, 2f)]
+
+        [SerializeField]
 
         private float theta = 0f;
 
-        [SerializeField]
-        
         [Range(0f, 1f)]
+
+        [SerializeField]
 
         private float sin = 0.5f;
 
@@ -35,7 +41,7 @@ namespace ZL.Unity
             time = theta * 0.25f / speed;
         }
 
-        protected override void Update()
+        private void Update()
         {
             transform.position -= moveDirection;
 

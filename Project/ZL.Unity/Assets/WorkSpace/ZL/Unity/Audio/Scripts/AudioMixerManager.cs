@@ -22,27 +22,29 @@ namespace ZL.Unity.Audio
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Essential]
 
         [PropertyField]
 
         [Button("LoadAudioMixerParameters", "Load Parameters")]
 
-        private AudioMixer audioMixer = null;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private AudioMixer audioMixer = null;
 
-        [PropertyField]
+        [Space]
 
         [Button(nameof(LoadVolumes))]
 
         [Button(nameof(SaveVolumes))]
+
+        [Margin]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private SerializableDictionary<string, float, FloatPref> parameterPrefs = null;
 
@@ -58,15 +60,10 @@ namespace ZL.Unity.Audio
             foreach (var parameterPref in parameterPrefs)
             {
                 parameterPref.Value = Mathf.Clamp01(parameterPref.Value);
-
-                if (Application.isPlaying == true)
-                {
-                    SetVolume(parameterPref.Key, parameterPref.Value);
-                }
             }
         }
 
-        private void LoadAudioMixerParameters()
+        public void LoadAudioMixerParameters()
         {
             parameterPrefs.Clear();
 
@@ -89,13 +86,13 @@ namespace ZL.Unity.Audio
             EditorUtility.SetDirty(this);
         }
 
-#endif
+        #endif
 
         private void Start()
         {
             foreach (var parameterPref in parameterPrefs)
             {
-                parameterPref.OnValueChangedAction += (value) =>
+                parameterPref.OnValueChanged += (value) =>
                 {
                     audioMixer.SetVolume(parameterPref.Key, value);
                 };

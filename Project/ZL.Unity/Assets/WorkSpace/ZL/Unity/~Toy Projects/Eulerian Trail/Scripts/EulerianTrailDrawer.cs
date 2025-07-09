@@ -34,15 +34,15 @@ namespace ZL.Unity.EulerianTrail
 
         [SerializeField]
 
-        private ManagedObjectPool<Line2D> edgePool = null;
+        private HashSetObjectPool<Line2D> edgePool = null;
 
         [SerializeField]
 
-        private ManagedObjectPool<EulerianTrailNode> nodePool = null;
+        private HashSetObjectPool<EulerianTrailNode> nodePool = null;
 
         [SerializeField]
 
-        private ManagedObjectPool<Line2D> drawnEdgePool = null;
+        private HashSetObjectPool<Line2D> drawnEdgePool = null;
 
         private readonly Dictionary<Segment<int>, bool> edgeVisiteds = new Dictionary<Segment<int>, bool>(new Segment<int>.EqualityComparer());
 
@@ -74,7 +74,7 @@ namespace ZL.Unity.EulerianTrail
 
             foreach (var edgeSegment in Info.EdgeSegments)
             {
-                var edge = edgePool.Generate();
+                var edge = edgePool.Clone();
 
                 edge.StartPoint = Info.NodePositions[edgeSegment.Start];
 
@@ -82,14 +82,14 @@ namespace ZL.Unity.EulerianTrail
 
                 edge.Thickness = Info.EdgeThickness;
 
-                edge.gameObject.SetActive(true);
+                edge.Appear();
 
                 edgeVisiteds.Add(edgeSegment, false);
             }
 
             for (int nodeNumber = Info.NodePositions.Length - 1; nodeNumber >= 0; --nodeNumber)
             {
-                var node = nodePool.Generate();
+                var node = nodePool.Clone();
 
                 node.Initialize(this, nodeNumber);
 
@@ -97,7 +97,7 @@ namespace ZL.Unity.EulerianTrail
 
                 node.Thickness = Info.NodeThickness;
 
-                node.gameObject.SetActive(true);
+                node.Appear();
             }
         }
 
@@ -107,7 +107,7 @@ namespace ZL.Unity.EulerianTrail
 
             lastVisitedNode = node;
 
-            drawingEdge = drawnEdgePool.Generate();
+            drawingEdge = drawnEdgePool.Clone();
 
             drawingEdge.StartPoint = node.transform.localPosition;
 
@@ -123,14 +123,14 @@ namespace ZL.Unity.EulerianTrail
             
             drawingEdge.Thickness = Info.DrawnEdgeThickness;
 
-            drawingEdge.gameObject.SetActive(true);
+            drawingEdge.Appear();
         }
 
         public void StopDrawing()
         {
             lastVisitedNode = null;
 
-            drawingEdge.SetActive(false);
+            drawingEdge.Disappear();
 
             drawingEdge = null;
 
@@ -173,13 +173,13 @@ namespace ZL.Unity.EulerianTrail
 
                     drawingEdge.EndPoint = node.transform.localPosition;
 
-                    drawingEdge = drawnEdgePool.Generate();
+                    drawingEdge = drawnEdgePool.Clone();
 
                     drawingEdge.StartPoint = node.transform.localPosition;
 
                     drawingEdge.Thickness = Info.DrawnEdgeThickness;
 
-                    drawingEdge.gameObject.SetActive(true);
+                    drawingEdge.Appear();
                 }
             }
         }

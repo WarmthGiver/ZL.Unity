@@ -20,21 +20,23 @@ namespace ZL.Unity.Demo.ObjectPoolingDemo
 
         [SerializeField]
 
-        private ObjectPool<Transform>[] pool = null;
+        private float generateInterval = 0f;
 
         [Space]
 
         [SerializeField]
 
-        private float generateInterval = 0f;
+        private string[] keys = null;
 
         private IEnumerator Start()
         {
             while (true)
             {
-                var replica = pool[Random.Range(0, pool.Length)].Generate();
+                var clone = ObjectPoolManager.Instance.Clone(keys[Random.Range(0, keys.Length)]);
 
-                replica.SetActive(true);
+                clone.transform.localPosition = Vector3.zero;
+
+                clone.Appear();
 
                 yield return WaitForSecondsCache.Get(generateInterval);
             }

@@ -6,13 +6,11 @@ namespace ZL.Unity.UI
 {
     [AddComponentMenu("ZL/UI/Force Layout Rebuilder")]
 
+    [ExecuteAlways]
+
     public sealed class ForceLayoutRebuilder : MonoBehaviour
     {
         [Space]
-
-        [SerializeField]
-
-        [UsingCustomProperty]
 
         [GetComponent]
 
@@ -26,13 +24,20 @@ namespace ZL.Unity.UI
 
         [Button(nameof(ForceRebuildLayout))]
 
+        [UsingCustomProperty]
+
+        [SerializeField]
+
         private RectTransform rectTransform = null;
 
         private void Start()
         {
             ForceRebuildLayout();
 
-            enabled = false;
+            if (Application.isPlaying == true)
+            {
+                enabled = false;
+            }
         }
 
         public void ForceRebuildLayout()

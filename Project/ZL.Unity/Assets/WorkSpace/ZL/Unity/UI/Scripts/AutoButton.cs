@@ -1,4 +1,3 @@
-using ExitGames.Client.Photon;
 using System.Collections;
 
 #if UNITY_EDITOR
@@ -25,17 +24,13 @@ namespace ZL.Unity.UI
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Alias("Threshold")]
 
-        private float autoClickThreshold = 0.5f;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private float autoClickThreshold = 0.5f;
 
         [Text("Interval")]
 
@@ -43,11 +38,11 @@ namespace ZL.Unity.UI
 
         [Alias("Use Curve")]
 
-        private bool useAutoClickIntervalCurve = false;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private bool useAutoClickIntervalCurve = false;
 
         [ToggleIf(nameof(useAutoClickIntervalCurve), true)]
 
@@ -55,17 +50,21 @@ namespace ZL.Unity.UI
 
         [Alias("")]
 
-        private float autoClickInterval = 0.1f;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private float autoClickInterval = 0.1f;
 
         [ToggleIf(nameof(useAutoClickIntervalCurve), false)]
 
         [AddIndent]
 
         [Alias("")]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private AnimationCurve autoClickIntervalCurve = null;
 
@@ -220,7 +219,11 @@ namespace ZL.Unity.UI
 
             while (true)
             {
-                yield return WaitForInterval(interval);
+                yield return WaitForSecondsCache.Get(interval);
+
+                pressedTime += interval;
+
+                Click();
 
                 if (useAutoClickIntervalCurve == true)
                 {
@@ -232,15 +235,6 @@ namespace ZL.Unity.UI
                     interval = autoClickInterval;
                 }
             }
-        }
-
-        private IEnumerator WaitForInterval(float seconds)
-        {
-            yield return WaitForSecondsCache.Get(seconds);
-
-            pressedTime += seconds;
-
-            Click();
         }
 
         private bool IsClicked(PointerEventData eventData)

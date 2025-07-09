@@ -36,7 +36,7 @@ namespace ZL.Unity.XR.AR
 
         [SerializeField]
 
-        private SerializableDictionary<string, ObjectPool<Transform>> prefabPools = null;
+        private SerializableDictionary<string, ObjectPool> prefabPools = null;
 
         private void Awake()
         {

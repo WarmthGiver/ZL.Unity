@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 using ZL.Unity.Audio;
 
-using ZL.Unity.Directing;
-
 using ZL.Unity.Pooling;
 
 namespace ZL.Unity.Demo.AudioDemo
@@ -20,13 +18,13 @@ namespace ZL.Unity.Demo.AudioDemo
 
         [SerializeField]
 
-        private ObjectPool<AudioSource> clickSFXPool = null;
+        private ObjectPool clickSFXPool = null;
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) == true)
             {
-                clickSFXPool.Generate().SetActive(true);
+                clickSFXPool.Clone().Appear();
             }
         }
     }

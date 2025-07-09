@@ -10,65 +10,107 @@ namespace ZL.Unity.Collections
 {
     [Serializable]
 
-    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+    public sealed class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
         [SerializeField]
 
-        protected List<SerializableKeyValuePair<TKey, TValue>> elements = new List<SerializableKeyValuePair<TKey, TValue>>();
-
-        void ISerializationCallbackReceiver.OnBeforeSerialize()
-        {
-
-        }
-
-        void ISerializationCallbackReceiver.OnAfterDeserialize()
-        {
-            if (elements != null)
-            {
-                Clear();
-
-                foreach (var element in elements)
-                {
-                    TryAdd(element.Key, element.Value);
-                }
-            }
-
-            #if !UNITY_EDITOR
-
-            elements = null;
-
-            #endif
-        }
-
-        #if UNITY_EDITOR
+        private List<SerializableKeyValuePair<TKey, TValue>> items = new();
 
         public new void Add(TKey key, TValue value)
         {
             base.Add(key, value);
 
-            elements.Add(new SerializableKeyValuePair<TKey, TValue>(key, value));
+            items.Add(new(key, value));
         }
 
-        #endif
+        public new void Clear()
+        {
+            base.Clear();
+
+            items.Clear();
+        }
+
+        public void OnBeforeSerialize()
+        {
+            #if !UNITY_EDITOR
+
+            Serialize();
+
+            #endif
+        }
+
+        public void Serialize()
+        {
+            items.Clear();
+
+            foreach (var item in this)
+            {
+                items.Add(new(item));
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
+            Deserialize();
+        }
+
+        public void Deserialize()
+        {
+            base.Clear();
+
+            foreach (var item in items)
+            {
+                if (item == null)
+                {
+                    continue;
+                }
+
+                TryAdd(item.Key, item.Value);
+            }
+        }
     }
 
     [Serializable]
 
-    public class SerializableDictionary<TKey, TValue, TKeyValuePair> : IEnumerable<TKeyValuePair>, ISerializationCallbackReceiver
+    public sealed class SerializableDictionary<TKey, TValue, TKeyValuePair> : IEnumerable<TKeyValuePair>, ISerializationCallbackReceiver
 
-        where TKeyValuePair : IKeyValuePair<TKey, TValue>
+        where TKeyValuePair : IKeyValuePair<TKey, TValue>, new()
     {
+        private readonly Dictionary<TKey, TKeyValuePair> @base = new();
+
         [SerializeField]
 
-        private List<TKeyValuePair> elements = new List<TKeyValuePair>();
-
-        private readonly Dictionary<TKey, TKeyValuePair> dictionary = new Dictionary<TKey, TKeyValuePair>();
+        private List<TKeyValuePair> items = new();
 
         public TValue this[TKey key]
         {
-            get => dictionary[key].Value;
+            get => @base[key].Value;
 
-            set => dictionary[key].Value = value;
+            set => @base[key].Value = value;
+        }
+
+        public void Add(TKey key, TValue value)
+        {
+            Add(new() { Key = key, Value = value });
+        }
+
+        public void Add(TKeyValuePair item)
+        {
+            @base.Add(item.Key, item);
+
+            items.Add(item);
+        }
+
+        public void Clear()
+        {
+            @base.Clear();
+
+            items.Clear();
+        }
+
+        public TKeyValuePair GetItem(TKey key)
+        {
+            return @base[key];
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -78,60 +120,46 @@ namespace ZL.Unity.Collections
 
         public IEnumerator<TKeyValuePair> GetEnumerator()
         {
-            return dictionary.Values.GetEnumerator();
+            return @base.Values.GetEnumerator();
         }
 
-        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        public void OnBeforeSerialize()
         {
-
-        }
-
-        void ISerializationCallbackReceiver.OnAfterDeserialize()
-        {
-            if (elements != null)
-            {
-                dictionary.Clear();
-
-                foreach (var element in elements)
-                {
-                    if (element != null)
-                    {
-                        dictionary.TryAdd(element.Key, element);
-                    }
-                }
-            }
-
             #if !UNITY_EDITOR
 
-            elements = null;
+            Serialize();
 
             #endif
         }
 
-        public void Add(TKeyValuePair element)
+        public void Serialize()
         {
-            dictionary.Add(element.Key, element);
+            items.Clear();
 
-            #if UNITY_EDITOR
-
-            elements.Add(element);
-
-            #endif
-        }
-        public void Clear()
-        {
-            dictionary.Clear();
-
-            #if UNITY_EDITOR
-
-            elements.Clear();
-
-            #endif
+            foreach (var item in this)
+            {
+                items.Add(item);
+            }
         }
 
-        public TKeyValuePair GetContainer(TKey key)
+        public void OnAfterDeserialize()
         {
-            return dictionary[key];
+            Deserialize();
+        }
+
+        public void Deserialize()
+        {
+            @base.Clear();
+
+            foreach (var item in items)
+            {
+                if (item == null)
+                {
+                    continue;
+                }
+
+                @base.TryAdd(item.Key, item);
+            }
         }
     }
 }

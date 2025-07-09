@@ -10,42 +10,48 @@ namespace ZL.Unity.GFX
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnlyWhenPlayMode]
 
-        private Graphic graphic = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Graphic targetGraphic = null;
 
         [Space]
+
+        [ReadOnlyWhenPlayMode]
+
+        [UsingCustomProperty]
 
         [SerializeField]
 
         private bool isShared = false;
 
-        private Material[] materials;
+        private Material material = null;
 
-        public override Material[] Materials
+        public override Material Material
         {
-            get => materials;
-        }
-
-        private void Awake()
-        {
-            if (isShared == false)
+            get
             {
-                graphic.material = new Material(graphic.material);
+                if (material == null)
+                {
+                    material = targetGraphic.material;
+
+                    if (isShared == false)
+                    {
+                        material = new(material);
+                    }
+
+                    targetGraphic.material = material;
+                }
+
+                return material;
             }
-
-            materials = new Material[1]
-            {
-                graphic.material
-            };
         }
     }
 }
