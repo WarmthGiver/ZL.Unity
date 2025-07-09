@@ -14,25 +14,25 @@ namespace ZL.Unity.EulerianTrail
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [ReadOnly(true)]
 
-        private RectTransform rectTransform = null;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private RectTransform rectTransform = null;
 
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private Image image = null;
 

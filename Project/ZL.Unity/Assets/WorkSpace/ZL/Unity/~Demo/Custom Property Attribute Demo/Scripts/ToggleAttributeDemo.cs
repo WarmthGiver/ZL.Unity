@@ -10,38 +10,44 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0 = "";
+        private string test0 = "";
 
         [Space]
 
-        public bool toggle = false;
+        private bool toggle = false;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [ToggleIf("toggle", true)]
 
         [Text("[Toggle(\"toggle\", true)]")]
 
-        public string test1 = "";
-
         [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test1 = "";
 
         [ToggleIf("toggle", false)]
 
         [Text("[Toggle(\"toggle\", false)]")]
 
-        public string test2 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test2 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [ToggleIf("Toggle", false)]
 
         [Text("[Toggle(\"Toggle\", false)]")]
 
-        public string test3 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test3 = "";
     }
 }

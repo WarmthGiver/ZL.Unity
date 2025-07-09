@@ -20,7 +20,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private RectTransform rectTransform;
+        private RectTransform rectTransform = null;
 
         [Space]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private Canvas canvas;
+        private Canvas canvas = null;
 
         public void OnDrag(PointerEventData eventData)
         {

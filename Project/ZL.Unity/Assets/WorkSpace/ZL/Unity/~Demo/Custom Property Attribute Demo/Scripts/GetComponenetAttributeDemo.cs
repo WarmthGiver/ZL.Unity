@@ -14,62 +14,74 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        [UsingCustomProperty]
-
         [Text("[GetComponent]")]
 
         [GetComponent]
 
-        public Transform test1 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform test1 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[GetComponentInParent]")]
 
         [GetComponentInParent]
 
-        public Transform test2 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform test2 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[GetComponentInParentOnly]")]
 
         [GetComponentInParentOnly]
 
-        public Transform test3 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform test3 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[GetComponentInChildren]")]
 
         [GetComponentInChildren]
 
-        public Transform test4 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform test4 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[GetComponentInChildrenOnly]")]
 
         [GetComponentInChildrenOnly]
 
-        public Transform test5 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform test5 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[GetComponent]")]
 
         [GetComponent]
 
-        public string test6 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test6 = "";
     }
 }

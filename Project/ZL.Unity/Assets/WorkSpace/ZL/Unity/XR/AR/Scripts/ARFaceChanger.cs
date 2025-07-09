@@ -14,10 +14,6 @@ namespace ZL.Unity.XR.AR
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
@@ -26,17 +22,21 @@ namespace ZL.Unity.XR.AR
 
         [Alias("AR Face Manager")]
 
+        [UsingCustomProperty]
+
+        [SerializeField]
+
         private ARFaceManager arFaceManager = null;
 
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Essential]
 
         [ReadOnlyWhenPlayMode]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private GameObject vertex = null;
 
@@ -54,8 +54,6 @@ namespace ZL.Unity.XR.AR
                 for (int i = 0; i < arFace.vertices.Length; ++i)
                 {
                     Vector3 pose = arFace.transform.TransformPoint(arFace.vertices[i]);
-
-
                 }
             }
         }

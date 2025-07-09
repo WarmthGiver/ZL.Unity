@@ -16,47 +16,53 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0 = "";
+        private string test0 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[SetIndent(-1)]")]
 
         [SetIndent(-1)]
 
-        public string test1 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test1 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[SetIndent(0)]")]
 
         [SetIndent(0)]
 
-        public string test2 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test2 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[SetIndent(1)]")]
 
         [SetIndent(1)]
 
-        public string test3 = "";
-
         [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test3 = "";
 
         [Line]
 
-        public TestClass classTest0 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private TestClass classTest0 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Line]
 
@@ -64,11 +70,13 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [SetIndent(-1)]
 
-        public TestClass classTest1 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private TestClass classTest1 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Line]
 
@@ -76,11 +84,13 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [SetIndent(0)]
 
-        public TestClass classTest2 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private TestClass classTest2 = null;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Line]
 
@@ -88,49 +98,61 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [SetIndent(1)]
 
-        public TestClass classTest3 = null;
-
         [UsingCustomProperty]
+
+        [SerializeField]
+
+        private TestClass classTest3 = null;
 
         [Line]
 
-        public Wrapper<List<TestClass>> collectionTest = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Wrapper<List<TestClass>> collectionTest = null;
 
         [Serializable]
 
-        public sealed class TestClass
+        private sealed class TestClass
         {
-            public string test0 = "";
+            private string test0 = "";
 
             [Space]
-
-            [UsingCustomProperty]
 
             [Text("[SetIndent(-1)]")]
 
             [SetIndent(-1)]
 
-            public string test1 = "";
+            [UsingCustomProperty]
+
+            [SerializeField]
+
+            private string test1 = "";
 
             [Space]
-
-            [UsingCustomProperty]
 
             [Text("[SetIndent(0)]")]
 
             [SetIndent(0)]
 
-            public string test2 = "";
+            [UsingCustomProperty]
+
+            [SerializeField]
+
+            private string test2 = "";
 
             [Space]
-
-            [UsingCustomProperty]
 
             [Text("[SetIndent(1)]")]
 
             [SetIndent(1)]
 
-            public string test3 = "";
+            [UsingCustomProperty]
+
+            [SerializeField]
+
+            private string test3 = "";
         }
     }
 }

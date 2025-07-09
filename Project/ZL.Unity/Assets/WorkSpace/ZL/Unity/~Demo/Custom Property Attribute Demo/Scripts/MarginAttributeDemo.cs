@@ -10,30 +10,36 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0 = "";
-
-        [UsingCustomProperty]
+        private string test0 = "";
 
         [Margin]
 
         [Text("[Margin]")]
 
-        public string test1 = "";
-
         [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test1 = "";
 
         [Margin(30)]
 
         [Text("[Margin(30)]")]
 
-        public int test2 = 0;
-
         [UsingCustomProperty]
+
+        [SerializeField]
+
+        private int test2 = 0;
 
         [Margin(50)]
 
         [Text("[Margin(50)]")]
 
-        public string test3 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test3 = "";
     }
 }

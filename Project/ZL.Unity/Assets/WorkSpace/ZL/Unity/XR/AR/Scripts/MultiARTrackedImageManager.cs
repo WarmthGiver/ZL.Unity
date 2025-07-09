@@ -18,10 +18,6 @@ namespace ZL.Unity.XR.AR
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
@@ -29,6 +25,10 @@ namespace ZL.Unity.XR.AR
         [ReadOnly(true)]
 
         [Alias("AR Tracked Image Manager")]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private ARTrackedImageManager arTrackedImageManager = null;
 
@@ -49,8 +49,6 @@ namespace ZL.Unity.XR.AR
             {
                 var name = trackedImage.referenceImage.name;
             }
-
-
         }
     }
 }

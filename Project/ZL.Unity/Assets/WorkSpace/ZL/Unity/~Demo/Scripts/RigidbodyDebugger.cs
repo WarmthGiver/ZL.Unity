@@ -10,10 +10,6 @@ namespace ZL.Unity.Demo
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [WarningBox("Warning! This component is for debugging purposes and is excluded from the build.")]
 
         [Margin]
@@ -24,23 +20,23 @@ namespace ZL.Unity.Demo
 
         [ReadOnly(true)]
 
-        #pragma warning disable CS0108
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        #pragma warning disable
 
         private Rigidbody rigidbody = null;
 
-        #pragma warning restore CS0108
+        #pragma warning restore
 
         [Space]
 
-        [SerializeField]
-
         [UsingCustomProperty]
+
+        [SerializeField]
 
         private Vector3 velocity = Vector3.zero;
-
-        [SerializeField]
-
-        [UsingCustomProperty]
 
         [ReadOnly(true)]
 
@@ -48,11 +44,15 @@ namespace ZL.Unity.Demo
 
         [Alias("Megnitude")]
 
-        #pragma warning disable CS0414
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        #pragma warning disable
 
         private float velocityMagnitude = 0f;
 
-        #pragma warning restore CS0414
+        #pragma warning restore
 
         [Space]
 

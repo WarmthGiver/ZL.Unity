@@ -14,15 +14,15 @@ namespace ZL.Unity.Phys
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private RigidbodyCharacterController rigidbodyCharacterController = null;
 

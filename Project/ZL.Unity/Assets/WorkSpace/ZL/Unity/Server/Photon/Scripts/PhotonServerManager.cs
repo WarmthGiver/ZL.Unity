@@ -32,15 +32,18 @@ namespace ZL.Unity.Server.Photon
 
     public sealed class PhotonServerManager : MonoBehaviourPunCallbacks, ISingleton<PhotonServerManager>
     {
-        public PhotonServerManager Instance => ISingleton<PhotonServerManager>.Instance;
+        public PhotonServerManager Instance
+        {
+            get => ISingleton<PhotonServerManager>.Instance;
+        }
 
         [Space]
 
-        [SerializeField]
+        [ReadOnlyWhenPlayMode]
 
         [UsingCustomProperty]
 
-        [ReadOnlyWhenPlayMode]
+        [SerializeField]
 
         private StringPref nicknamePref = new StringPref("Nickname", "");
 
@@ -51,11 +54,11 @@ namespace ZL.Unity.Server.Photon
 
         [Space]
 
-        [SerializeField]
+        [ReadOnlyWhenPlayMode]
 
         [UsingCustomProperty]
 
-        [ReadOnlyWhenPlayMode]
+        [SerializeField]
 
         private Wrapper<TypedLobby[]> lobbies = null;
 
@@ -232,7 +235,7 @@ namespace ZL.Unity.Server.Photon
 
         private Dictionary<string, TypedLobby> lobbyDictionary = null;
 
-        private readonly Stopwatch loadingStopwatch = new Stopwatch();
+        private readonly Stopwatch loadingStopwatch = new();
 
         private void Awake()
         {

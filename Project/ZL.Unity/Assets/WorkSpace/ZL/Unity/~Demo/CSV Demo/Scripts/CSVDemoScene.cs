@@ -18,13 +18,13 @@ namespace ZL.Unity.Demo.CSVDemo
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Button(nameof(LoadData))]
 
         [Button(nameof(SaveData))]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private string filePath = "";
 

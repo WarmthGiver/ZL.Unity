@@ -14,15 +14,15 @@ namespace ZL.Unity.Phys
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         #pragma warning disable CS0108
 
@@ -35,15 +35,15 @@ namespace ZL.Unity.Phys
 
         #pragma warning restore CS0108
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private GravityController gravityController = null;
 
@@ -55,9 +55,9 @@ namespace ZL.Unity.Phys
 
         [Space]
 
-        [SerializeField]
-
         [UsingCustomProperty]
+
+        [SerializeField]
 
         private bool rotateTransformUpright = true;
 
@@ -68,21 +68,17 @@ namespace ZL.Unity.Phys
             set => rotateTransformUpright = value;
         }
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [ToggleIf(nameof(rotateTransformUpright), false)]
 
         [AddIndent(1)]
 
         [Alias("Use Slerp")]
 
-        private bool useSlerpForRotateTransformUpright = true;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private bool useSlerpForRotateTransformUpright = true;
 
         [ToggleIf(nameof(rotateTransformUpright), false)]
 
@@ -92,19 +88,23 @@ namespace ZL.Unity.Phys
 
         [Alias("Speed")]
 
-        private float speedForRotateTransformUpright = 10f;
-
-        [Space]
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private float speedForRotateTransformUpright = 10f;
+
+        [Space]
 
         [Line(Margin = 0)]
 
         [Text("<b>Grounding</b>", FontSize = 16)]
 
         [Margin]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         protected LayerMask groundLayerMask = 0;
 
@@ -128,21 +128,21 @@ namespace ZL.Unity.Phys
 
         #if UNITY_EDITOR
 
-        [SerializeField]
+        [ReadOnly(true)]
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
+        [SerializeField]
 
         private float groundSlope = 0f;
 
         #endif
 
-        [SerializeField]
+        [ReadOnly(true)]
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
+        [SerializeField]
 
         protected bool isGrounded = false;
 
@@ -165,15 +165,15 @@ namespace ZL.Unity.Phys
 
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Line(Margin = 0)]
 
         [Text("<b>Controls</b>", FontSize = 16)]
 
         [Margin]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         protected Vector3 movementDirection = Vector3.zero;
 
@@ -197,9 +197,9 @@ namespace ZL.Unity.Phys
 
         [Space]
 
-        [SerializeField]
-
         [UsingCustomProperty]
+
+        [SerializeField]
 
         protected Vector3 impulseForce = Vector3.zero;
 
@@ -214,21 +214,21 @@ namespace ZL.Unity.Phys
 
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Line(Margin = 0)]
 
         [Text("<b>Debugging</b>", FontSize = 16)]
 
         [Margin]
 
-        private bool drawMovementForceGizmo = true;
+        [UsingCustomProperty]
 
         [SerializeField]
 
+        private bool drawMovementForceGizmo = true;
+
         [UsingCustomProperty]
+
+        [SerializeField]
 
         private bool drawCollisionContactGizmo = true;
 

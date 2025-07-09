@@ -10,41 +10,45 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0 = "";
+        private string test0 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[Alias(\"TEST 1\")]")]
 
         [Alias("TEST 1")]
 
-        public string test1 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test1 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[Alias(null)]")]
 
         [Alias(null)]
 
-        public string test2 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test2 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[Alias(\"\")]")]
 
         [Alias("")]
 
-        public string test3 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test3 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[LabelField]")]
 
@@ -56,6 +60,10 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [PropertyField]
 
-        public string test4 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test4 = "";
     }
 }

@@ -15,13 +15,13 @@ namespace ZL.Unity.Server.Photon
 
         where TPhotonSceneDirector : PhotonSceneDirector<TPhotonSceneDirector>
     {
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private PhotonView photonView = null;
 

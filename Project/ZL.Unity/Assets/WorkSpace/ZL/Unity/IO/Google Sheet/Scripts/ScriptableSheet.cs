@@ -16,10 +16,6 @@ namespace ZL.Unity.IO.GoogleSheet
 
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [PropertyField]
 
         [Margin]
@@ -27,6 +23,10 @@ namespace ZL.Unity.IO.GoogleSheet
         [Button(nameof(Read))]
 
         [Button(nameof(Write))]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private bool containsMergedCells = false;
 

@@ -76,15 +76,15 @@ namespace ZL.Unity.UI
 
         public sealed class AutoButtonEditor : ButtonEditor
         {
-            private AutoButton autoButton;
+            private AutoButton autoButton = null;
 
-            private SerializedProperty autoClickThreshold;
+            private SerializedProperty autoClickThreshold = null;
 
-            private SerializedProperty useAutoClickIntervalCurve;
+            private SerializedProperty useAutoClickIntervalCurve = null;
 
-            private SerializedProperty autoClickInterval;
+            private SerializedProperty autoClickInterval = null;
 
-            private SerializedProperty autoClickIntervalCurve;
+            private SerializedProperty autoClickIntervalCurve = null;
 
             protected override void OnEnable()
             {

@@ -21,11 +21,11 @@ namespace ZL.Unity.Server.Photon
     {
         [Space]
 
-        [SerializeField]
+        [ReadOnlyWhenPlayMode]
 
         [UsingCustomProperty]
 
-        [ReadOnlyWhenPlayMode]
+        [SerializeField]
 
         protected ManagedObjectPool<int, TPlayerListItem> playerListItemPool = null;
 

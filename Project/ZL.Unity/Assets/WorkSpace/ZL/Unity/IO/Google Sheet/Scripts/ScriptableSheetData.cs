@@ -10,11 +10,11 @@ namespace ZL.Unity.IO.GoogleSheet
     {
         [Space]
 
-        [SerializeField]
+        [ReadOnly(true)]
 
         [UsingCustomProperty]
 
-        [ReadOnly(true)]
+        [SerializeField]
 
         private string startCell = "";
 

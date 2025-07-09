@@ -14,52 +14,62 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        [UsingCustomProperty]
-
         [PropertyField]
 
         [Preview]
 
-        public Texture test1 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Texture test1 = null;
 
         [Space]
 
-        [UsingCustomProperty]
-
         [PropertyField]
 
         [Preview]
 
-        public Texture2D test2 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Texture2D test2 = null;
 
         [Space]
 
-        [UsingCustomProperty]
-
         [PropertyField]
 
         [Preview]
 
-        public Sprite test3 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Sprite test3 = null;
 
         [Space]
 
-        [UsingCustomProperty]
-
         [PropertyField]
 
         [Preview]
 
-        public GameObject test4 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private GameObject test4 = null;
 
         [Space]
 
-        [UsingCustomProperty]
-
         [PropertyField]
 
         [Preview]
 
-        public Material test5 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Material test5 = null;
     }
 }

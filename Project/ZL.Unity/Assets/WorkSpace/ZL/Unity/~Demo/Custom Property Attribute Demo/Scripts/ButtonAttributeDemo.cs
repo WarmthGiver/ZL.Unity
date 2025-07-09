@@ -14,8 +14,6 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 	{
         [Margin]
 
-        [UsingCustomProperty]
-
         [Text("[Button(\"PrintText\")]")]
 
         [Button("PrintText")]
@@ -46,7 +44,11 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
 
         [Margin]
 
-        public string text = "Hello, World!";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string text = "Hello, World!";
 
         public void PrintText()
         {

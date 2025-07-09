@@ -8,10 +8,7 @@ namespace ZL.Unity.Pooling
 {
     [Serializable]
 
-    public class ObjectPool : ObjectPool<PooledObject>
-    {
-
-    }
+    public class ObjectPool : ObjectPool<PooledObject> { }
 
     [Serializable]
 

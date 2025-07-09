@@ -10,76 +10,90 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        public string test0 = "";
+        private string test0 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[PropertyField]")]
 
         [PropertyField]
 
-        public string test1 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test1 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[LabelField]")]
 
         [LabelField]
 
-        public string test2 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test2 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[LayerField]")]
 
         [LayerField]
 
-        public int test3 = 0;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private int test3 = 0;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[LayerField]")]
 
         [LayerField]
 
-        public string test4 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test4 = "";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[TagField]")]
 
         [TagField]
 
-        public string test5 = "Untagged";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test5 = "Untagged";
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[TagField]")]
 
         [TagField]
 
-        public int test6 = 0;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private int test6 = 0;
 
         [Space]
-
-        [UsingCustomProperty]
 
         [Text("[EmptyField]")]
 
         [EmptyField]
 
-        public string test7 = "";
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test7 = "";
     }
 }

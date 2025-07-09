@@ -8,15 +8,15 @@ namespace ZL.Unity.Phys
     {
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         #pragma warning disable CS0108
 
@@ -31,15 +31,15 @@ namespace ZL.Unity.Phys
 
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Line(Margin = 0)]
 
         [Text("<b>Gravity</b>", FontSize = 16)]
 
         [Margin]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private bool useGravity = true;
 
@@ -56,13 +56,13 @@ namespace ZL.Unity.Phys
             set => useCustomGravity = value;
         }
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [ToggleIf(nameof(useCustomGravity), true)]
 
         [AddIndent(1)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private GravityGenerator gravityGenerator = null;
 
@@ -73,15 +73,15 @@ namespace ZL.Unity.Phys
             set => gravityGenerator = value;
         }
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [AddIndent(1)]
 
         [ToggleIf(nameof(useCustomGravity), false)]
 
         [Alias("Gravity Direction")]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private Vector3 customGravityDirection = Vector3.down;
 
@@ -92,15 +92,15 @@ namespace ZL.Unity.Phys
             set => customGravityDirection = value;
         }
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [ToggleIf(nameof(useCustomGravity), false)]
 
         [AddIndent(1)]
 
         [Alias("Gravity Strength")]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private float customGravityStrength = 9.81f;
 
@@ -111,11 +111,11 @@ namespace ZL.Unity.Phys
             set => customGravityStrength = value;
         }
 
-        [SerializeField]
+        [AddIndent(1)]
 
         [UsingCustomProperty]
 
-        [AddIndent(1)]
+        [SerializeField]
 
         private float gravityScale = 1f;
 
@@ -147,10 +147,6 @@ namespace ZL.Unity.Phys
 
         [Space]
 
-        [SerializeField]
-
-        [UsingCustomProperty]
-
         [Line(Margin = 0)]
 
         [Text("<b>Debugging</b>", FontSize = 16)]
@@ -159,11 +155,11 @@ namespace ZL.Unity.Phys
 
         [Alias("Draw Gravity Direction")]
 
-        private bool drawGravityDirectionGizmo = true;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private bool drawGravityDirectionGizmo = true;
 
         [ToggleIf(nameof(drawGravityDirectionGizmo), false)]
 
@@ -171,17 +167,21 @@ namespace ZL.Unity.Phys
 
         [Alias("Length")]
 
-        private float gravityDirectionGizmoLength = 1000f;
+        [UsingCustomProperty]
 
         [SerializeField]
 
-        [UsingCustomProperty]
+        private float gravityDirectionGizmoLength = 1000f;
 
         [ToggleIf(nameof(drawGravityDirectionGizmo), false)]
 
         [AddIndent(1)]
 
         [Alias("Color")]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
 
         private Color gravityDirectionGizmoColor = Color.green;
 

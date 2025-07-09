@@ -1,5 +1,6 @@
+// Working
+
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace ZL.Unity.Pooling
 {
@@ -27,7 +28,5 @@ namespace ZL.Unity.Pooling
         {
             get => rigidbody;
         }
-
-
     }
 }

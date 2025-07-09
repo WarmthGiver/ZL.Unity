@@ -109,12 +109,13 @@ namespace ZL.Unity.Phys
             }
         }
 
+        #pragma warning disable
+
+        private void Start() { }
+
+        #pragma warning restore
+
         #endif
-
-        private void Start()
-        {
-
-        }
 
         public bool Detect(Transform target)
         {

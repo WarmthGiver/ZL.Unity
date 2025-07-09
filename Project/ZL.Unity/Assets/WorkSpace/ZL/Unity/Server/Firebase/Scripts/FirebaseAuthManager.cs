@@ -26,19 +26,19 @@ namespace ZL.Unity.Server.Firebase.Auth
     {
         /*[Space]
 
-        [SerializeField]
-
+        [Alias("ID Input Field")]
+        
         [UsingCustomProperty]
 
-        [Alias("ID Input Field")]
+        [SerializeField]
 
         private TMP_InputField idInputField;
 
-        [SerializeField]
+        [Alias("PW Input Field")]
 
         [UsingCustomProperty]
 
-        [Alias("PW Input Field")]
+        [SerializeField]
 
         private TMP_InputField pwInputField;
 

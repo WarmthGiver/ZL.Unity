@@ -10,32 +10,38 @@ namespace ZL.Unity.Demo.CustomPropertyAttributeDemo
     {
         [Space]
 
-        [UsingCustomProperty]
-
         [Text("[Essential]")]
 
         [Essential]
 
-        public Transform test1 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform test1 = null;
 
         [Space]
 
-        [UsingCustomProperty]
-
         [Text("[Essential]")]
 
         [Essential]
 
-        public Transform test2 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform test2 = null;
 
         [Space]
 
-        [UsingCustomProperty]
-
         [Text("[Essential]")]
 
         [Essential]
 
-        public string test3 = null;
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private string test3 = null;
     }
 }
