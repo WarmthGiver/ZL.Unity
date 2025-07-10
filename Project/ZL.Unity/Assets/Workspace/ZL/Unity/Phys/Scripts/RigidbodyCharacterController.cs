@@ -49,28 +49,22 @@ namespace ZL.Unity.Phys
 
         [Space]
 
-        [SerializeField]
-
-        private Transform model = null;
-
-        [Space]
-
         [UsingCustomProperty]
 
         [SerializeField]
 
-        private bool rotateTransformUpright = true;
+        private bool keepRotationUpright = true;
 
-        public bool RotateTransformUpright
+        public bool KeepRotationUpright
         {
-            get => rotateTransformUpright;
+            get => keepRotationUpright;
 
-            set => rotateTransformUpright = value;
+            set => keepRotationUpright = value;
         }
 
-        [ToggleIf(nameof(rotateTransformUpright), false)]
+        [ToggleIf(nameof(keepRotationUpright), false)]
 
-        [AddIndent(1)]
+        [AddIndent]
 
         [Alias("Use Slerp")]
 
@@ -78,13 +72,13 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private bool useSlerpForRotateTransformUpright = true;
+        private bool rotateUprightSlerp = true;
 
-        [ToggleIf(nameof(rotateTransformUpright), false)]
+        [ToggleIf(nameof(keepRotationUpright), false)]
 
-        [ToggleIf(nameof(useSlerpForRotateTransformUpright), false)]
+        [ToggleIf(nameof(rotateUprightSlerp), false)]
 
-        [AddIndent(2)]
+        [AddIndent]
 
         [Alias("Speed")]
 
@@ -92,7 +86,7 @@ namespace ZL.Unity.Phys
 
         [SerializeField]
 
-        private float speedForRotateTransformUpright = 10f;
+        private float rotateUprightSpeed = 10f;
 
         [Space]
 
@@ -238,11 +232,11 @@ namespace ZL.Unity.Phys
         {
             var uprightRotation = Quaternion.FromToRotation(-transform.up, gravityController.GravityDirection) * transform.rotation;
 
-            if (rotateTransformUpright == true)
+            if (keepRotationUpright == true)
             {
-                if (useSlerpForRotateTransformUpright == true)
+                if (rotateUprightSlerp == true)
                 {
-                    transform.rotation = Quaternion.Slerp(transform.rotation, uprightRotation, speedForRotateTransformUpright * Time.fixedDeltaTime);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, uprightRotation, rotateUprightSpeed * Time.fixedDeltaTime);
                 }
 
                 else

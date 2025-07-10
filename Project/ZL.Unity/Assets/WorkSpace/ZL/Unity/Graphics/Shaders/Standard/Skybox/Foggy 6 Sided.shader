@@ -1,4 +1,4 @@
-Shader "ZL/Skybox/Foggy 6 Sided"
+Shader "ZL/Standard/Skybox/Foggy 6 Sided"
 {
     Properties
     {

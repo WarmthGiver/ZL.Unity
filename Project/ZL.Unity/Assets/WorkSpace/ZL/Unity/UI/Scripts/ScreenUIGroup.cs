@@ -28,12 +28,10 @@ namespace ZL.Unity.UI
 
         public void AppearMain()
         {
-            if (main == null)
+            if (main != null)
             {
-                return;
+                main.Appear();
             }
-
-            main.Appear();
         }
 
         public void SwapCurrent(ScreenUI newScreen)
@@ -53,12 +51,10 @@ namespace ZL.Unity.UI
 
         public void DisappearCurrent()
         {
-            if (current == null)
+            if (current != null)
             {
-                return;
+                current.Disappear();
             }
-
-            current.Disappear();
         }
     }
 }

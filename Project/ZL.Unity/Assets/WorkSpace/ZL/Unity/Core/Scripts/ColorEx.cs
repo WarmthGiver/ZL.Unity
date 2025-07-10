@@ -4,7 +4,7 @@ namespace ZL.Unity
 {
     public static partial class ColorEx
     {
-        public static Color ToneDown(this Color instance, in float tone)
+        public static Color Tone(this Color instance, in float tone)
         {
             instance.r *= tone;
 

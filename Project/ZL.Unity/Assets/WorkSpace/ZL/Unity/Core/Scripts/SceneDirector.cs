@@ -12,10 +12,7 @@ namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Scene Director (Singleton)")]
 
-    public class SceneDirector : SceneDirector<SceneDirector>
-    {
-
-    }
+    public class SceneDirector : SceneDirector<SceneDirector> { }
 
     [DefaultExecutionOrder((int)ScriptExecutionOrder.SceneDirector)]
 

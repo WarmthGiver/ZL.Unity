@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2880,10 +2881,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1512258892}
   gravityController: {fileID: 1512258891}
-  model: {fileID: 1512258896}
-  rotateTransformUpright: 1
-  useSlerpForRotateTransformUpright: 1
-  speedForRotateTransformUpright: 10
+  keepRotationUpright: 1
+  rotateUprightSlerp: 1
+  rotateUprightSpeed: 10
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
