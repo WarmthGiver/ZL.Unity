@@ -14,6 +14,14 @@ namespace ZL.Unity
 
         [SerializeField]
 
+        [PropertyField]
+
+        [Button(nameof(LoadRunInBackground), "Load")]
+
+        [Button(nameof(SaveRunInBackground), "Save")]
+
+        [UsingCustomProperty]
+
         private BoolPref runInBackgroundPref = new("RunInBackground", false);
 
         public BoolPref RunInBackgroundPref
@@ -23,9 +31,17 @@ namespace ZL.Unity
 
         [Space]
 
+        [PropertyField]
+
+        [Button(nameof(LoadTargetFrameRate), "Load")]
+
+        [Button(nameof(SaveTargetFrameRate), "Save")]
+
+        [UsingCustomProperty]
+
         [SerializeField]
 
-        private IntPref targetFrameRatePref = new("TargetFrameRate", 60);
+        private IntPref targetFrameRatePref = new("TargetFrameRate", -1);
 
         public IntPref TargetFrameRatePref
         {
@@ -79,6 +95,10 @@ namespace ZL.Unity
                 return;
             }
 
+            runInBackgroundPref.Refresh();
+
+            targetFrameRatePref.Refresh();
+
             Cursor.visible = cursorVisible;
 
             Cursor.lockState = cursorLockState;
@@ -109,6 +129,26 @@ namespace ZL.Unity
             Cursor.lockState = cursorLockState;
 
             TimeEx.TimeScale = timeScale;
+        }
+
+        public void LoadRunInBackground()
+        {
+            RunInBackgroundPref.TryLoadValue();
+        }
+
+        public void SaveRunInBackground()
+        {
+            RunInBackgroundPref.SaveValue();
+        }
+
+        public void LoadTargetFrameRate()
+        {
+            TargetFrameRatePref.TryLoadValue();
+        }
+
+        public void SaveTargetFrameRate()
+        {
+            TargetFrameRatePref.SaveValue();
         }
 
         public void Pause()

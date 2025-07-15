@@ -6,8 +6,5 @@ namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Player List Item")]
 
-    public class PhotonPlayerListItem : ManagedPooledObject<int>
-    {
-
-    }
+    public class PhotonPlayerListItem : ManagedPooledObject<int> { }
 }

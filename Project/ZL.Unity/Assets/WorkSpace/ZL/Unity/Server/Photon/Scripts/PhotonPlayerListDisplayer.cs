@@ -10,10 +10,7 @@ namespace ZL.Unity.Server.Photon
 {
     [AddComponentMenu("ZL/Server/Photon/Photon Player List Displayer")]
 
-    public sealed class PhotonPlayerListDisplayer : PhotonPlayerListDisplayer<PhotonPlayerListItem>
-    {
-
-    }
+    public sealed class PhotonPlayerListDisplayer : PhotonPlayerListDisplayer<PhotonPlayerListItem> { }
 
     public abstract class PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
 
@@ -21,7 +18,7 @@ namespace ZL.Unity.Server.Photon
     {
         [Space]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 

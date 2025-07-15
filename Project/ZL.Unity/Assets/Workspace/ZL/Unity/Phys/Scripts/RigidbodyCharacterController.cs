@@ -311,11 +311,13 @@ namespace ZL.Unity.Phys
 
                     float bottomDotContact = Vector3.Dot(contact.point - transform.position, transform.up);
 
+                    float directionDotContactNormal = 0f;
+
                     if (bottomDotContact > 0f)
                     {
-                        float wallDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
+                        directionDotContactNormal = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
 
-                        if (wallDotDirection < 0f)
+                        if (directionDotContactNormal < 0f)
                         {
                             ++contactWallsCount;
 
@@ -346,11 +348,12 @@ namespace ZL.Unity.Phys
 
                     isGrounded = true;
 
-                    float groundDotDirection = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
+                    if (directionDotContactNormal == 0f)
+                    {
+                        directionDotContactNormal = Vector3.Dot(transform.rotation * movementDirection, contact.normal);
+                    }
 
-                    groundDotDirection = MathF.Round(groundDotDirection, 2);
-
-                    if (groundDotDirection < -0.1f)
+                    if (MathF.Round(directionDotContactNormal, 2) < -0.1f)
                     {
                         ++contactUphillsCount;
 

@@ -44,7 +44,7 @@ namespace ZL.Unity.UI
 
         [Margin]
 
-        [ReadOnlyWhenEditMode]
+        [ReadOnlyIfEditMode]
 
         [Button(nameof(Appear))]
 

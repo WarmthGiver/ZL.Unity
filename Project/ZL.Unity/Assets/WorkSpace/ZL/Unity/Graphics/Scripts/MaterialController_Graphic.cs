@@ -14,7 +14,7 @@ namespace ZL.Unity.GFX
 
         [Essential]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 
@@ -24,7 +24,7 @@ namespace ZL.Unity.GFX
 
         [Space]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 

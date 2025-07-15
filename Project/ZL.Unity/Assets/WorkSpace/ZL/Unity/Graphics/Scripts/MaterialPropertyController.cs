@@ -12,7 +12,7 @@ namespace ZL.Unity.GFX
 
         [Essential]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 

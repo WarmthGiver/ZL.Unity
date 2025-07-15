@@ -19,17 +19,17 @@ namespace ZL.Unity.Pooling
             set => lifeTime = value;
         }
 
+        private event Action OnDisableAction = null;
+
         public event Action OnDisappearedAction = null;
 
-        private event Action OnCollectedAction = null;
+        public static TPooledObject Instantiate<TPooledObject>(ObjectPool<TPooledObject> objectPool)
 
-        public static TClone Instantiate<TClone>(ObjectPool<TClone> objectPool)
-
-            where TClone : PooledObject
+            where TPooledObject : PooledObject
         {
             var clone = Instantiate(objectPool.Prefab, objectPool.Parent);
 
-            clone.OnCollectedAction += () => objectPool.Collect(clone);
+            clone.OnDisableAction += () => objectPool.Collect(clone);
 
             return clone;
         }
@@ -56,14 +56,14 @@ namespace ZL.Unity.Pooling
 
         public virtual void OnDisappeared()
         {
+            OnDisableAction?.Invoke();
+
             if (OnDisappearedAction != null)
             {
                 OnDisappearedAction.Invoke();
 
                 OnDisappearedAction = null;
             }
-
-            OnCollectedAction?.Invoke();
 
             gameObject.SetActive(false);
         }

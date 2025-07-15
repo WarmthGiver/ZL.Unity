@@ -4,7 +4,7 @@ namespace ZL.Unity
     {
         Min = -100,
 
-        Loader,
+        Loading,
 
         Singleton,
 

@@ -14,7 +14,7 @@ namespace ZL.Unity.UI
 
         [Essential]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 
@@ -42,7 +42,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private BoolPref displayFrameRatePref = new BoolPref("Display Frame Rate", true);
+        private BoolPref displayFrameRatePref = new("DisplayFrameRate", true);
 
         private float time = 0f;
 

@@ -8,25 +8,22 @@ namespace ZL.Unity.Pooling
 {
     [Serializable]
 
-    public sealed class HashSetObjectPool : HashSetObjectPool<PooledObject>
-    {
-
-    }
+    public sealed class HashSetObjectPool : HashSetObjectPool<PooledObject> { }
     
     [Serializable]
 
-    public class HashSetObjectPool<TClone> : ObjectPool<TClone>
+    public class HashSetObjectPool<TPooledObject> : ObjectPool<TPooledObject>
 
-        where TClone : PooledObject
+        where TPooledObject : PooledObject
     {
-        private readonly HashSet<TClone> clones = new();
+        private readonly HashSet<TPooledObject> clones = new();
 
-        public HashSet<TClone> Clones
+        public HashSet<TPooledObject> Clones
         {
             get => clones;
         }
 
-        public override TClone Clone()
+        public override TPooledObject Clone()
         {
             var clone = base.Clone();
 
@@ -35,7 +32,7 @@ namespace ZL.Unity.Pooling
             return clone;
         }
 
-        public override void Collect(TClone clone)
+        public override void Collect(TPooledObject clone)
         {
             clones.Remove(clone);
 

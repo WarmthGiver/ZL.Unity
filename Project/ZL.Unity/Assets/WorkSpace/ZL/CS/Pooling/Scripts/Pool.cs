@@ -1,30 +1,28 @@
 using System.Collections.Generic;
 
-using ZL.CS.Collections;
-
 namespace ZL.CS.Pooling
 {
-    public abstract class Pool<TClone>
+    public abstract class Pool<TClass>
 
-        where TClone : class
+        where TClass : class
     {
-        protected readonly LinkedList<TClone> collection = new();
+        protected readonly Stack<TClass> collection = new();
 
-        public virtual TClone Clone()
+        public virtual TClass Clone()
         {
             if (collection.Count != 0)
             {
-                return collection.PopLast();
+                return collection.Pop();
             }
 
             return Instantiate();
         }
 
-        public abstract TClone Instantiate();
+        public abstract TClass Instantiate();
 
-        public virtual void Collect(TClone clone)
+        public virtual void Collect(TClass clone)
         {
-            collection.AddLast(clone);
+            collection.Push(clone);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace ZL.Unity.Tweening
 
         [Margin]
 
-        [ReadOnlyWhenEditMode]
+        [ReadOnlyIfEditMode]
 
         [Button(nameof(FadeIn))]
 

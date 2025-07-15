@@ -39,13 +39,13 @@ namespace ZL.Unity.Server.Photon
 
         [Space]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 
         [SerializeField]
 
-        private StringPref nicknamePref = new StringPref("Nickname", "");
+        private StringPref nicknamePref = new("Nickname", "");
 
         public string Nickname
         {
@@ -54,7 +54,7 @@ namespace ZL.Unity.Server.Photon
 
         [Space]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 

@@ -14,7 +14,7 @@ namespace ZL.Unity.Pooling
 
         [Margin]
 
-        [ReadOnlyWhenEditMode]
+        [ReadOnlyIfEditMode]
 
         [Button(nameof(Appear))]
 

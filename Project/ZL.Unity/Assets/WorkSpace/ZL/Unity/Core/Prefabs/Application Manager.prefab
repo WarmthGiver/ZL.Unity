@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runInBackgroundPref:
-    key: Run In Background
+    key: RunInBackground
     value: 0
   targetFrameRatePref:
-    key: Target Frame Rate
-    value: 60
+    key: TargetFrameRate
+    value: -1
   cursorVisible: 1
   cursorLockState: 0
   timeScale: 1

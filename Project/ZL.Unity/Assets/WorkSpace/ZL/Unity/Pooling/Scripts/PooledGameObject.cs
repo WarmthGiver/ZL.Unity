@@ -1,12 +1,10 @@
-// Working
-
 using UnityEngine;
 
 namespace ZL.Unity.Pooling
 {
-    [AddComponentMenu("")]
+    [AddComponentMenu("ZL/Pooling/Pooled Game Object")]
 
-    public sealed class PooledGameObject : PooledObject
+    public class PooledGameObject : PooledObject
     {
         [Space]
 
@@ -27,6 +25,16 @@ namespace ZL.Unity.Pooling
         public Rigidbody Rigidbody
         {
             get => rigidbody;
+        }
+
+        public override void OnDisappeared()
+        {
+            base.OnDisappeared();
+
+            if (rigidbody != null)
+            {
+                rigidbody.velocity = Vector3.zero;
+            }
         }
     }
 }

@@ -18,11 +18,11 @@ namespace ZL.Unity.Pooling
 
         private SerializableDictionary<string, HashSetObjectPool> poolDictionary = null;
 
-        public TClone Clone<TClone>(string key)
+        public TPooledObject Clone<TPooledObject>(string key)
 
-            where TClone : PooledObject
+            where TPooledObject : PooledObject
         {
-            return (TClone)Clone(key);
+            return (TPooledObject)Clone(key);
         }
 
         public PooledObject Clone(string key)

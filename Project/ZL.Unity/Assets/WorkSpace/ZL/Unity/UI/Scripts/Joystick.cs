@@ -14,7 +14,7 @@ namespace ZL.Unity.UI
 
         [Essential]
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 
@@ -22,7 +22,7 @@ namespace ZL.Unity.UI
 
         private RectTransform container = null;
 
-        [ReadOnlyWhenPlayMode]
+        [ReadOnlyIfPlayMode]
 
         [UsingCustomProperty]
 
