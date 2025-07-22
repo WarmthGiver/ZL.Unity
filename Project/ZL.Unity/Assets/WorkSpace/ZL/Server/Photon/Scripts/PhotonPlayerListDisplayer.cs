@@ -14,7 +14,7 @@ namespace ZL.Unity.Server.Photon
 
     public abstract class PhotonPlayerListDisplayer<TPlayerListItem> : MonoBehaviour
 
-        where TPlayerListItem : ManagedPooledObject<int>
+        where TPlayerListItem : PhotonPlayerListItem
     {
         [Space]
 
@@ -24,7 +24,7 @@ namespace ZL.Unity.Server.Photon
 
         [SerializeField]
 
-        protected ManagedObjectPool<int, TPlayerListItem> playerListItemPool = null;
+        protected DictionaryObjectPool<int, TPlayerListItem> playerListItemPool = null;
 
         public void Refresh()
         {

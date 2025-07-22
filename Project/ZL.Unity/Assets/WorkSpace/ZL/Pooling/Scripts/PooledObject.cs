@@ -51,13 +51,13 @@ namespace ZL.Unity.Pooling
 
         public virtual void Disappear()
         {
+            CancelInvoke(nameof(Disappear));
+
             OnDisappeared();
         }
 
         public virtual void OnDisappeared()
         {
-            OnDisableAction?.Invoke();
-
             if (OnDisappearedAction != null)
             {
                 OnDisappearedAction.Invoke();
@@ -66,6 +66,8 @@ namespace ZL.Unity.Pooling
             }
 
             gameObject.SetActive(false);
+
+            OnDisableAction?.Invoke();
         }
     }
 }
