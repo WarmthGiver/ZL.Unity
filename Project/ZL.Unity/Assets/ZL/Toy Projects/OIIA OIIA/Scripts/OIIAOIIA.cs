@@ -24,7 +24,7 @@ namespace ZL.Unity.OIIAOIIA
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [UsingCustomProperty]
 
@@ -34,7 +34,7 @@ namespace ZL.Unity.OIIAOIIA
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [UsingCustomProperty]
 
@@ -44,7 +44,7 @@ namespace ZL.Unity.OIIAOIIA
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [AddIndent]
 
@@ -56,7 +56,7 @@ namespace ZL.Unity.OIIAOIIA
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [AddIndent]
 

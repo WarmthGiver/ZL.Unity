@@ -14,7 +14,7 @@ namespace ZL.Unity.UI
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [UsingCustomProperty]
 

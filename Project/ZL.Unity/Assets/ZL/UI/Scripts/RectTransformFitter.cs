@@ -28,7 +28,7 @@ namespace ZL.Unity.UI
 
         [Button(nameof(FitParentSizeMax))]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [UsingCustomProperty]
 

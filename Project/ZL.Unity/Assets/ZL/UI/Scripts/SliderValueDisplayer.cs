@@ -14,7 +14,7 @@ namespace ZL.Unity.UI
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [UsingCustomProperty]
 
@@ -29,7 +29,7 @@ namespace ZL.Unity.UI
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [Alias("Slider Value Text (UI)")]
 

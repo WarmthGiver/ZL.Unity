@@ -18,7 +18,7 @@ namespace ZL.Unity.Server.Photon
     {
         [Space]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [UsingCustomProperty]
 

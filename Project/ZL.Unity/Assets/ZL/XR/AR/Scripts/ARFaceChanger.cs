@@ -32,7 +32,7 @@ namespace ZL.Unity.XR.AR
 
         [Essential]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [UsingCustomProperty]
 

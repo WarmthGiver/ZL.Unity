@@ -10,7 +10,7 @@ namespace ZL.Unity
     {
         [Space]
 
-        [ReadOnlyIfPlayMode]
+        [ReadOnlyIfPlayMode(true)]
 
         [Button(nameof(FindAnimators))]
 
