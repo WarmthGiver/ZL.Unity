@@ -10,50 +10,50 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private ScreenUI main = null;
+        private ScreenUI mainScreen = null;
 
         [SerializeField]
 
-        private ScreenUI current = null;
+        private ScreenUI currentScreen = null;
 
         [Space]
 
         [SerializeField]
 
-        private bool disappearOnSwap = true;
+        private bool disappearCurrentOnSwap = true;
 
         [SerializeField]
 
         private bool sortSibling = true;
 
-        public void AppearMain()
+        public void AppearMainScreen()
         {
-            if (main != null)
+            if (mainScreen != null)
             {
-                main.Appear();
+                mainScreen.Appear();
             }
         }
 
-        public void SwapCurrent(ScreenUI newScreen)
+        public void SwapCurrentScreen(ScreenUI newScreen)
         {
-            if (disappearOnSwap == true)
+            if (disappearCurrentOnSwap == true)
             {
-                DisappearCurrent();
+                DisappearCurrentScreen();
             }
 
-            current = newScreen;
+            currentScreen = newScreen;
 
             if (sortSibling == true)
             {
-                current.transform.SetAsLastSibling();
+                currentScreen.transform.SetAsLastSibling();
             }
         }
 
-        public void DisappearCurrent()
+        public void DisappearCurrentScreen()
         {
-            if (current != null)
+            if (currentScreen != null)
             {
-                current.Disappear();
+                currentScreen.Disappear();
             }
         }
     }

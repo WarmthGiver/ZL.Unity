@@ -1,3 +1,5 @@
+using System;
+
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -15,7 +17,7 @@ namespace ZL.Unity
             return instance.transform.TryGetComponentInChildren(out component);
         }
 
-        public static bool TryGetComponentInChildren(this GameObject instance, System.Type type, out Component component)
+        public static bool TryGetComponentInChildren(this GameObject instance, Type type, out Component component)
         {
             return instance.transform.TryGetComponentInChildren(type, out component);
         }
@@ -27,7 +29,7 @@ namespace ZL.Unity
             return instance.transform.TryGetComponentInChildrenOnly(out component);
         }
 
-        public static bool TryGetComponentInChildrenOnly(this GameObject instance, System.Type type, out Component component)
+        public static bool TryGetComponentInChildrenOnly(this GameObject instance, Type type, out Component component)
         {
             return instance.transform.TryGetComponentInChildrenOnly(type, out component);
         }
@@ -57,7 +59,7 @@ namespace ZL.Unity
             return instance.transform.TryGetComponentInParent(out component);
         }
 
-        public static bool TryGetComponentInParent(this GameObject instance, System.Type type, out Component component)
+        public static bool TryGetComponentInParent(this GameObject instance, Type type, out Component component)
         {
             return instance.transform.TryGetComponentInParent(type, out component);
         }
@@ -69,7 +71,7 @@ namespace ZL.Unity
             return instance.transform.TryGetComponentInParentOnly(out component);
         }
 
-        public static bool TryGetComponentInParentOnly(this GameObject instance, System.Type type, out Component component)
+        public static bool TryGetComponentInParentOnly(this GameObject instance, Type type, out Component component)
         {
             return instance.transform.TryGetComponentInParentOnly(type, out component);
         }
@@ -89,15 +91,5 @@ namespace ZL.Unity
         }
 
         #endregion
-
-        public static GameObject AddComponents(this GameObject instance, params System.Type[] types)
-        {
-            foreach (var component in types)
-            {
-                instance.AddComponent(component);
-            }
-
-            return instance;
-        }
     }
 }

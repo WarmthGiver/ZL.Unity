@@ -21,7 +21,7 @@ namespace ZL.Unity
         {
             var component = CreateComponent<TComponent>(name, parent);
 
-            component.AddComponents(components);
+            component.gameObject.AddComponents(components);
 
             return component;
         }

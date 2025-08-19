@@ -358,8 +358,9 @@ GameObject:
   - component: {fileID: 387353202}
   - component: {fileID: 387353201}
   - component: {fileID: 387353200}
+  - component: {fileID: 387353204}
   m_Layer: 5
-  m_Name: Sign Up
+  m_Name: Sign Up Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,11 +398,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 387353198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7de13888ac3b1b4eb71afaf13b8cf43, type: 3}
+  m_Script: {fileID: 11500000, guid: c4a0eac61e5677d43bcf89219e29910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tweener: {fileID: 0}
-  isFadedIn: 0
+  tweener: {fileID: 387353201}
   onFadeInEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -414,7 +414,6 @@ MonoBehaviour:
   onFadedOutEvent:
     m_PersistentCalls:
       m_Calls: []
-  screenGroup: {fileID: 0}
 --- !u!114 &387353201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,11 +427,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueTweener:
+    endValue: 0
     duration: 0
     delay: 0
     ease: 0
     isIndependentUpdate: 1
-    loopCount: 0
+    loops: 1
     loopType: 0
     onStartEvent:
       m_PersistentCalls:
@@ -479,6 +479,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &387353204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387353198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9e73f734e5c34287383506d7b5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  fader: {fileID: 387353200}
+  screenGroup: {fileID: 404418295}
+  isAppeared: 1
 --- !u!1 &404418290
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +507,7 @@ GameObject:
   - component: {fileID: 404418293}
   - component: {fileID: 404418292}
   - component: {fileID: 404418291}
+  - component: {fileID: 404418295}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -582,6 +599,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &404418295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404418290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de171e3366a57ca48bfc07d45ef39045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScreen: {fileID: 0}
+  currentScreen: {fileID: 0}
+  disappearCurrentOnSwap: 1
+  sortSibling: 1
 --- !u!1001 &498784572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -851,8 +884,9 @@ GameObject:
   - component: {fileID: 652430047}
   - component: {fileID: 652430046}
   - component: {fileID: 652430045}
+  - component: {fileID: 652430048}
   m_Layer: 5
-  m_Name: Sign In
+  m_Name: Sign In Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -916,11 +950,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 652430042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7de13888ac3b1b4eb71afaf13b8cf43, type: 3}
+  m_Script: {fileID: 11500000, guid: c4a0eac61e5677d43bcf89219e29910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tweener: {fileID: 0}
-  isFadedIn: 0
+  tweener: {fileID: 652430046}
   onFadeInEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -933,7 +966,6 @@ MonoBehaviour:
   onFadedOutEvent:
     m_PersistentCalls:
       m_Calls: []
-  screenGroup: {fileID: 0}
 --- !u!114 &652430046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,11 +979,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueTweener:
+    endValue: 0
     duration: 0
     delay: 0
     ease: 0
     isIndependentUpdate: 1
-    loopCount: 0
+    loops: 1
     loopType: 0
     onStartEvent:
       m_PersistentCalls:
@@ -972,6 +1005,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &652430048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652430042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9e73f734e5c34287383506d7b5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  fader: {fileID: 652430045}
+  screenGroup: {fileID: 404418295}
+  isAppeared: 1
 --- !u!1001 &705384229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1070,8 +1119,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8912826444124871158, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
       propertyPath: m_fontSize
-      value: 51.3
+      value: 89.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8912826444124871158, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8912826444124871158, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1261,6 +1318,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 89.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8912826444124871158, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8912826444124871158, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1371,6 +1436,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 89.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8912826444124871158, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8912826444124871158, guid: 13793794b4a65d348a67deef871dc84c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

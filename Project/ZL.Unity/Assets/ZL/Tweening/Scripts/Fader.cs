@@ -80,12 +80,6 @@ namespace ZL.Unity.Tweening
         /// Fade alpha from 0 to 1.<br/>
         /// 알파를 0에서 1으로 페이드합니다.<br/>
         /// </summary>
-        /// <param name = "duration">
-        /// Fade time;<br/>
-        /// -1 = Use tweener defaults<br/>
-        /// 페이드 시간;<br/>
-        /// -1 = Tweener 기본값 사용<br/>
-        /// </param>
         public void FadeIn()
         {
             gameObject.SetActive(true);
@@ -108,12 +102,6 @@ namespace ZL.Unity.Tweening
         /// Fade alpha from 1 to 0.<br/>
         /// 알파를 1에서 0으로 페이드합니다.<br/>
         /// </summary>
-        /// <param name = "duration">
-        /// Fade time;<br/>
-        /// -1 = Use tweener defaults<br/>
-        /// 페이드 시간;<br/>
-        /// -1 = Tweener 기본값 사용<br/>
-        /// </param>
         public void FadeOut()
         {
             onFadeOutEvent.Invoke();

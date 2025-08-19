@@ -34,21 +34,17 @@ namespace ZL.Unity.UI
     {
         [Space]
 
+        [SerializeField]
+
+        private CanvasGroup canvasGroup = null;
+
+        [Space]
+
         [GetComponent]
 
         [Essential]
 
         [ReadOnly(true)]
-
-        [PropertyField]
-
-        [Margin]
-
-        [ReadOnlyIfEditMode]
-
-        [Button(nameof(Appear))]
-
-        [Button(nameof(Disappear))]
 
         [UsingCustomProperty]
 
@@ -67,11 +63,37 @@ namespace ZL.Unity.UI
 
         private ScreenUIGroup screenGroup = null;
 
+        [Space]
+
+        [PropertyField]
+
+        [Margin]
+
+        [ReadOnlyIfEditMode]
+
+        [Button(nameof(Appear))]
+
+        [Button(nameof(Disappear))]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private bool isAppeared = true;
+
+        private void Awake()
+        {
+            if (isAppeared == true)
+            {
+
+            }
+        }
+
         public virtual void Appear()
         {
             if (screenGroup != null)
             {
-                screenGroup.SwapCurrent(this);
+                screenGroup.SwapCurrentScreen(this);
             }
 
             fader.FadeIn();
