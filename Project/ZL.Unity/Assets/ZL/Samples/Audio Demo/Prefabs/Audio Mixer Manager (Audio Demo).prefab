@@ -10,39 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5201511101964253332, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
       propertyPath: m_Name
-      value: Audio Mixer Manager (Audio Demo) Variant
+      value: Audio Mixer Manager (Audio Demo)
       objectReference: {fileID: 0}
     - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
       propertyPath: audioMixer
       value: 
       objectReference: {fileID: 24100000, guid: 0952a5ffeaec72d40b8f88f93353cdf6, type: 2}
     - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
-      propertyPath: parameterPrefs.items.Array.size
-      value: 3
+      propertyPath: volumePrefs.items.Array.data[0].value.key
+      value: Audio Demo.Master
       objectReference: {fileID: 0}
     - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
-      propertyPath: parameterPrefs.items.Array.data[0].key
-      value: Master
+      propertyPath: volumePrefs.items.Array.data[1].value.key
+      value: Audio Demo.BGM
       objectReference: {fileID: 0}
     - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
-      propertyPath: parameterPrefs.items.Array.data[1].key
-      value: BGM
+      propertyPath: volumePrefs.items.Array.data[2].value.key
+      value: Audio Demo.SFX
       objectReference: {fileID: 0}
     - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
-      propertyPath: parameterPrefs.items.Array.data[2].key
-      value: SFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
-      propertyPath: parameterPrefs.items.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
-      propertyPath: parameterPrefs.items.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569324183573356759, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
-      propertyPath: parameterPrefs.items.Array.data[2].value
-      value: 1
+      propertyPath: volumePrefs.items.Array.data[1].value.value
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8537447401824956193, guid: 44f5f75b083555e45a66218abfbfc2b2, type: 3}
       propertyPath: m_LocalPosition.x

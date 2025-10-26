@@ -1,12 +1,12 @@
 #pragma warning disable
 
+using System.Text;
+
 using TMPro;
 
 using UnityEngine;
 
 using ZL.Unity.Collections;
-
-using ZL.Unity.IO;
 
 namespace ZL.Unity.Demo.SerializableDictionaryDemo
 {
@@ -24,7 +24,7 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
 
         [SerializeField]
 
-        private SerializableDictionary<string, int> serializableDictionary = new SerializableDictionary<string, int>()
+        private SerializableDictionary<string, int> serializableDictionary = new()
         {
             { "0", 0 },
 
@@ -33,46 +33,22 @@ namespace ZL.Unity.Demo.SerializableDictionaryDemo
             { "2", 2 },
         };
 
-        [Space]
-
-        [SerializeField]
-
-        private SerializableDictionary<string, int, IntPref> intPrefDictionary = new SerializableDictionary<string, int, IntPref>()
-        {
-            new IntPref("0", 0),
-
-            new IntPref("1", 1),
-
-            new IntPref("2", 2),
-        };
+        private StringBuilder stringBuilder = new();
 
         private void FixedUpdate()
         {
-            textUI.text =
-                
-                "▼Serializable Dictionary\n" +
+            stringBuilder.Clear();
 
-                "▼Elements\n";
+            stringBuilder.AppendLine("▼Serializable Dictionary");
 
-            foreach (var element in serializableDictionary)
+            stringBuilder.AppendLine("▼Items");
+
+            foreach (var item in serializableDictionary)
             {
-                textUI.text += $"\n{element}";
+                stringBuilder.AppendLine(item.ToString());
             }
 
-            textUI.text +=
-
-                "\n" +
-
-                "\n" +
-
-                "▼Int Pref Dictionary\n" +
-
-                "▼Elements\n";
-
-            foreach (var element in intPrefDictionary)
-            {
-                textUI.text += $"\n{element}";
-            }
+            textUI.text = stringBuilder.ToString();
         }
     }
 }

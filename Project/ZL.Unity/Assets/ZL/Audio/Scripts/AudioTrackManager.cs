@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Serialization;
 using ZL.CS;
 
 using ZL.CS.Singleton;
@@ -65,11 +65,11 @@ namespace ZL.Unity.Audio
 
         [SerializeField]
 
-        private int playlistIndex = 0;
+        private int trackNumber = 0;
 
         [SerializeField]
 
-        private AudioClip[] playlist = null;
+        private AudioClip[] trackList = null;
 
         private bool isLooping = false;
 
@@ -119,7 +119,7 @@ namespace ZL.Unity.Audio
 
         public void PlayLoop(int index)
         {
-            playlistIndex = index;
+            trackNumber = index;
 
             PlayLoop();
         }
@@ -149,39 +149,39 @@ namespace ZL.Unity.Audio
             {
                 case AudioTrackPlayMode.RepeatAll:
 
-                    ++playlistIndex;
+                    ++trackNumber;
 
-                    if (playlistIndex > playlist.Length - 1)
+                    if (trackNumber > trackList.Length - 1)
                     {
-                        playlistIndex = 0;
+                        trackNumber = 0;
                     }
 
                     break;
 
                 case AudioTrackPlayMode.Reverse:
 
-                    --playlistIndex;
+                    --trackNumber;
 
-                    if (playlistIndex < 0)
+                    if (trackNumber < 0)
                     {
-                        playlistIndex = playlist.Length - 1;
+                        trackNumber = trackList.Length - 1;
                     }
 
                     break;
 
                 case AudioTrackPlayMode.Shuffle:
 
-                    playlistIndex = Random.Range(0, playlist.Length);
+                    trackNumber = Random.Range(0, trackList.Length);
 
                     break;
             }
 
-            if (playlistIndex.IsOutOfRange(0, playlist.Length - 1) == true)
+            if (trackNumber.IsOutOfRange(0, trackList.Length - 1) == true)
             {
                 return;
             }
 
-            audioSource.clip = playlist[playlistIndex];
+            audioSource.clip = trackList[trackNumber];
 
             audioSource.Play();
         }

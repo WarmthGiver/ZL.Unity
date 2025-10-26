@@ -2,30 +2,34 @@ using System;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
+using ZL.CS.Collections;
 
 namespace ZL.Unity.IO
 {
     public abstract class SerializablePlayerPref<TValue> : PlayerPrefs, IKeyValuePair<string, TValue>
     {
-        [ReadOnlyIfPlayMode(true)]
-
-        [UsingCustomProperty]
-
         [SerializeField]
 
-        private string key = "";
+        private string key;
 
         public string Key
         {
             get => key;
 
-            set => key = value;
+            set
+            {
+                if (!key.IsNullOrEmpty())
+                {
+                    throw new InvalidOperationException("'Key' is already set and cannot be changed.");
+                }
+
+                key = value;
+            }
         }
 
         [SerializeField]
 
-        private TValue value = default;
+        private TValue value;
 
         public TValue Value
         {
@@ -35,11 +39,11 @@ namespace ZL.Unity.IO
             {
                 this.value = value;
 
-                OnValueChanged?.Invoke(value);
+                OnValueChangedAction?.Invoke(value);
             }
         }
 
-        public event Action<TValue> OnValueChanged = null;
+        public event Action<TValue> OnValueChangedAction;
 
         public SerializablePlayerPref() { }
 

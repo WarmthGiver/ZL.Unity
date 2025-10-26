@@ -66,7 +66,7 @@ namespace ZL.Unity.UI
         {
             base.Awake();
 
-            displayFrameRatePref.OnValueChanged += (value) =>
+            displayFrameRatePref.OnValueChangedAction += (value) =>
             {
                 gameObject.SetActive(value);
             };

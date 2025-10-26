@@ -213,11 +213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6716335369305163009, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_text
-      value: "\u25BCSerializable Dictionary\n\u25BCElements\n\u25BCInt Prefs Dictionary\n\u25BCElements"
+      value: "\u25BCSerializable Dictionary\n\u25BCItems"
       objectReference: {fileID: 0}
     - target: {fileID: 6716335369305163009, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontSize
-      value: 9.2
+      value: 176.75
       objectReference: {fileID: 0}
     - target: {fileID: 6716335369305163009, guid: 5575df95f10f6ed499e061de7c8397ca, type: 3}
       propertyPath: m_fontAsset
@@ -390,15 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textUI: {fileID: 459162572}
   serializableDictionary:
-    elements:
-    - key: 0
-      value: 0
-    - key: 1
-      value: 1
-    - key: 2
-      value: 2
-  intPrefDictionary:
-    elements:
+    items:
     - key: 0
       value: 0
     - key: 1

@@ -16,20 +16,22 @@ namespace ZL.Unity.Audio
 
         [SerializeField]
 
-        private Slider slider = null;
+        private Slider slider;
 
         [SerializeField]
 
-        private string key = "";
+        private string key;
 
         public void Refresh()
         {
-            slider.value = AudioMixerManager.Instance.GetVolume(key) * 100f;
+            Debug.Log(AudioMixerManager.Instance.GetVolume(key));
+
+            slider.value = AudioMixerManager.Instance.GetVolume(key);
         }
 
         public void SetVolume(float value)
         {
-            AudioMixerManager.Instance.SetVolume(key, value * 0.01f);
+            AudioMixerManager.Instance.SetVolume(key, value);
         }
     }
 }

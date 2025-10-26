@@ -44,7 +44,7 @@ namespace ZL.Unity.SO.GoogleSheet
         {
             base.Awake();
 
-            targetLanguagePref.OnValueChanged += (value) =>
+            targetLanguagePref.OnValueChangedAction += (value) =>
             {
                 OnLanguageChangedAction?.Invoke();
             };

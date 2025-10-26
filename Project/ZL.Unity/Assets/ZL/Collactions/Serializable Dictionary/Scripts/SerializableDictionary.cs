@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using ZL.CS.Collections;
+
 namespace ZL.Unity.Collections
 {
     [Serializable]
@@ -74,7 +76,7 @@ namespace ZL.Unity.Collections
 
     public sealed class SerializableDictionary<TKey, TValue, TKeyValuePair> : IEnumerable<TKeyValuePair>, ISerializationCallbackReceiver
 
-        where TKeyValuePair : IKeyValuePair<TKey, TValue>, new()
+        where TKeyValuePair : IKeyValuePair<TKey, TValue>
     {
         private readonly Dictionary<TKey, TKeyValuePair> @base = new();
 
@@ -87,11 +89,6 @@ namespace ZL.Unity.Collections
             get => @base[key].Value;
 
             set => @base[key].Value = value;
-        }
-
-        public void Add(TKey key, TValue value)
-        {
-            Add(new() { Key = key, Value = value });
         }
 
         public void Add(TKeyValuePair item)

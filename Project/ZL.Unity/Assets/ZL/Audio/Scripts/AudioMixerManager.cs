@@ -8,6 +8,8 @@ using UnityEngine;
 
 using UnityEngine.Audio;
 
+using ZL.CS;
+
 using ZL.Unity.Collections;
 
 using ZL.Unity.IO;
@@ -26,7 +28,7 @@ namespace ZL.Unity.Audio
 
         [PropertyField]
 
-        [Button("LoadAudioMixerParameters", "Load Parameters")]
+        [Button("SerializaVolumes")]
 
         [UsingCustomProperty]
 
@@ -46,26 +48,26 @@ namespace ZL.Unity.Audio
 
         [SerializeField]
 
-        private SerializableDictionary<string, float, FloatPref> parameterPrefs = null;
+        private SerializableDictionary<string, FloatPref> volumePrefs = null;
 
         #if UNITY_EDITOR
 
         private void OnValidate()
         {
-            if (parameterPrefs == null)
+            if (volumePrefs == null)
             {
                 return;
             }
 
-            foreach (var parameterPref in parameterPrefs)
+            foreach (var volumePref in volumePrefs.Values)
             {
-                parameterPref.Value = Mathf.Clamp01(parameterPref.Value);
+                volumePref.Value = Mathf.Clamp(volumePref.Value, 0f, 100f);
             }
         }
 
-        public void LoadAudioMixerParameters()
+        public void SerializaVolumes()
         {
-            parameterPrefs.Clear();
+            volumePrefs.Clear();
 
             if (audioMixer != null)
             {
@@ -73,13 +75,15 @@ namespace ZL.Unity.Audio
                 {
                     var key = audioMixerGroup.name;
 
-                    audioMixer.GetFloat(key, out float value);
+                    audioMixer.GetFloat(key, out float decibel);
 
-                    var volumePref = new FloatPref(key, value);
+                    var volume = MathFEx.DecibelToPercent(decibel);
+
+                    var volumePref = new FloatPref($"{audioMixer.name}.{key}", volume);
 
                     volumePref.TryLoadValue();
 
-                    parameterPrefs.Add(volumePref);
+                    volumePrefs.Add(key, volumePref);
                 }
             }
 
@@ -90,11 +94,11 @@ namespace ZL.Unity.Audio
 
         private void Start()
         {
-            foreach (var parameterPref in parameterPrefs)
+            foreach ((var key, var volumePref) in volumePrefs)
             {
-                parameterPref.OnValueChanged += (value) =>
+                volumePref.OnValueChangedAction += (value) =>
                 {
-                    audioMixer.SetVolume(parameterPref.Key, value);
+                    audioMixer.SetVolume(key, value);
                 };
             }
 
@@ -103,28 +107,28 @@ namespace ZL.Unity.Audio
 
         public void LoadVolumes()
         {
-            foreach (var parameterPref in parameterPrefs)
+            foreach (var volumePref in volumePrefs.Values)
             {
-                parameterPref.TryLoadValue();
+                volumePref.TryLoadValue();
             }
         }
 
         public void SaveVolumes()
         {
-            foreach (var parameterPref in parameterPrefs)
+            foreach (var volumePref in volumePrefs.Values)
             {
-                parameterPref.SaveValue();
+                volumePref.SaveValue();
             }
         }
 
         public float GetVolume(string key)
         {
-            return parameterPrefs[key];
+            return volumePrefs[key].Value;
         }
 
         public void SetVolume(string key, float value)
         {
-            parameterPrefs[key] = value;
+            volumePrefs[key].Value = value;
         }
     }
 }
