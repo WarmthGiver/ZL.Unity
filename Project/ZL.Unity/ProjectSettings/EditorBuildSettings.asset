@@ -6,10 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ZL/Samples/Auto Button Demo/Scenes/Auto Button Demo Scene.unity
+    path: Assets/Workspace/ZL/Core/UI/Auto Button/Samples/Auto Button Demo/Scenes/Auto
+      Button Demo Scene.unity
     guid: b4a44508226c7e440a4c8eb38dce0cf4
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ca761dda9ea838c4f82bc2cbba35cd4f, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 0}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f60f7fbb7a5aa724caaa47a43d644f19, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 57ff3f36dce9f014c825eca253fc2474, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: fd076722949d3a642b3599bb4ca72b99, type: 2}
