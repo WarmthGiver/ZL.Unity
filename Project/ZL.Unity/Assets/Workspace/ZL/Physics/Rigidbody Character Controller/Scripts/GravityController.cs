@@ -161,6 +161,8 @@ namespace ZL.Unity.Phys
 
         private bool drawGravityDirectionGizmo = true;
 
+        [Min(0f)]
+
         [ToggleIf(nameof(drawGravityDirectionGizmo), false)]
 
         [AddIndent(1)]
@@ -168,8 +170,6 @@ namespace ZL.Unity.Phys
         [Alias("Length")]
 
         [UsingCustomProperty]
-
-        [Min(0f)]
 
         [SerializeField]
 

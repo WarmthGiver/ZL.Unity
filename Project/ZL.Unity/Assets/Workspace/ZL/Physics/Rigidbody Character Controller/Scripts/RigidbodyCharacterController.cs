@@ -74,6 +74,8 @@ namespace ZL.Unity.Phys
 
         private bool rotateUprightSlerp = true;
 
+        [Min(0f)]
+
         [ToggleIf(nameof(keepRotationUpright), false)]
 
         [ToggleIf(nameof(rotateUprightSlerp), false)]
@@ -83,8 +85,6 @@ namespace ZL.Unity.Phys
         [Alias("Speed")]
 
         [UsingCustomProperty]
-
-        [Min(0f)]
 
         [SerializeField]
 

@@ -10,8 +10,6 @@ namespace ZL.Unity
     {
         [Space]
 
-        [SerializeField]
-
         [PropertyField]
 
         [Button(nameof(LoadRunInBackground), "Load")]
@@ -19,6 +17,8 @@ namespace ZL.Unity
         [Button(nameof(SaveRunInBackground), "Save")]
 
         [UsingCustomProperty]
+
+        [SerializeField]
 
         private BoolPref runInBackgroundPref = new("RunInBackground", false);
 
@@ -72,6 +72,8 @@ namespace ZL.Unity
 
         [Space]
 
+        [Min(0f)]
+
         [PropertyField]
 
         [Button(nameof(Pause))]
@@ -81,8 +83,6 @@ namespace ZL.Unity
         [Button(nameof(Quit))]
 
         [UsingCustomProperty]
-
-        [Min(0f)]
 
         [SerializeField]
 

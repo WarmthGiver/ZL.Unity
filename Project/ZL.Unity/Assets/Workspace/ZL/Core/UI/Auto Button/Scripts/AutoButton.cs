@@ -24,11 +24,11 @@ namespace ZL.Unity.UI
     {
         [Space]
 
+        [Min(0f)]
+
         [Alias("Threshold")]
 
         [UsingCustomProperty]
-
-        [Min(0f)]
 
         [SerializeField]
 
@@ -46,6 +46,8 @@ namespace ZL.Unity.UI
 
         private bool useAutoClickIntervalCurve = false;
 
+        [Min(0f)]
+
         [ToggleIf(nameof(useAutoClickIntervalCurve), true)]
 
         [AddIndent]
@@ -54,11 +56,11 @@ namespace ZL.Unity.UI
 
         [UsingCustomProperty]
 
-        [Min(0f)]
-
         [SerializeField]
 
         private float autoClickInterval = 0.1f;
+
+        [Min(0f)]
 
         [ToggleIf(nameof(useAutoClickIntervalCurve), false)]
 
@@ -67,8 +69,6 @@ namespace ZL.Unity.UI
         [Alias("")]
 
         [UsingCustomProperty]
-
-        [Min(0f)]
 
         [SerializeField]
 

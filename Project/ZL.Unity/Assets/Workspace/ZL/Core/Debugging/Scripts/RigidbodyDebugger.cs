@@ -62,9 +62,9 @@ namespace ZL.Unity.Debugging
 
         [Space]
 
-        [SerializeField]
-
         [UsingCustomProperty]
+
+        [SerializeField]
 
         private Vector3 angularVelocity = Vector3.zero;
 

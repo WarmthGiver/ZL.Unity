@@ -32,11 +32,11 @@ namespace ZL.Unity.Combat
 
         protected float initialCooldownTimer = -1f;
 
+        [Min(0f)]
+
         [ReadOnly(true)]
 
         [UsingCustomProperty]
-
-        [Min(0f)]
 
         [SerializeField]
 
