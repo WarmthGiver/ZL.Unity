@@ -4,8 +4,6 @@ using TMPro;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity.Demo.WrapprDemo
 {
     [AddComponentMenu("")]

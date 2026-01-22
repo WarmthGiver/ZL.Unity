@@ -10,7 +10,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Force TMP Mesh Updater")]
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.EventSystems;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Draggable Rect")]
 

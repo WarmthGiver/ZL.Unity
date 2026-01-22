@@ -8,7 +8,7 @@ using UnityEngine;
 
 using ZL.CS;
 
-namespace ZL.Unity.Collections
+namespace ZL.Unity
 {
     public static partial class Vertices2
     {

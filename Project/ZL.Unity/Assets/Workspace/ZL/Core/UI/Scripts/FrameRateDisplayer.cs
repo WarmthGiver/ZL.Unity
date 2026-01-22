@@ -1,8 +1,6 @@
 using UnityEngine;
 
-using ZL.Unity.Singleton;
-
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Frame Rate Displayer (Singleton)")]
 
@@ -40,7 +38,7 @@ namespace ZL.Unity.UI
 
         [SerializeField]
 
-        private BoolPref displayFrameRatePref = new("DisplayFrameRate", true);
+        private BoolPref displayFrameRatePref = new BoolPref("DisplayFrameRate", true);
 
         private float time = 0f;
 

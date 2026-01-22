@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.SO
+namespace ZL.Unity
 {
     [CreateAssetMenu(menuName = "ZL/SO/Image Table", fileName = "Image Table")]
 

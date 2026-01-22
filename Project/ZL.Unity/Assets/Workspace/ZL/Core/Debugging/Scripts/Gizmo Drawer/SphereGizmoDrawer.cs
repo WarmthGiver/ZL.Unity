@@ -1,26 +1,58 @@
-#if UNITY_EDITOR
+using System.Diagnostics;
 
 using UnityEngine;
 
-namespace ZL.Unity.Debugging
+namespace ZL.Unity
 {
-    /// <summary>
-    /// [ENG] Warning! This component is for debugging purposes only and is excluded from the build.<br/>
-    /// [KOR] 경고! 이 구성 요소는 오직 디버깅 목적으로 사용되며 빌드에서 제외됩니다.<br/>
-    /// </summary>
     [AddComponentMenu("ZL/Debugging/Sphere Gizmo Drawer")]
 
-    public class SphereGizmoDrawer : GizmoDrawer
+    public sealed class SphereGizmoDrawer : GizmoDrawer
     {
+        #if UNITY_EDITOR
+
         [SerializeField]
 
-        protected float radius = 0.5f;
+        private float _radius = 0.5f;
 
-        protected override void DrawGizmo()
+        public float Radius
         {
-            Gizmos.DrawSphere(center, radius);
+            get => _radius;
+
+            set => _radius = value;
+        }
+
+        protected override Matrix4x4 Matrix
+        {
+            get => Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale.UniformMax());
+        }
+
+        protected override void DrawWireGizmos()
+        {
+            Gizmos.DrawWireSphere(Center, Radius);
+        }
+
+        protected override void DrawGizmos()
+        {
+            Gizmos.DrawSphere(Center, Radius);
+        }
+
+        #endif
+    }
+
+    public static class SphereGizmoEx
+    {
+        [Conditional("UNITY_EDITOR")]
+
+        public static void SetRadius(this SphereGizmoDrawer instance, float radius)
+        {
+            #if UNITY_EDITOR
+
+            if (instance != null)
+            {
+                instance.Radius = radius;
+            }
+
+            #endif
         }
     }
 }
-
-#endif

@@ -2,9 +2,9 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.GFX
+namespace ZL.Unity
 {
-    [AddComponentMenu("ZL/GFX/Material Controller (Graphic)")]
+    [AddComponentMenu("ZL/Material Controller (Graphic)")]
 
     public sealed class MaterialController_Graphic : MaterialController
     {
@@ -20,17 +20,7 @@ namespace ZL.Unity.GFX
 
         [SerializeField]
 
-        private Graphic targetGraphic = null;
-
-        [Space]
-
-        [ReadOnlyIfPlayMode(true)]
-
-        [UsingCustomProperty]
-
-        [SerializeField]
-
-        private bool isShared = false;
+        private Graphic graphic = null;
 
         private Material material = null;
 
@@ -40,18 +30,24 @@ namespace ZL.Unity.GFX
             {
                 if (material == null)
                 {
-                    material = targetGraphic.material;
-
-                    if (isShared == false)
-                    {
-                        material = new(material);
-                    }
-
-                    targetGraphic.material = material;
+                    graphic.material = material = new Material(graphic.material);
                 }
 
                 return material;
             }
+        }
+
+        [Space]
+
+        [SerializeField]
+
+        private string propertyName = string.Empty;
+
+        public override string PropertyName
+        {
+            get => propertyName;
+
+            set => propertyName = value;
         }
     }
 }

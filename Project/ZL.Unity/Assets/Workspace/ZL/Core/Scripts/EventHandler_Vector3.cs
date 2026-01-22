@@ -2,8 +2,6 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Event Hanlder (Vector3)")]
@@ -42,7 +40,9 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private SerializableDictionary<string, UnityEvent<Vector3>> events = new();
+        private SerializableDictionary<string, UnityEvent<Vector3>> events =
+            
+            new SerializableDictionary<string, UnityEvent<Vector3>>();
 
         public void Invoke(string key)
         {

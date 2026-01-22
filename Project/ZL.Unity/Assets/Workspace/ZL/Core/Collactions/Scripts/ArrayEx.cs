@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Collections
+namespace ZL.Unity
 {
     public static class ArrayEx
     {

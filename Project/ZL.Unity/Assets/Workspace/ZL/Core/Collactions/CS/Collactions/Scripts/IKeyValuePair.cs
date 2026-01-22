@@ -1,4 +1,4 @@
-namespace ZL.CS.Collections
+namespace ZL.CS
 {
     public interface IKeyValuePair<TKey, TValue>
     {

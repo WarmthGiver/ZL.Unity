@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using System.Linq;
 
-namespace ZL.Unity.Pooling
+namespace ZL.Unity
 {
     [Serializable]
 

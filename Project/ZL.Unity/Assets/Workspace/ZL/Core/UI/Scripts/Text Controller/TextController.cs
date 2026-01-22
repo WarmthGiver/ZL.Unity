@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     public abstract class TextController : MonoBehaviour
     {

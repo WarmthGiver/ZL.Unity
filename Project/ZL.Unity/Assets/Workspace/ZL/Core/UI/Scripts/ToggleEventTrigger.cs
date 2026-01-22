@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Toggle Event Trigger")]
 

@@ -36,21 +36,33 @@ namespace ZL.Unity
             instance.constraints = constraints;
         }
 
-        public static void LookTowards(this Rigidbody instance, Vector3 worldPosition, float maxDegreesDelta, Axis ignoreAxes)
+        public static bool TryLookTowards(this Rigidbody instance, Vector3 worldPosition, Axis ignoreAxes, float maxDegreesDelta)
         {
-            LookTowards(instance, worldPosition, Vector3.up, maxDegreesDelta, ignoreAxes);
+            return TryLookTowards(instance, worldPosition, Vector3.up, ignoreAxes, maxDegreesDelta);
         }
 
-        public static void LookTowards(this Rigidbody instance, Vector3 worldPosition, Vector3 upwards, float maxDegreesDelta, Axis ignoreAxes)
+        public static bool TryLookTowards(this Rigidbody instance, Vector3 worldPosition, Vector3 upwards, Axis ignoreAxes, float maxDegreesDelta)
         {
-            if (QuaternionEx.TryLookRotation(instance.position, worldPosition, upwards, ignoreAxes, out var targetRotation) == false)
+            var forward = Vector3Ex.Direction(instance.position, worldPosition, ignoreAxes);
+
+            return TryLookTowards(instance, forward, upwards, maxDegreesDelta);
+        }
+
+        public static bool TryLookTowards(this Rigidbody instance, Vector3 forward, float maxDegreesDelta)
+        {
+            return TryLookTowards(instance, forward, Vector3.up, maxDegreesDelta);
+        }
+
+        public static bool TryLookTowards(this Rigidbody instance, Vector3 forward, Vector3 upwards, float maxDegreesDelta)
+        {
+            if (!QuaternionEx.TryLookTowards(instance.rotation, forward, upwards, maxDegreesDelta, out var nextRotation))
             {
-                return;
+                return false;
             }
 
-            var nextRotation = Quaternion.RotateTowards(instance.rotation, targetRotation, maxDegreesDelta);
-
             instance.MoveRotation(nextRotation);
+
+            return true;
         }
     }
 }

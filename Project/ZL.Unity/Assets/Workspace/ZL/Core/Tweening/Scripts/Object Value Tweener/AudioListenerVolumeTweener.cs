@@ -2,9 +2,9 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-using ZL.CS.Singleton;
+using ZL.CS;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Tweening/Audio Listener Volume Tweener (Singleton)")]
 

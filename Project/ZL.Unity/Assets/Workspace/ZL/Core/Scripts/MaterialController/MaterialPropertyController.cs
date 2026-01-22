@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.GFX
+namespace ZL.Unity
 {
-    [AddComponentMenu("ZL/Graphics/Material Property Controller")]
+    [AddComponentMenu("ZL/Material Property Controller")]
 
     public sealed class MaterialPropertyController : MonoBehaviour
     {

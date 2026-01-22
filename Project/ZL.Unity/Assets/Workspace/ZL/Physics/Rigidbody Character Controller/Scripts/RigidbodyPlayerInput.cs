@@ -6,7 +6,7 @@ using UnityEngine;
 
 using UnityEngine.InputSystem;
 
-namespace ZL.Unity.Phys
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Phys/Rigidbody Player Input")]
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ZL.Unity.GFX
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/GFX/Skybox Rotator")]
 

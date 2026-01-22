@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.SO.GoogleSheet
+namespace ZL.Unity
 {
     [CreateAssetMenu(menuName = "ZL/SO/Google Sheet/String Table Sheet", fileName = "String Table Sheet")]
 

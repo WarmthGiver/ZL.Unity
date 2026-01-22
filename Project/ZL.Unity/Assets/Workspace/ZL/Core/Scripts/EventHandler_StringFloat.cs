@@ -2,8 +2,6 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Event Handler (String, Float)")]
@@ -25,7 +23,9 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private SerializableDictionary<string, UnityEvent<string, float>> events = new();
+        private SerializableDictionary<string, UnityEvent<string, float>> events =
+            
+            new SerializableDictionary<string, UnityEvent<string, float>>();
 
         public void Invoke(string key)
         {

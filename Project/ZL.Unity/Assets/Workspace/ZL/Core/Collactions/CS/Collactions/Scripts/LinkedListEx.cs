@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ZL.CS.Collections
+namespace ZL.CS
 {
     public static partial class LinkedListEx
     {

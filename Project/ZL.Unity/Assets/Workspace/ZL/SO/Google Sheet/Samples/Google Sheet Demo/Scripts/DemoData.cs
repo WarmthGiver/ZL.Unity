@@ -6,8 +6,6 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.Unity.SO.GoogleSheet;
-
 namespace ZL.Unity.Demo.GoogleSheetDemo
 {
     [CreateAssetMenu(menuName = "ZL/SO/Google Sheet Demo/Demo Data", fileName = "Demo Data")]

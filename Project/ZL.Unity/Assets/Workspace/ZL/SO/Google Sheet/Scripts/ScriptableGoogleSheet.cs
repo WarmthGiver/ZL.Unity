@@ -12,11 +12,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
-using ZL.Unity.IO;
-
-namespace ZL.Unity.SO.GoogleSheet
+namespace ZL.Unity
 {
     public abstract class ScriptableGoogleSheet<TKey, TGoogleSheetData> : ScriptableGoogleSheet<TGoogleSheetData>
 

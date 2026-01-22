@@ -1,8 +1,6 @@
 using UnityEngine;
 
-using ZL.Unity.Tweening;
-
-namespace ZL.Unity.Pooling
+namespace ZL.Unity
 {
     public abstract class PooledUI : PooledObject
     {

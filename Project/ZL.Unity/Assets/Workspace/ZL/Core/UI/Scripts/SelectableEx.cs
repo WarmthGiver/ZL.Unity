@@ -2,7 +2,7 @@ using TMPro;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     public static partial class SelectableEx
     {

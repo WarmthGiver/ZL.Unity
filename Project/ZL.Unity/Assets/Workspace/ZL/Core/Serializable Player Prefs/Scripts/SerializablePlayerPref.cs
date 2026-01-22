@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-using ZL.CS.Collections;
+using ZL.CS;
 
 namespace ZL.Unity
 {

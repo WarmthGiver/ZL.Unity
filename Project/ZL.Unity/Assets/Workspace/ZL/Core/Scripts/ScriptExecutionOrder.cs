@@ -12,7 +12,9 @@ namespace ZL.Unity
 
         Default = 0,
 
-        Lazy,
+        NavMeshAgent,
+
+        //Lazy,
 
         SceneDirector
     }

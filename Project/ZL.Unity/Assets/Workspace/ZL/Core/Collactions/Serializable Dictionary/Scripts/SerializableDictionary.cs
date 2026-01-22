@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.CS.Collections;
+using ZL.CS;
 
-namespace ZL.Unity.Collections
+namespace ZL.Unity
 {
     [Serializable]
 
@@ -16,13 +16,13 @@ namespace ZL.Unity.Collections
     {
         [SerializeField]
 
-        private List<SerializableKeyValuePair<TKey, TValue>> items = new();
+        private List<SerializableKeyValuePair<TKey, TValue>> items = new List<SerializableKeyValuePair<TKey, TValue>>();
 
         public new void Add(TKey key, TValue value)
         {
             base.Add(key, value);
 
-            items.Add(new(key, value));
+            items.Add(new SerializableKeyValuePair<TKey, TValue>(key, value));
         }
 
         public new void Clear()
@@ -47,7 +47,7 @@ namespace ZL.Unity.Collections
 
             foreach (var item in this)
             {
-                items.Add(new(item));
+                items.Add(new SerializableKeyValuePair<TKey, TValue>(item));
             }
         }
 
@@ -78,11 +78,11 @@ namespace ZL.Unity.Collections
 
         where TKeyValuePair : IKeyValuePair<TKey, TValue>
     {
-        private readonly Dictionary<TKey, TKeyValuePair> @base = new();
+        private readonly Dictionary<TKey, TKeyValuePair> @base = new Dictionary<TKey, TKeyValuePair>();
 
         [SerializeField]
 
-        private List<TKeyValuePair> items = new();
+        private List<TKeyValuePair> items = new List<TKeyValuePair>();
 
         public TValue this[TKey key]
         {

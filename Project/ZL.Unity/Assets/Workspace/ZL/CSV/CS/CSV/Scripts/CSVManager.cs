@@ -2,7 +2,7 @@ using System.IO;
 
 using System.Text;
 
-using ZL.CS.Pooling;
+using ZL.CS;
 
 namespace ZL.CS.IO.CSV
 {

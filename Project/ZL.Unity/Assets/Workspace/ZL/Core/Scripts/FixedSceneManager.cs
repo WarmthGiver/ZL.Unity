@@ -4,8 +4,6 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-using ZL.Unity.Coroutines;
-
 namespace ZL.Unity
 {
     public static partial class FixedSceneManager

@@ -10,11 +10,7 @@ using UnityEngine.Audio;
 
 using ZL.CS;
 
-using ZL.Unity.Collections;
-
-using ZL.Unity.Singleton;
-
-namespace ZL.Unity.Audio
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Audio/Audio Mixer Manager (Singleton)")]
 

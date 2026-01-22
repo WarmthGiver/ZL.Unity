@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Combat
+namespace ZL.Unity
 {
     public interface IDamager
     {

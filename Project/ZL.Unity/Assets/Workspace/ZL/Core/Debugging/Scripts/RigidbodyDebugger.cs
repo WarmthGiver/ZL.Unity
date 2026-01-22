@@ -1,8 +1,10 @@
+#pragma warning disable
+
 #if UNITY_EDITOR
 
 using UnityEngine;
 
-namespace ZL.Unity.Debugging
+namespace ZL.Unity
 {
     /// <summary>
     /// [ENG] Warning! This component is for debugging purposes only and is excluded from the build.<br/>
@@ -12,6 +14,16 @@ namespace ZL.Unity.Debugging
 
     public sealed class RigidbodyDebugger : MonoBehaviour
     {
+        [Space]
+
+        [GetComponent]
+
+        [Toggle(true)]
+
+        [SerializeField]
+
+        private Transform transform;
+
         [Space]
 
         [WarningBox("[ENG] Warning! This component is for debugging purposes only and is excluded from the build.")]
@@ -30,11 +42,7 @@ namespace ZL.Unity.Debugging
 
         [SerializeField]
 
-        #pragma warning disable
-
         private Rigidbody rigidbody = null;
-
-        #pragma warning restore
 
         [Space]
 
@@ -54,17 +62,13 @@ namespace ZL.Unity.Debugging
 
         [SerializeField]
 
-        #pragma warning disable
-
         private float velocityMagnitude = 0f;
-
-        #pragma warning restore
 
         [Space]
 
-        [UsingCustomProperty]
-
         [SerializeField]
+
+        [UsingCustomProperty]
 
         private Vector3 angularVelocity = Vector3.zero;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Force Layout Rebuilder")]
 

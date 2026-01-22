@@ -1,3 +1,5 @@
+using System;
+
 using System.Diagnostics;
 
 #if UNITY_EDITOR
@@ -8,13 +10,29 @@ using UnityEditor;
 
 using UnityEngine;
 
+using UnityObject = UnityEngine.Object;
+
 namespace ZL.Unity
 {
     public static partial class FixedUndo
     {
+        #if UNITY_EDITOR
+
+        public static T AddComponent<T>(GameObject gameObject) where T : Component
+        {
+            return Undo.AddComponent(gameObject, typeof(T)) as T;
+        }
+
+        public static Component AddComponent(GameObject gameObject, Type type)
+        {
+            return Undo.AddComponent(gameObject, type);
+        }
+
+        #endif
+
         [Conditional("UNITY_EDITOR")]
 
-        public static void RegisterCreatedObjectUndo(Object objectToUndo, string name)
+        public static void RegisterCreatedObjectUndo(UnityObject objectToUndo, string name)
         {
             #if UNITY_EDITOR
 
@@ -30,7 +48,7 @@ namespace ZL.Unity
 
         [Conditional("UNITY_EDITOR")]
 
-        public static void RecordObject(Object objectToUndo, string name)
+        public static void RecordObject(UnityObject objectToUndo, string name)
         {
             #if UNITY_EDITOR
 

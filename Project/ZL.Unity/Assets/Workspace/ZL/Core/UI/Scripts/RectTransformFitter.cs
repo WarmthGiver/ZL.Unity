@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Rect Transform Fitter")]
 
@@ -37,6 +37,11 @@ namespace ZL.Unity.UI
         [SerializeField]
 
         private RectTransform fitTarget = null;
+
+        private void Reset()
+        {
+            transform.TryGetComponentInParentOnly(out fitTarget);
+        }
 
         public void FitParentSizeMin()
         {

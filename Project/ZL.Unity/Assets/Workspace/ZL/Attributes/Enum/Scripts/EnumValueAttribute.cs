@@ -1,7 +1,5 @@
 using System;
 
-using System.Collections.Generic;
-
 using System.Reflection;
 
 namespace ZL.Unity
@@ -14,20 +12,18 @@ namespace ZL.Unity
 
             where TEnumValueAttribute : EnumValueAttribute
         {
-            private static readonly Dictionary<TEnum, TEnumValueAttribute> attributes = new Dictionary<TEnum, TEnumValueAttribute>();
-
-            public static TEnumValueAttribute Get(TEnum @enum)
+            public static TEnumValueAttribute Get(TEnum key)
             {
-                if (attributes.ContainsKey(@enum) == false)
+                if (!StaticDictionary<TEnum, TEnumValueAttribute>.Get(key, out var value))
                 {
-                    var field = @enum.GetType().GetField(@enum.ToString());
+                    var field = key.GetType().GetField(key.ToString());
 
                     var attribute = field.GetCustomAttribute<TEnumValueAttribute>(false);
 
-                    attributes.Add(@enum, attribute);
+                    StaticDictionary<TEnum, TEnumValueAttribute>.Add(key, attribute);
                 }
 
-                return attributes[@enum];
+                return value;
             }
         }
     }

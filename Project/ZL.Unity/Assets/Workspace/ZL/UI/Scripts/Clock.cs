@@ -4,9 +4,7 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.Unity.Coroutines;
-
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Clock")]
 

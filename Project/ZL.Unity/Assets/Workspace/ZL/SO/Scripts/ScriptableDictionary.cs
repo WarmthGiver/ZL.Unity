@@ -1,8 +1,6 @@
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
-namespace ZL.Unity.SO
+namespace ZL.Unity
 {
     public abstract class ScriptableDictionary<TKey, TValue> : ScriptableObject
     {
@@ -20,7 +18,7 @@ namespace ZL.Unity.SO
 
         [SerializeField]
 
-        private SerializableDictionary<TKey, TValue> dataDictionary = new();
+        private SerializableDictionary<TKey, TValue> dataDictionary = new SerializableDictionary<TKey, TValue>();
 
         public TValue this[TKey key]
         {

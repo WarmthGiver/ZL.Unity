@@ -1,26 +1,53 @@
-#if UNITY_EDITOR
+using System.Diagnostics;
 
 using UnityEngine;
 
-namespace ZL.Unity.Debugging
+namespace ZL.Unity
 {
-    /// <summary>
-    /// [ENG] Warning! This component is for debugging purposes only and is excluded from the build.<br/>
-    /// [KOR] 경고! 이 구성 요소는 오직 디버깅 목적으로 사용되며 빌드에서 제외됩니다.<br/>
-    /// </summary>
     [AddComponentMenu("ZL/Debugging/Box Gizmo Drawer")]
 
-    public class BoxGizmoDrawer : GizmoDrawer
+    public sealed class BoxGizmoDrawer : GizmoDrawer
     {
+        #if UNITY_EDITOR
+
         [SerializeField]
 
-        protected Vector3 size = Vector3.one;
+        private Vector3 _size = Vector3.one;
 
-        protected override void DrawGizmo()
+        public Vector3 Size
         {
-            Gizmos.DrawCube(center, size);
+            get => _size;
+
+            set => _size = value;
+        }
+
+        protected override void DrawWireGizmos()
+        {
+            Gizmos.DrawWireCube(Center, Size);
+        }
+
+        protected override void DrawGizmos()
+        {
+            Gizmos.DrawCube(Center, Size);
+        }
+
+        #endif
+    }
+
+    public static class BoxGizmoDrawerEx
+    {
+        [Conditional("UNITY_EDITOR")]
+
+        public static void SetSize(this BoxGizmoDrawer instance, Vector3 size)
+        {
+            #if UNITY_EDITOR
+
+            if (instance != null)
+            {
+                instance.Size = size;
+            }
+
+            #endif
         }
     }
 }
-
-#endif

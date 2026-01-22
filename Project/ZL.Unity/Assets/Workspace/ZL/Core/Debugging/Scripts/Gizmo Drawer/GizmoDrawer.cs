@@ -1,72 +1,124 @@
-#if UNITY_EDITOR
-
 using UnityEngine;
 
-namespace ZL.Unity.Debugging
+namespace ZL.Unity
 {
-    /// <summary>
-    /// [ENG] Warning! This component is for debugging purposes only and is excluded from the build.<br/>
-    /// [KOR] 경고! 이 구성 요소는 디버깅 목적으로만 사용되며 빌드에서 제외됩니다.<br/>
-    /// </summary>
     public abstract class GizmoDrawer : MonoBehaviour
     {
-        [Space]
+        #if UNITY_EDITOR
 
-        [WarningBox("[ENG] Warning! This component is for debugging purposes only and is excluded from the build.")]
+        [GetComponent]
 
-        [WarningBox("[KOR] 경고! 이 구성 요소는 디버깅 목적으로만 사용되며 빌드에서 제외됩니다.")]
-
-        [Margin]
+        [Toggle(true)]
 
         [UsingCustomProperty]
 
         [SerializeField]
 
-        private bool drawOnSelected = true;
+        private Transform _transform;
+
+        public new Transform transform
+        {
+            private set => _transform = value;
+
+            get => _transform;
+        }
 
         [Space]
 
         [SerializeField]
 
-        private Color color = new(1f, 0f, 0f, 0.5f);
+        private bool disableOnAwake = false;
 
         [SerializeField]
 
-        protected Vector3 center = Vector3.zero;
+        private bool drawOnSelected = false;
+
+        [SerializeField]
+
+        private bool isWire = true;
+
+        [Space]
+
+        [SerializeField]
+
+        private Color _color = new Color(1f, 1f, 1f, 1f);
+
+        public Color Color
+        {
+            get => _color;
+
+            set => _color = value;
+        }
+
+        private Vector3 _center = Vector3.zero;
+
+        public Vector3 Center
+        {
+            get => _center;
+
+            set => _center = value;
+        }
+
+        protected virtual Matrix4x4 Matrix
+        {
+            get => Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
+        }
+
+        private void Reset()
+        {
+            transform = base.transform;
+        }
 
         private void OnDrawGizmos()
         {
-            if (drawOnSelected == true)
+            if (!drawOnSelected)
             {
-                return;
+                Draw();
             }
-
-            SetupGizmo();
-
-            DrawGizmo();
         }
 
         private void OnDrawGizmosSelected()
         {
-            if (drawOnSelected == false)
+            if (drawOnSelected)
             {
-                return;
+                Draw();
+            }
+        }
+
+        private void Awake()
+        {
+            if (disableOnAwake)
+            {
+                enabled = false;
+            }
+        }
+
+        private void Draw()
+        {
+            SetupGizmos();
+
+            if (isWire)
+            {
+                DrawWireGizmos();
             }
 
-            SetupGizmo();
-
-            DrawGizmo();
+            else
+            {
+                DrawGizmos();
+            }
         }
 
-        protected virtual void SetupGizmo()
+        protected virtual void SetupGizmos()
         {
-            Gizmos.color = color;
+            Gizmos.color = Color;
 
-            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+            Gizmos.matrix = Matrix;
         }
 
-        protected abstract void DrawGizmo();
+        protected abstract void DrawWireGizmos();
+
+        protected abstract void DrawGizmos();
+
+        #endif
     }
 }
-
-#endif

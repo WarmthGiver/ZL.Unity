@@ -1,8 +1,8 @@
 using UnityEngine;
 
-using ZL.CS.Singleton;
+using ZL.CS;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Scene Clock (Singleton)")]
 

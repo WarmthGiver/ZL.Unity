@@ -1,12 +1,8 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+
 using ZL.CS;
 
-using ZL.CS.Singleton;
-
-using ZL.Unity.Singleton;
-
-namespace ZL.Unity.Audio
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Audio/Audio Track Manager (Singleton)")]
 
@@ -14,11 +10,7 @@ namespace ZL.Unity.Audio
     {
         [Space]
 
-        [GetComponent]
-
-        [Essential]
-
-        [ReadOnly(true)]
+        [Require]
 
         [UsingCustomProperty]
 

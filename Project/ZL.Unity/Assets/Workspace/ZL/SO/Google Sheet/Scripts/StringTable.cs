@@ -6,9 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
-namespace ZL.Unity.SO.GoogleSheet
+namespace ZL.Unity
 {
     [CreateAssetMenu(menuName = "ZL/SO/Google Sheet/String Table", fileName = "String Table 1")]
 

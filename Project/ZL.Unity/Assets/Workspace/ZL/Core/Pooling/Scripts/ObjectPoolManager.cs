@@ -2,11 +2,7 @@ using UnityEngine;
 
 using UnityEngine.Animations;
 
-using ZL.Unity.Collections;
-
-using ZL.Unity.Singleton;
-
-namespace ZL.Unity.Pooling
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Pooling/Object Pool Manager (Singleton)")]
 
@@ -38,7 +34,7 @@ namespace ZL.Unity.Pooling
             }
         }
 
-        public Transform FindClosestObject(Transform from, string targetObjectName, Axis ignoreAxes, float minDistance = float.MaxValue)
+        public PooledObject FindClosest(Transform from, string targetObjectName, Axis ignoreAxes, float minDistance = float.MaxValue)
         {
             return from.FindClosest(poolDictionary[targetObjectName].Clones, ignoreAxes, minDistance);
         }

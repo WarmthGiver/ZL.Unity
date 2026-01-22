@@ -8,7 +8,7 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     public abstract class ValueTweener<T1, T2, TPlugOptions>
 
@@ -109,7 +109,7 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        private UnityEvent onStartEvent = new();
+        private UnityEvent onStartEvent = new UnityEvent();
 
         public UnityEvent OnStartEvent
         {
@@ -120,7 +120,7 @@ namespace ZL.Unity.Tweening
 
         [SerializeField]
 
-        private UnityEvent onCompleteEvent = new();
+        private UnityEvent onCompleteEvent = new UnityEvent();
 
         public UnityEvent OnCompleteEvent
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using ZL.CS.Reality;
 
-namespace ZL.Unity.Reality
+namespace ZL.Unity
 {
     public static partial class LocationInfoEx
     {

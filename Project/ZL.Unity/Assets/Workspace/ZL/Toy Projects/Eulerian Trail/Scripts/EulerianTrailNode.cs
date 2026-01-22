@@ -4,8 +4,6 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
 
-using ZL.Unity.Pooling;
-
 namespace ZL.Unity.EulerianTrail
 {
     [AddComponentMenu("ZL/Eulerian Trail/Eulerian Trail Node")]

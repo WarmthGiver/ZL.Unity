@@ -2,9 +2,7 @@ using DG.Tweening.Plugins.Options;
 
 using UnityEngine;
 
-using ZL.Unity.GFX;
-
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     public abstract class MaterialValueTweener<TValueTweener, T1, T2, TPlugOptions> : ObjectValueTweener<TValueTweener, T1, T2, TPlugOptions>
 

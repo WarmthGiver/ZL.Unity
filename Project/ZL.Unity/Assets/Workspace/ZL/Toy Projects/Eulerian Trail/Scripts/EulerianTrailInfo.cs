@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity.EulerianTrail
 {
     [Serializable]

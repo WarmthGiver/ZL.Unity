@@ -1,10 +1,8 @@
 using UnityEngine;
 
-using ZL.CS.Singleton;
+using ZL.CS;
 
-using ZL.Unity.Tweening;
-
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [DefaultExecutionOrder((int)ScriptExecutionOrder.Singleton)]
 

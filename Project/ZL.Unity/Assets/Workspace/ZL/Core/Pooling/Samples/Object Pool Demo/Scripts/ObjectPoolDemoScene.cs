@@ -4,12 +4,6 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.Unity.Collections;
-
-using ZL.Unity.Coroutines;
-
-using ZL.Unity.Pooling;
-
 namespace ZL.Unity.Demo.ObjectPoolingDemo
 {
     [AddComponentMenu("")]

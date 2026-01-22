@@ -2,7 +2,7 @@ using UnityEngine.Audio;
 
 using ZL.CS;
 
-namespace ZL.Unity.Audio
+namespace ZL.Unity
 {
     public static partial class AudioMixerEx
     {

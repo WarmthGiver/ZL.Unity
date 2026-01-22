@@ -8,7 +8,7 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     [DefaultExecutionOrder((int)ScriptExecutionOrder.Tweener)]
 

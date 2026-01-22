@@ -12,7 +12,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private LayerMask layerMask = ~0;
+        private LayerMask layerMask;
 
         [Space]
 

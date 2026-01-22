@@ -2,12 +2,12 @@ using UnityEngine;
 
 using UnityEngine.Animations;
 
-using ZL.CS;
-
 namespace ZL.Unity
 {
     public static partial class Vector3Ex
     {
+        public static readonly Vector3 Half = new Vector3(0.5f, 0.5f, 0.5f);
+
         public static Color ToColor(this Vector3 instance)
         {
             instance = Absoulute(instance);
@@ -76,31 +76,73 @@ namespace ZL.Unity
             return max;
         }
 
-        public static float DistanceTo(this Vector3 instance, Vector3 to, Axis ignoreAxes)
+        public static Vector3 UniformMax(this Vector3 instance)
         {
-            return DirectionTo(instance, to, ignoreAxes).magnitude;
+            float max = instance.GetMaxAxis();
+
+            return new Vector3(max, max, max);
         }
 
-        public static Vector3 DirectionTo(this Vector3 instance, Vector3 to, Axis ignoreAxes)
+        public static Vector3 Direction(Vector3 from, Vector3 to, Axis ignoreAxes)
         {
-            var direction = to - instance;
+            var result = Vector3.zero;
 
-            if (CS.EnumEx.HasFlag(ignoreAxes, Axis.X) == true)
+            if (!ignoreAxes.HasFlag(Axis.X))
             {
-                direction.x = 0f;
+                result.x = to.x - from.x;
             }
 
-            if (CS.EnumEx.HasFlag(ignoreAxes, Axis.Y) == true)
+            if (!ignoreAxes.HasFlag(Axis.Y))
             {
-                direction.y = 0f;
+                result.y = to.y - from.y;
             }
 
-            if (CS.EnumEx.HasFlag(ignoreAxes, Axis.Z) == true)
+            if (!ignoreAxes.HasFlag(Axis.Z))
             {
-                direction.z = 0f;
+                result.z = to.z - from.z;
             }
 
-            return direction;
+            return result;
+        }
+
+        public static bool CheckSector(Vector3 forward, Vector3 direction, float cosHalfAngle, float radius, out float distance)
+        {
+            distance = direction.magnitude;
+
+            if (distance > radius)
+            {
+                distance = 0f;
+
+                return false;
+            }
+  
+            return CheckSector(forward, direction / distance, cosHalfAngle);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="forward">
+        /// [ENG] This parameter must be normalized.<br/>
+        /// [KOR] 이 매개변수는 정규화되어야 합니다.
+        /// </param>
+        /// <param name="direction">
+        /// [ENG] This parameter must be normalized.<br/>
+        /// [KOR] 이 매개변수는 정규화되어야 합니다.
+        /// </param>
+        /// <param name="cosHalfAngle">
+        /// [ENG] Use cached value(Mathf.Cos (angle * 0.5f * Mathf.Deg2Rad)) For optimization.<br/>
+        /// [KOR] 최적화를 위해 캐싱된 값(Mathf.Cos (angle * 0.5f * Mathf.Deg2Rad))을 사용하십시오.
+        /// </param>
+        /// <returns></returns>
+        public static bool CheckSector(Vector3 forward, Vector3 direction, float cosHalfAngle)
+        {
+            return Vector3.Dot(forward, direction) >= cosHalfAngle;
+        }
+
+        public static Vector3 Reverse(this Vector3 instance, Vector3 axis)
+        {
+            return 2f * Vector3.Dot(instance, axis) * axis - instance;
         }
     }
 }

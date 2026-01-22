@@ -1,4 +1,4 @@
-namespace ZL.Unity.IO
+namespace ZL.Unity
 {
     public enum ImageFileFormat
     {

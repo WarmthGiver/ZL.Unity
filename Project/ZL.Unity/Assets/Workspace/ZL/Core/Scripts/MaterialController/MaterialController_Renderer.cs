@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace ZL.Unity.GFX
+namespace ZL.Unity
 {
-    [AddComponentMenu("ZL/GFX/Material Controller (Renderer)")]
+    [AddComponentMenu("ZL/Material Controller (Renderer)")]
 
     public sealed class MaterialController_Renderer : MaterialController
     {
@@ -18,7 +18,11 @@ namespace ZL.Unity.GFX
 
         [SerializeField]
 
-        private Renderer targetRenderer = null;
+        #pragma warning disable
+
+        private Renderer renderer = null;
+
+        #pragma warning restore
 
         [Space]
 
@@ -33,7 +37,20 @@ namespace ZL.Unity.GFX
 
         public Material[] Materials
         {
-            get => targetRenderer.materials;
+            get => renderer.materials;
+        }
+
+        [Space]
+
+        [SerializeField]
+
+        private string propertyName = string.Empty;
+
+        public override string PropertyName
+        {
+            get => propertyName;
+
+            set => propertyName = value;
         }
     }
 }

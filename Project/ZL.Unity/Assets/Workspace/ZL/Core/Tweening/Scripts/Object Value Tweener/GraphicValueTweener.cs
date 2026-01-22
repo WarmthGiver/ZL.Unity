@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     public abstract class GraphicValueTweener<TValueTweener, T1, T2, TPlugOptions> : ObjectValueTweener<TValueTweener, T1, T2, TPlugOptions>
 

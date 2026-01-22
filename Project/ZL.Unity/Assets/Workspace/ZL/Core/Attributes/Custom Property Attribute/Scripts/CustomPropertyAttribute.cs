@@ -43,7 +43,7 @@ namespace ZL.Unity
             }
         }
 
-        private static GUIStyle defaultLabelStyle = null;
+        private static GUIStyle defaultLabelStyle;
 
         protected static GUIStyle DefaultLabelStyle
         {
@@ -65,7 +65,7 @@ namespace ZL.Unity
 
         #if UNITY_EDITOR
 
-        private string attributeNameTag = null;
+        private string attributeNameTag;
 
         protected string AttributeNameTag
         {
@@ -89,17 +89,22 @@ namespace ZL.Unity
         {
             private Rect drawPosition;
 
+            public Rect DrawPosition
+            {
+                get => drawPosition;
+            }
+
             private float propertyHeight;
 
             public SerializedProperty Property { get; private set; }
 
             public GUIContent PropertyLabel { get; private set; }
 
-            public UnityObject TargetObject { get; private set; } = null;
+            public UnityObject TargetObject { get; private set; }
 
-            public Component TargetComponent { get; private set; } = null;
+            public Component TargetComponent { get; private set; }
 
-            private IEnumerable<CustomPropertyAttribute> attributes = null;
+            private IEnumerable<CustomPropertyAttribute> attributes;
 
             public bool IsToggled { get; set; }
 
@@ -108,6 +113,11 @@ namespace ZL.Unity
             public int IndentLevel { get; set; }
 
             public bool IsPropertyFieldDrawn { get; set; }
+
+            static Drawer()
+            {
+                FixedActiveEditorTracker.ForceRebuild();
+            }
 
             public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
             {
@@ -181,7 +191,10 @@ namespace ZL.Unity
                     Margin(EditorGUI.GetPropertyHeight(Property, PropertyLabel, true) + 2f);
                 }
 
-                catch { }
+                catch
+                {
+
+                }
             }
 
             public void DrawDefaultPropertyField()
@@ -193,6 +206,10 @@ namespace ZL.Unity
 
             public void DrawLayerField()
             {
+                var drawPosition = this.drawPosition;
+
+                drawPosition.height = defaultLabelHeight;
+
                 Property.intValue = EditorGUI.LayerField(drawPosition, PropertyLabel, Property.intValue);
 
                 Margin(defaultLabelHeight + 2f);
@@ -200,6 +217,10 @@ namespace ZL.Unity
 
             public void DrawTagField()
             {
+                var drawPosition = this.drawPosition;
+
+                drawPosition.height = defaultLabelHeight;
+
                 Property.stringValue = EditorGUI.TagField(drawPosition, PropertyLabel, Property.stringValue);
 
                 Margin(defaultLabelHeight + 2f);
@@ -231,11 +252,13 @@ namespace ZL.Unity
 
                 position.x += 1f;
 
+                position.y += 2f;
+
                 position.height = height;
 
                 EditorGUI.LabelField(position, label, style);
 
-                Margin(position.height + 2f);
+                Margin(position.height + 4f);
             }
 
             public void DrawLine(int margin, int thickness, in Color color)

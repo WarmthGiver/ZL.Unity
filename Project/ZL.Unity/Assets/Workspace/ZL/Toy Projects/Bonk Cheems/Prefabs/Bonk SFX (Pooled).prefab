@@ -8,9 +8,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391316287697024229, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: onAudioSourceStopEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 391316287697024229, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: onAudioSourceStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 391316287697024229, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: onAudioSourceStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 285072456664197936}
+    - target: {fileID: 391316287697024229, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: onAudioSourceStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 391316287697024229, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: onAudioSourceStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Disappear
+      objectReference: {fileID: 0}
+    - target: {fileID: 391316287697024229, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: onAudioSourceStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ZL.Unity.PooledObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 391316287697024229, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: onAudioSourceStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3550737977028138482, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
       propertyPath: m_Name
-      value: Bonk SFX (Pooled) Variant
+      value: Bonk SFX (Pooled)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550737977028138482, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4739206575850308668, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,3 +97,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+--- !u!114 &285072456664197936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5143055979923714419, guid: b4fc7f8fab08f4540ac984a33d219bbf, type: 3}
+  m_PrefabInstance: {fileID: 4275312659311977917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8db60971b477a4498a4df5c4fbf9624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

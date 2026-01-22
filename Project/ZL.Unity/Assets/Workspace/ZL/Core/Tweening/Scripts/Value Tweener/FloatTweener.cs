@@ -6,7 +6,7 @@ using DG.Tweening.Plugins.Options;
 
 using System;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     [Serializable]
 

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ZL.Unity.Coroutines
+namespace ZL.Unity
 {
     public sealed class WaitForSecondsComparer : IEqualityComparer<float>
     {

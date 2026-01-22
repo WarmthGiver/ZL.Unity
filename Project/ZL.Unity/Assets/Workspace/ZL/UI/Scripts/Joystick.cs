@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Joystick")]
 

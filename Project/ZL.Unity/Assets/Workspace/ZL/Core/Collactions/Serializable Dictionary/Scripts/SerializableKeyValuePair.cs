@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.CS.Collections;
+using ZL.CS;
 
-namespace ZL.Unity.Collections
+namespace ZL.Unity
 {
     [Serializable]
 

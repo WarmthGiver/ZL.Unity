@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.Audio
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/UI/Audio Mixer Volume Slider")]
 

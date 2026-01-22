@@ -6,12 +6,6 @@ using UnityEngine;
 
 using UnityEngine.EventSystems;
 
-using ZL.Unity.Collections;
-
-using ZL.Unity.Pooling;
-
-using ZL.Unity.UI;
-
 namespace ZL.Unity.EulerianTrail
 {
     [AddComponentMenu("ZL/Eulerian Trail/Eulerian Trail Drawer")]

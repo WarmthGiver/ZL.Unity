@@ -1,4 +1,4 @@
-namespace ZL.CS.Singleton
+namespace ZL.CS
 {
     public interface ISingleton<TClass>
 
@@ -6,13 +6,8 @@ namespace ZL.CS.Singleton
     {
         static TClass Instance { get; protected set; } = null;
 
-        public static bool TrySetInstance(TClass instance)
+        protected static bool TrySetInstance(TClass instance)
         {
-            if (instance == null)
-            {
-                return false;
-            }
-
             return instance.TrySetInstance();
         }
 
@@ -40,11 +35,6 @@ namespace ZL.CS.Singleton
 
         public static void Release(TClass instance)
         {
-            if (instance == null)
-            {
-                return;
-            }
-
             instance.Release();
         }
 

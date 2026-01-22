@@ -2,9 +2,7 @@ using System;
 
 using UnityEngine;
 
-using ZL.Unity.Singleton;
-
-namespace ZL.Unity.SO.GoogleSheet
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/SO/Google Sheet/String Table Manager (Singleton)")]
 
@@ -22,7 +20,9 @@ namespace ZL.Unity.SO.GoogleSheet
 
         [SerializeField]
 
-        private EnumPref<StringTableLanguage> targetLanguagePref = new("TargetLanguage", StringTableLanguage.Korean);
+        private EnumPref<StringTableLanguage> targetLanguagePref =
+            
+            new EnumPref<StringTableLanguage>("TargetLanguage", StringTableLanguage.Korean);
 
         public StringTableLanguage TargetLanguage
         {

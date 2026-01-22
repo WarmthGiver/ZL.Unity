@@ -90,11 +90,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueTweener:
+    endValue: {x: 0, y: 0, z: 0}
     duration: 1
     delay: 0
     ease: 0
     isIndependentUpdate: 1
-    loopCount: 1
+    loops: 1
     loopType: 0
     onStartEvent:
       m_PersistentCalls:
@@ -102,7 +103,8 @@ MonoBehaviour:
     onCompleteEvent:
       m_PersistentCalls:
         m_Calls: []
-  rotateMode: 0
+    rotateMode: 0
+  _transform: {fileID: 0}
 --- !u!114 &4192799454464752391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,9 +122,7 @@ MonoBehaviour:
   keyFrames:
     index: 0
     loopPattern: 0
-    list:
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: -90}
+    items: []
 --- !u!1 &5311065987380718964
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,11 +228,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueTweener:
+    endValue: {x: 0, y: 0, z: 0}
     duration: 1
     delay: 0
     ease: 0
     isIndependentUpdate: 1
-    loopCount: 0
+    loops: 1
     loopType: 0
     onStartEvent:
       m_PersistentCalls:
@@ -240,6 +241,7 @@ MonoBehaviour:
     onCompleteEvent:
       m_PersistentCalls:
         m_Calls: []
+  _transform: {fileID: 0}
 --- !u!114 &355563478642681837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,9 +259,7 @@ MonoBehaviour:
   keyFrames:
     index: 0
     loopPattern: 0
-    list:
-    - {x: 1, y: 1, z: 1}
-    - {x: 1.5, y: 0.5, z: 1}
+    items: []
 --- !u!1 &5709327103079719229
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,11 +343,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5019196676888846348}
-        m_TargetAssemblyTypeName: ZL.Unity.Pooling.ObjectGenerator`1[[UnityEngine.Transform,
-          UnityEngine
+      - m_Target: {fileID: 1176820590362511498}
+        m_TargetAssemblyTypeName: ZL.Unity.ObjectGenerator, Assembly-CSharp
         m_MethodName: Generate
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -442,7 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1897520050716411971}
-  - component: {fileID: 5019196676888846348}
+  - component: {fileID: 1176820590362511498}
   m_Layer: 5
   m_Name: Bonk SFX Generator
   m_TagString: Untagged
@@ -469,7 +468,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5019196676888846348
+--- !u!114 &1176820590362511498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -478,12 +477,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6736193597549573352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c47cd9c04f80f47816040ca6e9f02f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b3a92825dc2c554680ab82c0684323d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolDictionary:
-    elements:
-    - key: Bonk
-      value:
-        original: {fileID: 8832119015632904577, guid: f0bc4528c6bf6f043ae6c8a9896bd266, type: 3}
-        parent: {fileID: 1897520050716411971}
+  key: Bonk SFX

@@ -8,7 +8,7 @@ using System;
 
 using UnityEngine;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     [Serializable]
 

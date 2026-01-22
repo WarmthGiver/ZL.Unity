@@ -2,7 +2,7 @@ using UnityEngine;
 
 using ZL.CS.IO.CSV;
 
-namespace ZL.Unity.IO.CSV
+namespace ZL.Unity
 {
     public abstract class ScriptableCSVData : ScriptableObject, ICSVData
     {

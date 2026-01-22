@@ -2,7 +2,7 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Tweenng/Tweener Sequencer")]
 

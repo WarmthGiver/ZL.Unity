@@ -2,7 +2,9 @@ using System;
 
 using System.Collections.Generic;
 
-using Random = UnityEngine.Random;
+using UnityEngine;
+
+using UnityRandom = UnityEngine.Random;
 
 namespace ZL.Unity
 {
@@ -16,7 +18,7 @@ namespace ZL.Unity
 
             if (decimalPart > 0f)
             {
-                integerPart += Random.value < decimalPart ? 1 : 0;
+                integerPart += UnityRandom.value < decimalPart ? 1 : 0;
             }
 
             return integerPart;
@@ -33,7 +35,7 @@ namespace ZL.Unity
                 maxThreshold += GetWeight(table[i]);
             }
 
-            float threshold = Random.Range(0f, maxThreshold);
+            float threshold = UnityRandom.Range(0f, maxThreshold);
 
             for (int i = 0; i < table.Count; ++i)
             {
@@ -50,6 +52,11 @@ namespace ZL.Unity
             result = -1;
 
             return false;
+        }
+
+        public static float CosHalfAngle(float angle)
+        {
+            return Mathf.Cos(angle * 0.5f * Mathf.Deg2Rad);
         }
     }
 }

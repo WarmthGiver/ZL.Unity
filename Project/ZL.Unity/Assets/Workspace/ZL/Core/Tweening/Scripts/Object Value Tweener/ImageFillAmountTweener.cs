@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Tweening/Image Fill Amount Tweener")]
 

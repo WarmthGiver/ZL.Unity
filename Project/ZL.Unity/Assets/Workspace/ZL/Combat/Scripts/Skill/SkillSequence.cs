@@ -4,9 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using ZL.Unity.Coroutines;
-
-namespace ZL.Unity.Combat
+namespace ZL.Unity
 {
     public sealed class SkillSequence<TSkillUser, TSkillData>
 

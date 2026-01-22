@@ -2,15 +2,13 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Event Handler (Animation Event)")]
 
     public sealed class EventHandler_AnimationEvent : MonoBehaviour
     {
-        private AnimationEvent param = new();
+        private AnimationEvent param = new AnimationEvent();
 
         public AnimationEvent Param
         {
@@ -21,7 +19,9 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private SerializableDictionary<string, UnityEvent<AnimationEvent>> events = new();
+        private SerializableDictionary<string, UnityEvent<AnimationEvent>> events =
+            
+            new SerializableDictionary<string, UnityEvent<AnimationEvent>>();
 
         public void Invoke(string key)
         {

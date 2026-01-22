@@ -2,12 +2,6 @@ using System.Collections;
 
 using UnityEngine;
 
-using ZL.Unity.Coroutines;
-
-using ZL.Unity.Singleton;
-
-using ZL.Unity.Tweening;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Scene Director (Singleton)")]

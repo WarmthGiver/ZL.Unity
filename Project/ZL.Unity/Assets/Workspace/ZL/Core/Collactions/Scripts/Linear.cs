@@ -2,7 +2,7 @@ using UnityEngine;
 
 using ZL.CS;
 
-namespace ZL.Unity.Collections
+namespace ZL.Unity
 {
     public struct Linear
     {

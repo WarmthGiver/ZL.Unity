@@ -4,8 +4,6 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Coroutines;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/On End Of Frame Event Trigger")]

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace ZL.Unity
 {
     public sealed class ToggleIfAttribute : FieldConditionAttribute
@@ -14,7 +16,12 @@ namespace ZL.Unity
             {
                 drawer.IsToggled = (property.objectReferenceValue == null) == condition;
             }
-            
+
+            else if (property.boxedValue is LayerMask layer)
+            {
+                drawer.IsToggled = (layer.value == (int)targetValue) == condition;
+            }
+
             else
             {
                 drawer.IsToggled = property.boxedValue.Equals(targetValue) == condition;

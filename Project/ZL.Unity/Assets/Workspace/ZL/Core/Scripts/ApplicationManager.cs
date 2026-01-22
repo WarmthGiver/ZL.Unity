@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using ZL.Unity.Singleton;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Application Manager (Singleton)")]
@@ -9,6 +7,8 @@ namespace ZL.Unity
     public sealed class ApplicationManager : MonoSingleton<ApplicationManager>
     {
         [Space]
+
+        [SerializeField]
 
         [PropertyField]
 
@@ -18,9 +18,7 @@ namespace ZL.Unity
 
         [UsingCustomProperty]
 
-        [SerializeField]
-
-        private BoolPref runInBackgroundPref = new("RunInBackground", false);
+        private BoolPref runInBackgroundPref = new BoolPref("RunInBackground", false);
 
         public BoolPref RunInBackgroundPref
         {
@@ -39,7 +37,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private IntPref targetFrameRatePref = new("TargetFrameRate", -1);
+        private IntPref targetFrameRatePref = new IntPref("TargetFrameRate", -1);
 
         public IntPref TargetFrameRatePref
         {
@@ -72,8 +70,6 @@ namespace ZL.Unity
 
         [Space]
 
-        [Min(0f)]
-
         [PropertyField]
 
         [Button(nameof(Pause))]
@@ -83,6 +79,8 @@ namespace ZL.Unity
         [Button(nameof(Quit))]
 
         [UsingCustomProperty]
+
+        [Min(0f)]
 
         [SerializeField]
 

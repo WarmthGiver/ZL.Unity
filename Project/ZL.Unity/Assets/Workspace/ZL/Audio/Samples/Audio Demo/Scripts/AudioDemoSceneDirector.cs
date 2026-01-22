@@ -4,10 +4,6 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-using ZL.Unity.Audio;
-
-using ZL.Unity.Pooling;
-
 namespace ZL.Unity.Demo.AudioDemo
 {
     [AddComponentMenu("")]

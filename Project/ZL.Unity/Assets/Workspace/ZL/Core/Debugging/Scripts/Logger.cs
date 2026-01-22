@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace ZL.Unity.Debugging
+namespace ZL.Unity
 {
     /// <summary>
     /// [ENG] Warning! This component is for debugging purposes only and is excluded from the build.<br/>

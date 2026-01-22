@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace ZL.Unity.Coroutines
+namespace ZL.Unity
 {
     public static partial class WaitForSecondsCache
     {

@@ -16,7 +16,7 @@ using UnityEngine.UI;
 
 using UnityObject = UnityEngine.Object;
 
-namespace ZL.Unity.UI
+namespace ZL.Unity
 {
     public static partial class UICreator
     {

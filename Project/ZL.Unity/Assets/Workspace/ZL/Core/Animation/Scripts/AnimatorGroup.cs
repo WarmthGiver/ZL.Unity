@@ -26,7 +26,7 @@ namespace ZL.Unity
 
         [SerializeField]
 
-        private List<Animator> childAnimators = new();
+        private List<Animator> childAnimators = new List<Animator>();
 
         private int childAnimatorsCount = 0;
 

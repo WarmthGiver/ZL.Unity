@@ -2,8 +2,6 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
-using ZL.Unity.Collections;
-
 namespace ZL.Unity
 {
     [AddComponentMenu("ZL/Event Handler (Float)")]

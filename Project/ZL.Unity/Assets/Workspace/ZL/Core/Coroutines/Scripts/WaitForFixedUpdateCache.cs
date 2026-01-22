@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZL.Unity.Coroutines
+namespace ZL.Unity
 {
     public static class WaitForFixedUpdateCache
     {

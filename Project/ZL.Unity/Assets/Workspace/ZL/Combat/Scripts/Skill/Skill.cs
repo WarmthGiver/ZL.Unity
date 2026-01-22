@@ -2,7 +2,7 @@ using System.Collections;
 
 using UnityEngine;
 
-namespace ZL.Unity.Combat
+namespace ZL.Unity
 {
     public abstract class Skill<TSkillUser, TSkillData>
 

@@ -6,7 +6,7 @@ namespace ZL.Unity
 {
     [AddComponentMenu("ZL/On Awake Event Trigger")]
 
-    [DefaultExecutionOrder((int)ScriptExecutionOrder.Lazy)]
+    //[DefaultExecutionOrder((int)ScriptExecutionOrder.Lazy)]
 
     public sealed class OnAwakeEventTrigger : MonoBehaviour
     {

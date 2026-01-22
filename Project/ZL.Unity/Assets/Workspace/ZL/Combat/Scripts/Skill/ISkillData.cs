@@ -1,4 +1,4 @@
-namespace ZL.Unity.Combat
+namespace ZL.Unity
 {
     public interface ISkillData
     {

@@ -4,7 +4,7 @@ using DG.Tweening.Core;
 
 using DG.Tweening.Plugins.Options;
 
-namespace ZL.Unity.Tweening
+namespace ZL.Unity
 {
     public static partial class TweenerCoreEx
     {

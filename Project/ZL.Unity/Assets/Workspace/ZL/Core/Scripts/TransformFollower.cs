@@ -6,6 +6,21 @@ namespace ZL.Unity
 
     public sealed class TransformFollower : MonoBehaviour
     {
+        [GetComponent]
+
+        [Toggle(true)]
+
+        [UsingCustomProperty]
+
+        [SerializeField]
+
+        private Transform _transform;
+
+        public new Transform transform
+        {
+            get => _transform;
+        }
+
         [Space]
 
         [Essential]
